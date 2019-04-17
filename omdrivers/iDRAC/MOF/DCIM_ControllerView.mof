@@ -1,0 +1,244 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_controllerView
+// ==================================================================
+
+      [Description(
+           "DCIM_ControllerView is a derivation of DCIM_View "
+           "with controller specific data.") ]
+class DCIM_ControllerView : DCIM_View {
+
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          "instance to define a user-friendly name in addition to its key "
+          "properties, identity data, and description information. "
+          )]
+  string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information. "
+          )]
+  string FQDD;   
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+  string DeviceDescription;   
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to "
+          "provide high level and detailed health status of the "
+          "controller and its subcomponents. PrimaryStatus consists "
+          "of one of the following values: Unknown, OK, Degraded or Error. "
+          "\"Unknown\" indicates the implementation is in general capable "
+          "of returning this property, but is unable to do so at this time. "
+          "\"OK\" indicates the controller is functioning normally. "
+          "\"Degraded\" indicates the controller is functioning below "
+          "normal. \"Error\" indicates the controller is in an Error "
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error", "DMTF Reserved", "Vendor Reserved" }]
+  uint32 PrimaryStatus;
+
+      [Description (
+          "RollupStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to "
+          "provide high level and detailed health status of the "
+          "controller and its subcomponents. RollupStatus consists "
+          "of one of the following values: Unknown, OK, Degraded or Error. "
+          "\"Unknown\" indicates the implementation is in general capable "
+          "of returning this property, but is unable to do so at this time. "
+          "\"OK\" indicates the controller is functioning normally. "
+          "\"Degraded\" indicates the controller is functioning below "
+          "normal. \"Error\" indicates the controller is in an Error "
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error", "DMTF Reserved", "Vendor Reserved" }]
+  uint32 RollupStatus;
+
+      [Description (
+          "This uniquely identifies the embedded PCI Slot "
+          "number of the Controller ")]
+  uint8 PCISlot;
+
+      [Description (
+          "This property gives information about the "
+          "Firmware Version installed on the Controller ")]
+  string ControllerFirmwareVersion; 
+
+      [Description (
+          " PCI bus ")]
+  string Bus;
+
+      [Description (
+          " PCI device")]
+  string Device;
+
+      [Description (
+          " PCI function ")]
+  string Function;
+
+      [Description (
+          "This property is the Controller Vendor ID ")]
+  string PCIVendorID;
+
+      [Description (
+          " This property is the Controller Sub Vendor ID ")]
+  string PCISubVendorID;
+
+      [Description (
+          "This property is the Controller Device ID ")]
+  string PCIDeviceID;
+
+      [Description (
+          "This property is the Controller Sub Device ID ")]
+  string PCISubDeviceID;
+
+      [Description (
+          "This property is the Controller Manufacturer Name ")]
+  string DeviceCardManufacturer;
+
+      [Description (
+          "DeviceCardDataBusWidth gives information about the Controller "
+          "bus width. This property can have following values: \" Unknown\", "
+          "\"8x\" "),
+       ValueMap{"0" , "1"},
+       Values{"Unknown", "8x or x8"}]
+  string DeviceCardDataBusWidth;
+
+      [Description (
+          "DeviceCardSlotLength gives information about the Controller "
+          "slot length. This property can have following values: "
+          "\"Unknown\", \"Short\", \"Long\" "),
+       ValueMap{"2", "3", "4"},
+       Values{"Unknown", "Short", "Long"}]
+  uint8 DeviceCardSlotLength;
+
+      [Description (
+          "DeviceCardSlotType gives information about the Controller "
+          "Controller Slot type. The slot type has following values "
+          "\"Unknown\", \"PCI Express x8\" ")]
+  string DeviceCardSlotType;
+
+      [Description (
+          "Product Name property specifies the Name "
+          "of the Controller. " )]
+  string ProductName;
+
+      [Description (
+          "The SASAddress property provides a unique Controller Name." )]
+  string SASAddress;
+
+      [Description (
+          "Security Status property details security configuration information "
+          "of the Controller. \"Encryption Capable\" means that the controller "
+          "supports Local Key Management (LKM) and/or Dell Key Management (DKM). "
+          "\"Security Key Assigned\" means the controller has the security key "
+          "in either LKM or DKM mode. " ),
+       ValueMap {"0", "1", "2"},
+       Values{"Encryption Not Capable", "Encryption Capable", "Security Key Assigned"}]
+  uint32 SecurityStatus;
+
+      [Description (
+          "Encryption Mode details the current Encryption State"
+          "of the Controller. The controller can be in one of the following "
+          "States: None - No key assigned, LKM, DKM, or DKM Pending. In DKM "
+          "Pending Mode the controller is state of getting keys from DKM server"),
+       ValueMap {"0", "1", "2", "3"},
+       Values{"None", "Local Key Management", "Dell Key Management", 
+              "Pending Dell Key Management"}]
+  uint8 EncryptionMode;
+
+      [Description (
+          "EncryptionCapability details the possible Encryption States"
+          "of the Controller. The controller can have one of the following "
+          "encryption capabilities: None, LKM Capable, DKM Capable, "
+          "LKM and DKM capable."),
+       ValueMap {"0", "1", "2", "3"},
+       Values{"None", "Local Key Management Capable", "Dell Key Management Capable",
+              "Local Key Management and Dell Key Management Capable"}]
+  uint8 EncryptionCapability;
+
+      [Description (
+          "KeyID details the Key identification on the controller, when the"
+          "controller is in Local Key Management mode")]
+  string KeyID;   
+
+     [Description (
+          "CachecadeCapability indicates whether the controller supports"
+          "Cachecade virtual disk creation. "),
+       ValueMap {"0", "1"},
+       Values{"Cachecade Virtual Disk not supported", "Cachecade Virtual Disk supported"}]
+  uint8 CachecadeCapability;
+
+     [Description (
+          "SlicedVDCapability indicates whether the controller supports"
+          "creation of sliced virtual disk."),
+       ValueMap {"0", "1"},
+       Values{"Sliced Virtual Disk creation not supported", "Sliced Virtual Disk creation supported"}]
+  uint8 SlicedVDCapability;
+  
+     [Description (
+          "T10PICapability indicates whether the controller supports"
+          "T10 Protection Information."),
+       ValueMap {"0", "1"},
+       Values{" T10 PI not supported", "T10 PI supported"}]
+  uint8 T10PICapability;
+  
+     [Description (
+          "SupportRAID10UnevenSpans indicates whether the controller supports"
+          "creation of uneven spans for raid level 10."),
+       ValueMap {"0", "1"},
+       Values{" Uneven span for RAID10 not supported", "Uneven span for RAID10 supported"}]
+  uint8 SupportRAID10UnevenSpans;
+
+     [Description ( " ")]
+  uint32 CacheSizeInMB;
+
+     [Description ( " ")]
+  string DriverVersion;
+  
+     [Description (
+           "PatrolReadState"),
+        ValueMap {"0", "1", "2"},
+        Values{"Unknown", "Stopped", "Running"}]
+  uint8 PatrolReadState;
+
+      [Description (
+          "MaxPossiblePcieLinkSpeed indicates the maximum possible PCI link speed "
+          "(speed the device is capable of ).")]
+  string MaxPossiblePCILinkSpeed;   
+
+      [Description (
+          "MaxAvailablePCILinkSpeed indicates the currently allowed PCI link speed " )]
+  string MaxAvailablePCILinkSpeed;   
+
+	[Description (
+           "SupportEnhancedAutoForeignImport"),
+        ValueMap {"0", "1"},
+        Values{"Not Supported", "Supported"}]
+  uint8 SupportEnhancedAutoForeignImport;
+
+	 [Description (
+           "SupportControllerBootMode"),
+        ValueMap {"0", "1"},
+        Values{"Not Supported", "Supported"}]
+  uint8 SupportControllerBootMode;
+
+      [Description (
+          "RealtimeCapability gives information if this Controller "
+          "supports RealTime or not .. This property can have following values: \" Incapable\", "
+          "\"Capable\" "),
+       ValueMap{"0" , "1"},
+       Values{"Incapable", "Capable"}]
+  uint32 RealtimeCapability;
+
+};

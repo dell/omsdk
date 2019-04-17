@@ -1,0 +1,233 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_PhysicalDiskView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_PhysicalDiskView is a derivation of DCIM_View") ]
+class DCIM_PhysicalDiskView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          "instance to define a user-friendly name in addition to its key "
+          "properties, identity data, and description information. "
+          )]
+  string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information. "
+          )]
+  string FQDD;   
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+  string DeviceDescription;   
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide high level and "
+          "detailed health status of the ManagedElement and its "
+          "subcomponents. PrimaryStatus consists of one of the "
+          "following values: Unknown, OK, "
+          "Degraded or Error. \"Unknown\" indicates the implementation is in "
+          "general capable of returning this property, but is unable to do so "
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning "
+          "below normal. \"Error\" indicates the ManagedElement is in "
+          "an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+  uint32 PrimaryStatus;
+
+      [Description (
+          "RollupStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide "
+          "high level and detailed health status of the enclosure and "
+          "its subcomponents. PrimaryStatus consists of one of the following "
+          "values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the "
+          "implementation is in general capable of returning this property, "
+          "but is unable to do so at this time. \"OK\" indicates the "
+          "enclosure is functioning normally. \"Degraded\" indicates the "
+          "enclosure is functioning below normal. \"Error\" indicates the "
+          "enclosure is in an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+  uint32 RollupStatus;
+
+      [Description (
+          "RaidStatus provides a status value for RAID."
+          "RaidStatus consists of one of the following values: \"Unknown\" "
+          "\"Ready\" \"Online\" \"Foreign\" \"Offline\" \"Blocked\" "
+          "\"Failed\" \"Degraded\" \"Non-RAID\" \"Missing\" "),
+       ValueMap { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+       Values { "Unknown", "Ready", "Online", "Foreign", "Offline",
+               "Blocked", "Failed", "Degraded", "Non-RAID", "Missing" }]
+  uint32 RaidStatus;  
+  
+      [Description (
+          "This is controller port number. " )]
+  uint16 Connector;
+
+      [Description (
+          "This is slot number where the drive is located. " )]
+  uint16 Slot;
+  
+      [Description (
+          "This is the size of the physical disk. " )]
+  uint64 SizeInBytes;
+
+      [Description (
+          "This is Model Name of the physical disk. " )]
+  string Model;
+  
+      [Description (
+          "This is manufacturer of the physical disk. " )]
+  string Manufacturer;
+
+      [Description (
+          "This is the manufacturing day. "
+          "To be used in conjunction with ManufacturingWeek, "
+          "ManufacturingYear properties to denote the manufacturing "
+          "date of the physical disk."  )]
+  uint16 ManufacturingDay;
+  
+      [Description (
+          "This is the manufacturing week. "
+          "To be used in conjunction with ManufacturingDay, "
+          "ManufacturingYear properties to denote the manufacturing "
+          "date of the physical disk." )]  
+  uint16 ManufacturingWeek;
+  
+      [Description (
+          "This is the manufacturing year. " 
+          "To be used in conjunction with ManufacturingWeek, "
+          "ManufacturingDay properties to denote the manufacturing "
+          "date of the physical disk. ")]
+  uint32 ManufacturingYear;
+  
+      [Description (
+          "Provides information about the revision of the "
+          "physical disk ")]
+  string Revision;
+  
+      [Description (
+          "The serial number of the physical disk. " )]
+  string SerialNumber;
+
+      [Description (
+          "Bus protocol used by the physical disc. "
+          "The Protocol used can be one of following: \"Unknown\", "
+          " \"SCSI\", \"PATA\", \"FIBRE\", \"USB\", \"SATA\", \"SAS\" "),
+       ValueMap { "0", "1", "2", "3", "4", "5", "6" },
+       Values { "Unknown", "SCSI", "PATA", "FIBRE", "USB", "SATA", "SAS" }]
+  uint32 BusProtocol;
+  
+      [Description (
+          "The hot spare status of the physical disk "
+          "This status can have following values: \"No\", "
+          "\"Dedicated\", \"Global\" "),                  
+       ValueMap { "0", "1", "2" },
+       Values { "No", "Dedicated", "Global" }]            
+  uint16 HotSpareStatus;
+  
+      [Description (
+          "This field indicates if the Predictive Failure State "
+          "is enabled for the physical disk. The predictive failure "
+          "state of the physical disk can be one of these values: "
+          "\"Smart Alert Absent\", \"Smart Alert Present\" "),
+        ValueMap { "0", "1"},
+        Values { "Smart Alert Absent", "Smart Alert Present" }]
+  uint32 PredictiveFailureState;
+
+      [Description (
+          "This is the Security State of the physical disk "
+          "The security state of the physical disk can be one "
+          "of the following: \"Secured\", \"Locked\", \"Foreign\" "),
+        ValueMap{ "0", "1", "2", "3"},
+        Values{ "Unknown", "Secured", "Locked", "Foreign" }]
+  uint32 SecurityState;
+  
+      [Description (
+          "T10PICapability indicates whether the Physical Disk supports"
+          "T10 Protection Information."),
+       ValueMap {"0", "1"},
+       Values{" T10 PI not supported", "T10 PI supported"}]
+  uint8 T10PICapability;
+  
+      [Description (
+          "This is the blocksize of the physical disk. " )]
+  uint32 BlockSizeInBytes;
+
+      [Description (
+          "This field indicates Type of the physical disk "
+          "The physical disk type can be: \"Hard Disk Drive\" "
+          "\"Solid State Drive\" "),
+        ValueMap { "0", "1"},
+        Values { "Hard Disk Drive", "Solid State Drive" }]
+  uint32 MediaType;
+
+      [Description (
+          "The size of free space on the physical disk. ")]
+  uint64 FreeSizeInBytes;
+
+      [Description (
+          "The size of used space on the physical disk. ")]
+  uint64 UsedSizeInBytes;
+
+      [Description (
+          "This gives information about capable speed "
+          "of the physical disk. The capable speeds of the physical "
+          "disk are : \"1.5Gbs\", \"3Gbs\", \"6Gbs\" , \"12Gbs\" "),
+        ValueMap { "0", "1", "2", "3", "4"},
+        Values { "Unknown", "1.5Gbs", "3Gbs", "6Gbs" , "12Gbs"}]
+  uint32 MaxCapableSpeed;
+
+      [Description (
+          "The SASAddress property provides a unique controller name.")]
+  string SASAddress;
+
+      [Description (
+          "")]
+  string PPID;
+
+      [Description (
+          "This gives information about form factor "
+          "of the physical disk. The form factors of the physical disks "
+          "are : \"Unknown\", \"1.8 inch\", \"2.5 inch\", \"3.5 inch\" "),
+        ValueMap { "0", "1", "2", "3"},
+        Values { "Unknown", "1.8 inch", "2.5 inch", "3.5 inch" }]
+  uint8 DriveFormFactor;
+
+      [Description (
+          "This property indicates the supported encryption types "
+          "on the physical disk. If the disk does not supported "
+          "encryption then the value is \"None\". Otherwise, the property "
+          "can have list of encryption types. Currently only "
+          "\"Full Drive Encryption \" \"FDE\" is supported ")]
+  string SupportedEncryptionTypes[];
+
+      [Description (
+          "The property indicates the operation running on the VirtualDisk "
+	  "When there is no operation the property value will be \"None\" ")]
+  string OperationName;
+
+      [Description (
+          "The property indicates the progress of the operation specified "
+	  "OperationName property. The value will indicate the completion "
+	  "percentage")]
+  uint8 OperationPercentComplete;
+  
+      [Description (
+          "The property indicates the wear out percentage "
+	  "of the SSD drives. The value of 255 indicates "
+	  "that the wear out percentage is Unknown.This property is not applicable for HDD media type drive ")]
+  uint8 RemainingRatedWriteEndurance;
+};

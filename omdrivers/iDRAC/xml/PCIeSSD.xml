@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <REGISTRY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <!-- Registry XML Generated 2014-09-09 19:28:26.740000 ; input file should be in csv format and sorted by AttributeName -->
+        <!--Copyright(C)2010 Dell Inc.  All rights reserved-->
+
+          <REGISTRY_DECLARATION>
+            <IDENTIFICATION NAME="Dell Attribute Registry" VERSION="1.0.0" LANGUAGE="en"/>
+            <SPECIFICATION NAME="PCIe SSD Profile" VERSION="1.1.0"/>
+            <CIM_SCHEMA VERSION="2.17.0"/>
+            <OWNING_ENTITY NAME="Dell"/>
+            <EDITOR EMAIL="Dell_Support@Dell.com" NAME="Dell Support" ORGANIZATION="Dell"/>
+            <DESCRIPTION>This Registry defines a representation of system hardware or firmware Attribute instances, such as BIOS or NIC Attributes, as defined by Dell.</DESCRIPTION>
+          </REGISTRY_DECLARATION>
+          <REGISTRY_ENTRIES>  
+	<Attribute>
+		<AttributeName>BusProtocol</AttributeName>
+		<DisplayName>Bus Protocol</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the type of the physical device, such as PCIe.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>253</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>PCIe</ValueName>
+			<DisplayValueName>PCIe</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>BusProtocolVersion</AttributeName>
+		<DisplayName>Bus Protocol Version</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the revision of the PCI Express Base Specification to which this device complies.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>254</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>2.0</ValueName>
+			<DisplayValueName>2.0</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>2.1</ValueName>
+			<DisplayValueName>2.1</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>3.0</ValueName>
+			<DisplayValueName>3.0</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>3.1</ValueName>
+			<DisplayValueName>3.1</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>CapableSpeed</AttributeName>
+		<DisplayName>PCIe Maximum Link Speed</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the capable transfer speed of the physical device in GT/s.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>262</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>2.5 GT/s</ValueName>
+			<DisplayValueName>2.5 GT/s</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>5.0 GT/s</ValueName>
+			<DisplayValueName>5.0 GT/s</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>8.0 GT/s</ValueName>
+			<DisplayValueName>8.0 GT/s</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>CryptographicErase</AttributeName>
+		<DisplayName>Cryptographic Erase</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>Performs a secure Cryptographic Erase on the physical device. This operation erases all user data by deleting the encryption key with which the user data was previously encrypted.</HelpText>
+		<GroupName>PcieSsdOps</GroupName>
+		<GroupDisplayName>Select Physical Device Operations</GroupDisplayName>
+		<DisplayOrder>267</DisplayOrder>
+		<IsReadOnly>false</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Yes</ValueName>
+			<DisplayValueName>Yes</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>No</ValueName>
+			<DisplayValueName>No</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>DeviceProtocol</AttributeName>
+		<DisplayName>Device Protocol</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the device protocol of the physical device, such as NVMe.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>255</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Nvme1.0</ValueName>
+			<DisplayValueName>NVMe 1.0</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>NVMe 1.1</ValueName>
+			<DisplayValueName>NVMe 1.1</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>FailurePredicted</AttributeName>
+		<DisplayName>Failure Predicted</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Indicates whether the physical device has detected a condition that may lead to a device failure.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>258</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Yes</ValueName>
+			<DisplayValueName>Yes</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>No</ValueName>
+			<DisplayValueName>No</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>ModelNumber</AttributeName>
+		<DisplayName>Model Number</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the model number of the physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>260</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Name</AttributeName>
+		<DisplayName>Physical Device ID</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the ID of the physical device representing the slot ID and bay ID.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>250</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieMaxLinkWidth</AttributeName>
+		<DisplayName>PCIe Maximum Link Width</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the capable link width of the physical device</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>264</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x1</ValueName>
+			<DisplayValueName>x1</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x2</ValueName>
+			<DisplayValueName>x2</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x4</ValueName>
+			<DisplayValueName>x4</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x8</ValueName>
+			<DisplayValueName>x8</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieNegotiatedLinkSpeed</AttributeName>
+		<DisplayName>PCIe Negotiated Link Speed</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the current negotiated transfer speed of the physical device in GT/s.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>263</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>2.5 GT/s</ValueName>
+			<DisplayValueName>2.5 GT/s</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>5.0 GT/s</ValueName>
+			<DisplayValueName>5.0 GT/s</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>8.0 GT/s</ValueName>
+			<DisplayValueName>8.0 GT/s</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieNegotiatedLinkWidth</AttributeName>
+		<DisplayName>PCIe Negotiated Link Width</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the current negotiated link width of the physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>265</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x1</ValueName>
+			<DisplayValueName>x1</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x2</ValueName>
+			<DisplayValueName>x2</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x4</ValueName>
+			<DisplayValueName>x4</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>x8</ValueName>
+			<DisplayValueName>x8</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieSsd</AttributeName>
+		<DisplayName>Dell PCIe Solid State Devices</DisplayName>
+		<AttributeType>Formset Title</AttributeType>
+		<HelpText>Lists the Dell PCIe Solid State Devices and allows it to be configured</HelpText>
+		<GroupName>DeviceSettings</GroupName>
+		<GroupDisplayName>Device Settings</GroupDisplayName>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieSsdLog</AttributeName>
+		<DisplayName>Export Log</DisplayName>
+		<AttributeType>Form Title</AttributeType>
+		<HelpText>Exports a log containing debug information of the device used for troubleshooting.</HelpText>
+		<GroupName>PcieSsdLog</GroupName>
+		<GroupDisplayName>Export Log</GroupDisplayName>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieSsdOps</AttributeName>
+		<DisplayName>Select Physical Device Operations</DisplayName>
+		<AttributeType>Form Title</AttributeType>
+		<HelpText>Executes Physical Device Operations such as full initialization and blink/unblink.</HelpText>
+		<GroupName>PcieSsdOps</GroupName>
+		<GroupDisplayName>Select Physical Device Operations</GroupDisplayName>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>PcieSsdProps</AttributeName>
+		<DisplayName>View Physical Device Properties</DisplayName>
+		<AttributeType>Form Title</AttributeType>
+		<HelpText>Displays the physical device properties.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>RemainingRatedWriteEndurance</AttributeName>
+		<DisplayName>Remaining Rated Write Endurance</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the warranted wearout level of the PCIe SSD (in percentage).</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>257</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>SecureErase</AttributeName>
+		<DisplayName>Full Initialization</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>Performs full initialization on the selected physical device. This operation deletes all data on the device.</HelpText>
+		<GroupName>PcieSsdOps</GroupName>
+		<GroupDisplayName>Select Physical Device Operations</GroupDisplayName>
+		<DisplayOrder>266</DisplayOrder>
+		<IsReadOnly>false</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Yes</ValueName>
+			<DisplayValueName>Yes</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>No</ValueName>
+			<DisplayValueName>No</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>SerialNumber</AttributeName>
+		<DisplayName>Serial Number</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the serial number of the physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>261</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Size</AttributeName>
+		<DisplayName>Capacity (GB)</DisplayName>
+		<AttributeType>Integer</AttributeType>
+		<HelpText>Displays the size of the physical device in bytes.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>252</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+	<Attribute>
+		<AttributeName>SmartStatus</AttributeName>
+		<DisplayName>SMART Status</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the SMART status of a physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>256</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>State</AttributeName>
+		<DisplayName>State</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the status of the physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>251</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+		<AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Ready</ValueName>
+			<DisplayValueName>Ready</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Overheat</ValueName>
+			<DisplayValueName>Overheat</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>ReadOnly</ValueName>
+			<DisplayValueName>Read Only</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Failed</ValueName>
+			<DisplayValueName>Not Ready/Locked</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Not Ready/Locked</ValueName>
+			<DisplayValueName></DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Version</AttributeName>
+		<DisplayName>Firmware Revision</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Displays the firmware revision of the physical device.</HelpText>
+		<GroupName>PcieSsdProps</GroupName>
+		<GroupDisplayName>View Physical Device Properties</GroupDisplayName>
+		<DisplayOrder>259</DisplayOrder>
+		<IsReadOnly>true</IsReadOnly>
+                 <ExpertiseLevel>Expert</ExpertiseLevel>
+		<Modifiers>
+			<BrowserSuppressed>N/A</BrowserSuppressed>
+			<BrowserRead>N/A</BrowserRead>
+			<BrowserWrite>N/A</BrowserWrite>
+			<ProgrammaticRead>N/A</ProgrammaticRead>
+			<ProgrammaticWrite>N/A</ProgrammaticWrite>
+		</Modifiers>
+	</Attribute>
+  </REGISTRY_ENTRIES>
+        </REGISTRY>

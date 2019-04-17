@@ -1,0 +1,265 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_NICView
+// ==================================================================
+   [Description(
+       "DCIM_NICView is a derivation of DCIM_View "
+       "with NIC specific data" )]
+class DCIM_NICView : DCIM_View {
+      [Key, Description (
+          "Is a unique string containing the Fully Qualified Device "
+          "Description and view name. ")]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string  FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description (
+          "Represents if network interface card personality is enabled "
+          "or disabled on current partition in a Converged Network Adaptor "
+          "device. NicMode has the following values: Enabled or Disabled."), 
+      ValueMap { "0", "2", "3" }, 
+      Values { "Unknown", "Enabled", "Disabled"}]
+   uint8 NicMode;
+
+      [Description (
+          "Represents if Fibre Channel over Ethernet personality is enabled "
+          "or disabled on current partition in a Converged Network Adaptor "
+          "device. FCoEOffloadMode has the following values: Enabled "
+          "or Disabled."), 
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "Enabled", "Disabled"}]
+   uint8 FCoEOffloadMode;
+
+      [Description (
+          "Represents if Internet Small Computer System Interface personality "
+          "is enabled or disabled on current partition in a Converged Network "
+          "Adaptor device. iScsiOffloadMode has the following values: Enabled "
+          "or Disabled."), 
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "Enabled", "Disabled"}]
+   uint8 iScsiOffloadMode;
+
+      [Description (
+          "Represents maximum bandwidth on current partition in "
+          "a Converged Network Adapter device. It should be greater than "
+		  "MinBandwidth. It is represented in units of percentage."
+          )]
+   uint16 MaxBandwidth;
+
+      [Description (
+          "Represents minimum bandwidth on current partition of "
+          "a Converged Network Adapter device. It should be less than "
+		  "MaxBandwidth. It is represented in units of percentage."
+          )]
+   uint16 MinBandwidth;
+
+      [Description (
+          "Represents family version of firmware."
+          )]
+   string FamilyVersion;
+
+      [Description (
+          "Represents firmware version of Controller BIOS."
+          )]
+   string ControllerBIOSVersion;
+
+      [Description (
+          "Represents firmware version of EFI."
+          )]
+   string EFIVersion;
+
+   [Description (
+          "Represents Worldwide Port Name of a port." ),
+          MaxLen ( 11 )]
+   string WWPN;
+   
+   [Description (
+          "Represents Worldwide Name of a port." ),
+          MaxLen ( 11 )]
+   string WWN;
+   
+   [Description (
+          "Represents Virtual Worldwide Port Name of a port." ),
+          MaxLen ( 11 )]
+   string VirtWWPN;
+   
+   [Description (
+          "Represents Virtual Worldwide Name of a port." ),
+          MaxLen ( 11 )]
+   string VirtWWN;
+
+      [Description (
+          "A string containing the Product name"),
+          MaxLen ( 256 )]
+   string ProductName;
+
+      [Description (
+          "A string containing the Current MAC address"
+          "The principal unicast address used in "
+          "communication with the NIC. The MAC address"
+          "is formatted as twelve hexadecimal digits "
+          "(e.g., \"010203040506\"), with each pair "
+          "representing one of the six octets of the MAC address"
+          " in \"canonical\" bit order according to RFC 2469"), 
+       MaxLen ( 12 )]
+   string CurrentMACAddress;
+
+      [Description ( 
+          "PermanentAddress defines the network address that is "
+          "hardcoded into a port. This \'hardcoded\' address can be "
+          "changed using a firmware upgrade or a software "
+          "configuration. When this change is made, the field "
+          "should be updated at the same time. PermanentAddress "
+          "should be left blank if no \'hardcoded\' address exists "
+          "for the NetworkAdapter." ), 
+       MaxLen ( 64 ), 
+       MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentMACAddress;
+
+      [Description ( 
+          "The bus number where this PCI device resides")]
+   uint8 BusNumber;
+
+      [Description (
+          "The device number assigned to this PCI device for this bus. ")]
+   uint8 DeviceNumber;
+
+      [Description (
+          "The function number for this PCI device. ")]
+   uint8 FunctionNumber;
+
+     [Description (
+         "Register that contains a value assigned by the PCI SIG "
+         "used to identify the manufacturer of the device. ")]
+   string PCIVendorID;
+
+     [Description (
+         "Subsystem vendor ID. ID information is reported from a "
+         "PCIDevice through protocol-specific requests. ")]
+   string PCISubVendorID;
+
+     [Description (
+         "Register that contains a value assigned by the device "
+         "manufacturer used to identify the type of device. ")]
+   string PCIDeviceID;
+
+     [Description (
+         "PCI sub device ID")]
+   string PCISubDeviceID;
+
+     [Description (
+         "PermanentAddress defines the network address that is "
+         "hardcoded into a port for iSCSI. This \'hardcoded\' address can be "
+         "changed using a firmware upgrade or a software "
+         "configuration. When this change is made, the field "
+         "should be updated at the same time. PermanentAddress "
+         "should be left blank if no \'hardcoded\' address exists "
+         "for the NetworkAdapter." ),
+      MaxLen ( 64 ),
+      MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentiSCSIMACAddress;   
+   
+     [Description (
+         "PermanentFCOEMACAddress defines the network address that is "
+         "hardcoded into a port for FCoE." ),
+      MaxLen ( 64 ),
+      MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentFCOEMACAddress;
+   
+      [Description ("Data-bus width of the NIC PCI device."),
+          ValueMap { "0001", "0002", "0003", "0004", "0005", "0006", 
+                     "0007", "0008", "0009", "000A", "000B", "000C", 
+                     "000D", "000E"},
+          Values { "Other", "Unknown", "8 bit", "16 bit", "32 bit", "64 bit",
+                "128 bit", "1x or x1", "2x or x2", " 4x or x4", "8x or x8",
+                "12x or x12", "16x or x16", "32x or x32"}]
+   string DataBusWidth;
+
+      [Description ("Slot length of the NIC PCI device"), 
+          ValueMap { "0001", "0002", "0003", "0004"},
+          Values { "Other", "Unknown", " Short Length", " Long Length"}]
+   string SlotLength;
+
+      [Description ("Slot type of the NIC PCI device."),
+         ValueMap {  "0001", "0002", "0003", "0004", "0005", "0006", 
+                     "0007", "0008", "0009", "000A", "000B", "000C", 
+                     "000D", "000E", "000F", "0010", "0011", "0012", 
+                     "0013", "00A0", "00A1", "00A2", "00A3", "00A4", 
+                     "00A5", "00A6", "00A7", "00A8", "00A9", "00AA",  
+                     "00AB", "00AC", "00AD", "00AE", "00AF", "00B0",
+                     "00B1", "00B2", "00B3", "00B4", "00B5", "00B6"},
+         Values { "Other", "Unknown", "ISA", "MCA", "EISA", "PCI", 
+           "PC Card (PCMCIA)", "VL-VESA", "Proprietary", 
+           "Processor Card Slot", 
+           "Proprietary Memory Card Slot", "I/O Riser Card Slot", "NuBus",
+           "PCI - 66MHz Capable",
+           "AGP", "AGP 2X", "AGP 4X", "PCI-X", "AGP 8X", "PC-98/C20",   
+           "PC-98/C24", "PC-98/E", "PC-98/Local Bus", "PC-98/Card",
+           "PCI Express",
+           "PCI Express x1", "PCI Express x2", "PCI Express x4",
+           "PCI Express x8", "PCI Express x16", "PCI Express Gen 2", 
+           "PCI Express Gen 2 x1", "PCI Express Gen 2 x2", "PCI Express Gen 2 x4", 
+           "PCI Express Gen 2 x8", "PCI Express Gen 2 x16",
+           "PCI Express Gen 3",
+           "PCI Express Gen 3 x1", "PCI Express Gen 3 x2", "PCI Express Gen 3 x4", 
+           "PCI Express Gen 3 x8", "PCI Express Gen 3 x16" } ]
+   string SlotType;
+   
+      [Description ("Fiber Channel over Ethernet World Wide Node Name.")]
+    string FCoEWWNN;           
+    	
+      [Description ("Vendor Name.")]
+    string VendorName; 
+
+      [Description ("Number of PCI-e Functions Supported per Port."), 
+          PUnit ( "count" )]
+    uint16 NumberPCIEFunctionsSupported;
+    
+      [Description ("Number of PCI-e Functions currently enabled "
+                    "per Port. "), 
+          PUnit ( "count" )]    
+    uint16 NumberPCIEFunctionsEnabled;  
+
+      [Description ("Link Duplex."), 
+       ValueMap { "0", "1", "2" }, 
+       Values { "Unknown", "Full Duplex", "Half Duplex" }]
+    uint8 LinkDuplex; 
+    
+      [Description ("Link Speed."),
+       ValueMap { "0", "1", "2", "3", "4", "5", "6", "7", "8"}, 
+       Values { "Unknown", "10 Mbps", "100 Mbps", "1000 Mbps", 
+                  "2.5 Gbps", "10 Gbps", "20 Gbps", "40 Gbps", "100 Gbps" }]
+    uint8 LinkSpeed;
+    
+      [Description ("Auto Negotiated."), 
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "Enabled", "Disabled"}]
+    uint8 AutoNegotiation;
+    
+      [Description ("Transmit Flow Control."), 
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "On", "Off"}]
+    uint8 TransmitFlowControl;
+    
+      [Description ("Receive Flow Control."), 
+       ValueMap { "0", "2", "3" }, 
+       Values {  "Unknown", "On", "Off" }]
+    uint8 ReceiveFlowControl;
+    
+      [Description ("Supported Media Types.")] 
+    string MediaType; 
+
+};
+

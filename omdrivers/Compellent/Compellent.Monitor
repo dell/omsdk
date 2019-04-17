@@ -1,0 +1,253 @@
+{
+  "System" : {
+    "ConfigState" : [],
+    "MainHealth" : ["PrimaryStatus"],
+    "BasicInventory" : [ 
+      "SysObjectID",
+      "ProductID", 
+      "Vendor", 
+      "Version", 
+      "URLString",
+      "ManagementIP",
+      "Name",
+      "ServiceTag",
+      "isManagementIP",
+      "isControllerIP",
+      "PrimaryControllerName", 
+      "PrimaryControllerModel", 
+      "PrimaryControllerIPAddress",
+      "PrimaryControllerServiceTag",
+      "SecondaryControllerName", 
+      "SecondaryControllerModel", 
+      "SecondaryControllerIPAddress",
+      "SecondaryControllerServiceTag",
+      "SysName",
+      "IPv6MgmtIP"
+    ],
+    "Key" : ["SerialNumber"],
+    "Metrics" : [],
+    "PrimaryStatus" : {
+      "1" : "Critical",
+      "2" : "Critical",
+      "3" : "Healthy",
+      "4" : "Warning",
+      "5" : "Critical",
+      "6" : "Critical"
+    }
+  },
+  "Controller": {
+    "ConfigState": [],
+    "MainHealth": [ "Status" ],
+    "BasicInventory": [
+      "Leader",
+      "AssetTag", 
+      "ID", 
+      "Name", 
+      "Model", 
+      "IPAddress",
+      "IPv6Address", 
+      "IPv6Eth0IPPrefix",
+      "URLString"
+    ],
+    "Key": [ "ServiceTag" ],
+    "Metrics": [],
+    "Leader" : {
+      "1" : "Yes",
+      "2" : "No"
+    },
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "ControllerFan": {
+    "ConfigState": [],
+    "Health": [ "Status" ],
+    "Inventory": [ "Name", "ID"],
+    "Key": [ "Number" ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "Disk": {
+    "ConfigState": [],
+    "MainHealth": [ "Status" ],
+    "OtherHealth": [ "Healthy" ],
+    "Inventory": [
+      "ID",
+      "Name",
+      "Size",
+      "IoPortType",
+      "Enclosure",
+      "DiskStatusMsg"
+    ],
+    "Key": [ "Position" ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    },
+    "Healthy" : {
+      "1" : "True",
+      "2" : "False"
+    },
+    "IoPortType" : {
+      "1" : "Fiber Channel",
+      "2" : "iSCSI",
+      "3" : "Fiber Channel Over Ethernet",
+      "4" : "Serial Attached SCSI",
+      "5" : "Unknown"
+    }
+  },
+
+  "Enclosure": {
+    "ConfigState": [],
+    "Health": [
+      "EnclosureStatus"
+    ],
+    "Inventory": [
+      "EnclosureAssetTag",
+      "EnclosureType",
+      "EnclosureName",
+      "ID",
+      "EnclosureModel"
+    ],
+    "Key": [
+      "EnclosureServiceTag"
+    ],
+    "Metrics": [],
+    "EnclosureStatus" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+
+  "EnclosureFan": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [ "ID","Location"],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "EnclosurePSU": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": ["ID","Position"],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "EnclosureIOM": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": ["ID", "Position"],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+
+  "Power": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [
+      "Name",
+      "ID"
+    ],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "StorageCenter": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [
+      "Name","ManagementIP", "IPv6MgmtIPPrefix", "Location", "IPv6MgmtIP", "SerialNumber", "Contact"
+    ],
+    "Key": [
+      "ID"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "UPS": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [
+      "Name",
+      "ID"
+    ],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": ["BatteryLife"],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  },
+  "Volume": {
+    "ConfigState": [],
+    "MainHealth": ["Status"],
+    "Inventory": [
+      "ID",
+      "Name"
+    ],
+    "Key": [
+      "Number"
+    ],
+    "Metrics": [],
+    "Status" : {
+      "1" : "Healthy",
+      "2" : "Critical",
+      "3" : "Warning"
+    }
+  }
+}

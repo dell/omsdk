@@ -1,0 +1,25 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+    simple:
+        format: "%(asctime)s : %(levelname)s : %(name)s : %(lineno)d : %(message)s"
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: INFO
+        formatter: simple
+        stream: ext://sys.stdout
+
+    file_handler:
+        class: logging.handlers.RotatingFileHandler
+        level: INFO
+        formatter: simple
+        filename: /tmp/omsdk-logs.log
+        maxBytes: 2097152 # 2MB
+        backupCount: 10
+        encoding: utf8
+
+root:
+    level: DEBUG
+    handlers: [file_handler]

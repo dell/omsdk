@@ -1,0 +1,154 @@
+{
+    "$ref": "#/definitions/EventFilters",
+    "$schema": "omdrivers\\iDRAC\\xml\\EventFilters.xml",
+    "definitions": {
+        "Alert#EmailTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "Alert#IPMITypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "Alert#OSLogTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "Alert#SNMPTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "Alert#SyslogTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "Alert#WSEventingTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "EventFilters": {
+            "config_groups": {
+                "Action": [
+                    "Action"
+                ],
+                "SystemHealth": [
+                    "DisplayName",
+                    "Alert#Email",
+                    "Alert#IPMI",
+                    "Alert#OSLog",
+                    "Alert#SNMP",
+                    "Alert#Syslog",
+                    "Alert#WSEventing"
+                ]
+            },
+            "properties": {
+                "Action": {
+                    "baseType": "str",
+                    "description": "action",
+                    "longDescription": "Action enablement",
+                    "name": "Action",
+                    "qualifier": "Action"
+                },
+                "Alert#Email": {
+                    "baseType": "enum",
+                    "description": "Email enablement",
+                    "longDescription": "Email enablement",
+                    "name": "Alert#Email",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#EmailTypes"
+                },
+                "Alert#IPMI": {
+                    "baseType": "enum",
+                    "description": "IPMI enablement",
+                    "longDescription": "IPMI enablement",
+                    "name": "Alert#IPMI",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#IPMITypes"
+                },
+                "Alert#OSLog": {
+                    "baseType": "enum",
+                    "description": "OSLog enablement",
+                    "longDescription": "OSLog enablement",
+                    "name": "Alert#OSLog",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#OSLogTypes"
+                },
+                "Alert#SNMP": {
+                    "baseType": "enum",
+                    "description": "SNMP enablement",
+                    "longDescription": "SNMP enablement",
+                    "name": "Alert#SNMP",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#SNMPTypes"
+                },
+                "Alert#Syslog": {
+                    "baseType": "enum",
+                    "description": "Syslog enablement",
+                    "longDescription": "Syslog enablement",
+                    "name": "Alert#Syslog",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#SyslogTypes"
+                },
+                "Alert#WSEventing": {
+                    "baseType": "enum",
+                    "description": "WSEventing enablement",
+                    "longDescription": "WSEventing enablement",
+                    "name": "Alert#WSEventing",
+                    "qualifier": "SystemHealth",
+                    "type": "Alert#WSEventingTypes"
+                },
+                "DisplayName": {
+                    "baseType": "str",
+                    "description": "Display Name",
+                    "longDescription": "This field displays the name of the filter",
+                    "name": "DisplayName",
+                    "qualifier": "SystemHealth"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\EventFilters.xml"
+}
