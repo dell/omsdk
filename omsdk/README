@@ -1,0 +1,61 @@
+sdkinfra.py
+    Infrastructure for importing console and device drivers
+
+sdkbase.py 
+    Base class for all Consoles and Devices.
+    Registry - loading registry files
+    Discovery - discovers the 
+    Driver - driver class extended by all Consoles and Devices
+
+
+sdkconsole.py
+    Base class for all Consoles. Derived from sdkbase.
+    Registry - loading registry files
+    Discovery - discovers the 
+    Driver - driver class extended by all Consoles and Devices
+
+    get_topology()
+    get_devmap()
+    appy_topology()
+    add_device()
+
+sdkdevice.py
+    Base class for all Devices. Derived from sdkbase
+
+sdkcreds.py
+    Represents the Credential Object
+
+
+sdkenum.py
+    Enumerations
+
+sdkfile.py
+    Provides utility for Linux-style config file processing
+
+sdkidrac.py
+    iDRAC WSMAN/Redfish definitions
+
+sdkidracman.py
+    Contains WSMAN/SOAP implementation
+sdkxml.py
+    Parsers for WSMAN/SOAP Requests
+
+sdkprint.py
+    Contains print classes
+
+sdkps.py
+    Contains Powershell Commandlets
+
+Test Commands:
+    show_cmc.py
+    show_idrac.py
+    show_list.py
+    show_nagios.py
+    show_ome.py
+    show_windir.py
+    show_windrac.py
+    test_enum.py
+    test_file.py
+    test_windrac.py
+    test_wsman.py
+    main.py

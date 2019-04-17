@@ -1,0 +1,402 @@
+{
+    "$ref": "#/definitions/PCIeSSD",
+    "$schema": "omdrivers\\iDRAC\\xml\\PCIeSSD.xml",
+    "definitions": {
+        "BusProtocolTypes": {
+            "enum": [
+                "PCIe"
+            ],
+            "enumDescriptions": [
+                "PCIe"
+            ],
+            "type": "string"
+        },
+        "BusProtocolVersionTypes": {
+            "enum": [
+                "Unknown",
+                "2.0",
+                "2.1",
+                "3.0",
+                "3.1"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "2.0",
+                "2.1",
+                "3.0",
+                "3.1"
+            ],
+            "type": "string"
+        },
+        "CapableSpeedTypes": {
+            "enum": [
+                "Unknown",
+                "2.5 GT/s",
+                "5.0 GT/s",
+                "8.0 GT/s"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "2.5 GT/s",
+                "5.0 GT/s",
+                "8.0 GT/s"
+            ],
+            "type": "string"
+        },
+        "CryptographicEraseTypes": {
+            "enum": [
+                "Yes",
+                "No"
+            ],
+            "enumDescriptions": [
+                "Yes",
+                "No"
+            ],
+            "type": "enumeration"
+        },
+        "DeviceProtocolTypes": {
+            "enum": [
+                "Unknown",
+                "Nvme1.0",
+                "NVMe 1.1"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "NVMe 1.0",
+                "NVMe 1.1"
+            ],
+            "type": "string"
+        },
+        "FailurePredictedTypes": {
+            "enum": [
+                "Yes",
+                "No"
+            ],
+            "enumDescriptions": [
+                "Yes",
+                "No"
+            ],
+            "type": "string"
+        },
+        "PCIeSSD": {
+            "config_groups": {
+                "DeviceSettings": [
+                    "PcieSsd"
+                ],
+                "PcieSsdLog": [
+                    "PcieSsdLog"
+                ],
+                "PcieSsdOps": [
+                    "CryptographicErase",
+                    "PcieSsdOps",
+                    "SecureErase"
+                ],
+                "PcieSsdProps": [
+                    "BusProtocol",
+                    "BusProtocolVersion",
+                    "CapableSpeed",
+                    "DeviceProtocol",
+                    "FailurePredicted",
+                    "ModelNumber",
+                    "Name",
+                    "PcieMaxLinkWidth",
+                    "PcieNegotiatedLinkSpeed",
+                    "PcieNegotiatedLinkWidth",
+                    "PcieSsdProps",
+                    "RemainingRatedWriteEndurance",
+                    "SerialNumber",
+                    "Size",
+                    "SmartStatus",
+                    "State",
+                    "Version"
+                ]
+            },
+            "properties": {
+                "BusProtocol": {
+                    "baseType": "str",
+                    "description": "Bus Protocol",
+                    "longDescription": "Displays the type of the physical device, such as PCIe.",
+                    "modDeleteAllowed": false,
+                    "name": "BusProtocol",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "BusProtocolTypes",
+                    "uneditable": true
+                },
+                "BusProtocolVersion": {
+                    "baseType": "str",
+                    "description": "Bus Protocol Version",
+                    "longDescription": "Displays the revision of the PCI Express Base Specification to which this device complies.",
+                    "modDeleteAllowed": false,
+                    "name": "BusProtocolVersion",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "BusProtocolVersionTypes",
+                    "uneditable": true
+                },
+                "CapableSpeed": {
+                    "baseType": "str",
+                    "description": "PCIe Maximum Link Speed",
+                    "longDescription": "Displays the capable transfer speed of the physical device in GT/s.",
+                    "modDeleteAllowed": false,
+                    "name": "CapableSpeed",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "CapableSpeedTypes",
+                    "uneditable": true
+                },
+                "CryptographicErase": {
+                    "baseType": "enum",
+                    "description": "Cryptographic Erase",
+                    "longDescription": "Performs a secure Cryptographic Erase on the physical device. This operation erases all user data by deleting the encryption key with which the user data was previously encrypted.",
+                    "modDeleteAllowed": true,
+                    "name": "CryptographicErase",
+                    "qualifier": "PcieSsdOps",
+                    "readonly": "false",
+                    "type": "CryptographicEraseTypes",
+                    "uneditable": false
+                },
+                "DeviceProtocol": {
+                    "baseType": "str",
+                    "description": "Device Protocol",
+                    "longDescription": "Displays the device protocol of the physical device, such as NVMe.",
+                    "modDeleteAllowed": false,
+                    "name": "DeviceProtocol",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "DeviceProtocolTypes",
+                    "uneditable": true
+                },
+                "FailurePredicted": {
+                    "baseType": "str",
+                    "description": "Failure Predicted",
+                    "longDescription": "Indicates whether the physical device has detected a condition that may lead to a device failure.",
+                    "modDeleteAllowed": false,
+                    "name": "FailurePredicted",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "FailurePredictedTypes",
+                    "uneditable": true
+                },
+                "ModelNumber": {
+                    "baseType": "str",
+                    "description": "Model Number",
+                    "longDescription": "Displays the model number of the physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "ModelNumber",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                },
+                "Name": {
+                    "baseType": "str",
+                    "description": "Physical Device ID",
+                    "longDescription": "Displays the ID of the physical device representing the slot ID and bay ID.",
+                    "modDeleteAllowed": false,
+                    "name": "Name",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                },
+                "PcieMaxLinkWidth": {
+                    "baseType": "str",
+                    "description": "PCIe Maximum Link Width",
+                    "longDescription": "Displays the capable link width of the physical device",
+                    "modDeleteAllowed": false,
+                    "name": "PcieMaxLinkWidth",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "PcieMaxLinkWidthTypes",
+                    "uneditable": true
+                },
+                "PcieNegotiatedLinkSpeed": {
+                    "baseType": "str",
+                    "description": "PCIe Negotiated Link Speed",
+                    "longDescription": "Displays the current negotiated transfer speed of the physical device in GT/s.",
+                    "modDeleteAllowed": false,
+                    "name": "PcieNegotiatedLinkSpeed",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "PcieNegotiatedLinkSpeedTypes",
+                    "uneditable": true
+                },
+                "PcieNegotiatedLinkWidth": {
+                    "baseType": "str",
+                    "description": "PCIe Negotiated Link Width",
+                    "longDescription": "Displays the current negotiated link width of the physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "PcieNegotiatedLinkWidth",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "PcieNegotiatedLinkWidthTypes",
+                    "uneditable": true
+                },
+                "RemainingRatedWriteEndurance": {
+                    "baseType": "str",
+                    "description": "Remaining Rated Write Endurance",
+                    "longDescription": "Displays the warranted wearout level of the PCIe SSD (in percentage).",
+                    "modDeleteAllowed": false,
+                    "name": "RemainingRatedWriteEndurance",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                },
+                "SecureErase": {
+                    "baseType": "enum",
+                    "description": "Full Initialization",
+                    "longDescription": "Performs full initialization on the selected physical device. This operation deletes all data on the device.",
+                    "modDeleteAllowed": true,
+                    "name": "SecureErase",
+                    "qualifier": "PcieSsdOps",
+                    "readonly": "false",
+                    "type": "SecureEraseTypes",
+                    "uneditable": false
+                },
+                "SerialNumber": {
+                    "baseType": "str",
+                    "description": "Serial Number",
+                    "longDescription": "Displays the serial number of the physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "SerialNumber",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                },
+                "Size": {
+                    "baseType": "int",
+                    "description": "Capacity (GB)",
+                    "longDescription": "Displays the size of the physical device in bytes.",
+                    "modDeleteAllowed": false,
+                    "name": "Size",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                },
+                "SmartStatus": {
+                    "baseType": "str",
+                    "description": "SMART Status",
+                    "longDescription": "Displays the SMART status of a physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "SmartStatus",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "SmartStatusTypes",
+                    "uneditable": true
+                },
+                "State": {
+                    "baseType": "str",
+                    "description": "State",
+                    "longDescription": "Displays the status of the physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "State",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "type": "StateTypes",
+                    "uneditable": true
+                },
+                "Version": {
+                    "baseType": "str",
+                    "description": "Firmware Revision",
+                    "longDescription": "Displays the firmware revision of the physical device.",
+                    "modDeleteAllowed": false,
+                    "name": "Version",
+                    "qualifier": "PcieSsdProps",
+                    "readonly": "true",
+                    "uneditable": true
+                }
+            },
+            "type": "object"
+        },
+        "PcieMaxLinkWidthTypes": {
+            "enum": [
+                "Unknown",
+                "x1",
+                "x2",
+                "x4",
+                "x8"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "x1",
+                "x2",
+                "x4",
+                "x8"
+            ],
+            "type": "string"
+        },
+        "PcieNegotiatedLinkSpeedTypes": {
+            "enum": [
+                "Unknown",
+                "2.5 GT/s",
+                "5.0 GT/s",
+                "8.0 GT/s"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "2.5 GT/s",
+                "5.0 GT/s",
+                "8.0 GT/s"
+            ],
+            "type": "string"
+        },
+        "PcieNegotiatedLinkWidthTypes": {
+            "enum": [
+                "Unknown",
+                "x1",
+                "x2",
+                "x4",
+                "x8"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "x1",
+                "x2",
+                "x4",
+                "x8"
+            ],
+            "type": "string"
+        },
+        "SecureEraseTypes": {
+            "enum": [
+                "Yes",
+                "No"
+            ],
+            "enumDescriptions": [
+                "Yes",
+                "No"
+            ],
+            "type": "enumeration"
+        },
+        "SmartStatusTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "string"
+        },
+        "StateTypes": {
+            "enum": [
+                "Unknown",
+                "Ready",
+                "Overheat",
+                "ReadOnly",
+                "Failed",
+                "Not Ready/Locked"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "Ready",
+                "Overheat",
+                "Read Only",
+                "Not Ready/Locked",
+                null
+            ],
+            "type": "string"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\PCIeSSD.xml"
+}

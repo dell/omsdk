@@ -1,0 +1,407 @@
+{
+   "System" : {
+        "Key" : [ "ServiceTag" ],
+        "ConfigState" : [ "PowerState" ],
+        "MainHealth" : [ "PrimaryStatus" ],
+        "BasicInventory"   : [ 
+            "AssetTag", 
+            "DNSCMCName",
+            "ExpressServiceCode",
+            "Model",
+            "MgmtControllerFirmwareVersion",
+            "URLString",
+            "IPv6URLString",
+            "Location",
+            "Manufacturer",
+            "Description",
+            "PhysicalLocationDataCenter",
+            "PhysicalLocationAisle",
+            "PhysicalLocationRack",
+            "PhysicalLocationRackSlot",
+            "PhysicalLocationChassisName",
+            "IPv4Address",
+            "ProductShortName"
+        ],
+        "Metrics" : ["PwrInputSystemConsumption"],
+        "PrimaryStatus" : {
+            "0" : "Unknown",
+            "1" : "Healthy",
+            "2" : "Warning",
+            "3" : "Critical"
+        }
+   },
+   "SystemChassis": {
+        "Key": ["Tag"]
+   },
+   "Subsystem" : {
+        "Key" : ["Key"],
+        "MainHealth" : [ "PrimaryStatus" ],
+        "OtherHealth" : [ ],
+        "PrimaryStatus" : { "0" : "Unknown", "1" : "Healthy", "2" : "Warning", "3" : "Critical" }
+    },
+   "Fan" : {
+        "Key" : [ "DeviceID" ],
+        "ConfigState" : [ 
+            "EnabledState",
+            "RequestedState"
+        ],
+        "MainHealth"      : [ "PrimaryStatus", "HealthState" ],
+        "OtherHealth"     : [ "OperationalStatus" ],
+        "BasicInventory"   : [ 
+            "SlotNumber"
+        ],
+        "Inventory"   : [ 
+            "ElementName",
+            "EnabledDefault",
+            "Manufacturer",
+            "PackageType",
+            "SerialNumber",
+            "RPM",
+            "ConnectorLayout" 
+        ],
+        "Metrics"    : [
+            "TotalOutputPower"
+        ]
+   },
+   "FanPackage" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ ],
+        "Health"      : [ ],
+        "Inventory"   : [ ]
+   },
+   "CMC" : {
+        "Key" : [ "SerialNumber" ],
+        "ConfigState" : [ ],
+        "MainHealth"  : ["PrimaryStatus"],
+        "Inventory"   : [ 
+            "Manufacturer",
+            "PartNumber",
+            "MgmtControllerFirmwareVersion",
+            "Model"
+       ]
+   },
+   "FanSlot" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ ],
+        "Health"      : [ ],
+        "Inventory"   : [ ]
+   },
+   "IOModule" : {
+        "Key" : [ "ClassId"],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "BasicInventory"   : [ 
+            "PartNumber",
+            "Name",
+            "IPv4Address",
+            "IOMURL",
+            "Manufacturer",
+            "LinkTechnologies",
+            "Model",
+            "SerialNumber",
+            "DeviceID"
+        ]
+   },
+   "PassThroughModule" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ ],
+        "Health"      : [],
+        "Inventory"   : [
+            "Description",
+            "LinkTechnologies",
+            "DeviceID"
+        ]
+   },
+   "PowerSupply" : {
+        "Key" : [ "DeviceID" ],
+        "ConfigState" : [
+            "EnabledDefault",
+            "EnabledState",
+            "RequestedState",
+            "TransitioningToState"
+        ],
+        "MainHealth"  : [ "PrimaryStatus", "HealthState" ],
+        "BasicInventory"   : [
+            "ClassId",
+            "SystemName", 
+            "Name",
+            "Model", 
+            "PartNumber",
+            "PackageType",
+            "SerialNumber",
+            "ConnectorLayout",  
+            "Manufacturer",
+            "Slot",
+            "InputVoltage",
+            "InputCurrent",
+            "TotalOutputPower",
+            "PSSlot_Tag"
+        ],
+        "Metrics"    : [ ]
+   },
+   "PSPackage" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ ],
+        "Inventory"   : [ 
+            "Name",
+            "Model", 
+            "PartNumber",
+            "PackageType",
+            "SerialNumber"
+        ]
+   },
+   "PSSlot" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ ],
+        "Inventory"   : [ 
+            "ConnectorLayout",  
+            "Manufacturer",
+            "Number"
+        ]
+   },
+   "KVM" : {
+        "Key" : [ "ClassId" ],
+        "ConfigState" : [ 
+            "OperationalStatus",
+            "EnabledState",
+            "RequestedState"
+        ],
+        "MainHealth"  : [ "PrimaryStatus", "HealthState" ],
+        "Inventory"   : [ 
+            "ElementName",
+            "Name",
+            "OtherIdentifyingInfo"
+        ]
+   },
+   "ComputeModule" : {
+        "Key" : [ "FQDD" ],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "BasicInventory"   : [ 
+            "HostName",
+            "Model",
+            "ServiceTag",
+            "IPv4Address",
+            "SlotNumber",
+            "SlotName",
+            "MasterSlotNumber",
+            "PowerState", 
+            "SubSlot",
+            "FormFactor",
+            "ExtensionSlot"
+        ],
+       "Inventory" : [
+            "DNSName",
+            "BIOSVersion",
+            "LifeCycleControllerVersion",
+            "NodeID"
+        ],
+        "PrimaryStatus" : {
+            "5" : "Healthy",
+            "0" : "Unknown",
+            "1" : "Healthy",
+            "2" : "Warning",
+            "3" : "Critical",
+            "25": "Critical"
+        }
+   },
+   "StorageModule" : {
+        "Key" : [ "FQDD" ],
+        "ConfigState" : [ "IntrusionState" ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "BasicInventory" : [ 
+            "Model",
+            "PowerState",
+            "ServiceTag",
+            "StorageMode",
+            "SlotNumber",
+            "SlotName",
+            "MasterSlotNumber",
+            "FormFactor",
+            "ExtensionSlot"
+        ],
+        "PrimaryStatus" : {
+            "5" : "Healthy",
+            "0" : "Unknown",
+            "1" : "Healthy",
+            "2" : "Warning",
+            "3" : "Critical",
+            "25": "Critical"
+        }
+   },
+   "PhysicalDisk" : {
+        "Key" : [ "FQDD" ],
+        "ConfigState" : [ "SecurityState" ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "OtherHealth" : ["PredictiveFailureState"],
+        "BasicInventory"   : [ 
+            "Model",
+            "PPID",
+            "Slot",
+            "Revision",
+            "Capacity",
+            "UsedSizeInBytes",
+            "FreeSpace",
+            "BusProtocol",
+            "DriveFormFactor",
+            "SerialNumber",
+            "SupportedEncryptionTypes",
+            "MediaType"
+        ],
+       "Inventory" : [
+            "Connector",
+            "HotSpareStatus",
+            "Manufacturer",
+            "ManufacturingDay",
+            "ManufacturingWeek",
+            "ManufacturingYear",
+            "MaxCapableSpeed",
+            "SASAddress"
+        ]
+   },
+   "VirtualDisk" : {
+        "Key" : [ "FQDD" ],
+        "ConfigState" : [ "SecurityState" ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "BasicInventory"   : [ 
+            "Capacity",
+            "MediaType",
+            "Name",
+            "ReadCachePolicy",
+            "WriteCachePolicy",
+            "RAIDTypes",
+            "BusProtocol",
+            "DiskCachePolicy"
+        ],
+       "Inventory" : [
+            "RemainingRedundancy",
+            "Cachecade",
+            "LockStatus",
+            "SpanDepth",
+            "SpanLength",
+            "StripeSize",
+            "PhysicalDiskIDs"
+        ],
+        "PrimaryStatus" : {
+            "5" : "Healthy",
+            "0" : "Unknown",
+            "1" : "Healthy",
+            "2" : "Warning",
+            "3" : "Critical",
+            "25": "Critical"
+        }
+   },
+   "PCIDevice" : {
+        "Key" : [ "SlotFQDD"],
+        "ConfigState" : [ "SecurityState" ],
+        "MainHealth"  : [ "PrimaryStatus" ],
+        "BasicInventory"   : [ 
+            "Description",
+            "FQDD",
+            "Fabric",
+            "NumberDescription",
+            "Manufacturer"
+        ],
+       "Inventory" : [
+            "PowerStateStatus",
+            "DataBusWidth",
+            "Height",
+            "Number",
+            "AssignedBladeSlotFQDD",
+            "AssignedBladeFQDD"
+        ],
+        "PrimaryStatus" : {
+            "0" : "Unknown",
+            "1" : "Healthy",
+            "2" : "Warning",
+            "3" : "Critical"
+        }
+    },
+   "PCISlot" : {
+        "Key" : [ "FQDD"],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ ],
+        "BasicInventory"   : [ 
+        "NumberDescription",
+        "Number"
+        ]
+    },
+   "BladeSlot" : {
+        "Key" : [ "ClassId"],
+        "ConfigState" : [ ],
+        "MainHealth"  : [ ],
+        "BasicInventory"   : [
+        "Number"
+        ]
+    },
+   "License" : {
+        "Key" : [ "InstanceID"],
+        "ConfigState" : [ ],
+        "MainHealth"  : ["LicensePrimaryStatus"],
+        "BasicInventory"   : [ 
+            "LicenseStartDate",
+            "LicenseEndDate",
+            "LicenseInstallDate",
+            "LicenseDuration",
+            "LicenseType",
+            "LicenseSoldDate"            
+        ]
+    },
+   "Controller" : {
+        "Key" : [ "FQDD"],
+        "ConfigState" : [ "SecurityStatus"],
+        "MainHealth"  : ["PrimaryStatus"],
+        "BasicInventory"   : [ 
+            "ControllerFirmwareVersion",
+            "CacheSizeInMB",
+            "ProductName",
+            "PatrolReadState",
+            "DeviceCardManufacturer",
+            "DriverVersion",
+            "EncryptionCapability",
+            "PCISlot",
+            "EncryptionMode",
+            "SASAddress"
+        ],
+       "Inventory" : [
+            "DeviceCardSlotLength",
+            "HighAvailabilityMode",
+            "PCISlot",
+            "CachecadeCapability",
+            "SlicedVDCapability",
+            "DeviceCardSlotType",
+            "DeviceCardSlotLength"
+        ]
+    },
+    "Enclosure" : {
+        "Key" : [ "FQDD"],
+        "ConfigState" : [ ],
+        "MainHealth"  : ["PrimaryStatus"],
+        "BasicInventory"   : [ 
+            "Version",
+            "ProductName",
+            "ServiceTag",
+            "AssetTag"
+        ],
+       "Inventory" : [
+            "BayID",
+            "SlotCount",
+            "Connector"
+        ]
+    },
+    "Slots_Summary": {
+        "Key" : [ "InstanceID"],
+         "Inventory" : [
+            "FreeSlots",
+            "OccupiedSlots",
+            "ExtensionSlots",
+            "FormFactor",
+            "StorageMode",
+            "MasterSlotNumber",
+            "SlotNumber",
+            "SubSlot"
+        ]
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "System" : {
+		"ConfigState" : [ "PowerState" ],
+    	"Health"      : ["GlobalStatus"],
+    	"Inventory"   : [ "Name", "Hostname", "ServiceTag"],
+		"Multiple"   : "False",
+    	"GlobalStatus" : {
+            "1" : "Healthy",
+            "2" : "Warning",
+            "16" : "Critical"
+        },
+    	"PowerState" : {
+            "1" : "Enabled",
+            "2" : "Disabled"
+        }
+   },
+   "Memory" : {
+		"ConfigState" : [ ],
+    	"Health"      : ["GlobalStatus"],
+    	"Inventory"   : [ "name", "id", "type"],
+		"Multiple"   : "True",
+        "type" : {
+            "4" : "ddr-4",
+            "6" : "ddr-6"
+        }
+   }
+}
+

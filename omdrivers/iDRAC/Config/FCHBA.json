@@ -1,0 +1,449 @@
+{
+    "$ref": "#/definitions/FCHBA",
+    "$schema": "omdrivers\\iDRAC\\xml\\FCHBA.xml",
+    "definitions": {
+        "BootScanSelectionTypes": {
+            "enum": [
+                "Disabled",
+                "SpecifiedLUN",
+                "FirstLUN",
+                "FirstLUN0",
+                "FirstNOTLUN0",
+                "FabricDiscovered"
+            ],
+            "enumDescriptions": [
+                "Disabled",
+                "Specified LUN",
+                "First LUN",
+                "First LUN 0",
+                "First NOT LUN 0",
+                "Fabric Discovered"
+            ],
+            "type": "enumeration"
+        },
+        "FCHBA": {
+            "config_groups": {
+                "FCDevice": [
+                    "ChipMdl",
+                    "PCIDeviceID",
+                    "BusDeviceFunction",
+                    "FamilyVersion",
+                    "EFIVersion"
+                ],
+                "FCTarget": [
+                    "BootScanSelection",
+                    "FirstFCTargetWWPN",
+                    "FirstFCTargetLUN",
+                    "SecondFCTargetWWPN",
+                    "SecondFCTargetLUN"
+                ],
+                "HBAConfig": [
+                    "FCTape",
+                    "HardZone",
+                    "HardZoneAddress",
+                    "LoopResetDelay",
+                    "FramePayloadSize",
+                    "FabricLoginRetryCount",
+                    "FabricLoginTimeout",
+                    "PortLoginRetryCount",
+                    "PortLoginTimeout",
+                    "PortDownTimeout",
+                    "PortDownRetryCount",
+                    "LinkDownTimeout"
+                ],
+                "PortConfig": [
+                    "DeviceName",
+                    "PortSpeed",
+                    "WWN",
+                    "VirtualWWN",
+                    "WWPN",
+                    "VirtualWWPN",
+                    "PortNumber",
+                    "FCDevice",
+                    "FCTarget",
+                    "HBAConfig"
+                ],
+                "Top": [
+                    "VndrFormSet",
+                    "PortConfig"
+                ]
+            },
+            "properties": {
+                "BootScanSelection": {
+                    "baseType": "enum",
+                    "default": "Disabled",
+                    "description": "Boot Scan Selection",
+                    "longDescription": "Specifies the adapter initiator behavior for booting the system from specified Fibre Channel boot target(s) or fabric discovered target(s)",
+                    "modDeleteAllowed": true,
+                    "name": "BootScanSelection",
+                    "qualifier": "FCTarget",
+                    "readonly": false,
+                    "type": "BootScanSelectionTypes",
+                    "uneditable": false
+                },
+                "BusDeviceFunction": {
+                    "baseType": "str",
+                    "description": "Bus:Device:Function",
+                    "modDeleteAllowed": true,
+                    "name": "BusDeviceFunction",
+                    "pattern": "^([0-9a-fA-F]{1,2}[:]){2}([0-9a-fA-F]{1,2})$",
+                    "qualifier": "FCDevice",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "ChipMdl": {
+                    "baseType": "str",
+                    "description": "Chip Type",
+                    "modDeleteAllowed": true,
+                    "name": "ChipMdl",
+                    "qualifier": "FCDevice",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "DeviceName": {
+                    "baseType": "str",
+                    "description": "Device Name",
+                    "longDescription": "Product name of the Fibre Channel Host Bus Adapter.",
+                    "modDeleteAllowed": true,
+                    "name": "DeviceName",
+                    "qualifier": "PortConfig",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "EFIVersion": {
+                    "baseType": "str",
+                    "description": "EFI Driver Version",
+                    "modDeleteAllowed": true,
+                    "name": "EFIVersion",
+                    "qualifier": "FCDevice",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "FCTape": {
+                    "baseType": "enum",
+                    "default": "Disabled",
+                    "description": "FC Tape Enable",
+                    "longDescription": "Specifies the state of Fibre Channel Tape support",
+                    "modDeleteAllowed": true,
+                    "name": "FCTape",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "type": "FCTapeTypes",
+                    "uneditable": false
+                },
+                "FabricLoginRetryCount": {
+                    "baseType": "int",
+                    "default": "3",
+                    "description": "Fabric Login Retry Count",
+                    "longDescription": "Specifies the number of times the initiator will attempt to login to devices on the Storage Area Network",
+                    "modDeleteAllowed": true,
+                    "name": "FabricLoginRetryCount",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "FabricLoginTimeout": {
+                    "baseType": "int",
+                    "default": "3000",
+                    "description": "Fabric Login Timeout",
+                    "longDescription": "Specifies the time in milliseconds that the initiator waits before it tries to login to the Fibre Channel Storage Area Network Fabric again",
+                    "modDeleteAllowed": true,
+                    "name": "FabricLoginTimeout",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "FamilyVersion": {
+                    "baseType": "str",
+                    "description": "Family Firmware Version",
+                    "modDeleteAllowed": true,
+                    "name": "FamilyVersion",
+                    "pattern": "^([0-9a-fA-F]{1,2}[.]){2}([0-9a-fA-F]{1,2})$",
+                    "qualifier": "FCDevice",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "FirstFCTargetLUN": {
+                    "baseType": "int",
+                    "description": "First FC Target LUN",
+                    "longDescription": "Specifies the LUN (Logical Unit Number) of the first Fibre Channel boot target",
+                    "modDeleteAllowed": true,
+                    "name": "FirstFCTargetLUN",
+                    "qualifier": "FCTarget",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "FirstFCTargetWWPN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "First FC Target World Wide Port Name",
+                    "longDescription": "Specifies the World Wide Port Name of the first Fibre Channel boot target",
+                    "modDeleteAllowed": true,
+                    "name": "FirstFCTargetWWPN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "FCTarget",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "FramePayloadSize": {
+                    "baseType": "enum",
+                    "default": "Auto",
+                    "description": "Frame Payload Size",
+                    "longDescription": "Specifies the maximum Fibre Channel frame payload size in bytes",
+                    "modDeleteAllowed": true,
+                    "name": "FramePayloadSize",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "type": "FramePayloadSizeTypes",
+                    "uneditable": false
+                },
+                "HardZone": {
+                    "baseType": "enum",
+                    "default": "Disabled",
+                    "description": "Hard Zone Enable",
+                    "longDescription": "Specifies the state of Fibre Channel hard zoning",
+                    "modDeleteAllowed": true,
+                    "name": "HardZone",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "type": "HardZoneTypes",
+                    "uneditable": false
+                },
+                "HardZoneAddress": {
+                    "baseType": "int",
+                    "default": "0",
+                    "description": "Hard Zone Address",
+                    "longDescription": "Specifies the Hard Zone address to be used if Fibre Channel hard zoning is enabled",
+                    "modDeleteAllowed": true,
+                    "name": "HardZoneAddress",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "LinkDownTimeout": {
+                    "baseType": "int",
+                    "default": "3000",
+                    "description": "Link Down Timeout",
+                    "longDescription": "Specifies the number of milliseconds the Fibre Channel uplink port can be offline before the system is notified that the SAN fabric connectivity is lost and the uplink port is marked as being down",
+                    "modDeleteAllowed": true,
+                    "name": "LinkDownTimeout",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "LoopResetDelay": {
+                    "baseType": "int",
+                    "default": "5",
+                    "description": "Loop Reset Delay",
+                    "longDescription": "Specifies the Fibre Channel Arbitrated Loop Reset Delay for the port.  After resetting the loop, the adapter firmware refrains from initiating any loop activity for the number of seconds specified in this setting",
+                    "modDeleteAllowed": true,
+                    "name": "LoopResetDelay",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "PCIDeviceID": {
+                    "baseType": "str",
+                    "description": "PCI Device ID",
+                    "modDeleteAllowed": true,
+                    "name": "PCIDeviceID",
+                    "pattern": "^[0-9a-fA-F]{4}$",
+                    "qualifier": "FCDevice",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "PortDownRetryCount": {
+                    "baseType": "int",
+                    "description": "Port Down Retry Count",
+                    "longDescription": "Specifies the number of times the Fibre Channel uplink port will try reconnecting to a target port before the port is marked as being down",
+                    "modDeleteAllowed": true,
+                    "name": "PortDownRetryCount",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "PortDownTimeout": {
+                    "baseType": "int",
+                    "default": "3000",
+                    "description": "Port Down Timeout",
+                    "longDescription": "Specifies the timeout in milliseconds that the Fibre Channel uplink port will wait before trying to reconnect to a target device port before the port is marked as down",
+                    "modDeleteAllowed": true,
+                    "name": "PortDownTimeout",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "PortLoginRetryCount": {
+                    "baseType": "int",
+                    "default": "3",
+                    "description": "Port Login Retry Count",
+                    "longDescription": "Specifies the number of times the adapter firmware initiator will try logging into a target device port",
+                    "modDeleteAllowed": true,
+                    "name": "PortLoginRetryCount",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "PortLoginTimeout": {
+                    "baseType": "int",
+                    "default": "3000",
+                    "description": "Port Login Timeout",
+                    "longDescription": "Specifies the timeout in milliseconds that the initiator uses when attempting to login to the target device port",
+                    "modDeleteAllowed": true,
+                    "name": "PortLoginTimeout",
+                    "qualifier": "HBAConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "PortNumber": {
+                    "baseType": "int",
+                    "description": "Port Number",
+                    "longDescription": "The Fibre Channel Host Bus Adapter port number as labeled externally on the adapter.",
+                    "modDeleteAllowed": true,
+                    "name": "PortNumber",
+                    "qualifier": "PortConfig",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "PortSpeed": {
+                    "baseType": "enum",
+                    "default": "Auto",
+                    "description": "Port Speed",
+                    "longDescription": "Specifies the data rate of the Fibre Channel Host Bus Adapter port. Value can be Automatic or specified in Gbps.",
+                    "modDeleteAllowed": true,
+                    "name": "PortSpeed",
+                    "qualifier": "PortConfig",
+                    "readonly": false,
+                    "type": "PortSpeedTypes",
+                    "uneditable": false
+                },
+                "SecondFCTargetLUN": {
+                    "baseType": "int",
+                    "description": "Second FC Target LUN",
+                    "longDescription": "Specifies the LUN (Logical Unit Number) of the second Fibre Channel boot target",
+                    "modDeleteAllowed": true,
+                    "name": "SecondFCTargetLUN",
+                    "qualifier": "FCTarget",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "SecondFCTargetWWPN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "Second FC Target World Wide Port Name",
+                    "longDescription": "Specifies the World Wide Port Name of the second Fibre Channel boot target",
+                    "modDeleteAllowed": true,
+                    "name": "SecondFCTargetWWPN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "FCTarget",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "VirtualWWN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "Virtual World Wide Node Name",
+                    "longDescription": "Virtual Fibre Channel World Wide Node Name is used instead of the permanent World Wide Node Name when its value is different",
+                    "modDeleteAllowed": true,
+                    "name": "VirtualWWN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "PortConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "VirtualWWPN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "Virtual World Wide Port Name",
+                    "longDescription": "Virtual Fibre Channel World Wide Port Name of the port is used instead of the permanent World Wide Port Name when its value is different",
+                    "modDeleteAllowed": true,
+                    "name": "VirtualWWPN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "PortConfig",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "WWN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "World Wide Node Name",
+                    "longDescription": "Permanent Fibre Channel World Wide Node Name assigned during manufacturing.",
+                    "modDeleteAllowed": true,
+                    "name": "WWN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "PortConfig",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "WWPN": {
+                    "baseType": "WWPNAddressField",
+                    "description": "World Wide Port Name",
+                    "longDescription": "Permanent Fibre Channel World Wide Port Name assigned to the port during manufacturing",
+                    "modDeleteAllowed": true,
+                    "name": "WWPN",
+                    "pattern": "^([0-9a-fA-F]{2}:){7}([0-9a-fA-F]{2})$",
+                    "qualifier": "PortConfig",
+                    "readonly": true,
+                    "uneditable": false
+                }
+            },
+            "type": "object"
+        },
+        "FCTapeTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "FramePayloadSizeTypes": {
+            "enum": [
+                "Auto",
+                "512",
+                "1024",
+                "2048",
+                "2112"
+            ],
+            "enumDescriptions": [
+                "Auto",
+                "512",
+                "1024",
+                "2048",
+                "2112"
+            ],
+            "type": "enumeration"
+        },
+        "HardZoneTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "PortSpeedTypes": {
+            "enum": [
+                "Auto",
+                "1G",
+                "2G",
+                "4G",
+                "8G",
+                "16G",
+                "32G"
+            ],
+            "enumDescriptions": [
+                "Auto",
+                "1 Gbps",
+                "2 Gbps",
+                "4 Gbps",
+                "8 Gbps",
+                "16 Gbps",
+                "32 Gbps"
+            ],
+            "type": "enumeration"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\FCHBA.xml"
+}

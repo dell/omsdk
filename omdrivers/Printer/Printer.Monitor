@@ -1,0 +1,153 @@
+{
+  "Interface": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "ifPhysAddress"
+    ],
+    "Key": [
+      "ifIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterConsoleDisplayBuffer": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "prtConsoleDisplayBufferText"
+    ],
+    "Key": [
+      "prtConsoleDisplayBufferIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterCover": {
+    "ConfigState": [],
+    "Health": [
+      "prtCoverStatus"
+    ],
+    "Inventory": [
+      "prtCoverDescription"
+    ],
+    "Key": [
+      "prtCoverIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterInput": {
+    "ConfigState": [],
+    "Health": [
+      "prtInputStatus"
+    ],
+    "Inventory": [
+      "prtInputDescription",
+      "prtInputCurrentLevel",
+      "prtInputName",
+      "prtInputMaxCapacity",
+      "prtInputSerialNumber",
+      "prtInputMediaName",
+      "prtInputType",
+      "prtInputModel",
+      "prtInputVersion",
+      "prtInputVendorName",
+      "prtInputCapacityUnit"
+    ],
+    "Key": [
+      "prtInputIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterMarker": {
+    "ConfigState": [],
+    "Health": [
+      "prtMarkerStatus"
+    ],
+    "Inventory": [
+      "prtMarkerPowerOnCount",
+      "prtMarkerLifeCount"
+    ],
+    "Key": [
+      "prtMarkerIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterMarkerColorant": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "prtMarkerColorantValue"
+    ],
+    "Key": [
+      "prtMarkerColorantIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterMarkerSupplies": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "prtMarkerSuppliesLevel",
+      "prtMarkerSuppliesDescription",
+      "prtMarkerSuppliesMaxCapacity",
+      "prtMarkerSuppliesClass",
+      "prtMarkerSuppliesType"
+    ],
+    "Key": [
+      "prtMarkerSuppliesIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterMediaPath": {
+    "ConfigState": [],
+    "Health": [
+      "prtMediaPathStatus"
+    ],
+    "Inventory": [
+      "prtMediaPathMediaSizeUnit",
+      "prtMediaPathType",
+      "prtMediaPathDescription"
+    ],
+    "Key": [
+      "prtMediaPathIndex"
+    ],
+    "Multiple": true
+  },
+  "PrinterOutput": {
+    "ConfigState": [],
+    "Health": [
+      "prtOutputStatus"
+    ],
+    "Inventory": [
+      "prtOutputSerialNumber",
+      "prtOutputDescription",
+      "prtOutputMaxCapacity",
+      "prtOutputVersion",
+      "prtOutputVendorName",
+      "prtOutputRemainingCapacity",
+      "prtOutputName",
+      "prtOutputModel"
+    ],
+    "Key": [
+      "prtOutputIndex"
+    ],
+    "Multiple": true
+  },
+  "System": {
+    "ConfigState": [
+      "hrPrinterDetectedErrorState"
+    ],
+    "Health": [
+      "hrPrinterStatus"
+    ],
+    "Inventory": [
+      "prtGeneralPrinterName",
+      "prtGeneralSerialNumber",
+      "hrDeviceID",
+      "hrDeviceDescr"
+    ],
+    "Key": [
+      "hrDeviceIndex"
+    ],
+    "Multiple": true
+  }
+}

@@ -1,0 +1,138 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_MemoryView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_MemoryView is a derivation of CIM_View "
+       "with System Memory and DIMM specific data" )]
+class DCIM_MemoryView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description (
+          "The property represents the FQDD for the slot that the memory card is "
+          "plugged in into. " )]
+   string SlotFQDD;
+
+      [Description ( 
+          "The type of PhysicalMemory. Synchronous DRAM is also "
+          "known as SDRAM Cache DRAM is also known as CDRAM CDRAM "
+          "is also known as Cache DRAM SDRAM is also known as "
+          "Synchronous DRAM BRAM is also known as Block RAM." ), 
+       ValueMap { "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+          "10", "11", "12", "13", "14", "15", "16", "17", "18", 
+          "19", "20", "24", "25" }, 
+       Values { "Other", "Unknown", "DRAM", "EDRAM", "VRAM",
+                "SRAM", "RAM", "ROM","Flash", "EEPROM",
+            //10
+                "FEPROM","EPROM", "CDRAM", "3DRAM", "SDRAM",
+                "SGRAM", "RDRAM", "DDR", "DDR-2", "DDR-2-FB-DIMM",
+           //20
+                "DDR-3", "FBD2"}, 
+       MappingStrings { "MIF.DMTF|Memory Device|005.9" }]
+   uint16 MemoryType;
+
+      [Description ( 
+          "The maximum operating speed of the physical memory, in MHz." ), 
+       Units ( "MHz" ), 
+       MappingStrings { "MIF.DMTF|Memory Device|005.24" }, 
+       PUnit ( "second * 10^-9" )]
+   uint32 Speed;
+
+      [Description ( 
+          "The current operating speed of the physical memory, in MHz." ), 
+       PUnit ( "second * 10^-9" )]
+   uint32 CurrentOperatingSpeed;
+      
+      [Description ( 
+          "The total size of this memory in MegaBytes." ), 
+       Units ( "Bytes" ), 
+       MappingStrings { "MIF.DMTF|Memory Device|005.5" }, 
+       PUnit ( "byte * 10^6" )]
+   uint32 Size;
+
+      [Description ( 
+          "A string identifying the physically labeled bank where "
+          "the Memory is located - for example, \'Bank 0\' or \'Bank "
+          "A\'." ), 
+       MaxLen ( 64 ), 
+       MappingStrings { "MIF.DMTF|Memory Device|005.4" }]
+   string BankLabel;
+
+      [Description ( 
+          "The name of the organization responsible for producing "
+          "the PhysicalElement. This organization might be the "
+          "entity from whom the Element is purchased, but this is "
+          "not necessarily true. The latter information is "
+          "contained in the Vendor property of CIM_Product." ), 
+       MaxLen ( 256 ), 
+       MappingStrings { "MIB.IETF|Entity-MIB.entPhysicalMfgName", 
+          "MIF.DMTF|FRU|003.4" }]
+   string Manufacturer;
+
+      [Description ( 
+          "A manufacturer-allocated number used to identify the "
+          "Physical Element." ), 
+       MaxLen ( 256 ), 
+       MappingStrings { "MIB.IETF|Entity-MIB.entPhysicalSerialNum", 
+          "MIF.DMTF|FRU|003.7" }]
+   string SerialNumber;
+
+      [Description ( 
+          "The part number assigned by the organization that is "
+          "responsible for producing or manufacturing the "
+          "PhysicalElement." ), 
+       MaxLen ( 256 ), 
+       MappingStrings { "MIB.IETF|Entity-MIB.entPhysicalModelName" }]
+   string PartNumber;
+
+      [Description ( "The make and or model of the product." )]
+   string Model;
+
+      [Description ( "Manufacture Date of the product." )]
+   string ManufactureDate;
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to align"
+          "with Red-Yellow-Green type representation of status. It should be"
+          "used in conjunction with DetailedStatus to provide high level and"
+          " detailed health status of the ManagedElement and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+         "normally. \"Degraded\" indicates the ManagedElement is functioning"
+         "below normal. \"Error\" indicates the ManagedElement is in an Error"
+         " condition. " ),
+         
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+   uint32 PrimaryStatus;
+   
+      [Description (
+          "A block or area of data that is created using some or all the memory"
+          "chips on a memory module." ),
+         
+       ValueMap { "0", "1", "2", "4" },
+       Values { "Unknown", "Single Rank", "Double Rank",
+               "Quad Rank" }]
+   uint8 Rank;
+};

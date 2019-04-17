@@ -1,0 +1,534 @@
+{
+    "LifecycleController" : {
+        "pattern" : "LifecycleController.Embedded.1",
+        "registry" : "iDRAC",
+        "groups" : ["LCAttributes"],
+        "entries" : 1
+    },
+    "System" : {
+        "pattern" : "System.Embedded.1",
+        "registry" : "iDRAC",
+        "groups" : [
+            "LCD",
+            "ThermalConfig",
+            "ThermalSettings",
+            "ChassisPwrState",
+            "ChassisControl",
+            "ServerPwr", 
+            "ServerTopology", 
+            "ServerOS"
+        ],
+        "entries" : 1
+    },
+    "iDRAC" : {
+        "pattern" : "iDRAC.Embedded.1",
+        "registry" : "iDRAC",
+        "firmware_pattern" : "(iDRAC|OSCollector|USC)\\..*",
+        "excl_groups" : [
+            "LCD",
+            "ThermalConfig",
+            "ServerPwr", 
+            "ServerTopology", 
+            "ServerOS"
+        ],
+        "entries" : 1
+    },
+    "FCHBA" : {
+        "pattern" : "FC\\.Slot\\..*",
+        "firmware_pattern" : "FC\\.Slot\\..*",
+        "registry" : "FCHBA",
+        "nogroup" : true,
+        "entries" : "multiple"
+    },
+    "NetworkInterface" : {
+        "pattern" : "NIC\\..*",
+        "firmware_pattern" : "NIC\\..*",
+        "registry" : "NIC",
+        "nogroup" : true,
+        "entries" : "multiple"
+    },
+    "NIC" : {
+        "pattern" : "NIC\\..*",
+        "firmware_pattern" : "NIC\\..*",
+        "registry" : "NIC",
+        "nogroup" : true,
+        "entries" : "multiple"
+    },
+    "Controller" : {
+        "pattern" : "^(RAID|AHCI|FD)\\.*",
+        "firmware_pattern" : "^(RAID|AHCI|FD)\\.*",
+        "registry" : "RAID",
+        "groups" : [ ],
+        "nogroup" : true,
+        "entries" : "multiple",
+        "attributes" : [
+            "RAIDbatteryLearnMode",
+            "RAIDforeignConfig",
+            "RAIDresetConfig",
+            "RAIDbgiRate",
+            "RAIDccMode",
+            "RAIDccRate",
+            "RAIDcopybackMode",
+            "RAIDprMode",
+            "RAIDprRate",
+            "RAIDrebuildRate",
+            "RAIDreconstructRate",
+            "RAIDloadBalancedMode",
+            "RAIDMaxCapableSpeed",
+            "RAIDmaxPDsInSpan",
+            "RAIDmaxSpansInVD",
+            "RAIDmaxSupportedVD",
+            "RAIDsupportedDiskProt",
+            "RAIDSupportedRAIDLevels",
+            "RAIDspinDownIdleTime",
+            "RAIDNegotiatedSpeed",
+            "RAIDAssetTag",
+            "EncryptionMode",
+            "KeyID",
+            "NewControllerKey",
+            "OldControllerKey",
+            "RAIDrekey",
+            "RAIDremovecontrollerKey",
+            "RAIDEnhancedAutoImportForeignConfig",
+            "RAIDControllerBootMode",
+            "CurrentControllerMode",
+            "BackplaneType"
+        ],
+        "children" : [ "Enclosure", "VirtualDisk", "PhysicalDisk" ]
+    },
+    "Enclosure" : {
+        "pattern" : "^[^D].+:RAID[.]",
+        "firmware_pattern" : "^[^D].+:RAID[.]",
+        "registry" : "RAID",
+        "groups" : [ ],
+        "nogroup" : true,
+        "attributes" : [
+            "RAIDEffectiveSASAddress",
+            "RAIDEnclosureRequestedCfgMode",
+            "RAIDEnclosureCurrentCfgMode"
+        ],
+        "children" : [ "PhysicalDisk" ]
+    },
+    "PhysicalDisk" : {
+        "pattern" : "^Disk[.][^V]",
+        "firmware_pattern" : "^Disk[.][^V]",
+        "registry" : "RAID",
+        "groups" : [ ],
+        "nogroup" : true,
+        "attributes" : [
+            "RAIDHotSpareStatus",
+            "RAIDPDState",
+            "RAIDNominalMediumRotationRate",
+            "PCIeSSDSecureErase"
+        ]
+    },
+    "VirtualDisk" : {
+        "pattern" : "^Disk[.]V",
+        "firmware_pattern" : "^Disk[.]V",
+        "registry" : "RAID",
+        "groups" : [ ],
+        "nogroup" : true,
+        "attributes" : [
+            "Name",
+            "RAIDaction",
+            "RAIDinitOperation",
+            "Size",
+            "SpanDepth",
+            "SpanLength",
+            "StripeSize",
+            "RAIDdefaultWritePolicy",
+            "RAIDdefaultReadPolicy",
+            "DiskCachePolicy",
+            "RAIDTypes",
+            "IncludedPhysicalDiskID",
+            "Cachecade",
+            "RAIDdedicatedSpare",
+            "T10PIStatus",
+            "LockStatus"
+        ]
+    },
+    "BIOS" : {
+        "pattern" : "BIOS\\..*",
+        "firmware_pattern" : "BIOS\\..*",
+        "registry" : "BIOS",
+        "groups" : [  ],
+        "nogroup" : true,
+        "entries" : 1
+    },
+    "DriverPack" : {
+        "firmware_pattern" : "DriverPack\\..*",
+        "registry" : null,
+        "groups" : [  ],
+        "nogroup" : true
+    },
+    "PowerSupply" : {
+        "firmware_pattern" : "(PSU)\\..*",
+        "registry" : null,
+        "groups" : [  ],
+        "nogroup" : true
+    },
+    "Diags" : {
+        "firmware_pattern" : "(Diagnostics)\\..*",
+        "registry" : null,
+        "groups" : [  ],
+        "nogroup" : true
+    },
+    "CPLD" : {
+        "firmware_pattern" : "CPLD\\..*",
+        "registry" : null,
+        "groups" : [  ],
+        "nogroup" : true
+    },
+    "CMC" : {
+        "firmware_pattern" : "CMC\\..*",
+        "registry" : null,
+        "groups" : [  ],
+        "nogroup" : true
+    },
+    "arrays" : {
+        "Users" : { "min" : 1, "max" : 16, "key" : [ "UserName" ] },
+        "EmailAlert" : { "min" : 1, "max" : 4 , "key" : [ "Address" ]},
+        "SNMPAlert" : { "min" : 1, "max" : 8 , "key" : ["Destination"]},
+        "ADGroup" : { "min" : 1, "max" : 5, "key" : ["Name"] },
+        "UserDomain" : { "min" : 1, "max" : 40, "key" : ["Name"] },
+        "LDAPRoleGroup" : { "min" : 1, "max" : 5, "key" : ["DN"] }
+    },
+    "composite" : {
+        "SysLog" : { "Servers" : [ "Server1", "Server2", "Server3" ] },
+        "NTPConfigGroup" : { "NTPServers" : [ "NTP1", "NTP2", "NTP3" ] },
+        "IPv4Static" : { "DNSServers" : [ "DNS1", "DNS2" ] },
+        "IPv6Static" : { "DNSServers" : [ "DNS1", "DNS2" ] }
+    },
+    "alias": {
+        "iDRAC" : {
+            "Time" : {
+                "Timezone_Time" : "TimeZone_Time",
+                "DayLightOffset_Time" : "DaylightOffset_Time"
+            }
+         },
+         "NIC" : "NetworkInterface"
+    },
+    "tree" : {
+        "SystemConfiguration" : [
+            "LifecycleController",
+            "System",
+            "iDRAC",
+            "FCHBA",
+            "NetworkInterface",
+            "BIOS",
+            "Controller"
+        ]
+    },
+    "reboot": {
+        "BIOS": [
+            "BootMode",
+            "BiosBootSeq",
+            "HddSeq"
+        ],
+        "LifecycleController": [ "CollectSystemInventoryOnRestart" ],
+        "Controller" : [
+            "RAIDresetConfig"
+        ],
+        "VirtualDisk" : [
+            "RAIDaction"
+        ]
+    },
+    "defaults" : {
+        "RAID" : {
+            "RAIDccMode": null,
+            "RAIDcopybackMode": null,
+            "RAIDforeignConfig": null,
+            "RAIDprMode": null,
+            "RAIDHotSpareStatus": null,
+            "DiskCachePolicy": null,
+            "RAIDaction": null,
+            "RAIDinitOperation": null
+        }
+    },
+    "types" : {
+    "RAID": {
+        "ListField" : {
+            "NA": [ "IncludedPhysicalDiskID" ]
+        }
+    },
+    "iDRAC": {
+        "PortField" : {
+            "CMCSNMPAlert": [ "AlertPort" ],
+            "SNMP": [ "AlertPort", "DiscoveryPort" ],
+            "SSH": [ "Port" ],
+            "SupportAssist": [ "HostOSProxyPort" ],
+            "SysLog": [ "Port" ],
+            "Telnet": [ "Port" ],
+            "VNCServer": [ "Port" ],
+            "VirtualConsole": [ "Port" ],
+            "WebServer": [ "HttpPort", "HttpsPort" ]
+        },
+        "IPAddressField": {
+            "AutoBackup": [
+                "IPAddress"
+            ],
+            "AutoUpdate": [
+                "IPAddress"
+            ],
+            "IPMIIPConfig": [
+                "BackupGatewayIP"
+            ],
+            "LCAttributes": [
+                "CMCIP",
+                "IPAddress"
+            ],
+            "OS-BMC": [
+                "IdracPTEpIpAddr",
+                "OsIpAddress",
+                "UsbNicIpAddress"
+            ],
+            "RemoteHosts": [
+                "SMTPServerIPAddress"
+            ],
+            "SupportAssist": [
+                "DefaultIPAddress"
+            ],
+            "Update": [
+                "FwUpdateIPAddr"
+            ]
+        },
+        "IPv4AddressField": {
+            "CMCSNMPTrapIPv4": [
+                "DestIPv4Address"
+            ],
+            "CurrentIPv4": [
+                "Address",
+                "DNS1",
+                "DNS2",
+                "Gateway",
+                "Netmask"
+            ],
+            "GBE": [
+                "NeighborMgmtIPv4"
+            ],
+            "IPv4": [
+                "Address",
+                "DNS1",
+                "DNS2",
+                "Gateway",
+                "Netmask"
+            ],
+            "IPv4Static": [
+                "Address",
+                "DNS1",
+                "DNS2",
+                "Gateway",
+                "Netmask"
+            ],
+            "MSMSNMPTrapIPv4": [
+                "DestIPv4Address"
+            ],
+            "MgmtNetworkInterface": [
+                "IPv4"
+            ],
+            "SECONDARYNIC": [
+                "DNSServer1",
+                "DNSServer2",
+                "IPV4Address",
+                "IPV4Gateway",
+                "IPV4NetMask"
+            ],
+            "SNMPTrapIPv4": [
+                "DestIPv4Addr"
+            ]
+        },
+        "IPv6AddressField": {
+            "CMCSNMPTrapIPv6": [
+                "DestIPv6Address"
+            ],
+            "CurrentIPv6": [
+                "Address1",
+                "Address10",
+                "Address11",
+                "Address12",
+                "Address13",
+                "Address14",
+                "Address15",
+                "Address2",
+                "Address3",
+                "Address4",
+                "Address5",
+                "Address6",
+                "Address7",
+                "Address8",
+                "Address9",
+                "DNS1",
+                "DNS2",
+                "Gateway",
+                "LinkLocalAddress"
+            ],
+            "GBE": [
+                "NeighborMgmtIPv6"
+            ],
+            "IPv6": [
+                "Address1",
+                "Address10",
+                "Address11",
+                "Address12",
+                "Address13",
+                "Address14",
+                "Address15",
+                "Address2",
+                "Address3",
+                "Address4",
+                "Address5",
+                "Address6",
+                "Address7",
+                "Address8",
+                "Address9",
+                "DNS1",
+                "DNS2",
+                "Gateway",
+                "LinkLocalAddress"
+            ],
+            "IPv6Static": [
+                "Address1",
+                "DNS1",
+                "DNS2",
+                "Gateway"
+            ],
+            "LDAPRoleGroup ": [
+                "DestIPv6Addr"
+            ],
+            "MSMSNMPTrapIPv6": [
+                "DestIPv6Address"
+            ],
+            "SNMPTrapIPv6": [
+                "DestIPv6Addr"
+            ],
+            "SysInfo": [
+                "CMCIPv6Info",
+                "OSIPV6"
+            ]
+        },
+        "MacAddressField": {
+            "CurrentNIC": [
+                "MACAddress",
+                "FactoryMAC",
+                "MACAddress2"
+            ],
+            "Info": [
+                "MACAddress"
+            ],
+            "MgmtNetworkInterface": [
+                "MacAddress"
+            ],
+            "NIC": [
+                "MACAddress"
+            ],
+            "SECONDARYNIC": [
+                "MACAddress"
+            ],
+            "SysInfo": [
+                "EmbeddedNICMAC"
+            ]
+        }
+    },
+    "NIC": {
+        "IPv4AddressField": {
+            "NA": [
+                "FirstTgtIpAddress",
+                "IscsiInitiatorIpAddr",
+                "IscsiInitiatorSubnet",
+                "IscsiInitiatorGateway",
+                "IscsiInitiatorPrimDns",
+                "IscsiInitiatorSecDns",
+                "IscsiInitiatorIpv4Addr",
+                "IscsiInitiatorIpv4Gateway",
+                "IscsiInitiatorIpv4PrimDns",
+                "IscsiInitiatorIpv4SecDns",
+                "SecondTgtIpAddress"
+            ]
+        },
+        "IPv6AddressField": {
+            "NA": [
+                "IscsiInitiatorIpv6Addr",
+                "IscsiInitiatorIpv6Gateway",
+                "IscsiInitiatorIpv6PrimDns",
+                "IscsiInitiatorIpv6SecDns"
+            ]
+        },
+        "MacAddressField": {
+            "NA": [
+                "VirtMacAddr",
+                "VirtIscsiMacAddr",
+                "VirtFIPMacAddr",
+                "FIPMacAddr",
+                "FIPMacAddr[Partition:n]",
+                "IscsiMacAddr",
+                "IscsiMacAddr[Partition:n]",
+                "MacAddr",
+                "MacAddr[Partition:n]",
+                "SecondaryDeviceMacAddr",
+                "VirtFIPMacAddr",
+                "VirtFIPMacAddr[Partition:n]",
+                "VirtIscsiMacAddr",
+                "VirtIscsiMacAddr[Partition:n]",
+                "VirtMacAddr",
+                "VirtMacAddr[Partition:n]"
+            ]
+        },
+        "WWPNAddressField": {
+            "NA" : [
+                "EighteenthFCoEWWPNTarget",
+                "EighthFCoEWWPNTarget",
+                "EleventhFCoEWWPNTarget",
+                "FifteenthFCoEWWPNTarget",
+                "FifthFCoEWWPNTarget",
+                "FirstFCoEWWPNTarget",
+                "FourteenthFCoEWWPNTarget",
+                "FourthFCoEWWPNTarget",
+                "NineteenthFCoEWWPNTarget",
+                "NinthFCoEWWPNTarget",
+                "SecondFCoEWWPNTarget",
+                "SeventeenthFCoEWWPNTarget",
+                "SeventhFCoEWWPNTarget",
+                "SixteenthFCoEWWPNTarget",
+                "SixthFCoEWWPNTarget",
+                "TenthFCoEWWPNTarget",
+                "ThirdFCoEWWPNTarget",
+                "ThirteenthFCoEWWPNTarget",
+                "ThirtyFCoEWWPNTarget",
+                "ThirtyFirstFCoEWWPNTarget",
+                "ThirtySecondFCoEWWPNTarget",
+                "TwelfthFCoEWWPNTarget",
+                "TwentiethFCoEWWPNTarget",
+                "TwentyEighthFCoEWWPNTarget",
+                "TwentyFifthFCoEWWPNTarget",
+                "TwentyFirstFCoEWWPNTarget",
+                "TwentyFourthFCoEWWPNTarget",
+                "TwentyNinthFCoEWWPNTarget",
+                "TwentySecondFCoEWWPNTarget",
+                "TwentySeventhFCoEWWPNTarget",
+                "TwentySixthFCoEWWPNTarget",
+                "TwentyThirdFCoEWWPNTarget",
+                "VirtWWN",
+                "VirtWWN[Partition:n]",
+                "VirtWWPN",
+                "VirtWWPN[Partition:n]",
+                "WWN",
+                "WWN[Partition:n]",
+                "WWPN",
+                "WWPN[Partition:n]"
+            ]
+        }
+    },
+    "FCHBA": {
+        "WWPNAddressField": {
+            "NA": [
+                "FirstFCTargetWWPN",
+                "SecondFCTargetWWPN",
+                "WWN",
+                "VirtualWWN",
+                "WWPN",
+                "VirtualWWPN"
+            ]
+        }
+    }
+    }
+}

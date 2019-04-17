@@ -1,0 +1,65 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_VFlashView 
+// ==================================================================  
+  [Version ( "1.0.0" ), Description(
+          "DCIM_VFlashView is a derivation of  "
+          "CIM_View with VFlash related data. ") ]
+class DCIM_VFlashView : DCIM_View {
+
+      [Key, 
+       Description (
+          "This property represents the ID of the VFlash view. ")]
+   string InstanceID;
+
+      [Description (
+          "This property represents the FQDD of the VFlash view. " )]
+   string FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description (
+          "This property represents the media. " )]
+   string ComponentName;
+
+      [Description ( 
+          "The EnabledState property indicates whether VFlash is "
+          "enabled. " ) ] 
+   boolean VFlashEnabledState;
+
+      [Description ( 
+          "This property specifies the total size on the media " ), 
+       ModelCorrespondence { "DCIM_VFlashComponent.AvailableSize" }]
+   uint64 Capacity;
+
+      [Description ( 
+          "This property specifies the avaible size on the media " ), 
+       ModelCorrespondence { "DCIM_VFlashView.Capacity" }]
+   uint64 AvailableSize;
+
+      [Description ( 
+          "The HealthStatus property represents the health status "
+          "of the virtual flash media. " )]
+   string HealthStatus;
+
+      [Description ( 
+          "The InitializedState property represents the initialization state "
+          "of the virtual flash media. " )]
+   string InitializedState;
+
+      [Description ( 
+          "This property represents whether the virtue flash media "
+          "is licensed or not." ) ]
+   boolean Licensed;
+
+      [Description ( 
+          "This property indicates whether the virtue flash media "
+          "is write protected(latch is on) or not." ) ]
+   boolean WriteProtected;
+
+
+};

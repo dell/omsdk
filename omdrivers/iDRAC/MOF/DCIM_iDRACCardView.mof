@@ -1,0 +1,79 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_IDRACCardView
+// ==================================================================
+[Version ( "1.0.0" ), Description(
+       "DCIM_IDRACCardView is a derivation of CIM_View "
+       "with iDRAC Card specific data" )]
+class DCIM_iDRACCardView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description (
+          "A string containing the IPMI Version")]
+   string IPMIVersion;
+
+      [Description (
+          "A string containing the Firmware Version")]
+   string FirmwareVersion;
+
+      [Description (
+          "A string containing the iDrac model.")]
+   string Model;
+
+      [Description (
+          "A string containing the Product Description")]
+   string ProductDescription;
+
+      [Description (
+          "A string containing Permanent MAC Address")]
+   string PermanentMACAddress;
+
+      [Description (
+          "A string containing the GUID")]
+   string GUID;
+
+      [Description (
+          "A string containing the URLString")]   
+   string URLString;
+
+      [Description (
+          "LAN Enable/Disable"),
+       ValueMap { "0", "1"},
+       Values {"Disabled", "Enabled"}]      
+   uint16 LANEnabledState;
+
+      [Description (
+          "SOL Enable/Disable" ),
+       ValueMap { "0", "1"},
+       Values {"Disabled", "Enabled"}]
+   uint16 SOLEnabledState;
+      
+      [Description (
+          "A string containing the iDRAC host name")]
+   string DNSRacName;
+
+      [Description (
+          "A string containing the iDRAC domain name")]
+   string DNSDomainName;
+
+};

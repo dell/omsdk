@@ -1,0 +1,159 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_FCView
+// ==================================================================
+   [Description(
+       "DCIM_FCView is a derivation of DCIM_View "
+       "with Fiber Channel specific data" )]
+class DCIM_FCView : DCIM_View {
+      [Key, Description (
+          "Is a unique string containing the Fully Qualified Device "
+          "Description and view name. ")]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string  FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description (
+          "This property represents the bus number of the PCI device.")]
+   uint32 Bus;
+
+      [Description (
+          "This property represents the chip type.")] 
+   string ChipType;
+
+      [Description (
+          "This property represents the device number of the PCI device")] 
+   uint32 Device;
+
+      [Description (
+          "This property represents FC HBA device name.")]
+   string DeviceName;
+
+      [Description (
+          "This property represents the EFI version on the device.")]
+   string EFIVersion;
+
+      [Description (
+          "This property represents the Fabric Login Retry Count")]
+   uint32 FabricLoginRetryCount;
+
+      [Description (
+          "This property represents the Fabric Login Timeout.")]
+   uint32 FabricLoginTimeout;
+
+      [Description (
+          "This property represents the FC Tape Enable."),
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "Enabled", "Disabled"}]
+   uint8 FCTapeEnable;
+
+      [Description (
+          "This property represents the firmware version.")]
+   string FamilyVersion;
+   
+      [Description (
+          "This property represents the First FC Target World Wide Port"
+          "Name." )]
+   string FirstFCTargetWWPN;
+      [Description (
+          "This property represents the frame payload size." )]
+   string FramePayloadSize;
+
+      [Description (
+          "This property represents the First FC Target LUN")]
+   uint16 FirstFCTargetLUN;
+
+      [Description (
+          "This property represents the function number of the PCI"
+          "device.")] 
+   uint32 Function;
+
+      [Description ( 
+          "This property represents the Hard Zone Address." )] 
+   uint32 HardZoneAddress;
+
+      [Description ( 
+          "This property represents the Hard Zone Enable"),
+       ValueMap { "0", "2", "3" }, 
+       Values { "Unknown", "Enabled", "Disabled"}]
+   uint8 HardZoneEnable;
+
+      [Description (
+          "This property represents the Link Down Timeout.")]
+   uint32 LinkDownTimeout;
+
+      [Description (
+          "This property represents the Loop Reset Delay")]
+   uint8 LoopResetDelay;
+
+     [Description (
+          "This property represents the dvice identifier.")]
+   string PCIDeviceID;
+
+     [Description (
+         "This property represents the Port Down Retry. ")]
+   uint32 PortDownRetryCount;
+
+     [Description (
+         "This property represents the Port Down Timeout. ")]
+   uint32 PortDownTimeout;
+
+     [Description (
+         "This property represents the Port Login Retry Count." )]
+   uint32 PortLoginRetryCount;   
+   
+     [Description (
+         "This property represents the Port Login Timeout." )]
+   uint32 PortLoginTimeout;
+   
+      [Description ("This property represents the Second FC Target LUN.")]
+   uint16 SecondFCTargetLUN;
+
+      [Description ("This property represents the Second FC Target World"
+      "Wide Port Name.")]
+   string SecondFCTargetWWPN;
+      
+      [Description ("This property represents the Virtual World Wide Name.")]
+   string VirtualWWN;
+
+      [Description ("This property represents the Virtual World Wide Port" 
+      "Name.")]
+   string VirtualWWPN ;
+
+      [Description ("This property represents the World Wide Name.")]
+   string WWN;
+
+      [Description ("This property represents the World Wide Port Name.")]
+   string WWPN;
+
+      [Description ("This property represents the VendorName.")]
+   string VendorName;
+
+      [Description (
+          "Indicates link status"), 
+       ValueMap { "0", "1", "2", "3" }, 
+       Values { "Unknown", "Other", "Up", "Down"}]
+   uint8 LinkStatus;
+
+      [Description ("This property represents the port number.")]
+   uint16 PortNumber;
+
+      [Description (
+          "Port Speed"), 
+       ValueMap { "0", "1", "2", "3", "4", "5", "6", "7"}, 
+       Values { "Unknown", "Other", "No Link", "2 Gbps", "4 Gbps", "8 Gbps", "16 Gbps", "32 Gbps"}]
+   uint16 PortSpeed;
+
+};

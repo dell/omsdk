@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <REGISTRY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+        <!-- Registry XML Generated 2014-09-09 19:34:00.130000 ; input file should be in csv format and sorted by AttributeName -->
+        <!--Copyright(C)2010 Dell Inc.  All rights reserved-->
+
+          <REGISTRY_DECLARATION>
+            <IDENTIFICATION NAME="Dell Attribute Registry" VERSION="1.0.0" LANGUAGE="en"/>
+            <SPECIFICATION NAME="None" VERSION="1.3.0"/>
+            <CIM_SCHEMA VERSION="2.17.0"/>
+            <OWNING_ENTITY NAME="Dell"/>
+            <EDITOR EMAIL="Dell_Support@Dell.com" NAME="Dell Support" ORGANIZATION="Dell"/>
+            <DESCRIPTION>This Registry defines a representation of event filters</DESCRIPTION>
+          </REGISTRY_DECLARATION>
+          <REGISTRY_ENTRIES>  
+	<Attribute>
+		<AttributeName>DisplayName</AttributeName>
+		<DisplayName>Display Name</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>This field displays the name of the filter</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>1</DisplayOrder>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#Email</AttributeName>
+		<DisplayName>Email enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>Email enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>2</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#IPMI</AttributeName>
+		<DisplayName>IPMI enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>IPMI enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>3</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#OSLog</AttributeName>
+		<DisplayName>OSLog enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>OSLog enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>4</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#SNMP</AttributeName>
+		<DisplayName>SNMP enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>SNMP enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>5</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#Syslog</AttributeName>
+		<DisplayName>Syslog enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>Syslog enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>6</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Alert#WSEventing</AttributeName>
+		<DisplayName>WSEventing enablement</DisplayName>
+		<AttributeType>Enumeration</AttributeType>
+		<HelpText>WSEventing enablement</HelpText>
+		<GroupName>SystemHealth</GroupName>
+		<GroupDisplayName>Health</GroupDisplayName>
+		<DisplayOrder>7</DisplayOrder>
+		<AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		</AttributeValue>
+		<AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		</AttributeValue>
+	</Attribute>
+	<Attribute>
+		<AttributeName>Action</AttributeName>
+		<DisplayName>action</DisplayName>
+		<AttributeType>String</AttributeType>
+		<HelpText>Action enablement</HelpText>
+		<GroupName>Action</GroupName>
+		<GroupDisplayName>Action</GroupDisplayName>
+		<DisplayOrder>10</DisplayOrder>
+	</Attribute>
+  </REGISTRY_ENTRIES>
+        </REGISTRY>
