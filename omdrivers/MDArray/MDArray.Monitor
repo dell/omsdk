@@ -1,0 +1,13 @@
+{
+  "System" : {
+    "ConfigState" : [],
+    "Health" : ["Status"],
+    "Inventory" : [ "ProductID", "WWID", "Name", "SysName" ],
+    "Key" : ["ServiceTag"],
+    "Metrics" : [],
+    "Status" : {
+        "0" : "Healthy",
+        "1" : "Warning"
+    }
+  }
+}

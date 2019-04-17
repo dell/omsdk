@@ -1,0 +1,107 @@
+// Copyright (c) 2009 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_EnclosureView
+// ==================================================================
+
+      [Description(
+       "DCIM_EnclosureView is a derivation of DCIM_View "
+       "with storage enclosure specific data.") ]
+class DCIM_EnclosureView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          "instance to define a user-friendly name in addition to its key "
+          "properties, identity data, and description information. "
+          )]
+  string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information. "
+          )]
+  string FQDD;   
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+  string DeviceDescription;   
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide "
+          "high level and detailed health status of the enclosure and "
+          "its subcomponents. PrimaryStatus consists of one of the following "
+          "values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the "
+          "implementation is in general capable of returning this property, "
+          "but is unable to do so at this time. \"OK\" indicates the "
+          "enclosure is functioning normally. \"Degraded\" indicates the "
+          "enclosure is functioning below normal. \"Error\" indicates the "
+          "enclosure is in an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error", "DMTF Reserved", "Vendor Reserved" }]
+  uint32 PrimaryStatus;				
+
+      [Description (
+          "RollupStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide "
+          "high level and detailed health status of the enclosure and "
+          "its subcomponents. PrimaryStatus consists of one of the following "
+          "values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the "
+          "implementation is in general capable of returning this property, "
+          "but is unable to do so at this time. \"OK\" indicates the "
+          "enclosure is functioning normally. \"Degraded\" indicates the "
+          "enclosure is functioning below normal. \"Error\" indicates the "
+          "enclosure is in an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error", "DMTF Reserved", "Vendor Reserved" }]
+  uint32 RollupStatus;			  
+
+      [Description (
+          "This is the Enclosure port number ")]
+  uint8 Connector;  
+  
+      [Description (
+          "This is the position of the Enclosure ")]
+  uint8 WiredOrder;    
+
+      [Description (
+          "This is the service Tag on the Enclosure ")]
+  string ServiceTag;    
+
+      [Description (
+          "This is the asset Tag on the Enclosure ")]
+  string AssetTag;  
+  
+      [Description (
+          "This is the revision of the Enclosure ")]
+  string Version;
+
+      [Description (
+          "This is the number of slots on the Enclosure ")]
+  uint8 SlotCount;  
+  
+      [Description (
+          "This is the number of management module of the Enclosure ")]
+  uint8 EMMCount;  
+  
+      [Description (
+          "This is the number of power supplies of the Enclosure ")]
+  uint8 PSUCount;  
+
+      [Description (
+          "This is the number of fans on the Enclosure ")]
+  uint8 FanCount;  
+
+      [Description (
+          "This is the number of temperature probes of the Enclosure ")]
+  uint8 TempProbeCount;
+
+      [Description (
+          "This is the marketing name of the Enclosure ")]
+  string ProductName;
+};  

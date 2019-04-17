@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<REGISTRY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+  <!-- Registry XML Generated 2017-01-25  15:52:44 ; input file should be in csv format and sorted by AttributeName -->
+  <!--Copyright(C)2010 Dell Inc.  All rights reserved--> 
+  <REGISTRY_DECLARATION> 
+  <IDENTIFICATION LANGUAGE="en" NAME="Dell Attribute Registry" VERSION="1.0.0"/> 
+  <SPECIFICATION NAME=" Simple RAID Profile " VERSION="1.0"/> 
+  <CIM_SCHEMA VERSION="2.17.0"/> 
+  <OWNING_ENTITY NAME="Dell"/>  <EDITOR EMAIL="Dell_Support@Dell.com" NAME="Dell Support" ORGANIZATION="Dell"/> 
+  <DESCRIPTION>This Registry defines a representation of system hardware or firmware Attribute instances, such as BIOS or NIC Attributes, as defined by Dell.</DESCRIPTION> 
+  </REGISTRY_DECLARATION> 
+  <REGISTRY_ENTRIES> 
+ 
+	 <Attribute>
+		<AttributeName>RAIDbatteryLearnMode</AttributeName>
+		<DisplayName>Battery Learn Mode</DisplayName>
+		<HelpText>Battery Learn Mode controls a RAID Controller's Battery Learn Cycle.</HelpText>
+		<DisplayOrder>101</DisplayOrder>
+		<DefaultValue>None</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Automatic</ValueName>
+			<DisplayValueName>Automatic</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Warn only</ValueName>
+			<DisplayValueName>Warn only</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDbgiRate</AttributeName>
+		<DisplayName>Background Initialization Rate</DisplayName>
+		<HelpText>The Background Initialization (BGI) rate is the percentage of the system's resources dedicated to performing the background initialization of a virtual disk after it is created</HelpText>
+		<DisplayOrder>102</DisplayOrder>
+		<DefaultValue>100</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>100</Max>
+		<IsReadOnly>FALSE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDccMode</AttributeName>
+		<DisplayName>Check Consistency Mode</DisplayName>
+		<HelpText>Check Consistency feature is used to verify the accuracy of the redundant (parity) information.</HelpText>
+		<DisplayOrder>103</DisplayOrder>
+		<DefaultValue>Normal</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Normal</ValueName>
+			<DisplayValueName>Normal</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>StopOnError</ValueName>
+			<DisplayValueName>Stop on Error</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDccRate</AttributeName>
+		<DisplayName>Check Consistency Rate</DisplayName>
+		<HelpText>The Check Consistency rate is the percentage of the system's resources dedicated to performing a check consistency on a redundant virtual disk.</HelpText>
+		<DisplayOrder>104</DisplayOrder>
+		<DefaultValue>100</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>100</Max>
+		<IsReadOnly>FALSE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDcopybackMode</AttributeName>
+		<DisplayName>Copyback Mode</DisplayName>
+		<HelpText>This attribute represents the mode of restoring configuration of a virtual disk when a failed physical disk is replaced in an array.</HelpText>
+		<DisplayOrder>105</DisplayOrder>
+		<DefaultValue>On</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>On</ValueName>
+			<DisplayValueName>On</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>On with SMART</ValueName>
+			<DisplayValueName>On with SMART</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Off</ValueName>
+			<DisplayValueName>Off</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDloadBalancedMode</AttributeName>
+		<DisplayName>Load Balanced Mode</DisplayName>
+		<HelpText>This attribute reprsents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.</HelpText>
+		<DisplayOrder>106</DisplayOrder>
+		<DefaultValue>Automatic</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Automatic</ValueName>
+			<DisplayValueName>Automatic</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDMaxCapableSpeed</AttributeName>
+		<DisplayName>Maximum Capable Speed</DisplayName>
+		<HelpText>This attribute represents the maximum link speed supported by the controller.</HelpText>
+		<DisplayOrder>107</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>1_5_GBS</ValueName>
+			<DisplayValueName>1_5_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>3_GBS</ValueName>
+			<DisplayValueName>3_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>6_GBS</ValueName>
+			<DisplayValueName>6_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>12_GBS</ValueName>
+			<DisplayValueName>12_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDmaxPDsInSpan</AttributeName>
+		<DisplayName>Maximum Physical Disks in Span</DisplayName>
+		<HelpText>This attribute represents the maximum number of Physical Disks in a single Span, as supported by the controller.</HelpText>
+		<DisplayOrder>108</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDmaxSpansInVD</AttributeName>
+		<DisplayName>Maximum Spans in Virtual Disk</DisplayName>
+		<HelpText>This attribute represents the maximum number of spans in a Virtual Disk, as supported by the controller.</HelpText>
+		<DisplayOrder>109</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDmaxSupportedVD</AttributeName>
+		<DisplayName>Maximum Supported Virtual Disks</DisplayName>
+		<HelpText>This attribute represents the maximum number of virtual disks supported by the controller.</HelpText>
+		<DisplayOrder>110</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDprMode</AttributeName>
+		<DisplayName>Patrol Read Mode</DisplayName>
+		<HelpText>Patrol Read is a feature for identifying disk errors in order to avoid disk failures and data loss or corruption. The Patrol Read only runs on disks that are being used in a virtual disk or that are hot spares.</HelpText>
+		<DisplayOrder>111</DisplayOrder>
+		<DefaultValue>Automatic</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Automatic</ValueName>
+			<DisplayValueName>Automatic</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Manual</ValueName>
+			<DisplayValueName>Manual</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDprRate</AttributeName>
+		<DisplayName>Patrol Read Rate</DisplayName>
+		<HelpText>The Patrol Read Rate is the percentage of the system's resources dedicated to perform Patrol Read.</HelpText>
+		<DisplayOrder>112</DisplayOrder>
+		<DefaultValue>30</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>100</Max>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDrebuildRate</AttributeName>
+		<DisplayName>Rebuild Rate</DisplayName>
+		<HelpText>The Rebuild Rate is the percentage of the system's resources dedicated to rebuilding a failed disk when a rebuild is necessary.</HelpText>
+		<DisplayOrder>113</DisplayOrder>
+		<DefaultValue>100</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>100</Max>
+		<IsReadOnly>FALSE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDreconstructRate</AttributeName>
+		<DisplayName>Reconstruction Rate</DisplayName>
+		<HelpText>The Reconstruct Rate is the percentage of the system's resources dedicated to reconstructing a disk group after adding a physical disk or changing the RAID level of a virtual disk residing on the disk group</HelpText>
+		<DisplayOrder>114</DisplayOrder>
+		<DefaultValue>100</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>100</Max>
+		<IsReadOnly>FALSE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDsupportedDiskProt</AttributeName>
+		<DisplayName>Supported Disk Protocols</DisplayName>
+		<HelpText>This attribute provides a list of Disk Protocols supported by the controller.</HelpText>
+		<DisplayOrder>115</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>SAS</ValueName>
+			<DisplayValueName>SAS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>SATA</ValueName>
+			<DisplayValueName>SATA</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDSupportedRAIDLevels</AttributeName>
+		<DisplayName>Supported RAID Levels</DisplayName>
+		<HelpText>This attribute provides a list of RAID levels supported by the controller.</HelpText>
+		<DisplayOrder>116</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>RAID-0</ValueName>
+			<DisplayValueName>RAID-0</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID-1</ValueName>
+			<DisplayValueName>RAID-1</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID-5</ValueName>
+			<DisplayValueName>RAID-5</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>RAID-10</ValueName>
+			<DisplayValueName>RAID-10</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID-50</ValueName>
+			<DisplayValueName>RAID-50</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID-60</ValueName>
+			<DisplayValueName>RAID-60</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDspinDownIdleTime</AttributeName>
+		<DisplayName>Spin Down Idle Time</DisplayName>
+		<HelpText>Spindown idle time is the amount of time in seconds an uncofigured or hotspare can be idle before being spinned down by the controller.</HelpText>
+		<DisplayOrder>117</DisplayOrder>
+		<DefaultValue>30</DefaultValue>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>1</Min>
+		<Max>65535</Max>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDdefaultWritePolicy</AttributeName>
+		<DisplayName>Write Policy</DisplayName>
+		<HelpText>The write policies specify whether the controller sends a write-request completion signal as soon as the data is in the cache or after it has been written to disk.</HelpText>
+		<DisplayOrder>304</DisplayOrder>
+		<DefaultValue>WriteBack</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>WriteThrough</ValueName>
+			<DisplayValueName>Write Through</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>WriteBack</ValueName>
+			<DisplayValueName>Write Back</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> WriteBackForce</ValueName>
+			<DisplayValueName>Write Back Force</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDdefaultReadPolicy</AttributeName>
+		<DisplayName>Read Policy</DisplayName>
+		<HelpText>The read policies indicate whether or not the controller should read sequential sectors of the virtual disk when seeking data.</HelpText>
+		<DisplayOrder>303</DisplayOrder>
+		<DefaultValue>Adaptive</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>NoReadAhead</ValueName>
+			<DisplayValueName>No Read-Ahead</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> ReadAhead</ValueName>
+			<DisplayValueName>Read-Ahead</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> Adaptive</ValueName>
+			<DisplayValueName>Adaptive</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> AdaptiveReadAhead</ValueName>
+			<DisplayValueName>AdaptiveReadAhead</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>DiskCachePolicy</AttributeName>
+		<DisplayName>Disk Cache Policy</DisplayName>
+		<HelpText>Set the physical disk caching policy of all members of a Virtual Disk by enabling the Disk Cache Policy. When this feature is enabled, the physical disk writes data to the physical disk cache before writing it to the physical disk. Because it is faster to write data to the cache than to a disk, enabling this feature can improve system performance.</HelpText>
+		<DisplayOrder>301</DisplayOrder>
+		<DefaultValue>Default</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Default</ValueName>
+			<DisplayValueName>Default</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDPDState</AttributeName>
+		<DisplayName>Physical Disk State</DisplayName>
+		<HelpText>Physical Disk State shows the state of Physical disk that is part of a Virtual Disk.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>401</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Unknown</ValueName>
+			<DisplayValueName>Unknown</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Ready</ValueName>
+			<DisplayValueName>Ready</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Online</ValueName>
+			<DisplayValueName>Online</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Foreign</ValueName>
+			<DisplayValueName>Foreign</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Blocked</ValueName>
+			<DisplayValueName>Blocked</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Failed</ValueName>
+			<DisplayValueName>Failed</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Non-RAID</ValueName>
+			<DisplayValueName>Non-RAID</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Missing</ValueName>
+			<DisplayValueName>Missing</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDHotSpareStatus</AttributeName>
+		<DisplayName>Hotspare Status</DisplayName>
+		<HelpText>On RAID controllers, a hot spare is a backup for a disk that fails. The attribute indicates whether a physical disk is Hot Spare and/or the type of hot spare.Configurable via XML configuration only.</HelpText>
+		<DisplayOrder>402</DisplayOrder>
+		<DefaultValue>No</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>No</ValueName>
+			<DisplayValueName>No</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Dedicated</ValueName>
+			<DisplayValueName>Dedicated</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Global</ValueName>
+			<DisplayValueName>Global</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDNegotiatedSpeed</AttributeName>
+		<DisplayName>Negotiated Speed</DisplayName>
+		<HelpText>Negotiated Speed shows the speed of data transfer that the disk negotiated while spinning up and upon initial communication with the controller. This speed is dependent on the speed of the disk, the capable speed of the controller, the current speed of the controller on that connector, and the speed of the EMM (Enclosure Management Module) on the enclosure.</HelpText>
+		<DisplayOrder>403</DisplayOrder>
+		<DefaultValue>None</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>1_5_GBS</ValueName>
+			<DisplayValueName>1_5_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>3_GBS</ValueName>
+			<DisplayValueName>3_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>6_GBS</ValueName>
+			<DisplayValueName>6_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>12_GBS</ValueName>
+			<DisplayValueName>12_GBS</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDAssetTag</AttributeName>
+		<DisplayName>Asset Tag</DisplayName>
+		<HelpText>Displays the Asset Tag information for the enclosure.</HelpText>
+		<DisplayOrder>201</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>Name</AttributeName>
+		<DisplayName>Name</DisplayName>
+		<HelpText>Diplays the name associated with a Virtual Disk.</HelpText>
+		<DisplayOrder>302</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDEffectiveSASAddress</AttributeName>
+		<DisplayName>Effective SAS Address</DisplayName>
+		<HelpText>This attribute represents the effective SAS Address of an enclosure.</HelpText>
+		<DisplayOrder>202</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDNominalMediumRotationRate</AttributeName>
+		<DisplayName>Nominal Medium Rotation Rate</DisplayName>
+		<HelpText>This attribute represents the nominal medium rotation speed of a physical disk.</HelpText>
+		<DisplayOrder>404</DisplayOrder>
+		<AttributeType>minmaxrange</AttributeType>
+		<Min>2</Min>
+		<Max>4294967295</Max>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>Cachecade</AttributeName>
+		<DisplayName>Cachecade State</DisplayName>
+		<HelpText>This attribute represents the cachecade state of the virtual disk. It can be modified to create a cachecaded virtual disk using XML configuration feature. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>305</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>Cachecade Virtual Disk</ValueName>
+			<DisplayValueName>Cachecade Virtual Disk</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Not a Cachecade Virtual Disk</ValueName>
+			<DisplayValueName>Not a Cachecade Virtual Disk</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>EncryptionMode</AttributeName>
+		<DisplayName>Controller Encryption Mode</DisplayName>
+		<HelpText>This attribute represents encryption mode on the controller. It could be used to set the encryption mode to Local Key Management or Dell Key Management on the controller through XML configuration feature.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>118</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>None</ValueName>
+			<DisplayValueName>None</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Local Key Management</ValueName>
+			<DisplayValueName>Local Key Management</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Dell Key Management</ValueName>
+			<DisplayValueName>Dell Key Management</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>IncludedPhysicalDiskID</AttributeName>
+		<DisplayName>Physical Disk ID</DisplayName>
+		<HelpText>This is a pseudo attribute for XML configuration feature. It is used for specifying physical disk FQDD for creating a virtual disk. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>306</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>KeyID</AttributeName>
+		<DisplayName>Key identifier</DisplayName>
+		<HelpText>This attribute represents the controller key identifier for Local Key Management or Dell Key Management controller encryption modes. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>119</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>LockStatus</AttributeName>
+		<DisplayName>Lock Status</DisplayName>
+		<HelpText>This attribute represents security status of the virtual disk. It is used to secure a virtual disk using XML configuration feature. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>307</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Unlocked</ValueName>
+			<DisplayValueName>Unlocked</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Locked</ValueName>
+			<DisplayValueName>Locked</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>NewControllerKey</AttributeName>
+		<DisplayName>New Controller Key</DisplayName>
+		<HelpText>This attribute represents the controller passphrase for Local Key Management encryption mode. This is used during a ReKey operation to specify the new controller key. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>120</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>TRUE</IsSecure>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>OldControllerKey</AttributeName>
+		<DisplayName>Old Controller Key</DisplayName>
+		<HelpText>This attribute represents the controller passphrase for Local Key Management encryption mode. This is used during a ReKey operation to specify the old controller key. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>121</DisplayOrder>
+		<AttributeType>String</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>TRUE</IsSecure>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDaction</AttributeName>
+		<DisplayName>Action</DisplayName>
+		<HelpText>This pseudo attribute represents RAID action to be performed on the virtual disk. It is used to specify Delete, Create , CreateAuto or Update virtual disk operations. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>308</DisplayOrder>
+		<DefaultValue>Update</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Create</ValueName>
+			<DisplayValueName>Create</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>CreateAuto</ValueName>
+			<DisplayValueName>CreateAuto</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Delete</ValueName>
+			<DisplayValueName>Delete</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Update</ValueName>
+			<DisplayValueName>Update</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDdedicatedSpare</AttributeName>
+		<DisplayName>Dedicated Spare</DisplayName>
+		<HelpText>This pseudo attribute represents the dedicated spare to be assigned to a virtual disk. It could be set to physical disk FQDD to be assigned as a dedicated spare to the virtual disk. If a Spare is intended to be assigned when  RAIDaction is set as CreateAuto, this attribute value should be set to AutoSelect. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>309</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>autoselect</ValueName>
+			<DisplayValueName>AutoSelect</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDforeignConfig</AttributeName>
+		<DisplayName>Foreign Configuration</DisplayName>
+		<HelpText>This pseudo attribute represents foreign configuration operation to be performed on the RAID controller via XML configuration feature.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>122</DisplayOrder>
+		<DefaultValue>Ignore</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Ignore</ValueName>
+			<DisplayValueName>Ignore</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Import</ValueName>
+			<DisplayValueName>Import</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Clear</ValueName>
+			<DisplayValueName>Clear</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDinitOperation</AttributeName>
+		<DisplayName>Initialization Operation</DisplayName>
+		<HelpText>This pseudo attribute represents initialization configuration operation to be performed on the virtual disk via XML configuration feature. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>310</DisplayOrder>
+		<DefaultValue>None</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>None</ValueName>
+			<DisplayValueName>None</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Fast</ValueName>
+			<DisplayValueName>Fast</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDrekey</AttributeName>
+		<DisplayName>Controller Rekey</DisplayName>
+		<HelpText>This pseudo attribute represents whether a rekey operation needs to be performed on the RAID controller.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>123</DisplayOrder>
+		<DefaultValue>False</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>True</ValueName>
+			<DisplayValueName>True</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>False</ValueName>
+			<DisplayValueName>False</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDremovecontrollerKey</AttributeName>
+		<DisplayName>Remove Controller key</DisplayName>
+		<HelpText>This pseudo attribute represents whether a rekey operation needs to be performed on the RAID controller.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>124</DisplayOrder>
+		<DefaultValue>False</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>True</ValueName>
+			<DisplayValueName>True</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>False</ValueName>
+			<DisplayValueName>False</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDresetConfig</AttributeName>
+		<DisplayName>Controller Reset Configuration</DisplayName>
+		<HelpText>This pseudo attribute represents whether a reset config operation needs to be performed on the RAID controller.Reset Config operation deletes all the virtual disks that exists on the RAID controller. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>125</DisplayOrder>
+		<DefaultValue>False</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>True</ValueName>
+			<DisplayValueName>True</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>False</ValueName>
+			<DisplayValueName>False</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDTypes</AttributeName>
+		<DisplayName>RAID Level</DisplayName>
+		<HelpText>This indicates the type of RAID level on the virtual disk. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>311</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		 <AttributeValue>
+			<ValueName>RAID 0</ValueName>
+			<DisplayValueName>RAID 0</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID 1</ValueName>
+			<DisplayValueName>RAID 1</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>RAID 5</ValueName>
+			<DisplayValueName>RAID 5</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>RAID 6</ValueName>
+			<DisplayValueName>RAID 6</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID 10</ValueName>
+			<DisplayValueName>RAID 10</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>RAID 50</ValueName>
+			<DisplayValueName>RAID 50</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName> RAID 60</ValueName>
+			<DisplayValueName>RAID 60</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>Size</AttributeName>
+		<DisplayName>Size</DisplayName>
+		<HelpText>This indicates the size in bytes of the virtual disk. When creating a virtual disk, size of 0 indicates using full size of the physical disks for the specified RAIDTypes.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>312</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>SpanDepth</AttributeName>
+		<DisplayName>Span Depth</DisplayName>
+		<HelpText>This indicates number of spans in the virtual disk.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>313</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>SpanLength</AttributeName>
+		<DisplayName>Span Length</DisplayName>
+		<HelpText>This indicates the number of physical disks per span on a virtual disk.Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>314</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>StripeSize</AttributeName>
+		<DisplayName>Stripe Size</DisplayName>
+		<HelpText>This indicates the stripe size of the virtual disk. Configurable via XML configuration feature only.</HelpText>
+		<DisplayOrder>315</DisplayOrder>
+		<AttributeType>Integer</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDEnhancedAutoImportForeignConfig</AttributeName>
+		<DisplayName>Enhanced Import Foreign Configuration</DisplayName>
+		<HelpText>This indicates the current EnhancedAutoImportForeignConfig setting of the controller. Configurable via XML configuration feature only.
+</HelpText>
+		<DisplayOrder>126</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDControllerBootMode</AttributeName>
+		<DisplayName>Controller Boot Mode</DisplayName>
+		<HelpText>This indicates the current BootMode setting of the Controller. Configurable via XML configuration feature only.
+</HelpText>
+		<DisplayOrder>127</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		 <AttributeValue>
+			<ValueName>User Mode</ValueName>
+			<DisplayValueName>User Mode</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Continue Boot On Error</ValueName>
+			<DisplayValueName>Continue Boot On Error</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Headless Mode Continue On Error</ValueName>
+			<DisplayValueName>Headless Mode Continue On Error</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Headless Safe Mode</ValueName>
+			<DisplayValueName>Headless Safe Mode</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>CurrentControllerMode</AttributeName>
+		<DisplayName>Current Controller Mode</DisplayName>
+		<HelpText>This indicates controllers current personaility mode , which could be RAID or Non-RAID. </HelpText>
+		<DisplayOrder>128</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>RAID</ValueName>
+			<DisplayValueName>RAID</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>HBA</ValueName>
+			<DisplayValueName>HBA</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>T10PIStatus</AttributeName>
+		<DisplayName>T10PIStatus</DisplayName>
+		<HelpText>This indicates virtual disks T10PIStatus.</HelpText>
+		<DisplayOrder>316</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Enabled</ValueName>
+			<DisplayValueName>Enabled</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Disabled</ValueName>
+			<DisplayValueName>Disabled</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDEnclosureRequestedCfgMode</AttributeName>
+		<DisplayName>Enclousre Requested Configuration Mode</DisplayName>
+		<HelpText>This indicates enclosures requested configuration mode setting.</HelpText>
+		<DisplayOrder>203</DisplayOrder>
+		<DefaultValue>None</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>FALSE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>TRUE</IsSystemSpecific>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Unified Mode</ValueName>
+			<DisplayValueName>Unified Mode</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Split Mode</ValueName>
+			<DisplayValueName>Split Mode</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>None</ValueName>
+			<DisplayValueName>None</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>RAIDEnclosureCurrentCfgMode</AttributeName>
+		<DisplayName>Enclosure Current Configuration Mode</DisplayName>
+		<HelpText>This indicates enclosures current configuration mode setting</HelpText>
+		<DisplayOrder>204</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>TRUE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Unified Mode</ValueName>
+			<DisplayValueName>Unified Mode</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Split Mode</ValueName>
+			<DisplayValueName>Split Mode</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>BackplaneType</AttributeName>
+		<DisplayName>Backplane Type</DisplayName>
+		<HelpText>This indicates enclosures type.</HelpText>
+		<DisplayOrder>205</DisplayOrder>
+		<AttributeType>Enumeration</AttributeType>
+		<IsReadOnly>TRUE</IsReadOnly>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>FALSE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>Shared</ValueName>
+			<DisplayValueName>Shared</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>Not Shared</ValueName>
+			<DisplayValueName>Not Shared</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute>
+	 <Attribute>
+		<AttributeName>PCIeSSDSecureErase</AttributeName>
+		<DisplayName>Full InitialIzation</DisplayName>
+		<HelpText>Performs full initialization on the selected physical device. This operation deletes all data on the device.</HelpText>
+		<DefaultValue>False</DefaultValue>
+		<AttributeType>Enumeration</AttributeType>
+		<IsSecure>FALSE</IsSecure>
+		<IsSystemSpecific>FALSE</IsSystemSpecific>
+		<IsDestructive>TRUE</IsDestructive>
+		 <AttributeValue>
+			<ValueName>True</ValueName>
+			<DisplayValueName>True</DisplayValueName>
+		 </AttributeValue> 
+ 		 <AttributeValue>
+			<ValueName>False</ValueName>
+			<DisplayValueName>False</DisplayValueName>
+		 </AttributeValue> 
+ 	 </Attribute> 
+ </REGISTRY_ENTRIES> 
+ </REGISTRY> 
+ 

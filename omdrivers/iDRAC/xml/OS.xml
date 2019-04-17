@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <REGISTRY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <REGISTRY_DECLARATION>
+      <IDENTIFICATION NAME="Dell Attribute Registry" VERSION="1.0.0" LANGUAGE="en"/>
+      <SPECIFICATION NAME="Linux Operating Systems" VERSION="1.3.0"/>
+      <CIM_SCHEMA VERSION="2.17.0"/>
+      <OWNING_ENTITY NAME="Dell"/>
+      <EDITOR EMAIL="Dell_Support@Dell.com" NAME="Dell Support" ORGANIZATION="Dell"/>
+      <DESCRIPTION>This Registry defines a representation of system hardware or firmware Attribute instances, such as BIOS or NIC Attributes, as defined by Dell.</DESCRIPTION>
+    </REGISTRY_DECLARATION>
+    <REGISTRY_ENTRIES>
+      <Attribute>
+        <AttributeName>NetworkSharePath</AttributeName>
+        <DisplayName>Share Path where ISO Image is present</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify whether SPMA or FPMA addressing will be used for FCoE transactions.</HelpText>
+        <GroupName>ShareDetails</GroupName>
+        <GroupDisplayName>Share Details</GroupDisplayName>
+        <DisplayOrder>100</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+      </Attribute>
+      <Attribute>
+        <AttributeName>Ipv4Netmask</AttributeName>
+        <DisplayName>IPv4 Netmask</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify the IPv4 IP address of the default Gateway used by the iSCSI initiator.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>Network Configuration</GroupDisplayName>
+        <DisplayOrder>1104</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <PoolType>IPv4</PoolType>
+	<DefaultValue>255.255.255.0</DefaultValue>
+        <Modifiers>
+          <BrowserSuppressed>No</BrowserSuppressed>
+          <BrowserRead>Yes</BrowserRead>
+          <BrowserWrite>Yes</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>Yes</ProgrammaticWrite>
+          <RegEx>^([0-9]{1,3}\.){3}[0-9]{1,3}$</RegEx>
+        </Modifiers>
+        <Min>7</Min>
+        <Max>15</Max>
+      </Attribute>
+      <Attribute>
+        <AttributeName>Ipv4Gateway</AttributeName>
+        <DisplayName>IPv4 Default Gateway</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify the IPv4 IP address of the default Gateway used by the iSCSI initiator.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>Network Configuration</GroupDisplayName>
+        <DisplayOrder>1110</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <PoolType>IPv4</PoolType>
+	<DefaultValue>192.168.0.1</DefaultValue>
+        <Modifiers>
+          <BrowserSuppressed>No</BrowserSuppressed>
+          <BrowserRead>Yes</BrowserRead>
+          <BrowserWrite>Yes</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>Yes</ProgrammaticWrite>
+          <RegEx>^([0-9]{1,3}\.){3}[0-9]{1,3}$</RegEx>
+        </Modifiers>
+        <Min>7</Min>
+        <Max>15</Max>
+      </Attribute>
+      <Attribute>
+        <AttributeName>TargetIPAddress</AttributeName>
+        <DisplayName>IP Address</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify the IP address of the first iSCSI target.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>iSCSI First Target Parameters</GroupDisplayName>
+        <DisplayOrder>1100</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <DefaultValue>192.168.0.1</DefaultValue>
+        <PoolType>IPv4</PoolType>
+        <Modifiers>
+          <BrowserSuppressed>No</BrowserSuppressed>
+          <BrowserRead>Yes</BrowserRead>
+          <BrowserWrite>Yes</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>Yes</ProgrammaticWrite>
+          <RegEx>^([0-9]{1,3}\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$</RegEx>
+        </Modifiers>
+        <Min>2</Min>
+        <Max>39</Max>
+      </Attribute>
+      <Attribute>
+        <AttributeName>EnableDHCP</AttributeName>
+        <DisplayName>EnableDHCP</DisplayName>
+        <AttributeType>Enumeration</AttributeType>
+        <HelpText>Indicates whether Dell FlexAddressing feature is supported.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>Main Configuration Page</GroupDisplayName>
+        <DisplayOrder>1120</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+        <AttributeValue>
+          <ValueName>True</ValueName>
+          <DisplayValueName>True</DisplayValueName>
+        </AttributeValue>
+        <AttributeValue>
+          <ValueName>False</ValueName>
+          <DisplayValueName>False</DisplayValueName>
+        </AttributeValue>
+      </Attribute>
+      <Attribute>
+        <AttributeName>EnableDNS</AttributeName>
+        <DisplayName>EnableDNS</DisplayName>
+        <AttributeType>Enumeration</AttributeType>
+        <HelpText>Indicates whether Dell FlexAddressing feature is supported.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>Main Configuration Page</GroupDisplayName>
+        <DisplayOrder>1125</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+        <AttributeValue>
+          <ValueName>True</ValueName>
+          <DisplayValueName>True</DisplayValueName>
+        </AttributeValue>
+        <AttributeValue>
+          <ValueName>False</ValueName>
+          <DisplayValueName>False</DisplayValueName>
+        </AttributeValue>
+      </Attribute>
+      <Attribute>
+        <AttributeName>DNS1Server</AttributeName>
+        <DisplayName>DNS Server 1</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify the IP address of the first iSCSI target.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>iSCSI First Target Parameters</GroupDisplayName>
+        <DisplayOrder>1130</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <DefaultValue>0.0.0.0</DefaultValue>
+        <PoolType>IPv4</PoolType>
+        <Modifiers>
+          <BrowserSuppressed>No</BrowserSuppressed>
+          <BrowserRead>Yes</BrowserRead>
+          <BrowserWrite>Yes</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>Yes</ProgrammaticWrite>
+          <RegEx>^([0-9]{1,3}\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$</RegEx>
+        </Modifiers>
+        <Min>2</Min>
+        <Max>39</Max>
+      </Attribute>
+      <Attribute>
+        <AttributeName>DNS2Server</AttributeName>
+        <DisplayName>DNS Server 2</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify the IP address of the first iSCSI target.</HelpText>
+        <GroupName>NetworkConfiguration</GroupName>
+        <GroupDisplayName>iSCSI First Target Parameters</GroupDisplayName>
+        <DisplayOrder>1135</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <DefaultValue>0.0.0.0</DefaultValue>
+        <PoolType>IPv4</PoolType>
+        <Modifiers>
+          <BrowserSuppressed>No</BrowserSuppressed>
+          <BrowserRead>Yes</BrowserRead>
+          <BrowserWrite>Yes</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>Yes</ProgrammaticWrite>
+          <RegEx>^([0-9]{1,3}\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$</RegEx>
+        </Modifiers>
+        <Min>2</Min>
+        <Max>39</Max>
+      </Attribute>
+ <Attribute>
+        <AttributeName>OSName</AttributeName>
+        <DisplayName>OSName</DisplayName>
+        <AttributeType>Enumeration</AttributeType>
+        <HelpText>Indicates whether Dell FlexAddressing feature is supported.</HelpText>
+        <GroupName>OSDetails</GroupName>
+        <GroupDisplayName>Main Configuration Page</GroupDisplayName>
+        <DisplayOrder>134</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+        <AttributeValue>
+          <ValueName>ESXI</ValueName>
+          <DisplayValueName>ESXI</DisplayValueName>
+        </AttributeValue>
+        <AttributeValue>
+          <ValueName>Red Hat Enterprise Linux</ValueName>
+          <DisplayValueName>Red Hat Enterprise Linux</DisplayValueName>
+        </AttributeValue>
+</Attribute>
+ <Attribute>
+        <AttributeName>OSVersion</AttributeName>
+        <DisplayName>OSVersion</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Indicates whether Dell FlexAddressing feature is supported.</HelpText>
+        <GroupName>OSDetails</GroupName>
+        <GroupDisplayName>Main Configuration Page</GroupDisplayName>
+        <DisplayOrder>135</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+	</Attribute>
+	<Attribute>
+        <AttributeName>RootPassword</AttributeName>
+        <DisplayName>RootPassword</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Indicates whether Dell FlexAddressing feature is supported.</HelpText>
+        <GroupName>RootCredentials</GroupName>
+        <GroupDisplayName>Main Configuration Page</GroupDisplayName>
+        <DisplayOrder>139</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+</Attribute>
+    </REGISTRY_ENTRIES>
+  </REGISTRY>

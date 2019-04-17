@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <REGISTRY xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <REGISTRY_DECLARATION>
+      <IDENTIFICATION NAME="Dell Attribute Registry" VERSION="1.0.0" LANGUAGE="en"/>
+      <SPECIFICATION NAME="Update Source" VERSION="1.3.0"/>
+      <CIM_SCHEMA VERSION="2.17.0"/>
+      <OWNING_ENTITY NAME="Dell"/>
+      <EDITOR EMAIL="Dell_Support@Dell.com" NAME="Dell Support" ORGANIZATION="Dell"/>
+      <DESCRIPTION>This Registry defines a representation of system hardware or firmware Attribute instances, such as BIOS or NIC Attributes, as defined by Dell.</DESCRIPTION>
+    </REGISTRY_DECLARATION>
+    <REGISTRY_ENTRIES>
+      <Attribute>
+        <AttributeName>UpdateSource</AttributeName>
+        <DisplayName>Update Source</DisplayName>
+        <AttributeType>String</AttributeType>
+        <HelpText>Specify whether SPMA or FPMA addressing will be used for FCoE transactions.</HelpText>
+        <GroupName>Update Source</GroupName>
+        <GroupDisplayName>Update Source</GroupDisplayName>
+        <DisplayOrder>100</DisplayOrder>
+        <IsReadOnly>false</IsReadOnly>
+        <ExpertiseLevel>Typical</ExpertiseLevel>
+	<PoolType>Console:UpdateSource.Name</PoolType>
+        <Modifiers>
+          <BrowserSuppressed>Yes</BrowserSuppressed>
+          <BrowserRead>No</BrowserRead>
+          <BrowserWrite>No</BrowserWrite>
+          <ProgrammaticRead>Yes</ProgrammaticRead>
+          <ProgrammaticWrite>No</ProgrammaticWrite>
+        </Modifiers>
+      </Attribute>
+    </REGISTRY_ENTRIES>
+  </REGISTRY>

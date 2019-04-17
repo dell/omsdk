@@ -1,0 +1,375 @@
+{
+   "System": {
+    "Key": ["ServiceTag"],
+    "ConfigState": [],
+    "MainHealth": ["PrimaryStatus"],
+    "BasicInventory": [
+       "SysObjectID",
+       "Model",
+       "Location",
+       "Description",
+       "FirmwareVersion",
+       "NetwUMACAddress",
+       "NetwUStatus",
+       "NetwUSerialNo",
+       "NetwUPartNo",
+       "PPID",
+       "ExpressServiceCode",
+       "Hostname",
+       "ManagementIP",
+       "HWVersion",
+       "SwitchType",
+       "SwitchIPv4",
+       "SwitchIPv6"
+    ],
+    "Metrics": ["SwitchUptime"]
+  },
+  "Card": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [
+      "ExpServiceCode",
+      "Type",
+      "PPIDRevision",
+      "CountryCode",
+      "PartNum",
+      "ProductRev",
+      "VendorId",
+      "Temp",
+      "ProductOrder",
+      "PiecePartID",
+      "ServiceTag",
+      "MfgDate",
+      "NumOfPorts"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "ChassisIndex",
+      "Description"
+    ],
+    "Metrics": []
+  },
+  "Chassis": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "ExpServiceCode",
+      "Type",
+      "NumSlots",
+      "PPIDRev",
+      "MacAddr",
+      "CountryCode",
+      "NumLineCardSlots",
+      "PartNum",
+      "NumPowerSupplies",
+      "NumFanTrays",
+      "VendorId",
+      "SerialNumber",
+      "ProductRev",
+      "ServiceTag",
+      "MfgDate",
+      "WebURL"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "CpuUtil": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "5Min",
+      "1Min",
+      "5Sec"
+    ],
+    "Key": [ "_SNMPIndex", "Name" ],
+    "Metrics": [
+      "MemUsage",
+      "CpuFlashUsage"
+    ]
+  },
+  "FanTray": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "ExpressServiceCode",
+      "PiecePartID",
+      "ServiceTag",
+      "PPIDRevision",
+      "Type",
+      "Speed",
+      "FanDeviceIndex"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "Fan": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Index",
+      "Speed"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Description"
+    ]
+  },
+  "Port": {
+    "Key": [
+      "ifIndex",
+      "Description"
+    ],
+    "Health": ["Status"],
+    "Inventory": [
+      "Type",
+      "Address",
+      "SysIfName",
+      "Class"
+    ],
+    "Metrics": [
+      "ifInOctets",
+      "ifOutOctets",
+      "ifInDiscards",
+      "ifOutDiscards",
+      "ifInErrors",
+      "ifOutErrors",
+      "ifInUnknownProtos",
+      "ifSpeed"
+    ]
+  },
+  "Flash": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "PartitionUsed",
+      "PartitionMountPoint",
+      "PartitionFree",
+      "PartitionSize",
+      "PartitionNumber",
+      "PartitionName"
+    ],
+    "Key": [ "_SNMPIndex", "Name" ],
+    "Metrics": []
+  },
+  "PE": {
+    "ConfigState": [],
+    "Health": [
+      "Status"
+    ],
+    "Inventory": [
+      "ExpServiceCode",
+      "Type",
+      "PPIDRevision",
+      "CountryCode",
+      "PartNum",
+      "NumPluggableModules",
+      "NumPowerSupplies",
+      "ProductRev",
+      "NumFanTrays",
+      "VendorId",
+      "Temp",
+      "ProductOrder",
+      "PEID",
+      "PiecePartID",
+      "UnitID",
+      "ServiceTag",
+      "MfgDate",
+      "NumOfPorts"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Description"
+    ],
+    "Metrics": []
+  },
+  "PEBinding": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [],
+    "Key": [
+      "_SNMPIndex",
+      "PEBindCascadePortIfIndex",
+      "PEBindPEIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "PowerSupply": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Index",
+      "Source"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Description"
+    ]
+  },
+  "PowerSupplyTray": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Type",
+      "FQDD",
+      "ExpressServiceCode",
+      "ServiceTag",
+      "PiecePartID",
+      "PPIDRevision",
+      "PowerDeviceType",
+      "PowerDeviceIndex"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "Processor": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "Module",
+      "UpTime",
+      "DeviceType",
+      "AvailableMemSize",
+      "Index"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "StackPort": {
+    "ConfigState": [],
+    "Health": [
+      "LinkStatus"
+    ],
+    "Inventory": [
+      "RxTotalErrors",
+      "LinkSpeed",
+      "ConfiguredMode",
+      "RxDataRate",
+      "RxErrorRate",
+      "TxDataRate",
+      "TxTotalErrors",
+      "TxErrorRate",
+      "RunningMode"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "StackUnit": {
+    "ConfigState": [],
+    "Health": [
+      "MgmtStatus",
+      "Status"
+    ],
+    "Inventory": [
+      "BladeSlotId",
+      "NumOfPorts",
+      "NumPluggableModules",
+      "ProductRev",
+      "NumPowerSupplies",
+      "SerialNumber",
+      "Number",
+      "IOMMode",
+      "PPIDRevision",
+      "ServiceTag",
+      "ModelId",
+      "CodeVersion",
+      "ExpServiceCode",
+      "MacAddress",
+      "CountryCode",
+      "HwMgmtPreference",
+      "PartNum",
+      "VendorId",
+      "NumFanTrays",
+      "Temp",
+      "UpTime",
+      "PiecePartID",
+      "ProductOrder",
+      "AdmMgmtPreference",
+      "MfgDate"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Description"
+    ],
+    "Metrics": []
+  },
+  "SwModule": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "RuntimeImgDate",
+      "RuntimeImgVersion",
+      "NextRebootImage",
+      "InPartitionAImgVers",
+      "BootFlashImgVersion",
+      "BootSelectorImgVersion",
+      "InPartitionBImgVers"
+    ],
+    "Key": [ "_SNMPIndex", "Name" ],
+    "Metrics": [
+      "CurrentBootImage"
+    ]
+  },
+  "SysCores": {
+    "ConfigState": [],
+    "Health": [],
+    "Inventory": [
+      "Instance",
+      "Process",
+      "TimeCreated",
+      "StackUnitNumber",
+      "FileName"
+    ],
+    "Key": [ "_SNMPIndex", "Name" ],
+    "Metrics": []
+  },
+  "SysIf": {
+    "ConfigState": [],
+    "Health": [
+      "AdminStatus",
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Type",
+      "XfpRecvPower",
+      "XfpRecvTemp",
+      "XfpTxPower"
+    ],
+    "Key": [ "_SNMPIndex", "Name" ],
+    "Metrics": []
+  },
+   "Subsystem" : {
+        "Key" : ["Key"],
+        "MainHealth" : [ "PrimaryStatus" ],
+        "OtherHealth" : [ ]
+    },
+   "EntityPortMap": {
+       "Key" : [ "ifIndex" ],
+       "Inventory" : [ "Class" ]
+   }
+}

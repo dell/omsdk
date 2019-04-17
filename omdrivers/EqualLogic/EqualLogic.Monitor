@@ -1,0 +1,159 @@
+{
+  "System" : {
+    "Key": [ "_SNMPIndex" ],
+    "ConfigState": [ ],
+    "MainHealth": [ ],
+    "BasicInventory": [
+      "GroupName",
+      "GroupIP",
+      "MemberCount",
+      "VolumeCount",
+      "GroupURL",
+      "RAIDPolicy",
+      "StoragePool",
+      "SysName",
+      "DeviceType"
+    ],
+    "Metrics": []
+  },  
+  "Member" : {
+    "Key": [ "_SNMPIndex" ],
+    "ConfigState": [ ],
+    "MainHealth": [ "PrimaryStatus" ],
+    "BasicInventory": [
+      "Name",
+      "ProductFamily",
+      "ServiceTag",
+      "Model",
+      "ChassisType",
+      "DiskCount",
+      "RaidStatus",
+      "ControllerMajorVersion",
+      "ControllerMinorVersion",
+      "RAIDPolicy",
+      "GroupName",
+      "GroupIP",
+      "ControllerMaintenanceVersion",
+      "StoragePool",
+      "EqlDriveGroupStoragePoolIndex"
+    ],
+    "Metrics": [ "Capacity", "UsedStorage" ],
+    "PrimaryStatus" : {
+      "0" : "Unknown",
+      "1" : "Healthy",
+      "2" : "Warning",
+      "3" : "Critical"
+    },
+    "ChassisType" : {
+      "0" : "unknown",
+      "1" : "t1403",
+      "2" : "t1603",
+      "3" : "t4835",
+      "4" : "tDELLSBB2u1235",
+      "5" : "tDELLSBB2u2425",
+      "6" : "tDELLSBB4u2435",
+      "7" : "tDELL2WB1425V1",
+      "8" : "tDELLSBB5u6035",
+      "9" : "tDELLQAR5u8435"
+    },
+    "RaidStatus" : {
+     "1" : "Ok",
+     "2" : "Degraded",
+     "3" : "Verifying",
+     "4" : "Reconstructing",
+     "5" : "Failed",
+     "6" : "CatastrophicLoss",
+     "7" : "Expanding",
+     "8" : "Mirroring"
+    },
+    "RaidPolicy" : {
+      "0" : "Unconfigured",
+      "1" : "RAID 50",
+      "2" : "RAID 10",
+      "3" : "RAID 5",
+      "4" : "RAID 50-nospares",
+      "5" : "RAID 10-nospares",
+      "6" : "RAID 5-nospares",
+      "7" : "RAID 6",
+      "8" : "RAID 6-nospares",
+      "9" : "RAID 6-accelerated",
+      "10" : "Hvs-storage"
+    }
+  },
+  "Volume": {
+    "Key": [ "_SNMPIndex" ],
+    "ConfigState": [],
+    "MainHealth": [ "PrimaryStatus" ],
+    "BasicInventory": [
+      "Name",
+      "TotalSize",
+      "AssociatedPool"
+    ],
+    "Metrics": []
+  },  
+  "PhysicalDisk": {
+    "Key": [ 
+      "_SNMPIndex"
+    ],
+    "MainHealth": [ "Status" ],
+    "BasicInventory": [
+      "Slot",
+      "Model",
+      "SerialNumber",
+      "FirmwareVersion",
+      "TotalSize"
+    ],
+    "ConfigState": [],
+    "Metrics": [],
+    "Status" : {
+      "1" : "online",
+      "2" : "spare",
+      "3" : "failed",
+      "4" : "offline",
+      "5" : "alt-sig",
+      "6" : "too-small",
+      "7" : "history-of-failures",
+      "8" : "unsupported-version",
+      "9" : "unhealthy",
+      "10" : "replacement",
+      "11" : "encrypted",
+      "12" : "notApproved",
+      "13" : "preempt-failed"
+    },
+    "PrimaryStatus" : {
+      "1" : "Healthy",
+      "2" : "Healthy",
+      "3" : "Critical",
+      "4" : "Warning",
+      "5" : "Healthy",
+      "6" : "Critical",
+      "7" : "Warning",
+      "8" : "Critical",
+      "9" : "Warning",
+      "10" : "Healthy",
+      "11" : "Healthy",
+      "12" : "Warning",
+      "13" : "Critical"
+    }
+  },
+  "StoragePool": {
+    "Key": [ "_SNMPIndex" ],
+    "MainHealth": [  ],
+    "BasicInventory": [
+      "StorageName",
+      "MemberCount",
+      "VolumeCount"
+    ],
+    "ConfigState": [],
+    "Metrics": []
+  },
+  "InetAddr" : {
+    "Key": [ "_SNMPIndex" ],
+    "MainHealth": [ ],
+    "BasicInventory": [
+      "EntityName"
+    ],
+    "ConfigState": [],
+    "Metrics": []
+  }
+}

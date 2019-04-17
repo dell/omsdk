@@ -1,0 +1,236 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_VirtualDiskView
+// ==================================================================
+      [Description(
+          "DCIM_VirtualDiskView is a derivation of DCIM_View") ]
+class DCIM_VirtualDiskView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          "instance to define a user-friendly name in addition to its key "
+          "properties, identity data, and description information. "
+          )]
+  string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information. "
+          )]
+  string FQDD;   
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+  string DeviceDescription;   
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide "
+          "high level and detailed health status of the virtual disk and "
+          "its subcomponents. PrimaryStatus consists of one of the "
+          "following values: Unknown, OK, Degraded or Error. \"Unknown\" "
+          "indicates the implementation is in general capable of returning "
+          "this property, but is unable to do so at this time. \"OK\" "
+          "indicates the virtual disk is functioning normally. "
+          "\"Degraded\" indicates the virtual disk is functioning "
+          "below normal. \"Error\" indicates the virtual disk is "
+          "in an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+  uint32 PrimaryStatus;                         
+
+      [Description (
+          "RollupStatus provides a high level status value, intended to "
+          "align with Red-Yellow-Green type representation of status. "
+          "It should be used to provide "
+          "high level and detailed health status of the enclosure and "
+          "its subcomponents. PrimaryStatus consists of one of the following "
+          "values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the "
+          "implementation is in general capable of returning this property, "
+          "but is unable to do so at this time. \"OK\" indicates the "
+          "enclosure is functioning normally. \"Degraded\" indicates the "
+          "enclosure is functioning below normal. \"Error\" indicates the "
+          "enclosure is in an Error condition. " ),
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+  uint32 RollupStatus;
+
+      [Description (
+          "RaidTypes provides information about the RAID level that is "
+          "configured on the Virtual Disk. It can have one of the following "
+          "values: \"No RAID\", \"RAID0\", \"RAID1\",  "
+          "\"RAID5\", \"RAID6\", "
+          "\"RAID10\", \"RAID50\", \"RAID60\" "),
+        ValueMap { "1", "2", "4", "64", "128", "2048", "8192", "16384" },
+        Values { "No RAID", "RAID0", "RAID1", "RAID5", "RAID6","RAID10", 
+                 "RAID50", "RAID60"}]
+  uint32 RAIDTypes;              
+
+      [Description (
+          "Raid status provides a status value "
+          "RaidStatus consists of one of the following values: \"Unknown\" "
+          "\"Ready\" \"Online\" \"Foreign\" \"Offline\" \"Blocked\" "
+          "\"Failed\" \"Degraded\" "),
+       ValueMap { "0", "1", "2", "3", "4", "5", "6", "7" },
+       Values { "Unknown", "Ready", "Online", "Foreign", "Offline",
+                "Blocked", "Failed", "Degraded" }]
+  uint32 RAIDStatus;  
+  
+      [Description (
+          "Read Cache policy of the virtual disk provides information "
+          "regarding the way in which the disk cache reads data "
+          "It can have one of the following values: \"Unknown\" "
+          "\"No Read Ahead\", \"Read Ahead\", \"Adaptive Read Ahead\" "),
+       ValueMap { "0", "16", "32", "64" },
+       Values { "Unknown", "No Read Ahead", "Read Ahead", "Adaptive Read Ahead" }]
+  uint32 ReadCachePolicy;
+
+      [Description (
+          "Write cache policy of the virtual disk provides information "
+          "regarding the way in which the disk cache the write data"
+          "It can have one of the following values: \"Unknown\" "
+          "\"Write Through\", \"Write Back\", \"Write Back force\" "),
+        ValueMap { "0", "1", "2", "4" },
+        Values { "Unknown", "Write Through", "Write Back", "Write Back Force" }]
+  uint32 WriteCachePolicy;
+
+      [Description (
+          "This is the size of the virtual disk ")]
+  uint64 SizeInBytes;
+
+      [Description (
+          "This is the block size of the physical disks in the virtual disk ")]
+  uint32 BlockSizeInBytes;
+
+      [Description (
+          "Stripe size is the size of the stripe on a physical disk that "
+          "contributes to the virtual disk. The stripe size can be specified "
+          " in bytes or kilobytes or megabytes. The Stripe size can have one "
+          "of the folllowing values: \"Default\", \"512B\", \"1KB\", \"2KB\" "
+          "\"4KB\", \"8KB\", \"16KB\", \"32KB\", \"64KB\", \"128KB\", "
+          "\"256KB\" "
+          "\"512KB\", \"1MB\", \"2MB\", \"4MB\", \"8MB\", \"16MB\" "),
+        ValueMap { "0", "1", "2", "4", "8", "16", "32", "64", "128", "256",
+                    "512", "1024", "2048", "4096", "8192", "16384", "32768" },
+        Values { "Default", "512B", "1KB", "2KB", "4KB", "8KB", "16KB",
+                 "32KB", "64KB", "128KB", "256KB","512KB", "1MB", "2MB",
+                 "4MB", "8MB", "16MB" }]
+  uint32 StripeSize;
+
+      [Description (
+          "This property provides the name used in the "
+          "system for the virtual disk. " )]
+  string Name;
+
+      [Description (
+          "Spanlength gives the number of physical disks used in "
+          "creating the virtual disk. ")]
+  uint32 SpanLength;
+
+      [Description (
+          "This Property gives the number of spans of the physical disk that "
+          "are performed to create a virtual disk ")]
+  uint32 SpanDepth;
+
+      [Description (
+          "Array of Fully Qualified Device Descriptors (FQDDs) " 
+          "of the Physical Disk that are used to create this virtual Disks "
+          "including dedicated hot spares "
+          "The array should not be empty. "),
+         ArrayType ("indexed")]
+  string PhysicalDiskIDs[]; 
+
+      [Description (
+          "Targert ID for the virtual disk. ")]
+  uint32 VirtualDiskTargetID;
+
+      [Description (
+          "This property gives information about the "
+          "remaining redundancy of the virtual disk. " )]
+  uint16 RemainingRedundancy;
+  
+      [Description (
+          "Disk Cache Policy of the virtual disk "
+          "provides information about caching techniques "
+          "used by the Virtual Disk. The Policy dictates "
+          "how the read and write accesses to the Virtual disk are cached. "
+          "The cache policy can have one of the following values: \"Default\" "
+          "\"Enabled\" , \"Disabled\" "),
+        ValueMap { "0", "256", "512", "1024" },
+        Values { "Unknown", "Default", "Enabled", "Disabled" }]
+  uint32 DiskCachePolicy;
+
+      [Description (
+          "This property gives information about the virtual "
+          "disk configuration state"),
+          ValueMap { "0", "1", "2", "3" },
+          Values { "Current", "Pending", "Current Virtual Disk Pending Delete", "Pending Create" }]
+  uint8 ObjectStatus;
+
+      [Description (
+          "This gives the starting logical block address in blocks "
+          "for the virtual disk. ")]
+  uint64 StartingLBAinBlocks;
+
+      [Description (
+          "The property indicates if this Virtual Disk"
+          "is used as Cachecade"),
+          ValueMap { "0", "1" },
+          Values { "Not a Cachecade Virtual Disk", "Cachecade Virtual Disk" }]
+  uint8 Cachecade;
+
+      [Description (
+          "The property indicates if this Virtual Disk is locked"),
+          ValueMap { "0", "1" },
+          Values { "Unlocked", "Locked" }]
+  uint8 LockStatus;
+
+      [Description (
+          "T10PIStatus indicates whether the Virtual Disk is"
+          "T10 Protection Information Enabled."),
+       ValueMap {"0", "1"},
+       Values{" T10 PI Enabled", "T10 PI Disabled"}]
+  uint8 T10PIStatus;
+  
+      [Description (
+          "The property indicates the operation running on the VirtualDisk "
+          "When there is no operation the property value will be \"None\" ")]
+  string OperationName;
+
+      [Description (
+          "The property indicates the progress of the operation specified "
+          "OperationName property. The value will indicate the completion "
+          "percentage")]
+  uint8 OperationPercentComplete;
+
+      [Description (
+          "Bus protocol used by the physical disc. "
+          "The Protocol used can be one of following: \"Unknown\", "
+          " \"SCSI\", \"PATA\", \"FIBRE\", \"USB\", \"SATA\", \"SAS\" "),
+       ValueMap { "0", "1", "2", "3", "4", "5", "6" },
+       Values { "Unknown", "SCSI", "PATA", "FIBRE", "USB", "SATA", "SAS" }]
+  uint32 BusProtocol;
+
+      [Description (
+          "This field indicates Type of the physical disk "
+          "The physical disk type can be: \"Unknown\", \"Hard Disk Drive\" "
+          "\"Solid State Drive\" "),
+        ValueMap { "0", "1", "2"},
+        Values { "Unknown", "Hard Disk Drive", "Solid State Drive" }]
+  uint32 MediaType;
+
+      [Description (
+          "This property will indicate all the pending operations."
+          "The array should not be empty. "),
+        ValueMap { "0", "1", "2", "3" },
+        Values { "None", "Fast Init", "Current Virtual Disk Pending Delete", "Pending Create" }]
+  uint8 PendingOperations[]; 
+
+};

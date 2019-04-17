@@ -1,0 +1,1155 @@
+{
+    "$ref": "#/definitions/RAID",
+    "$schema": "omdrivers\\iDRAC\\xml\\RAID.xml",
+    "definitions": {
+        "BackplaneTypeTypes": {
+            "enum": [
+                "Shared",
+                "Not Shared"
+            ],
+            "enumDescriptions": [
+                "Shared",
+                "Not Shared"
+            ],
+            "type": "enumeration"
+        },
+        "CachecadeTypes": {
+            "enum": [
+                "Cachecade Virtual Disk",
+                "Not a Cachecade Virtual Disk"
+            ],
+            "enumDescriptions": [
+                "Cachecade Virtual Disk",
+                "Not a Cachecade Virtual Disk"
+            ],
+            "type": "enumeration"
+        },
+        "CurrentControllerModeTypes": {
+            "enum": [
+                "RAID",
+                "HBA"
+            ],
+            "enumDescriptions": [
+                "RAID",
+                "HBA"
+            ],
+            "type": "enumeration"
+        },
+        "DiskCachePolicyTypes": {
+            "enum": [
+                "Default",
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Default",
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "EncryptionModeTypes": {
+            "enum": [
+                "None",
+                "Local Key Management",
+                "Dell Key Management"
+            ],
+            "enumDescriptions": [
+                "None",
+                "Local Key Management",
+                "Dell Key Management"
+            ],
+            "type": "enumeration"
+        },
+        "LockStatusTypes": {
+            "enum": [
+                "Unlocked",
+                "Locked"
+            ],
+            "enumDescriptions": [
+                "Unlocked",
+                "Locked"
+            ],
+            "type": "enumeration"
+        },
+        "PCIeSSDSecureEraseTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "enumeration"
+        },
+        "RAID": {
+            "config_groups": {
+                "Controller": [
+                    "RAIDbatteryLearnMode",
+                    "RAIDbgiRate",
+                    "RAIDccMode",
+                    "RAIDccRate",
+                    "RAIDcopybackMode",
+                    "RAIDloadBalancedMode",
+                    "RAIDMaxCapableSpeed",
+                    "RAIDmaxPDsInSpan",
+                    "RAIDmaxSpansInVD",
+                    "RAIDmaxSupportedVD",
+                    "RAIDprMode",
+                    "RAIDprRate",
+                    "RAIDrebuildRate",
+                    "RAIDreconstructRate",
+                    "RAIDsupportedDiskProt",
+                    "RAIDSupportedRAIDLevels",
+                    "RAIDspinDownIdleTime",
+                    "RAIDNegotiatedSpeed",
+                    "RAIDAssetTag",
+                    "EncryptionMode",
+                    "KeyID",
+                    "NewControllerKey",
+                    "OldControllerKey",
+                    "RAIDforeignConfig",
+                    "RAIDrekey",
+                    "RAIDremovecontrollerKey",
+                    "RAIDresetConfig",
+                    "RAIDEnhancedAutoImportForeignConfig",
+                    "RAIDControllerBootMode",
+                    "CurrentControllerMode",
+                    "BackplaneType"
+                ],
+                "Enclosure": [
+                    "RAIDEffectiveSASAddress",
+                    "RAIDEnclosureRequestedCfgMode",
+                    "RAIDEnclosureCurrentCfgMode"
+                ],
+                "PhysicalDisk": [
+                    "RAIDPDState",
+                    "RAIDHotSpareStatus",
+                    "RAIDNominalMediumRotationRate",
+                    "PCIeSSDSecureErase"
+                ],
+                "VirtualDisk": [
+                    "RAIDdefaultWritePolicy",
+                    "RAIDdefaultReadPolicy",
+                    "DiskCachePolicy",
+                    "Name",
+                    "Cachecade",
+                    "IncludedPhysicalDiskID",
+                    "LockStatus",
+                    "RAIDaction",
+                    "RAIDdedicatedSpare",
+                    "RAIDinitOperation",
+                    "RAIDTypes",
+                    "Size",
+                    "SpanDepth",
+                    "SpanLength",
+                    "StripeSize",
+                    "T10PIStatus"
+                ]
+            },
+            "properties": {
+                "BackplaneType": {
+                    "baseType": "enum",
+                    "description": "Backplane Type",
+                    "longDescription": "This indicates enclosures type.",
+                    "modDeleteAllowed": true,
+                    "name": "BackplaneType",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "BackplaneTypeTypes",
+                    "uneditable": false
+                },
+                "Cachecade": {
+                    "baseType": "enum",
+                    "description": "Cachecade State",
+                    "longDescription": "This attribute represents the cachecade state of the virtual disk. It can be modified to create a cachecaded virtual disk using XML configuration feature. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "Cachecade",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "CachecadeTypes",
+                    "uneditable": false
+                },
+                "CurrentControllerMode": {
+                    "baseType": "enum",
+                    "description": "Current Controller Mode",
+                    "longDescription": "This indicates controllers current personaility mode , which could be RAID or Non-RAID. ",
+                    "modDeleteAllowed": true,
+                    "name": "CurrentControllerMode",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "CurrentControllerModeTypes",
+                    "uneditable": false
+                },
+                "DiskCachePolicy": {
+                    "baseType": "enum",
+                    "default": "Default",
+                    "description": "Disk Cache Policy",
+                    "longDescription": "Set the physical disk caching policy of all members of a Virtual Disk by enabling the Disk Cache Policy. When this feature is enabled, the physical disk writes data to the physical disk cache before writing it to the physical disk. Because it is faster to write data to the cache than to a disk, enabling this feature can improve system performance.",
+                    "modDeleteAllowed": true,
+                    "name": "DiskCachePolicy",
+                    "qualifier": "VirtualDisk",
+                    "readonly": false,
+                    "type": "DiskCachePolicyTypes",
+                    "uneditable": false
+                },
+                "EncryptionMode": {
+                    "baseType": "enum",
+                    "description": "Controller Encryption Mode",
+                    "longDescription": "This attribute represents encryption mode on the controller. It could be used to set the encryption mode to Local Key Management or Dell Key Management on the controller through XML configuration feature.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "EncryptionMode",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "EncryptionModeTypes",
+                    "uneditable": false
+                },
+                "IncludedPhysicalDiskID": {
+                    "baseType": "ListField",
+                    "description": "Physical Disk ID",
+                    "longDescription": "This is a pseudo attribute for XML configuration feature. It is used for specifying physical disk FQDD for creating a virtual disk. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "IncludedPhysicalDiskID",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "KeyID": {
+                    "baseType": "str",
+                    "description": "Key identifier",
+                    "longDescription": "This attribute represents the controller key identifier for Local Key Management or Dell Key Management controller encryption modes. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "KeyID",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "LockStatus": {
+                    "baseType": "enum",
+                    "description": "Lock Status",
+                    "longDescription": "This attribute represents security status of the virtual disk. It is used to secure a virtual disk using XML configuration feature. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "LockStatus",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "LockStatusTypes",
+                    "uneditable": false
+                },
+                "Name": {
+                    "baseType": "str",
+                    "description": "Name",
+                    "longDescription": "Diplays the name associated with a Virtual Disk.",
+                    "modDeleteAllowed": true,
+                    "name": "Name",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "NewControllerKey": {
+                    "baseType": "str",
+                    "description": "New Controller Key",
+                    "longDescription": "This attribute represents the controller passphrase for Local Key Management encryption mode. This is used during a ReKey operation to specify the new controller key. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "NewControllerKey",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "OldControllerKey": {
+                    "baseType": "str",
+                    "description": "Old Controller Key",
+                    "longDescription": "This attribute represents the controller passphrase for Local Key Management encryption mode. This is used during a ReKey operation to specify the old controller key. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "OldControllerKey",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "PCIeSSDSecureErase": {
+                    "baseType": "enum",
+                    "default": "False",
+                    "description": "Full InitialIzation",
+                    "longDescription": "Performs full initialization on the selected physical device. This operation deletes all data on the device.",
+                    "modDeleteAllowed": true,
+                    "name": "PCIeSSDSecureErase",
+                    "qualifier": "PhysicalDisk",
+                    "type": "PCIeSSDSecureEraseTypes",
+                    "uneditable": false
+                },
+                "RAIDAssetTag": {
+                    "baseType": "str",
+                    "description": "Asset Tag",
+                    "longDescription": "Displays the Asset Tag information for the enclosure.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDAssetTag",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDControllerBootMode": {
+                    "baseType": "enum",
+                    "description": "Controller Boot Mode",
+                    "longDescription": "This indicates the current BootMode setting of the Controller. Configurable via XML configuration feature only.\n",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDControllerBootMode",
+                    "qualifier": "Controller",
+                    "type": "RAIDControllerBootModeTypes",
+                    "uneditable": false
+                },
+                "RAIDEffectiveSASAddress": {
+                    "baseType": "str",
+                    "description": "Effective SAS Address",
+                    "longDescription": "This attribute represents the effective SAS Address of an enclosure.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDEffectiveSASAddress",
+                    "qualifier": "Enclosure",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDEnclosureCurrentCfgMode": {
+                    "baseType": "enum",
+                    "description": "Enclosure Current Configuration Mode",
+                    "longDescription": "This indicates enclosures current configuration mode setting",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDEnclosureCurrentCfgMode",
+                    "qualifier": "Enclosure",
+                    "readonly": true,
+                    "type": "RAIDEnclosureCurrentCfgModeTypes",
+                    "uneditable": false
+                },
+                "RAIDEnclosureRequestedCfgMode": {
+                    "baseType": "enum",
+                    "default": "None",
+                    "description": "Enclousre Requested Configuration Mode",
+                    "longDescription": "This indicates enclosures requested configuration mode setting.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDEnclosureRequestedCfgMode",
+                    "qualifier": "Enclosure",
+                    "readonly": false,
+                    "type": "RAIDEnclosureRequestedCfgModeTypes",
+                    "uneditable": false
+                },
+                "RAIDEnhancedAutoImportForeignConfig": {
+                    "baseType": "enum",
+                    "description": "Enhanced Import Foreign Configuration",
+                    "longDescription": "This indicates the current EnhancedAutoImportForeignConfig setting of the controller. Configurable via XML configuration feature only.\n",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDEnhancedAutoImportForeignConfig",
+                    "qualifier": "Controller",
+                    "type": "RAIDEnhancedAutoImportForeignConfigTypes",
+                    "uneditable": false
+                },
+                "RAIDHotSpareStatus": {
+                    "baseType": "enum",
+                    "default": "No",
+                    "description": "Hotspare Status",
+                    "longDescription": "On RAID controllers, a hot spare is a backup for a disk that fails. The attribute indicates whether a physical disk is Hot Spare and/or the type of hot spare.Configurable via XML configuration only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDHotSpareStatus",
+                    "qualifier": "PhysicalDisk",
+                    "readonly": true,
+                    "type": "RAIDHotSpareStatusTypes",
+                    "uneditable": false
+                },
+                "RAIDMaxCapableSpeed": {
+                    "baseType": "enum",
+                    "description": "Maximum Capable Speed",
+                    "longDescription": "This attribute represents the maximum link speed supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDMaxCapableSpeed",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "RAIDMaxCapableSpeedTypes",
+                    "uneditable": false
+                },
+                "RAIDNegotiatedSpeed": {
+                    "baseType": "enum",
+                    "default": "None",
+                    "description": "Negotiated Speed",
+                    "longDescription": "Negotiated Speed shows the speed of data transfer that the disk negotiated while spinning up and upon initial communication with the controller. This speed is dependent on the speed of the disk, the capable speed of the controller, the current speed of the controller on that connector, and the speed of the EMM (Enclosure Management Module) on the enclosure.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDNegotiatedSpeed",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "RAIDNegotiatedSpeedTypes",
+                    "uneditable": false
+                },
+                "RAIDNominalMediumRotationRate": {
+                    "baseType": "minmaxrange",
+                    "description": "Nominal Medium Rotation Rate",
+                    "longDescription": "This attribute represents the nominal medium rotation speed of a physical disk.",
+                    "max": "4294967295",
+                    "min": "2",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDNominalMediumRotationRate",
+                    "qualifier": "PhysicalDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDPDState": {
+                    "baseType": "enum",
+                    "description": "Physical Disk State",
+                    "longDescription": "Physical Disk State shows the state of Physical disk that is part of a Virtual Disk.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDPDState",
+                    "qualifier": "PhysicalDisk",
+                    "readonly": true,
+                    "type": "RAIDPDStateTypes",
+                    "uneditable": false
+                },
+                "RAIDSupportedRAIDLevels": {
+                    "baseType": "enum",
+                    "description": "Supported RAID Levels",
+                    "longDescription": "This attribute provides a list of RAID levels supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDSupportedRAIDLevels",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "RAIDSupportedRAIDLevelsTypes",
+                    "uneditable": false
+                },
+                "RAIDTypes": {
+                    "baseType": "enum",
+                    "description": "RAID Level",
+                    "longDescription": "This indicates the type of RAID level on the virtual disk. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDTypes",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "RAIDTypesTypes",
+                    "uneditable": false
+                },
+                "RAIDaction": {
+                    "baseType": "enum",
+                    "default": "Update",
+                    "description": "Action",
+                    "longDescription": "This pseudo attribute represents RAID action to be performed on the virtual disk. It is used to specify Delete, Create , CreateAuto or Update virtual disk operations. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDaction",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "RAIDactionTypes",
+                    "uneditable": false
+                },
+                "RAIDbatteryLearnMode": {
+                    "baseType": "enum",
+                    "default": "None",
+                    "description": "Battery Learn Mode",
+                    "longDescription": "Battery Learn Mode controls a RAID Controller's Battery Learn Cycle.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDbatteryLearnMode",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDbatteryLearnModeTypes",
+                    "uneditable": false
+                },
+                "RAIDbgiRate": {
+                    "baseType": "minmaxrange",
+                    "default": "100",
+                    "description": "Background Initialization Rate",
+                    "longDescription": "The Background Initialization (BGI) rate is the percentage of the system's resources dedicated to performing the background initialization of a virtual disk after it is created",
+                    "max": "100",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDbgiRate",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "RAIDccMode": {
+                    "baseType": "enum",
+                    "default": "Normal",
+                    "description": "Check Consistency Mode",
+                    "longDescription": "Check Consistency feature is used to verify the accuracy of the redundant (parity) information.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDccMode",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDccModeTypes",
+                    "uneditable": false
+                },
+                "RAIDccRate": {
+                    "baseType": "minmaxrange",
+                    "default": "100",
+                    "description": "Check Consistency Rate",
+                    "longDescription": "The Check Consistency rate is the percentage of the system's resources dedicated to performing a check consistency on a redundant virtual disk.",
+                    "max": "100",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDccRate",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "RAIDcopybackMode": {
+                    "baseType": "enum",
+                    "default": "On",
+                    "description": "Copyback Mode",
+                    "longDescription": "This attribute represents the mode of restoring configuration of a virtual disk when a failed physical disk is replaced in an array.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDcopybackMode",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDcopybackModeTypes",
+                    "uneditable": false
+                },
+                "RAIDdedicatedSpare": {
+                    "baseType": "enum",
+                    "description": "Dedicated Spare",
+                    "longDescription": "This pseudo attribute represents the dedicated spare to be assigned to a virtual disk. It could be set to physical disk FQDD to be assigned as a dedicated spare to the virtual disk. If a Spare is intended to be assigned when  RAIDaction is set as CreateAuto, this attribute value should be set to AutoSelect. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDdedicatedSpare",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "RAIDdedicatedSpareTypes",
+                    "uneditable": false
+                },
+                "RAIDdefaultReadPolicy": {
+                    "baseType": "enum",
+                    "default": "Adaptive",
+                    "description": "Read Policy",
+                    "longDescription": "The read policies indicate whether or not the controller should read sequential sectors of the virtual disk when seeking data.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDdefaultReadPolicy",
+                    "qualifier": "VirtualDisk",
+                    "readonly": false,
+                    "type": "RAIDdefaultReadPolicyTypes",
+                    "uneditable": false
+                },
+                "RAIDdefaultWritePolicy": {
+                    "baseType": "enum",
+                    "default": "WriteBack",
+                    "description": "Write Policy",
+                    "longDescription": "The write policies specify whether the controller sends a write-request completion signal as soon as the data is in the cache or after it has been written to disk.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDdefaultWritePolicy",
+                    "qualifier": "VirtualDisk",
+                    "readonly": false,
+                    "type": "RAIDdefaultWritePolicyTypes",
+                    "uneditable": false
+                },
+                "RAIDforeignConfig": {
+                    "baseType": "enum",
+                    "default": "Ignore",
+                    "description": "Foreign Configuration",
+                    "longDescription": "This pseudo attribute represents foreign configuration operation to be performed on the RAID controller via XML configuration feature.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDforeignConfig",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDforeignConfigTypes",
+                    "uneditable": false
+                },
+                "RAIDinitOperation": {
+                    "baseType": "enum",
+                    "default": "None",
+                    "description": "Initialization Operation",
+                    "longDescription": "This pseudo attribute represents initialization configuration operation to be performed on the virtual disk via XML configuration feature. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDinitOperation",
+                    "qualifier": "VirtualDisk",
+                    "readonly": false,
+                    "type": "RAIDinitOperationTypes",
+                    "uneditable": false
+                },
+                "RAIDloadBalancedMode": {
+                    "baseType": "enum",
+                    "default": "Automatic",
+                    "description": "Load Balanced Mode",
+                    "longDescription": "This attribute reprsents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDloadBalancedMode",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDloadBalancedModeTypes",
+                    "uneditable": false
+                },
+                "RAIDmaxPDsInSpan": {
+                    "baseType": "int",
+                    "description": "Maximum Physical Disks in Span",
+                    "longDescription": "This attribute represents the maximum number of Physical Disks in a single Span, as supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDmaxPDsInSpan",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDmaxSpansInVD": {
+                    "baseType": "int",
+                    "description": "Maximum Spans in Virtual Disk",
+                    "longDescription": "This attribute represents the maximum number of spans in a Virtual Disk, as supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDmaxSpansInVD",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDmaxSupportedVD": {
+                    "baseType": "int",
+                    "description": "Maximum Supported Virtual Disks",
+                    "longDescription": "This attribute represents the maximum number of virtual disks supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDmaxSupportedVD",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDprMode": {
+                    "baseType": "enum",
+                    "default": "Automatic",
+                    "description": "Patrol Read Mode",
+                    "longDescription": "Patrol Read is a feature for identifying disk errors in order to avoid disk failures and data loss or corruption. The Patrol Read only runs on disks that are being used in a virtual disk or that are hot spares.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDprMode",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDprModeTypes",
+                    "uneditable": false
+                },
+                "RAIDprRate": {
+                    "baseType": "minmaxrange",
+                    "default": "30",
+                    "description": "Patrol Read Rate",
+                    "longDescription": "The Patrol Read Rate is the percentage of the system's resources dedicated to perform Patrol Read.",
+                    "max": "100",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDprRate",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDrebuildRate": {
+                    "baseType": "minmaxrange",
+                    "default": "100",
+                    "description": "Rebuild Rate",
+                    "longDescription": "The Rebuild Rate is the percentage of the system's resources dedicated to rebuilding a failed disk when a rebuild is necessary.",
+                    "max": "100",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDrebuildRate",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "RAIDreconstructRate": {
+                    "baseType": "minmaxrange",
+                    "default": "100",
+                    "description": "Reconstruction Rate",
+                    "longDescription": "The Reconstruct Rate is the percentage of the system's resources dedicated to reconstructing a disk group after adding a physical disk or changing the RAID level of a virtual disk residing on the disk group",
+                    "max": "100",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDreconstructRate",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "uneditable": false
+                },
+                "RAIDrekey": {
+                    "baseType": "enum",
+                    "default": "False",
+                    "description": "Controller Rekey",
+                    "longDescription": "This pseudo attribute represents whether a rekey operation needs to be performed on the RAID controller.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDrekey",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDrekeyTypes",
+                    "uneditable": false
+                },
+                "RAIDremovecontrollerKey": {
+                    "baseType": "enum",
+                    "default": "False",
+                    "description": "Remove Controller key",
+                    "longDescription": "This pseudo attribute represents whether a rekey operation needs to be performed on the RAID controller.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDremovecontrollerKey",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDremovecontrollerKeyTypes",
+                    "uneditable": false
+                },
+                "RAIDresetConfig": {
+                    "baseType": "enum",
+                    "default": "False",
+                    "description": "Controller Reset Configuration",
+                    "longDescription": "This pseudo attribute represents whether a reset config operation needs to be performed on the RAID controller.Reset Config operation deletes all the virtual disks that exists on the RAID controller. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDresetConfig",
+                    "qualifier": "Controller",
+                    "readonly": false,
+                    "type": "RAIDresetConfigTypes",
+                    "uneditable": false
+                },
+                "RAIDspinDownIdleTime": {
+                    "baseType": "minmaxrange",
+                    "default": "30",
+                    "description": "Spin Down Idle Time",
+                    "longDescription": "Spindown idle time is the amount of time in seconds an uncofigured or hotspare can be idle before being spinned down by the controller.",
+                    "max": "65535",
+                    "min": "1",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDspinDownIdleTime",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "RAIDsupportedDiskProt": {
+                    "baseType": "enum",
+                    "description": "Supported Disk Protocols",
+                    "longDescription": "This attribute provides a list of Disk Protocols supported by the controller.",
+                    "modDeleteAllowed": true,
+                    "name": "RAIDsupportedDiskProt",
+                    "qualifier": "Controller",
+                    "readonly": true,
+                    "type": "RAIDsupportedDiskProtTypes",
+                    "uneditable": false
+                },
+                "Size": {
+                    "baseType": "int",
+                    "description": "Size",
+                    "longDescription": "This indicates the size in bytes of the virtual disk. When creating a virtual disk, size of 0 indicates using full size of the physical disks for the specified RAIDTypes.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "Size",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "SpanDepth": {
+                    "baseType": "int",
+                    "description": "Span Depth",
+                    "longDescription": "This indicates number of spans in the virtual disk.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "SpanDepth",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "SpanLength": {
+                    "baseType": "int",
+                    "description": "Span Length",
+                    "longDescription": "This indicates the number of physical disks per span on a virtual disk.Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "SpanLength",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "uneditable": false
+                },
+                "StripeSize": {
+                    "baseType": "int",
+                    "description": "Stripe Size",
+                    "longDescription": "This indicates the stripe size of the virtual disk. Configurable via XML configuration feature only.",
+                    "modDeleteAllowed": true,
+                    "name": "StripeSize",
+                    "qualifier": "VirtualDisk",
+                    "readonly": true,
+                    "type": "StripeSizeTypes",
+                    "uneditable": false
+                },
+                "T10PIStatus": {
+                    "baseType": "enum",
+                    "description": "T10PIStatus",
+                    "longDescription": "This indicates virtual disks T10PIStatus.",
+                    "modDeleteAllowed": true,
+                    "name": "T10PIStatus",
+                    "qualifier": "VirtualDisk",
+                    "readonly": false,
+                    "type": "T10PIStatusTypes",
+                    "uneditable": false
+                }
+            },
+            "type": "object"
+        },
+        "RAIDControllerBootModeTypes": {
+            "enum": [
+                "User Mode",
+                "Continue Boot On Error",
+                "Headless Mode Continue On Error",
+                "Headless Safe Mode"
+            ],
+            "enumDescriptions": [
+                "User Mode",
+                "Continue Boot On Error",
+                "Headless Mode Continue On Error",
+                "Headless Safe Mode"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDEnclosureCurrentCfgModeTypes": {
+            "enum": [
+                "Unified Mode",
+                "Split Mode"
+            ],
+            "enumDescriptions": [
+                "Unified Mode",
+                "Split Mode"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDEnclosureRequestedCfgModeTypes": {
+            "enum": [
+                "Unified Mode",
+                "Split Mode",
+                "None"
+            ],
+            "enumDescriptions": [
+                "Unified Mode",
+                "Split Mode",
+                "None"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDEnhancedAutoImportForeignConfigTypes": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": [
+                "Disabled",
+                "Enabled"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDHotSpareStatusTypes": {
+            "enum": [
+                "No",
+                "Dedicated",
+                "Global"
+            ],
+            "enumDescriptions": [
+                "No",
+                "Dedicated",
+                "Global"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDMaxCapableSpeedTypes": {
+            "enum": [
+                "1_5_GBS",
+                "3_GBS",
+                "6_GBS",
+                "12_GBS"
+            ],
+            "enumDescriptions": [
+                "1_5_GBS",
+                "3_GBS",
+                "6_GBS",
+                "12_GBS"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDNegotiatedSpeedTypes": {
+            "enum": [
+                "1_5_GBS",
+                "3_GBS",
+                "6_GBS",
+                "12_GBS"
+            ],
+            "enumDescriptions": [
+                "1_5_GBS",
+                "3_GBS",
+                "6_GBS",
+                "12_GBS"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDPDStateTypes": {
+            "enum": [
+                "Unknown",
+                "Ready",
+                "Online",
+                "Foreign",
+                "Blocked",
+                "Failed",
+                "Non-RAID",
+                "Missing"
+            ],
+            "enumDescriptions": [
+                "Unknown",
+                "Ready",
+                "Online",
+                "Foreign",
+                "Blocked",
+                "Failed",
+                "Non-RAID",
+                "Missing"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDSupportedRAIDLevelsTypes": {
+            "enum": [
+                "RAID-0",
+                "RAID-1",
+                "RAID-5",
+                "RAID-10",
+                "RAID-50",
+                "RAID-60"
+            ],
+            "enumDescriptions": [
+                "RAID-0",
+                "RAID-1",
+                "RAID-5",
+                "RAID-10",
+                "RAID-50",
+                "RAID-60"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDTypesTypes": {
+            "enum": [
+                "RAID 0",
+                "RAID 1",
+                "RAID 5",
+                "RAID 6",
+                "RAID 10",
+                "RAID 50",
+                "RAID 60",
+                "Volume"
+            ],
+            "enumDescriptions": [
+                "RAID 0",
+                "RAID 1",
+                "RAID 5",
+                "RAID 6",
+                "RAID 10",
+                "RAID 50",
+                "RAID 60",
+                "Volume"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDactionTypes": {
+            "enum": [
+                "Create",
+                "CreateAuto",
+                "Delete",
+                "Update"
+            ],
+            "enumDescriptions": [
+                "Create",
+                "CreateAuto",
+                "Delete",
+                "Update"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDbatteryLearnModeTypes": {
+            "enum": [
+                "Automatic",
+                "Warn only",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Automatic",
+                "Warn only",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDccModeTypes": {
+            "enum": [
+                "Normal",
+                "StopOnError"
+            ],
+            "enumDescriptions": [
+                "Normal",
+                "Stop on Error"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDcopybackModeTypes": {
+            "enum": [
+                "On",
+                "On with SMART",
+                "Off"
+            ],
+            "enumDescriptions": [
+                "On",
+                "On with SMART",
+                "Off"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDdedicatedSpareTypes": {
+            "enum": [
+                "autoselect"
+            ],
+            "enumDescriptions": [
+                "AutoSelect"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDdefaultReadPolicyTypes": {
+            "enum": [
+                "NoReadAhead",
+                "ReadAhead",
+                "Adaptive",
+                "AdaptiveReadAhead"
+            ],
+            "enumDescriptions": [
+                "No Read-Ahead",
+                "Read-Ahead",
+                "Adaptive",
+                "AdaptiveReadAhead"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDdefaultWritePolicyTypes": {
+            "enum": [
+                "WriteThrough",
+                "WriteBack",
+                "WriteBackForce"
+            ],
+            "enumDescriptions": [
+                "Write Through",
+                "Write Back",
+                "Write Back Force"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDforeignConfigTypes": {
+            "enum": [
+                "Ignore",
+                "Import",
+                "Clear"
+            ],
+            "enumDescriptions": [
+                "Ignore",
+                "Import",
+                "Clear"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDinitOperationTypes": {
+            "enum": [
+                "None",
+                "Fast"
+            ],
+            "enumDescriptions": [
+                "None",
+                "Fast"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDloadBalancedModeTypes": {
+            "enum": [
+                "Automatic",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Automatic",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDprModeTypes": {
+            "enum": [
+                "Automatic",
+                "Manual",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Automatic",
+                "Manual",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDrekeyTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDremovecontrollerKeyTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDresetConfigTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "enumeration"
+        },
+        "RAIDsupportedDiskProtTypes": {
+            "enum": [
+                "SAS",
+                "SATA"
+            ],
+            "enumDescriptions": [
+                "SAS",
+                "SATA"
+            ],
+            "type": "enumeration"
+        },
+        "StripeSizeTypes": {
+            "enum": [
+                "Default",
+                "512",
+                "1KB",
+                "2KB",
+                "4KB",
+                "8KB",
+                "16KB",
+                "32KB",
+                "64KB",
+                "128KB",
+                "256KB",
+                "512KB",
+                "1MB",
+                "2MB",
+                "4MB",
+                "8MB"
+            ],
+            "enumDescriptions": [
+                "Default",
+                "512",
+                "1KB",
+                "2KB",
+                "4KB",
+                "8KB",
+                "16KB",
+                "32KB",
+                "64KB",
+                "128KB",
+                "256KB",
+                "512KB",
+                "1MB",
+                "2MB",
+                "4MB",
+                "8MB"
+            ],
+            "type": "string"
+        },
+        "T10PIStatusTypes": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "enumeration"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\RAID.xml"
+}

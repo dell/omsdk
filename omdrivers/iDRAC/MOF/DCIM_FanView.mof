@@ -1,0 +1,169 @@
+// Copyright (c) 2009 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_FanView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_FanView is a derivation of CIM_View "
+       "with Fan specific data" )]
+class DCIM_FanView : DCIM_View {
+       [Key, Description (
+                "A string containing the Fully Qualified Device Description"
+                "A user-friendly name for the object. This property allows each"
+                " instance to define a user-friendly name in addition to its key"
+                " properties, identity data, and description information." )]
+   string InstanceID;
+   
+      [Description (
+                "A string containing the Fully Qualified Device Description"
+                "A user-friendly name for the object. This property allows each"
+                " instance to define a user-friendly name in addition to its key"
+                " properties, identity data, and description information." )]
+   string  FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location" )]
+   string DeviceDescription;
+
+      [Description (
+                "PrimaryStatus provides a high level status value, intended to align"
+                "with Red-Yellow-Green type representation of status. It should be"
+                "used in conjunction with DetailedStatus to provide high level and"
+                " detailed health status of the ManagedElement and its subcomponents."
+                "PrimaryStatus consists of one of the following values: Unknown, OK,"
+                "Degraded or Error. \"Unknown\" indicates the implementation is in"
+                "general capable of returning this property, but is unable to do so"
+                "at this time. \"OK\" indicates the ManagedElement is functioning "
+                "normally. \"Degraded\" indicates the ManagedElement is functioning"
+                "below normal. \"Error\" indicates the ManagedElement is in an Error"
+                " condition. " ),
+          ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+          Values { "Unknown", "OK", "Degraded", "Error", "DMTF Reserved", "Vendor Reserved" }]
+    uint32 PrimaryStatus;
+          
+         
+      [Description (
+                "The base unit of the values returned by this Sensor. All "
+                "the values returned by this Sensor are represented in "
+                "the units obtained by (BaseUnits * 10 raised to the "
+                "power of the UnitModifier). For example, if BaseUnits is "
+                "Volts and the UnitModifier is -6, then the units of the "
+                "values returned are MicroVolts. However, if the "
+                "RateUnits property is set to a value other than \"None\", "
+                "then the units are further qualified as rate units. In "
+                "the above example, if RateUnits is set to \"Per Second\", "
+                "then the values returned by the Sensor are in "
+                "MicroVolts/Second. The units apply to all numeric "
+                "properties of the Sensor, unless explicitly overridden "
+                "by the Units qualifier." ),
+         ValueMap { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+                 "10", "11", "12", "13", "14", "15", "16", "17", "18",
+                 "19", "20", "21", "22", "23", "24", "25", "26", "27",
+                 "28", "29", "30", "31", "32", "33", "34", "35", "36",
+                 "37", "38", "39", "40", "41", "42", "43", "44", "45",
+                 "46", "47", "48", "49", "50", "51", "52", "53", "54",
+                 "55", "56", "57", "58", "59", "60", "61", "62", "63",
+                 "64", "65", "66" },
+         Values { "Unknown", "Other", "Degrees C", "Degrees F",
+                 "Degrees K", "Volts", "Amps", "Watts", "Joules",
+                 "Coulombs", //10
+                 "VA", "Nits", "Lumens", "Lux",
+                 "Candelas", "kPa", "PSI", "Newtons", "CFM", "RPM",  //20
+                 "Hertz", "Seconds", "Minutes", "Hours",
+                 "Days", "Weeks", "Mils", "Inches", "Feet", "Cubic Inches",  //30
+                 "Cubic Feet", "Meters",
+                 "Cubic Centimeters", "Cubic Meters", "Liters",
+                 "Fluid Ounces", "Radians", "Steradians", "Revolutions",
+                 "Cycles",  //40
+                 "Gravities", "Ounces", "Pounds",
+                 "Foot-Pounds", "Ounce-Inches", "Gauss", "Gilberts",
+                 "Henries", "Farads", "Ohms",  //50
+                 "Siemens", "Moles", "Becquerels", "PPM (parts/million)", "Decibels",
+                 "DbA", "DbC", "Grays", "Sieverts", "Color Temperature Degrees K",  //60
+                 "Bits", "Bytes", "Words (data)", "DoubleWords", "QuadWords","Percentage",
+                 "Pascals" },
+         ModelCorrespondence { "CIM_NumericSensor.UnitModifier",
+                 "CIM_NumericSensor.RateUnits" }]
+    uint16 BaseUnits;
+
+    [Description (
+              "The unit multiplier for the values returned by this "
+              "Sensor. All the values returned by this Sensor are "
+              "represented in the units obtained by (BaseUnits * 10 "
+              "raised to the power of the UnitModifier). For example, "
+              "if BaseUnits is Volts and the Unit Modifier is -6, then "
+              "the units of the values returned are MicroVolts. "
+              "However, if the RateUnits property is set to a value "
+              "other than \"None\", then the units are further "
+              "qualified as rate units. In the above example, if "
+              "RateUnits is set to \"Per Second\", then the values "
+              "returned by the Sensor are in MicroVolts/Second. The "
+              "units apply to all numeric properties of the Sensor, "
+              "unless explicitly overridden by the Units qualifier." ),
+         ModelCorrespondence { "CIM_NumericSensor.BaseUnits",
+                      "CIM_NumericSensor.RateUnits" }]
+     sint32 UnitModifier;
+
+     [Description (
+              "Specifies if the units returned by this Sensor are rate "
+              "units. All the values returned by this Sensor are "
+              "represented in the units obtained by (BaseUnits * 10 "
+              "raised to the power of the UnitModifier). This is true "
+              "unless this property (RateUnits) has a value different "
+              "than \"None\". For example, if BaseUnits is Volts and "
+              "the UnitModifier is -6, then the units of the values "
+              "returned are MicroVolts. But, if the RateUnits property "
+              "is set to a value other than \"None\", then the units "
+              "are further qualified as rate units. In the above "
+              "example, if RateUnits is set to \"Per Second\", then the "
+              "values returned by the Sensor are in MicroVolts/Second. "
+              "The units apply to all numeric properties of the Sensor, "
+              "unless explicitly overridden by the Units qualifier. Any "
+              "implementation of CurrentReading should be qualified "
+              "with either a Counter or a Gauge qualifier, depending on "
+              "the characteristics of the sensor being modeled." ),
+        ValueMap { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        Values { "None", "Per MicroSecond", "Per MilliSecond",
+              "Per Second", "Per Minute", "Per Hour", "Per Day",
+              "Per Week", "Per Month", "Per Year" },
+        ModelCorrespondence { "CIM_NumericSensor.UnitModifier",
+              "CIM_NumericSensor.BaseUnits" }]
+      uint16 RateUnits;
+
+      [Description (
+              "The current value indicated by the Sensor." ),
+        MappingStrings { "MIF.DMTF|Temperature Probe|002.5",
+              "MIF.DMTF|Electrical Current Probe|001.5",
+              "MIF.DMTF|Voltage Probe|001.5" }]
+      sint32 CurrentReading;
+
+      [Description (
+               "Indication of whether the fan supports variable speeds." )]
+      boolean VariableSpeed;
+
+      [Description (
+               "ActiveCooling is a Boolean that indicates that the "
+               "Cooling Device provides active (as opposed to passive) "
+               "cooling." )]
+      boolean ActiveCooling;
+
+      [Description ( 
+          "RedundancyStatus provides information on the state of "
+          "the RedundancyGroup. \'Fully Redundant\' (value=2) means "
+          "that all of the configured redundancy is still "
+          "available; \'Degraded Redundancy\' (3) means that some "
+          "configured elements are degraded, missing or failed but "
+          "that the number of elements in the set is still greater "
+          "than the minimum required (\'MinNumberNeeded\'); "
+          "\'Redundancy Lost\' (4) means that sufficient configured "
+          "elements are missing or failed that no redundancy is "
+          "available and the next failure experienced will cause "
+          "overall failure. \'Overall Failure\' (5) means that "
+          "there has been an overall failure of the RedundancySet." ), 
+       ValueMap { "0", "1", "2", "3", "4", "5" }, 
+       Values { "Unknown", "DMTF Reserved", "Fully Redundant", 
+          "Degraded Redundancy", "Redundancy Lost", "Overall Failure" }, 
+       ModelCorrespondence { "CIM_RedundancySet.MinNumberNeeded" }]
+   uint16 RedundancyStatus;
+      
+};

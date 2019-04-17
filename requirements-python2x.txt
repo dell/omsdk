@@ -1,0 +1,6 @@
+pysnmp>=4.4.1
+enum34>=1.1.6
+requests>=2.12.3
+PyYAML>=3.12
+future>=0.16.0
+pysnmp_mibs>=0

@@ -1,0 +1,100 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_VideoView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_VideoView is a derivation of CIM_View "
+       "with Video specific data" )]
+class DCIM_VideoView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+      [Description ("The bus number where this Video device resides")]
+   uint32 BusNumber;
+
+      [Description ("The device number assigned to this Video for this bus.")]
+   uint32 DeviceNumber;
+
+      [Description ("The function number for this Video device.")]
+   uint32 FunctionNumber;
+
+      [Description ("Register that contains a value assigned by the Video SIG"
+           "used to identify the manufacturer of the device.")]
+   string PCIVendorID;
+
+      [Description ("Register that contains a value assigned by the device"
+           "manufacturer used to identify the type of device.")]
+   string PCIDeviceID;
+
+      [Description ("Subsystem vendor ID.")]
+   string PCISubVendorID;
+
+      [Description ("Register that contains a value assigned by the vendor"
+           "manufacturer used to identify the type of device.")]
+   string PCISubDeviceID;
+
+     [Description (
+           "A string containing the Manufacturer name"
+           "The name of the organization responsible for producing the Video device."),
+          MaxLen ( 256 ) ]
+   string Manufacturer;
+
+      [Description ("Gives the description of the video device")]
+   string Description;
+
+      [Description ("Data-bus width of the PCI device."),
+          ValueMap { "0001", "0002", "0003", "0004", "0005", "0006", 
+                     "0007", "0008", "0009", "000A", "000B", "000C", 
+                     "000D", "000E"},
+          Values { "Other", "Unknown", "8 bit", "16 bit", "32 bit", "64 bit",
+                "128 bit", "1x or x1", "2x or x2", " 4x or x4", "8x or x8",
+                "12x or x12", " 16x or x16", " 32x or x32"}]
+   string DataBusWidth;
+
+      [Description ("Slot length of the PCI device"), 
+          ValueMap { "0001", "0002", "0003", "0004"},
+          Values { "Other", "Unknown", " Short Length", " Long Length"}]
+   string SlotLength;
+
+      [Description ("Slot type of the PCI device."),
+         ValueMap { "0001", "0002", "0003", "0004", "0005", "0006", 
+                     "0007", "0008", "0009", "000A", "000B", "000C", 
+                     "000D", "000E", "000F", "0010", "0011", "0012", 
+                     "0013", "00A0", "00A1", "00A2", "00A3", "00A4", 
+                     "00A5", "00A6", "00A7", "00A8", "00A9", "00AA",  
+                     "00AB", "00AC", "00AD", "00AE", "00AF", "00B0",
+                     "00B1", "00B2", "00B3", "00B4", "00B5", "00B6"},
+         Values { "Other", "Unknown", "ISA", "MCA", "EISA", "PCI", 
+           "PC Card (PCMCIA)", "VL-VESA", "Proprietary", 
+           "Processor Card Slot", 
+           "Proprietary Memory Card Slot", "I/O Riser Card Slot", "NuBus",
+           "PCI - 66MHz Capable",
+           "AGP", "AGP 2X", "AGP 4X", "PCI-X", "AGP 8X", "PC-98/C20", 
+           "PC-98/C24", "PC-98/E", "PC-98/Local Bus", "PC-98/Card",
+           "PCI Express",
+           "PCI Express x1", "PCI Express x2", "PCI Express x4",
+           "PCI Express x8", "PCI Express x16", "PCI Express Gen 2", 
+           "PCI Express Gen 2 x1", "PCI Express Gen 2 x2", "PCI Express Gen 2 x4", 
+           "PCI Express Gen 2 x8", "PCI Express Gen 2 x16",
+           "PCI Express Gen 3",
+           "PCI Express Gen 3 x1", "PCI Express Gen 3 x2", "PCI Express Gen 3 x4", 
+           "PCI Express Gen 3 x8", "PCI Express Gen 3 x16" } ]
+   string SlotType;  
+};

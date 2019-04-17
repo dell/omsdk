@@ -1,0 +1,19 @@
+{
+    "System" : {
+		"ConfigState" : [ "PowerStatus" ],
+    	"Health"      : ["GlobalStatus"],
+    	"Inventory"   : [ "Name", "Hostname", "ServiceTag"],
+		"Multiple"   : "False"
+   },
+   "Memory" : {
+		"ConfigState" : [ "PowerStatus" ],
+    	"Health"      : ["GlobalStatus"],
+    	"Inventory"   : [ "name", "id", "type"],
+		"Multiple"   : "True",
+        "type" : {
+            "4" : "ddr-4",
+            "6" : "ddr-6"
+        }
+   }
+}
+

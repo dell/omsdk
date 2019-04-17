@@ -1,0 +1,24 @@
+{
+    "$ref": "#/definitions/Firmware",
+    "$schema": "omdrivers\\iDRAC\\xml\\Firmware.xml",
+    "definitions": {
+        "Firmware": {
+            "config_groups": {
+                "Update Source": [
+                    "UpdateSource"
+                ]
+            },
+            "properties": {
+                "UpdateSource": {
+                    "description": "Update Source",
+                    "longDescription": "Specify whether SPMA or FPMA addressing will be used for FCoE transactions.",
+                    "name": "UpdateSource",
+                    "qualifier": "Update Source",
+                    "readonly": "false"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\Firmware.xml"
+}

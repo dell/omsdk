@@ -1,0 +1,156 @@
+{
+    "$ref": "#/definitions/OS",
+    "$schema": "omdrivers\\iDRAC\\xml\\OS.xml",
+    "definitions": {
+        "EnableDHCPTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "string"
+        },
+        "EnableDNSTypes": {
+            "enum": [
+                "True",
+                "False"
+            ],
+            "enumDescriptions": [
+                "True",
+                "False"
+            ],
+            "type": "string"
+        },
+        "OS": {
+            "config_groups": {
+                "NetworkConfiguration": [
+                    "Ipv4Netmask",
+                    "Ipv4Gateway",
+                    "TargetIPAddress",
+                    "EnableDHCP",
+                    "EnableDNS",
+                    "DNS1Server",
+                    "DNS2Server"
+                ],
+                "OSDetails": [
+                    "OSName",
+                    "OSVersion"
+                ],
+                "RootCredentials": [
+                    "RootPassword"
+                ],
+                "ShareDetails": [
+                    "NetworkSharePath"
+                ]
+            },
+            "properties": {
+                "DNS1Server": {
+                    "default": "0.0.0.0",
+                    "description": "DNS Server 1",
+                    "longDescription": "Specify the IP address of the first iSCSI target.",
+                    "name": "DNS1Server",
+                    "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false"
+                },
+                "DNS2Server": {
+                    "default": "0.0.0.0",
+                    "description": "DNS Server 2",
+                    "longDescription": "Specify the IP address of the first iSCSI target.",
+                    "name": "DNS2Server",
+                    "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false"
+                },
+                "EnableDHCP": {
+                    "description": "EnableDHCP",
+                    "longDescription": "Indicates whether Dell FlexAddressing feature is supported.",
+                    "name": "EnableDHCP",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false",
+                    "type": "EnableDHCPTypes"
+                },
+                "EnableDNS": {
+                    "description": "EnableDNS",
+                    "longDescription": "Indicates whether Dell FlexAddressing feature is supported.",
+                    "name": "EnableDNS",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false",
+                    "type": "EnableDNSTypes"
+                },
+                "Ipv4Gateway": {
+                    "default": "192.168.0.1",
+                    "description": "IPv4 Default Gateway",
+                    "longDescription": "Specify the IPv4 IP address of the default Gateway used by the iSCSI initiator.",
+                    "name": "Ipv4Gateway",
+                    "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}$",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false"
+                },
+                "Ipv4Netmask": {
+                    "default": "255.255.255.0",
+                    "description": "IPv4 Netmask",
+                    "longDescription": "Specify the IPv4 IP address of the default Gateway used by the iSCSI initiator.",
+                    "name": "Ipv4Netmask",
+                    "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}$",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false"
+                },
+                "NetworkSharePath": {
+                    "description": "Share Path where ISO Image is present",
+                    "longDescription": "Specify whether SPMA or FPMA addressing will be used for FCoE transactions.",
+                    "name": "NetworkSharePath",
+                    "qualifier": "ShareDetails",
+                    "readonly": "false"
+                },
+                "OSName": {
+                    "description": "OSName",
+                    "longDescription": "Indicates whether Dell FlexAddressing feature is supported.",
+                    "name": "OSName",
+                    "qualifier": "OSDetails",
+                    "readonly": "false",
+                    "type": "OSNameTypes"
+                },
+                "OSVersion": {
+                    "description": "OSVersion",
+                    "longDescription": "Indicates whether Dell FlexAddressing feature is supported.",
+                    "name": "OSVersion",
+                    "qualifier": "OSDetails",
+                    "readonly": "false"
+                },
+                "RootPassword": {
+                    "description": "RootPassword",
+                    "longDescription": "Indicates whether Dell FlexAddressing feature is supported.",
+                    "name": "RootPassword",
+                    "qualifier": "RootCredentials",
+                    "readonly": "false"
+                },
+                "TargetIPAddress": {
+                    "default": "192.168.0.1",
+                    "description": "IP Address",
+                    "longDescription": "Specify the IP address of the first iSCSI target.",
+                    "name": "TargetIPAddress",
+                    "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}|[0-9a-fA-F:]{2,39}$",
+                    "qualifier": "NetworkConfiguration",
+                    "readonly": "false"
+                }
+            },
+            "type": "object"
+        },
+        "OSNameTypes": {
+            "enum": [
+                "ESXI",
+                "Red Hat Enterprise Linux"
+            ],
+            "enumDescriptions": [
+                "ESXI",
+                "Red Hat Enterprise Linux"
+            ],
+            "type": "string"
+        }
+    },
+    "title": "omdrivers\\iDRAC\\xml\\OS.xml"
+}

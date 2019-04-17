@@ -1,0 +1,412 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_SystemView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_SystemView is a derivation of CIM_View "
+       "with System specific data" )]
+class DCIM_SystemView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string FQDD;
+
+      [Description (
+          "A string containing the friendly Fully Qualified Device Description "
+          "A property that describes the device and its location"
+          )]
+   string DeviceDescription;
+
+   [Description ( 
+          "The generation of the platform" )]
+   string SystemGeneration;
+
+   [Description ( 
+          "IP address of CMC on modular system" )]
+   string CMCIP;
+
+   [Description ( 
+          "Version of Lifecycle Controller" )]
+   string LifecycleControllerVersion;
+
+   [Description ( 
+          "Model of the system, eg: PowerEdge R610" )]
+   string Model;
+
+   [Description (
+          "System Manufacturer string, e.g. DELL Inc" )]
+   string Manufacturer;
+
+   [Description (
+          "Service tag of the SYSTEM." )]
+   string ServiceTag;
+
+   [Description (
+          "ExpressServiceCode of the SYSTEM." )]
+   string ExpressServiceCode;
+
+   [Description (
+          "Service tag of the CHASSIS" )]
+   string ChassisServiceTag;
+   
+   [Description (
+          "Model of the CHASSIS like PowerEdge xxx" )]
+   string ChassisModel;
+
+   [Description (
+          "Unique property of blade based on service tag " )]
+   string NodeID;
+
+   [Description (
+          "The height of the enclosure, in 'U's. A U is a standard unit "
+          "of measure for the height of a rack or rack-mountable component "
+          "and is equal to 1.75 inches or 4.445 cm. A value of 0 indicates "
+          "that the enclosure height is unspecified. For instance, this "
+          "variable would be set to 1 for R610 system meaning the height "
+          "of the system is 1U" )]
+   uint16 ChassisSystemHeight;
+
+   [Description (
+          "The property shall be in Mbytes. The maximum memory capacity in "
+          "MB that could be installed on the platform. Note that this "
+          "property represents the sum of totals for the possible memory "
+          "that could be installed in each slot regardless of currently "
+          "installed memory capacity."),
+          PUnit ( "byte * 10^6" )]   
+   uint32 SysMemTotalSize;
+
+   [Description(
+          "The maximum memory capacity in KB that could be installed on the "
+          "platform. Note that this property represents the sum of totals "
+          "for the possible memory that could be installed in each slot "
+          "regardless of currently installed memory capacity."),
+          PUnit ( "byte * 10^3" )]
+   uint64 SysMemMaxCapacitySize;
+
+
+
+   [Description (
+          "The physical location of the Memory Array, whether on the system "
+          "board or an add-in board."),
+       ValueMap { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "160",
+                  "161", "162", "163"},
+       Values { "Other", "Unknown", "System board or motherboard",
+                "ISA add-on card", "EISA add-on card", "PCI add-on card",
+                "MCA add-on card", "PCMCIA add-on card", "Proprietary add-on card",
+                "NuBus", "PC-98/C20 add-on card", "PC-98/C24 add-on card",
+                "PC-98/E add-on card", "PC-98/Local bus add-on card"}]
+   uint16 SysMemLocation;
+
+
+   [Description (
+          "The primary hardware error correction or detection method "
+          "supported by this memory array" ),
+       ValueMap { "1", "2", "3" , "4", "5", "6", "7"},
+       Values { "Other", "Unknown", "None", "Parity", "Single-bit ECC", 
+                "Multi-bit ECC", "CRC"}]
+   uint16 SysMemErrorMethodology;
+
+   [Description (
+          "The number of slots or sockets available for Memory Devices "
+          "in this array. This value represents the number of Memory "
+          "Device structures that comprise this Memory Array. Each Memory"
+          "Device has a reference to the 'owning' Memory Array." )]
+   uint32 MaxDIMMSlots;
+
+   [Description (
+          "System Revision" ),
+       ValueMap { "0", "1", "2", "3"},
+       Values {"", "II", "III", "IV"}]
+   uint16 SystemRevision;
+
+   [Description (
+          "number of the BIOS Version. This is a free form string that "
+          "may contain Core and OEM version information. For e.g."
+          "1.3.6" )]
+   string BIOSVersionString;
+
+   [Description (
+          "String number of the BIOS release date. The date string, if "
+          "supplied, is in mm/dd/yyyy format." )]
+   string BIOSReleaseDate;
+
+   [Description (
+          "System ID" )]
+   uint32 SystemID;
+
+   [Description (
+          "System GUID" )]
+   string PlatformGUID;
+
+   [Description (
+          "Smbios GUID" )]
+   string smbiosGUID;
+
+   [Description (
+          "UUID" )]
+   string UUID;
+
+   [Description (
+          "System Name string in ASCII preceded by an eight bit byte count"
+          "in binary" )]
+   string HostName;
+
+   [Description (
+          "Asset tag of the system" )]
+   string AssetTag;
+
+   [Description (
+          "System Memory Primary Status provides a high level status value, "
+          "intended to align with Red-Yellow-Green type representation of status."
+          "It should be used in conjunction with DetailedStatus to provide high "
+          "level and detailed health status of the ManagedElement and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          "condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+    uint32 SysMemPrimaryStatus;
+
+   [Description (
+          "System Memory Fail Over State" )]
+   string SysMemFailOverState;
+
+   [Description (
+          "System memory operation mode. Denotes the mode of "
+          "operation for system memory such as mirrored, "
+          "advanced ECC, optimized mode. " )]
+   string MemoryOperationMode;
+
+   [Description (
+          "System Memory Sockets Current Capacity" )]
+   uint32 PopulatedDIMMSlots;
+
+   [Description (
+          "Base Board Chassis Slot" )]
+   string BaseBoardChassisSlot;
+
+   [Description (
+           "The current power state of the associated Managed"
+           "System Element."), 
+       ValueMap { "2", "8" }, 
+       Values {"On",  "Off - Soft" }]
+   uint16 PowerState;
+
+   [Description (
+           "The current power cap enabled state of the associated Managed"
+           "System Element."), 
+       ValueMap { "2", "3" }, 
+       Values {"Enabled",  "Disabled" }]
+   uint16 PowerCapEnabledState;
+
+   [Description (
+           "The current power cap (in Watts) of the associated Managed"
+           "System Element.") ]
+   uint32 PowerCap;
+
+   [Description (
+           "Power (Watt) allocated by Chassis Manager. ")]
+   uint32 ServerAllocation;
+
+   [Description (
+          "Chassis Name like Main System Chassis" )]
+   string ChassisName;
+
+   [Description (
+          "Motherboard Serial Number" )]
+   string BoardSerialNumber;
+
+   [Description (
+          "Motherboard Part Number" )]
+   string BoardPartNumber;
+
+   [Description (
+          "CPLD Version number in the form of string" )]
+   string CPLDVersion;
+
+   [Description (
+          "Blade Geometry" ),
+       ValueMap { "0", "1", "2", "3", "4"},
+       Values { "Single width, single height", "Dual width, single height",
+                    "Single width, dual height", "Dual width, dual height",
+			  "Not Applicable"}]
+   uint16 BladeGeometry;
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to align"
+          "with Red-Yellow-Green type representation of status. It should be"
+          "used in conjunction with DetailedStatus to provide high level and"
+          " detailed health status of the ManagedElement and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+         "normally. \"Degraded\" indicates the ManagedElement is functioning"
+         "below normal. \"Error\" indicates the ManagedElement is in an Error"
+         " condition. " ),
+         
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error"}]
+   uint32 PrimaryStatus;
+
+      [Description ("Maximum CPU Sockets")]
+   uint32 MaxCPUSockets;
+
+      [Description ("Populated CPU Sockets")]
+   uint32 PopulatedCPUSockets;
+
+      [Description ("Maximum PCIeSlots")]
+   uint32 MaxPCIeSlots;
+
+      [Description ("Populated PCIeSlots")]
+   uint32 PopulatedPCIeSlots;
+      
+      [Description (
+          "CPURollupStatus provides live status of CPU from SEL."
+          "The roll up will be the worst case from any of the CPUs."
+          "CPURollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 CPURollupStatus;
+      
+      [Description (
+          "PSRollupStatus provides live status of power supplies."
+          "The roll up will be the worst case from any of the power supplies."
+          "PSRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 PSRollupStatus;
+
+      [Description (
+          "TempRollupStatus provides live status of temperatures."
+          "The roll up will be the worst case from any of the temperatures."
+          "TempRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 TempRollupStatus;
+
+      [Description (
+          "VoltRollupStatus provides live status of voltages."
+          "The roll up will be the worst case from any of the voltages."
+          "VoltRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 VoltRollupStatus;
+
+      [Description (
+          "FanRollupStatus provides live status of fans."
+          "The roll up will be the worst case from any of the fans."
+          "FanRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 FanRollupStatus;
+
+      [Description (
+          "BatteryRollupStatus provides live status of batteries."
+          "The roll up will be the worst case from any of the batteries."
+          "BatteryRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 BatteryRollupStatus;
+
+      [Description (
+          "StorageRollupStatus provides live status of storage components."
+          "The roll up will be the worst case from any of the storage components."
+          "StorageRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 StorageRollupStatus;
+
+      [Description (
+          "LicensingRollupStatus provides live status of licensing components."
+          "The roll up will be the worst case from any of the licensing components."
+          "LicensingRollupStatus consists of one of the following values:"
+          " Unknown, OK, Degraded or Error." 
+          "\"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 LicensingRollupStatus;
+
+      [Description (
+          "RollupStatus provides a high level status value, intended to align"
+          "with Red-Yellow-Green type representation of status. It should be"
+          "used in conjunction with DetailedStatus to provide high level and"
+          " detailed health status of the ManagedElement and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the ManagedElement is functioning "
+          "normally. \"Degraded\" indicates the ManagedElement is functioning"
+          "below normal. \"Error\" indicates the ManagedElement is in an Error"
+          " condition. " ),
+       ValueMap { "0", "1", "2", "3" },
+       Values { "Unknown", "OK", "Degraded", "Error" }]
+   uint32 RollupStatus;
+};

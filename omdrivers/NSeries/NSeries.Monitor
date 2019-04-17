@@ -1,0 +1,107 @@
+{
+   "System": {
+    "Key": ["ServiceTag"],
+    "MainHealth": ["PrimaryStatus"],
+    "BasicInventory": [
+       "SysObjectID",
+       "Model",
+       "Location",
+       "Description",
+       "FirmwareVersion",
+       "NetwUMACAddress",
+       "NetwUSerialNo",
+       "PPID",
+       "ExpressServiceCode",
+       "Hostname",
+       "ManagementIP",
+       "SwitchType",
+       "SwitchIPv6",
+       "SwitchIPv4"
+    ],
+    "Metrics": ["SwitchUptime"]
+  },
+  "FanTray": {
+    "Key": [
+      "_SNMPIndex"
+    ],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Type",
+      "Speed",
+      "FanDeviceIndex"
+    ]
+  },
+  "Fan": {
+    "Key": [
+      "_SNMPIndex",
+      "Description"
+    ],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Index",
+      "Speed"
+    ]
+  },
+  "Port": {
+    "Key": [
+      "ifIndex",
+      "Description"
+    ],
+    "Health": ["Status"],
+    "Inventory": [
+      "Type",
+      "Class",
+      "Address",
+      "SysIfName"
+    ],
+    "Metrics": [
+      "ifInOctets",
+      "ifOutOctets",
+      "ifInDiscards",
+      "ifOutDiscards",
+      "ifInErrors",
+      "ifOutErrors",
+      "ifInUnknownProtos",
+      "ifSpeed"
+    ]
+  },
+  "PowerSupply": {
+    "Key": [
+      "Index",
+      "Description"
+    ],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Source"
+    ]
+  },
+  "PowerSupplyTray": {
+    "Key": [
+      "PowerDeviceIndex"
+    ],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "PowerDeviceType"
+    ]
+  },
+  "Processor": {
+    "Key": [
+      "_SNMPIndex"
+    ],
+    "Inventory": [
+      "AvailableMemSize"
+    ]
+  },
+  "Subsystem" : {
+    "Key" : ["Key"],
+      "MainHealth" : [ "PrimaryStatus" ]
+  }
+}
