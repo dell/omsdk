@@ -1316,7 +1316,7 @@ iDRACWsManCmds = {
                 {'@Name': 'Name', '#text': 'SoftwareUpdate'},
                 {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
             ]
-        },
+        },-
         "Args": {
             "ipaddress": str,
             "share_type": int,
@@ -2161,7 +2161,7 @@ iDRACWsManCmds = {
             ('ShareParameters/ShareName', "share", "remote_share_name", type("\\test"), None),
             ('ShareParameters/ShareType', "share", "remote_share_type_redfish", Share.ShareTypeRedfish, None),
             ('ShareParameters/FileName', "share", "remote_file_name", type("filename"), None),
-            ('ShareParameters/UserName', "creds", "username", type("user"), None),
+            ('ShareParameters/Username', "creds", "username", type("user"), None),
             ('ShareParameters/Password', "creds", "password", type("password"), None),
             ('ShareParameters/Target', "target", None, type(""), None),
             ("ShutdownType", "shutdown_type", None, ShutdownTypeRedfishEnum, None),
