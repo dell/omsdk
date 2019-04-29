@@ -1316,7 +1316,7 @@ iDRACWsManCmds = {
                 {'@Name': 'Name', '#text': 'SoftwareUpdate'},
                 {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
             ]
-        },-
+        },
         "Args": {
             "ipaddress": str,
             "share_type": int,
