@@ -322,7 +322,7 @@ if PyPSNMP:
 
     NSeriesPSNMPClassifier = {
         NSeriesCompEnum.System : {
-            'SysObjectID' : 'SNMPv2-SMI::enterprises\\.674\\.10895\\.3045'
+            'SysObjectID' : 'SNMPv2-SMI::enterprises\\.674\\.10895\\.30'
         }
     }
 else:
@@ -392,7 +392,7 @@ class NSeriesEntity(iDeviceDriver):
                    self._get_obj_index(childClsName, child)
     def _should_i_include(self, component, entry):
         if component in ["Port"]:
-            if entry["Status"] == 'Testing':
+            if entry.get("Status", "NA") == 'Testing':
                 return False
             if not 'Class' in entry:
                 return False

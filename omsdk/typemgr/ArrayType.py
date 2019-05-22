@@ -399,7 +399,10 @@ class ArrayType(TypeBase):
             return entries
 
         for i in entries:
-            self._entries.remove(i)
+            try:
+                self._entries.remove(i)
+            except Exception as ex:
+                logger.error(str(ex))
             self._index_helper.restore_index(i._index)
             key = self._get_key(i)
             if key in self._keys:
@@ -449,14 +452,17 @@ class ArrayType(TypeBase):
         return output
 
     def select_entry(self, entry, criteria):
-        if 'self.' in criteria:
-            logger.error("criteria cannot have self references!")
-            return False
-        criteria = criteria.replace('.parent', '._parent._parent')
-        criteria = re.sub('([a-zA-Z0-9_.]+)\s+is\s+([^ \t]+)',
-                          '(type(\\1).__name__ == "\\2")', criteria)
-        logger.debug("Evaluating: " + criteria)
-        return eval(criteria)
+        try:
+            if 'self.' in criteria:
+                logger.error("criteria cannot have self references!")
+                return False
+            criteria = criteria.replace('.parent', '._parent._parent')
+            criteria = re.sub('([a-zA-Z0-9_.]+)\s+is\s+([^ \t]+)',
+                              '(type(\\1).__name__ == "\\2")', criteria)
+            logger.debug("Evaluating: " + criteria)
+            return eval(criteria)
+        except Exception as ex:
+            logger.error(str(ex))
 
     @property
     def Properties(self):

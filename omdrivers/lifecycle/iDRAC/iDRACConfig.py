@@ -2131,6 +2131,9 @@ iDRACWsManCmds = {
             ('ShareParameters/ShareType', "share", "remote_share_type_redfish", Share.ShareTypeRedfish, None),
             ('ShareParameters/FileName', "share", "remote_file_name", type("filename"), None),
             ('ShareParameters/UserName', "creds", "username", type("user"), None),
+            ('ShareParameters/Username', "creds", "username", type("user"), None), # workaround solution(JIT-132580):
+            # Need to adhere with REDFish schema, 14G server changes has reflected.
+            # For 12G, 13G changes will be reflected september 2019 onwards.
             ('ShareParameters/Password', "creds", "password", type("password"), None),
             ('ShareParameters/Target', "target", None, type(""), None),
             ('ExportFormat', "export_format", None, ExportFormatRedfishEnum, None),

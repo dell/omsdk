@@ -1,4 +1,5 @@
 pysnmp>=4.4.1
+pyasn1>=0.4.4
 enum34>=1.1.6
 requests>=2.12.3
 PyYAML>=3.12

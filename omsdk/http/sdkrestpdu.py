@@ -80,8 +80,8 @@ class RestRequest:
                 "IPAddress": "10.9.9.9",
                 "ShareName": "sammba",
                 "ShareType": 0,
-                "UserName": "root",
-                "Password": "calvin",
+                "UserName": "username",
+                "Password": "pword",
                 "FileName": "/root/file.xml",
             }
         }

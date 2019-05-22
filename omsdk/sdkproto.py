@@ -584,7 +584,7 @@ class PWSMAN(ProtocolWrapper):
 
 
 class PSNMP(ProtocolWrapper):
-    def __init__(self, views, classifier, view_fieldspec={}, cmds={}, useSNMPGetFlag=False):
+    def __init__(self, views, classifier, view_fieldspec={}, cmds={}, useSNMPGetFlag=False, classifier_cond = {}):
         if PY2:
             super(PSNMP, self).__init__(ProtocolEnum.SNMP)
         else:
@@ -598,9 +598,10 @@ class PSNMP(ProtocolWrapper):
         self.supports_entity_mib = False
         self.emib_mgr = EntityMibConvertor()
         self.useSNMPGetFlag = useSNMPGetFlag
+        self.classifier_cond = classifier_cond
 
     def clone(self):
-        return PSNMP(self.views, self.classifier, self.view_fieldspec, self.cmds, self.useSNMPGetFlag)
+        return PSNMP(self.views, self.classifier, self.view_fieldspec, self.cmds, self.useSNMPGetFlag, self.classifier_cond)
 
     def my_connect(self, ipaddr, creds, pOptions):
         if pOptions is None:
@@ -648,7 +649,7 @@ class PREST(ProtocolWrapper):
 
 
 class PREDFISH(ProtocolWrapper):
-    def __init__(self, views, cmds={}, view_fieldspec={}, urlbase = None, classifier_cond = None):
+    def __init__(self, views, cmds={}, view_fieldspec={}, urlbase = None, classifier_cond = {}):
         if PY2:
             super(PREDFISH, self).__init__(ProtocolEnum.REDFISH)
         else:

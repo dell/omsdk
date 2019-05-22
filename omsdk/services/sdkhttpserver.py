@@ -225,7 +225,7 @@ class SDKServer:
 
             context.load_cert_chain(certfile=sdk_https_server["server_config"]["server_certificate"],
                                     keyfile=sdk_https_server["server_config"]["private_key"],
-                                    password="Dell_123$")
+                                    password="pword")
 
             if sdk_https_server["server_config"]["ca_chain_certificate"] is not None:
                 context.load_verify_locations(cafile=sdk_https_server["server_config"]["ca_chain_certificate"])

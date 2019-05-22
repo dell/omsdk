@@ -35,10 +35,10 @@ def CollectInventory(arglist):
     parser = ArgumentParser(description='Inventory Collector')
     parser.add_argument('-u', '--user',
                         action="store", dest="user", type=str, nargs='?',
-                        default='root', help="Username to use for iDRAC")
+                        default='username', help="Username to use for iDRAC")
     parser.add_argument('-p', '--password',
                         action="store", dest="password", type=str,
-                        default='calvin', help="Password to use for iDRAC")
+                        default='pword', help="Password to use for iDRAC")
     parser.add_argument('-i', '--ipaddress',
                         action="store", dest="idrac_ip", nargs='+',
                         help="ipaddress of iDRAC")

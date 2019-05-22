@@ -35,10 +35,10 @@ def CompareInventory(arglist):
     parser = ArgumentParser(description='Compare Inventory')
     # parser.add_argument('-u', '--user',
     #    action="store", dest="user", type=str, nargs='?',
-    #    default='root', help="Username to use for iDRAC")
+    #    default='tempuser', help="Username to use for iDRAC")
     # parser.add_argument('-p', '--password',
     #    action="store", dest="password", type=str,
-    #    default='calvin', help="Password to use for iDRAC")
+    #    default='temppwd', help="Password to use for iDRAC")
     # parser.add_argument('-i', '--ipaddress',
     #    action="store", dest="idrac_ip", nargs='+',
     #    help="ipaddress of iDRAC")
