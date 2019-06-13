@@ -147,6 +147,7 @@ class iDRACJobs(iBaseJobApi):
         jobret = {"Status": TypeHelper.resolve(JobStatusEnum.InProgress)}
         if jobid.startswith('DCIM_OSD'):
             # Poll for OSD Concrete Job
+            time.sleep( 10 )
             jobs = self._get_osd_job_details()
         else:
             jobs = self.get_job_details(jobid)
