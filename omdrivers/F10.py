@@ -23,7 +23,7 @@
 from enum import Enum
 from omsdk.sdkdevice import iDeviceDiscovery, iDeviceRegistry, iDeviceDriver
 from omsdk.sdkcenum import EnumWrapper
-from omsdk.sdkproto import PSNMP
+from omsdk.sdkproto import PSNMP, ProtocolEnum
 import sys
 import logging
 
@@ -409,7 +409,18 @@ if PyPSNMP:
             },
             "NetwUMACAddress" : {
                 'Macedit' : 'True'
+                },
+            "NetwUStatus": {
+                'Lookup'  :  'True',
+                'Values' : {
+                    "1" : "Ok",
+                    "2" : "Unsupported",
+                    "3" : "Code Mismatch",
+                    "4" : "Config Mismatch",
+                    "5" : "Unit Down",
+                    "6" : "Not Present"
                 }
+            }
         },
         F10CompEnum.PowerSupply : {
             "OperStatus" : {
@@ -503,12 +514,12 @@ if PyPSNMP:
             "Module" : {
                 'Lookup'  :  'True',
                 'Values' : {
-			"1" : "ControlProcessor", 
-			"2" : "RoutingProcessor1", 
-			"3" : "RoutingProcessor2", 
-			"4" : "LinecardProcessor", 
-			"5" : "RpmProcessor", 
-			"6" : "RoutingProcessor" 
+                    "1" : "ControlProcessor",
+                    "2" : "RoutingProcessor1",
+                    "3" : "RoutingProcessor2",
+                    "4" : "LinecardProcessor",
+                    "5" : "RpmProcessor",
+                    "6" : "RoutingProcessor"
                 }
             }
         },
@@ -516,6 +527,139 @@ if PyPSNMP:
             "PartitionSize" : { 'Type' : 'Bytes' , 'InUnits' : 'KB', 'OutUnits' : 'GB' },
             "PartitionFree" : { 'Type' : 'Bytes' , 'InUnits' : 'KB', 'OutUnits' : 'GB' },
             "PartitionUsed" : { 'Type' : 'Bytes' , 'InUnits' : 'KB', 'OutUnits' : 'GB' },
+        },
+        F10CompEnum.SysIf: {
+            "OperStatus" : {
+                'Lookup'  :  'True',
+                'Values' : {
+                    "1" : "Healthy",
+                    "2" : "Warning",
+                    "3" : "Critical",
+                    "4" : "Unknown",
+                    "5" : "Absent",
+                    "6" : "Critical"
+                }
+            },
+            "AdminStatus": {
+                'Lookup': 'True',
+                'Values': {
+                    "1": "Up",
+                    "2": "Down"
+                }
+            },
+            "Type": {
+                'Lookup': 'True',
+                'Values': {
+                    "1": "Port Serial",
+                    "2": "Port Fast Ether",
+                    "3": "Port Gig Ether",
+                    "4": "Port 10 Gig Ether",
+                    "5": "Port 40 Gig Ether",
+                    "6": "Port Fibre Channel",
+                    "7": "Port Aux",
+                    "8": "Port 25 Gig Ether",
+                    "9": "Port 50 Gig Ether",
+                    "10": "Port 100 Gig Ether",
+                    "11": "Port PEGig Ether",
+                    "99": "Port Unknown"
+                }
+            }
+        },
+        F10CompEnum.StackUnit: {
+            "Status": {
+                'Lookup': 'True',
+                'Values': {
+                    "1" : "Ok",
+                    "2" : "Unsupported",
+                    "3" : "Code Mismatch",
+                    "4" : "Config Mismatch",
+                    "5" : "Unit Down",
+                    "6" : "Not Present"
+                }
+            },
+            "ModelId": {
+                'Lookup': 'True',
+                'Values': {
+                    "1" : "e1200",
+                    "2" : "e600",
+                    "3" : "e300",
+                    "4" : "e150",
+                    "5" : "e610",
+                    "6" : "c150",
+                    "7" : "c300",
+                    "8" : "e1200i",
+                    "9" : "s2410cp",
+                    "10" : "s2410p",
+                    "11" : "s50",
+                    "12" : "s50e",
+                    "13" : "s50v",
+                    "14" : "s50nac",
+                    "15" : "s50ndc",
+                    "16" : "s25pdc",
+                    "17" : "s25pac",
+                    "18" : "s25v",
+                    "19" : "s25n",
+                    "20" : "s60",
+                    "21" : "s55",
+                    "22" : "s4810",
+                    "23" : "s6410",
+                    "24" : "z9000",
+                    "25" : "m-MXL",
+                    "26" : "m-IOA",
+                    "27" : "s4820",
+                    "28" : "s6000",
+                    "29" : "s5000",
+                    "30" : "s-FN410S-IOA",
+                    "31" : "s-FN410T-IOA",
+                    "32" : "s-FN2210S-IOA",
+                    "33" : "z9500",
+                    "34" : "c9010",
+                    "35" : "c1048p",
+                    "36" : "s4048on",
+                    "37" : "s4810on",
+                    "38" : "s6000on",
+                    "39" : "s3048on",
+                    "40" : "z9100",
+                    "41" : "s6100",
+                    "42" : "s3148p",
+                    "43" : "s3124p",
+                    "44" : "s3124f",
+                    "45" : "s3124",
+                    "46" : "s3148",
+                    "47" : "s4048ton",
+                    "48" : "s6010",
+                    "49" : "n2048p",
+                    "50" : "n2024p",
+                    "51" : "n2024",
+                    "52" : "n2048",
+                    "53" : "n3048p",
+                    "54" : "n3024p",
+                    "55" : "n3024f",
+                    "56" : "n3024",
+                    "57" : "n3048"
+                }
+            },
+            "MgmtStatus": {
+                'Lookup': 'True',
+                'Values': {
+                    "1": "Management Unit",
+                    "2": "Standby Unit",
+                    "3": "Stack Unit",
+                    "4": "Unassigned"
+                }
+            },
+            "HwMgmtPreference": {
+                'Lookup': 'True',
+                'Values': {
+                    "0": "Disabled",
+                    "1": "Unassigned",
+                    "2": "Assigned"
+                }
+            },
+            "MacAddress": {
+                'Macedit': 'True'
+            },
+            "Temp": {'UnitScale': '0', 'UnitAppend' : 'Degree Celsius'}
         }
     }
 
@@ -550,6 +694,24 @@ F10_more_details_spec = {
     }
 }
 
+def check_classifier(myListoFDict, cls=None):
+    # Full OID to be expanded and added to list
+    sobj_list = ['SNMPv2-SMI::enterprises.6027.1.3.20']
+    if isinstance(myListoFDict, list):
+        for sys in myListoFDict:
+            if sys.get('SysObjectID', "NA") in sobj_list:
+                return (True, sys)
+    elif isinstance(myListoFDict, dict):
+        return (True, myListoFDict)
+    return (False, myListoFDict)
+
+classify_cond = {
+    F10CompEnum.System :
+    {
+        ProtocolEnum.SNMP : check_classifier
+    }
+}
+
 class F10(iDeviceDiscovery):
     def __init__(self, srcdir):
         if PY2:
@@ -560,6 +722,7 @@ class F10(iDeviceDiscovery):
             self.protofactory.add(PSNMP(
                 views = F10PSNMPViews,
                 classifier = F10PSNMPClassifier,
+                classifier_cond= classify_cond,
                 view_fieldspec = F10SNMPViews_FieldSpec,
                 cmds = F10PSNMPCmds))
         self.protofactory.addCTree(F10ComponentTree)
@@ -624,7 +787,7 @@ class F10Entity(iDeviceDriver):
             else:
                 entry['SwitchIPv4'] = self.ipaddr
 
-        if component in ["Processor"]:
+        if component in ["Processor", "StackUnit"]:
             if 'UpTime' in entry:
                 x = entry.get("UpTime", "Seconds").split()
                 if "Seconds" not in x :

@@ -24784,7 +24784,7 @@ eemiregistry = {
             "Severity": "Warning"
         },
         "SEC0701": {
-            "Description": "This warning message is displayed when using the default username and password (root and calvin). Using the default password causes a severe security risk for iDRAC.",
+            "Description": "This warning message is displayed when using the default username and password. Using the default password causes a severe security risk for iDRAC.",
             "Message": "Warning: Default username and password are currently in use. It is strongly recommended to change the default password immediately.",
             "NumberOfArgs": 0,
             "Resolution": "To change the password, run the following racadm commands: racadm set iDRAC.Users.<index>.Password <new password string>.Alternatively, to avoid this warning message run the following racadm command: racadm set iDRAC.Tuning.DefaultCredentialWarning Disable.",

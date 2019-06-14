@@ -242,6 +242,11 @@ EqualLogic_more_details_spec = {
             EqualLogicCompEnum.StoragePool,
             EqualLogicCompEnum.PhysicalDisk
         ]
+    },
+    "Volume": {
+        "_components_enum": [
+            EqualLogicCompEnum.StoragePool
+        ]
     }
 }
 

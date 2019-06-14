@@ -129,7 +129,7 @@ setup(
         'omdrivers': [
                 'iDRAC/*.Monitor',
                 'iDRAC/Config/*',
-                'CMC/*.Monitor',
+                'CMC/*.Monitor'
         ],
         'omsdk': [
                 'omlogs/config/*',

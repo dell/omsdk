@@ -2085,6 +2085,9 @@ iDRACWsManCmds = {
             ('ShareParameters/ShareType', "share", "remote_share_type_redfish", Share.ShareTypeRedfish, None),
             ('ShareParameters/FileName', "share", "remote_file_name", type("filename"), None),
             ('ShareParameters/UserName', "creds", "username", type("user"), None),
+            ('ShareParameters/Username', "creds", "username", type("user"), None), # workaround solution(JIT-132580):
+            # Need to adhere with REDFish schema, 14G server changes has reflected.
+            # For 12G, 13G changes will be reflected september 2019 onwards.
             ('ShareParameters/Password', "creds", "password", type("password"), None),
             ('ShareParameters/Target', "target", None, type(""), None),
             ('ExportFormat', "export_format", None, ExportFormatRedfishEnum, None),
@@ -2116,6 +2119,9 @@ iDRACWsManCmds = {
             ('ShareParameters/ShareType', "share", "remote_share_type_redfish", Share.ShareTypeRedfish, None),
             ('ShareParameters/FileName', "share", "remote_file_name", type("filename"), None),
             ('ShareParameters/UserName', "creds", "username", type("user"), None),
+            ('ShareParameters/Username', "creds", "username", type("user"), None), # workaround solution(JIT-132580):
+            # Need to adhere with REDFish schema, 14G server changes has reflected.
+            # For 12G, 13G changes will be reflected september 2019 onwards.
             ('ShareParameters/Password', "creds", "password", type("password"), None),
             ('ShareParameters/Target', "target", None, type(""), None),
             ("ShutdownType", "shutdown_type", None, ShutdownTypeRedfishEnum, None),
@@ -2630,7 +2636,7 @@ class iDRACConfig(iBaseConfigApi):
             try:
                 self._sysconfig = self.xmlp.parse_scp(filename)
                 self._sysconfig.commit()
-                # 1 is used for special default user 
+                # 1 is used for special default user - root
                 self._sysconfig.iDRAC.Users._index_helper.unusable(1)
             except Exception as ex:
                 self._sysconfig = None

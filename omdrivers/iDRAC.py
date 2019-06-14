@@ -1437,6 +1437,15 @@ iDRACWsManViews_FieldSpec = {
                 "10" : "Charging",
                 "12" : "Below Threshold"
             }
+        },
+        "PrimaryStatus": {
+            'Lookup': 'True',
+            'Values': {
+                "0": "Unknown",
+                "1": "Healthy",
+                "2": "Warning",
+                "3": "Critical"
+            }
         }
     },
     iDRACCompEnum.Enclosure: {
@@ -1490,10 +1499,21 @@ iDRACRedfishViews_FieldSpec = {
         "Id" : { 'Rename' : 'FQDD'},
         "SpeedMbps" : {'Rename' : 'LinkSpeed', 'UnitScale': '0', 'UnitAppend' : 'Mbps'},
         # "Name" : {'Rename' : 'ProductName'},
-        "AutoNeg" : {'Rename' : 'AutoNegotiation'},
+        "AutoNeg" : {'Rename' : 'AutoNegotiation',
+                     'Lookup': 'True',
+                     'Values': {
+                        False : "Unknown",
+                        True : "Enabled"
+                        }
+                     },
         "MACAddress" : {'Rename' : 'CurrentMACAddress'},
         "Status" : {'Create' : {
-                                'PrimaryStatus' : {'_Attribute' : 'Health'},
+                                'NICStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping' : { 'OK' : 'Healthy',
+                                                                  'Critical' : 'Critical',
+                                                                  'Warning' : 'Warning'
+                                                        }
+                                                   },
                                 'LinkStatus' : {'_Attribute' : 'State',
                                                 '_Mapping' : {'Enabled' : 'Up',
                                                               'Disabled' : 'Down',
@@ -1509,7 +1529,14 @@ iDRACRedfishViews_FieldSpec = {
                                                }
                                }
                    },
-        "Description" : {'Rename' : 'DeviceDescription'}
+        "Description" : {'Rename' : 'DeviceDescription'},
+        "FullDuplex": {'Rename': 'LinkDuplex',
+                       'Lookup': 'True',
+                       'Values': {
+                            False: 'Unknown',
+                            True: 'Full Duplex'
+                            }
+                        }
     },
     iDRACCompEnum.CPU : {
         "Id" : { 'Rename' : 'FQDD'},
@@ -1518,35 +1545,280 @@ iDRACRedfishViews_FieldSpec = {
                                      'CPUFamily': {'_Attribute' : 'EffectiveFamily'}
                                     }
                          },
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'}}},
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
+                                }
+                    },
         "TotalCores" : { 'Rename' : 'NumberOfProcessorCores'},
         "TotalThreads" : { 'Rename' : 'NumberOfEnabledThreads'},
-        "MaxSpeedMHz" : {'Rename' : 'MaxClockSpeed'},
-        "Name" : {'Rename' : 'DeviceDescription'}
+        "MaxSpeedMHz" : {'Rename' : 'MaxClockSpeed',
+                         'Type': 'ClockSpeed', 'InUnits': "MHz", 'OutUnits': 'GHz'},
+        "Name" : {'Rename' : 'DeviceDescription'},
+        # https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.2.0.pdf 
+        "CPUFamily": {
+            'Lookup': 'True',
+            'Values': {
+                "1": "Other",
+                "2": "Unknown",
+                "3": "8086",
+                "4": "80286",
+                "5": "Intel386 processor",
+                "6": "Intel486 processor",
+                "7": "8087",
+                "8": "80287",
+                "9": "80387",
+                "10": "80487",
+                "11": "Intel Pentium processor",
+                "12": "Pentium Pro processor",
+                "13": "Pentium II processor",
+                "14": "Pentium processor with MMX technology",
+                "15": "Intel Celeron processor",
+                "16": "Pentium II Xeon processor",
+                "17": "Pentium III processor",
+                "18": "M1 Family",
+                "19": "M2 Family",
+                "20": "Intel Celeron M processor",
+                "21": "Intel Pentium 4 HT processor",
+                "24": "AMD Duron Processor Family [1]",
+                "25": "K5 Family [1]",
+                "26": "K6 Family [1]",
+                "27": "K6-2 [1]",
+                "28": "K6-3 [1]",
+                "29": "AMD Athlon Processor Family [1]",
+                "30": "AMD29000 Family",
+                "31": "K6-2+",
+                "32": "Power PC Family",
+                "33": "Power PC 601",
+                "34": "Power PC 603",
+                "35": "Power PC 603+",
+                "36": "Power PC 604",
+                "37": "Power PC 620",
+                "38": "Power PC x704",
+                "39": "Power PC 750",
+                "40": "Intel Core Duo processor",
+                "41": "Intel Core Duo mobile processor",
+                "42": "Intel Core Solo mobile processor",
+                "43": "Intel Atom processor",
+                "44": "Intel Core M processor",
+                "45": "Intel(R) Core(TM) m3 processor",
+                "46": "Intel(R) Core(TM) m5 processor",
+                "47": "Intel(R) Core(TM) m7 processor",
+                "48": "Alpha Family [2]",
+                "49": "Alpha 21064",
+                "50": "Alpha 21066",
+                "51": "Alpha 21164",
+                "52": "Alpha 21164PC",
+                "53": "Alpha 21164a",
+                "54": "Alpha 21264",
+                "55": "Alpha 21364",
+                "56": "AMD Turion II Ultra Dual-Core Mobile M Processor Family",
+                "57": "AMD Turion II Dual-Core Mobile M Processor Family",
+                "58": "AMD Athlon II Dual-Core M Processor Family",
+                "59": "AMD Opteron 6100 Series Processor",
+                "60": "AMD Opteron 4100 Series Processor",
+                "61": "AMD Opteron 6200 Series Processor",
+                "62": "AMD Opteron 4200 Series Processor",
+                "63": "AMD FX Series Processor",
+                "64": "MIPS Family",
+                "65": "MIPS R4000",
+                "66": "MIPS R4200",
+                "67": "MIPS R4400",
+                "68": "MIPS R4600",
+                "69": "MIPS R10000",
+                "70": "AMD C-Series Processor",
+                "71": "AMD E-Series Processor",
+                "72": "AMD A-Series Processor",
+                "73": "AMD G-Series Processor",
+                "74": "AMD Z-Series Processor",
+                "75": "AMD R-Series Processor",
+                "76": "AMD Opteron 4300 Series Processor",
+                "77": "AMD Opteron 6300 Series Processor",
+                "78": "AMD Opteron 3300 Series Processor",
+                "79": "AMD FirePro Series Processor",
+                "80": "SPARC Family",
+                "81": "SuperSPARC",
+                "82": "microSPARC II",
+                "83": "microSPARC IIep",
+                "84": "UltraSPARC",
+                "85": "UltraSPARC II",
+                "86": "UltraSPARC Iii",
+                "87": "UltraSPARC III",
+                "88": "UltraSPARC IIIi",
+                "96": "68040 Family",
+                "97": "68xxx",
+                "98": "68000",
+                "99": "68010",
+                "100": "68020",
+                "101": "68030",
+                "102": "AMD Athlon(TM) X4 Quad-Core Processor Family",
+                "103": "AMD Opteron(TM) X1000 Series Processor",
+                "104": "AMD Opteron(TM) X2000 Series APU",
+                "105": "AMD Opteron(TM) A-Series Processor",
+                "106": "AMD Opteron(TM) X3000 Series APU",
+                "107": "AMD Zen Processor Family",
+                "112": "Hobbit Family",
+                "120": "Crusoe TM5000 Family",
+                "121": "Crusoe TM3000 Family",
+                "122": "Efficeon TM8000 Family",
+                "128": "Weitek",
+                "129": "Available for assignment",
+                "130": "Itanium processor",
+                "131": "AMD Athlon 64 Processor Family",
+                "132": "AMD Opteron Processor Family",
+                "133": "AMD Sempron Processor Family",
+                "134": "AMD Turion 64 Mobile Technology",
+                "135": "Dual-Core AMD Opteron Processor F",
+                "136": "AMD Athlon 64 X2 Dual-Core Processor Family",
+                "137": "AMD Turion 64 X2 Mobile Technology",
+                "138": "Quad-Core AMD Opteron Processor Family",
+                "139": "Third-Generation AMD Opteron Processor Family",
+                "140": "AMD Phenom FX Quad-Core Processor Family",
+                "141": "AMD Phenom X4 Quad-Core Processor Family",
+                "142": "AMD Phenom X2 Dual-Core Processor Family",
+                "143": "AMD Athlon X2 Dual-Core Processor Family",
+                "144": "PA-RISC Family",
+                "145": "PA-RISC 8500",
+                "146": "PA-RISC 8000",
+                "147": "PA-RISC 7300LC",
+                "148": "PA-RISC 7200",
+                "149": "PA-RISC 7100LC",
+                "150": "PA-RISC 7100",
+                "160": "V30 Family",
+                "161": "Quad-Core Intel Xeon processor 3200 Series",
+                "162": "Dual-Core Intel Xeon processor 3000 Series",
+                "163": "Quad-Core Intel Xeon processor 5300 Series",
+                "164": "Dual-Core Intel Xeon processor 5100 Series",
+                "165": "Dual-Core Intel Xeon processor 5000 Series",
+                "166": "Dual-Core Intel Xeon processor LV",
+                "167": "Dual-Core Intel Xeon processor ULV",
+                "168": "Dual-Core Intel Xeon processor 7100 Series",
+                "169": "Quad-Core Intel Xeon processor 5400 Series",
+                "170": "Quad-Core Intel Xeon processor",
+                "171": "Dual-Core Intel Xeon processor 5200 Series",
+                "172": "Dual-Core Intel Xeon processor 7200 Series",
+                "173": "Quad-Core Intel Xeon processor 7300 Series",
+                "174": "Quad-Core Intel Xeon processor 7400 Series",
+                "175": "Multi-Core Intel Xeon processor 7400 Series",
+                "176": "Pentium III Xeon processor",
+                "177": "Pentium III Processor with Intel SpeedStep Technology",
+                "178": "Pentium 4 Processor",
+                "179": "Intel Xeon processor",
+                "180": "AS400 Family",
+                "181": "Intel Xeon processor MP",
+                "182": "AMD Athlon XP Processor Family",
+                "183": "AMD Athlon MP Processor Family",
+                "184": "Intel Itanium 2 processor",
+                "185": "Intel Pentium M processor",
+                "186": "Intel Celeron D processor",
+                "187": "Intel Pentium D processor",
+                "188": "Intel Pentium Processor Extreme Edition",
+                "189": "Intel Core Solo Processor",
+                "190": "Reserved [3]",
+                "191": "Intel Core 2 Duo Processor",
+                "192": "Intel Core 2 Solo processor",
+                "193": "Intel Core 2 Extreme processor",
+                "194": "Intel Core 2 Quad processor",
+                "195": "Intel Core 2 Extreme mobile processor",
+                "196": "Intel Core 2 Duo mobile processor",
+                "197": "Intel Core 2 Solo mobile processor",
+                "198": "Intel Core i7 processor",
+                "199": "Dual-Core Intel Celeron processor",
+                "200": "IBM390 Family",
+                "201": "G4",
+                "202": "G5",
+                "203": "ESA/390 G6",
+                "204": "z/Architecture base",
+                "205": "Intel Core i5 processor",
+                "206": "Intel Core i3 processor",
+                "207": "Intel Core i9 processor",
+                "210": "VIA C7-M Processor Family",
+                "211": "VIA C7-D Processor Family",
+                "212": "VIA C7 Processor Family",
+                "213": "VIA Eden Processor Family",
+                "214": "Multi-Core Intel Xeon processor",
+                "215": "Dual-Core Intel Xeon processor 3xxx Series",
+                "216": "Quad-Core Intel Xeon processor 3xxx Series",
+                "217": "VIA Nano Processor Family",
+                "218": "Dual-Core Intel Xeon processor 5xxx Series",
+                "219": "Quad-Core Intel Xeon processor 5xxx Series",
+                "220": "Available for assignment",
+                "221": "Dual-Core Intel Xeon processor 7xxx Series",
+                "222": "Quad-Core Intel Xeon processor 7xxx Series",
+                "223": "Multi-Core Intel Xeon processor 7xxx Series",
+                "224": "Multi-Core Intel Xeon processor 3400 Series",
+                "228": "AMD Opteron 3000 Series Processor",
+                "229": "AMD Sempron II Processor",
+                "230": "Embedded AMD Opteron Quad-Core Processor Family",
+                "231": "AMD Phenom Triple-Core Processor Family",
+                "232": "AMD Turion Ultra Dual-Core Mobile Processor Family",
+                "233": "AMD Turion Dual-Core Mobile Processor Family",
+                "234": "AMD Athlon Dual-Core Processor Family",
+                "235": "AMD Sempron SI Processor Family",
+                "236": "AMD Phenom II Processor Family",
+                "237": "AMD Athlon II Processor Family",
+                "238": "Six-Core AMD Opteron Processor Family",
+                "239": "AMD Sempron M Processor Family",
+                "250": "i860",
+                "251": "i960",
+                "254": "Indicator to obtain the processor family from the Processor Family 2 field",
+                "255": "Reserved",
+                "256": "ARMv7",
+                "257": "ARMv8",
+                "260": "SH-3",
+                "261": "SH-4",
+                "280": "ARM",
+                "281": "StrongARM",
+                "300": "6x86",
+                "301": "MediaGX",
+                "302": "MII",
+                "320": "WinChip",
+                "350": "DSP",
+                "500": "Video Processor"
+            }
+        }
     },
     iDRACCompEnum.Sensors_Fan : {
-        "MemberID" : { 'Rename' : 'Key'},
-        "MemberId" : { 'Rename' : 'Key'},
-        "FanName" : { 'Rename' : 'Location'},
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'},
+        "MemberID": {'Rename': 'DeviceID'},
+        "MemberId": {'Rename': 'DeviceID'},
+        "Name" : { 'Rename' : 'Location'},
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
                                 'State' : {'_Attribute' : 'State'}}
                    },
         "Reading" : { 'Rename' : 'CurrentReading'}
     },
     iDRACCompEnum.Sensors_Voltage : {
-        "MemberID" : { 'Rename' : 'Key'},
-        "MemberId" : { 'Rename' : 'Key'},
+        "MemberID" : { 'Rename' : 'DeviceID'},
+        "MemberId" : { 'Rename' : 'DeviceID'},
         "Name" : { 'Rename' : 'Location'},
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'},
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
                                 'State' : {'_Attribute' : 'State'}}
                     },
         "ReadingVolts" : { 'Rename' : 'Reading(V)'}
     },
     iDRACCompEnum.Sensors_Temperature : {
-        "MemberID" : { 'Rename' : 'Key'},
-        "MemberId" : { 'Rename' : 'Key'},
+        "MemberID" : { 'Rename' : 'DeviceID'},
+        "MemberId" : { 'Rename' : 'DeviceID'},
         "Name" : { 'Rename' : 'Location'},
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'},
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
                                 'State' : {'_Attribute' : 'State'}}
                     },
         "ReadingCelsius" : { 'Rename' : 'CurrentReading(Degree Celsius)'}
@@ -1555,15 +1827,34 @@ iDRACRedfishViews_FieldSpec = {
         "MemberID" : { 'Rename' : 'FQDD'},
         "LastPowerOutputWatts" : {'Rename' : 'TotalOutputPower'},
         "LineInputVoltage" : { 'Rename' : 'InputVoltage'},
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'}}
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
+                                }
                     },
-        "Redundancy" : { 'Rename' : 'RedfishRedundancy'}#This is to not show redundancy
+        "Redundancy" : { 'Rename' : 'RedfishRedundancy'},#This is to not show redundancy
+        "PowerSupplyType": {'Rename': 'Type'}
     },
     iDRACCompEnum.Controller : {
         "Id" : { 'Rename' : 'FQDD'},
         "Name" : {'Rename' : 'ProductName'},
-        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health'}}
-                    }
+        "Status" : {'Create' : {'PrimaryStatus' : {'_Attribute' : 'Health',
+                                                   '_Mapping': {'OK': 'Healthy',
+                                                       'Critical': 'Critical',
+                                                       'Warning': 'Warning'
+                                                       }
+                                                   },
+                                'RollupStatus': {'_Attribute': 'HealthRollup',
+                                                '_Mapping': {'OK': 'Healthy',
+                                                             'Critical': 'Critical',
+                                                             'Warning': 'Warning'
+                                                             }
+                                                },
+                              }
+                   }
     },
     iDRACMiscEnum.DellAttributes : {
         "Attributes" : {'Create' : {'GroupName' : {'_Attribute' : 'GroupManager.1.GroupName'},
@@ -1674,10 +1965,10 @@ if PySnmpPresent:
             'Voltage' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.14"), 
             'Version' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.16"), 
             "NumberOfProcessorCores" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.17"), 
-            "CoreEnabledCount" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.18"), 
-            "ThreadCount" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.19"), 
+            "NumberOfEnabledCores" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.18"),
+            "NumberOfEnabledThreads" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.19"),
             "Characteristics" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.20"), 
-            "ExtendedCapabilities" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.21"), 
+            "ExtendedCapabilities" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.21"),
             "ExtendedEnabled" : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.22"), 
             'Model' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.23"), 
             'FQDD' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.30.1.26"), 
@@ -1701,7 +1992,7 @@ if PySnmpPresent:
         },
         iDRACCompEnum.NIC : {
             'Index' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.2"), 
-            'PrimaryStatus' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.3"), 
+            'NICStatus' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.3"),
             'LinkStatus' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.4"), 
             'ProductName' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.6"), 
             'Vendor' : ObjectIdentity("1.3.6.1.4.1.674.10892.5.4.1100.90.1.7"), 
@@ -1936,12 +2227,14 @@ if PySnmpPresent:
             "CurrentReading"         : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.300.70.1.6'),
             "Location"        : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.300.70.1.8'),
         },
-        iDRACCompEnum.Sensors_Voltage : {
-            "State"           : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.4'),
-            "CurrentReading"         : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.16'),
-            "PrimaryStatus"   : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.5'),
-            "Reading(V)"      : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.6'),
-            "Location"        : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.8'),
+        iDRACCompEnum.Sensors_Voltage: {
+            "VoltageProbeIndex": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.2'),
+            "State": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.4'),
+            "PrimaryStatus": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.5'),
+            "Reading(V)": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.6'),
+            "VoltageProbeType": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.7'),
+            "Location": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.8'),
+            "CurrentReading": ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.600.20.1.16'),
         },
         iDRACCompEnum.Sensors_Temperature : {
             "State"           : ObjectIdentity('1.3.6.1.4.1.674.10892.5.4.700.20.1.4'),
@@ -2327,7 +2620,9 @@ if PySnmpPresent:
                     "250"                          :  "i860",
                     "251"                          :  "i960"
                 }
-            }
+            },
+            "MaxClockSpeed": {'Type': 'ClockSpeed', 'InUnits': "MHz", 'OutUnits': "GHz"},
+            "Voltage": {'UnitScale': '-3'}
         },
         iDRACCompEnum.NIC : {
             "LinkStatus" : {
@@ -2343,7 +2638,7 @@ if PySnmpPresent:
                     "13" : "Down",
                 }
 	    },
-            "PrimaryStatus" : {
+            "NICStatus" : {
                 'Lookup'  :  'True',
                 'Values' : {
                     "1" : "Unknown",
@@ -3002,6 +3297,30 @@ if PySnmpPresent:
                     "4" : "Not Ready",
                     "6" : "Enabled Not Ready"
                 }
+            },
+            "VoltageProbeType": {
+                'Lookup': 'True',
+                'Values': {
+                    "1": "voltageProbeTypeIsOther",
+                    "2": "voltageProbeTypeIsUnknown",
+                    "3": "voltageProbeTypeIs1Point5Volt",
+                    "4": "voltageProbeTypeIs3Point3Volt",
+                    "5": "voltageProbeTypeIs5Volt",
+                    "6": "voltageProbeTypeIsMinus5Volt",
+                    "7": "voltageProbeTypeIs12Volt",
+                    "8": "voltageProbeTypeIsMinus12Volt",
+                    "9": "voltageProbeTypeIsIO",
+                    "10": "voltageProbeTypeIsCore",
+                    "11": "voltageProbeTypeIsFLEA",
+                    "12": "voltageProbeTypeIsBattery",
+                    "13": "voltageProbeTypeIsTerminator",
+                    "14": "voltageProbeTypeIs2Point5Volt",
+                    "15": "voltageProbeTypeIsGTL",
+                    "16": "voltageProbeTypeIsDiscrete",
+                    "17": "voltageProbeTypeIsGenericDiscrete",
+                    "18": "voltageProbeTypeIsPSVoltage",
+                    "19": "voltageProbeTypeIsMemoryStatus"
+                }
             }
         },
         iDRACCompEnum.ControllerBattery: {
@@ -3401,6 +3720,12 @@ class iDRACEntity(iDeviceDriver):
                         entry.update({attr : ChassisDict.get(attr, 'Not Available')})
 
                 # del self.entityjson['ChassisRF']
+                if self.cfactory.work_protocols[0].name == "REDFISH":
+                    # For RedFish SysMemTotalSize's value is converted to GiB to GB
+                    if isinstance(entry.get("SysMemTotalSize", 0), float):
+                        entry['SysMemTotalSize'] = str(1.074 * entry.get("SysMemTotalSize", 0)) + ' GB'
+                    else:
+                        entry['SysMemTotalSize'] = "Not Available"
             if 'DellAttributes' in self.entityjson:
                 dellAttrList = self.entityjson['DellAttributes']
                 needAttr = ['ChassisServiceTag', 'OSName' ,'OSVersion','SystemLockDown','LifecycleControllerVersion','VirtualAddressManagementApplication']
@@ -3500,12 +3825,58 @@ class iDRACEntity(iDeviceDriver):
             if entry.get('ElementName') != "Chassis Controller":
                 return False
         if 'Sensors_' in component:
-            if (entry.get('DeviceID', None)):
-                entry['DeviceID'] = entry.get('Key')#Redfish Case for SCOM to Adapt
-            # or change in Monitor file Sensor/NumericSensor/PSNumericSensor to ElementName
             entry['Key'] = entry.get('Location', entry.get('Key', component))
             if (entry.get('SensorType', "Not Available")):
                 entry["SensorType"] = component.split('_')[-1]
+        if component == 'CPU':
+            if self.cfactory.work_protocols[0].name == "SNMP":
+                try:
+                    ExtCapabilities = int(entry.get('ExtendedCapabilities', None))
+                    if int(ExtCapabilities):
+                        if (ExtCapabilities >> 0) & 1:
+                            entry['VirtualizationTechnologyCapable'] = "Supported"
+                        else:
+                            entry['VirtualizationTechnologyCapable'] = "Not Supported"
+                        if (ExtCapabilities >> 2) & 1:
+                            entry['ExecuteDisabledCapable'] = "Supported"
+                        else:
+                            entry['ExecuteDisabledCapable'] = "Not Supported"
+                        if (ExtCapabilities >> 3) & 1:
+                            entry['HyperThreadingCapable'] = "Supported"
+                        else:
+                            entry['HyperThreadingCapable'] = "Not Supported"
+                        if (ExtCapabilities >> 4) & 1:
+                            entry['TurboModeCapable'] = "Supported"
+                        else:
+                            entry['TurboModeCapable'] = "Not Supported"
+                except ValueError:
+                    logger.info(
+                        self.ipaddr + " Warning: extended capabilities of the processor device Not Available"
+                    )
+                try:
+                    ExtEnabled = int(entry.get('ExtendedEnabled', None))
+                    if int(ExtCapabilities):
+                        if (ExtEnabled >> 0) & 1:
+                            entry['VirtualizationTechnologyEnabled'] = "Enabled"
+                        else:
+                            entry['VirtualizationTechnologyEnabled'] = "Disabled"
+                        if (ExtEnabled >> 2) & 1:
+                            entry['ExecuteDisabledEnabled'] = "Enabled"
+                        else:
+                            entry['ExecuteDisabledEnabled'] = "Disabled"
+                        if (ExtEnabled >> 3) & 1:
+                            entry['HyperThreadingEnabled'] = "Enabled"
+                        else:
+                            entry['HyperThreadingEnabled'] = "Disabled"
+                        if (ExtEnabled >> 4) & 1:
+                            entry['TurboModeEnabled'] = "Enabled"
+                        else:
+                            entry['TurboModeEnabled'] = "Disabled"
+                except ValueError:
+                    logger.info(
+                        self.ipaddr + " Warning: extended settings of the processor device Not Available"
+                    )
+
         return True
 
     def _should_i_modify_component(self, finalretjson, component):
@@ -3519,6 +3890,37 @@ class iDRACEntity(iDeviceDriver):
         #     component = finalretjson.keys()
         #     subsystem = finalretjson["Subsystem"]
         #     finalretjson["Subsystem"] = list(filter(lambda eachdict: eachdict['Key'] in component, subsystem))
+        """
+        Reading(V) attribute value is displayed for different instance than actual. 
+        In OMSDK value is shown for first instance where as actually its for 32nd instance.
+        
+        CurrentReading attribute value is displayed for different instance than actual. 
+        For 36th instance OMSDK shows value as "Not Available", but actual value on device is "VoltageIsGood
+        """
+        if 'Sensors_Voltage' in component:
+            if self.cfactory.work_protocols[0].name == "SNMP":
+                """
+                Sorting is done as instances are not in order in Linux 
+                """
+                sensors_voltage = sorted(finalretjson.get('Sensors_Voltage', []), key=lambda k: int(k.get('VoltageProbeIndex', 99999)))
+                cr = []
+                rv = []
+                for val in sensors_voltage:
+                        cr.append(val.get('CurrentReading', 'Not Available'))
+                        rv.append(val.get('Reading(V)', 'Not Available'))
+                i = 0
+                j = 0
+                for item in sensors_voltage:
+                    if str(item.get('VoltageProbeType', 'Not Available')) != "voltageProbeTypeIsDiscrete" \
+                            and str(item.get('State', 'Not Available')) == "Enabled":
+                        item['Reading(V)'] = rv[i]
+                        i += 1
+                    if str(item.get('VoltageProbeType', 'Not Available')) == "voltageProbeTypeIsDiscrete":
+                        item['Reading(V)'] = "Not Available"
+                        item['CurrentReading'] = cr[j]
+                        j += 1
+                    if str(item.get('VoltageProbeType', 'Not Available')) != "voltageProbeTypeIsDiscrete":
+                        item['CurrentReading'] = "Not Available"
 
     def _get_topology_info(self):
         return iDRACTopologyInfo(self.get_json_device())
@@ -3543,12 +3945,15 @@ class iDRACEntity(iDeviceDriver):
         sysdict = syslist[0]
         blademodel = sysdict.get('Model', 'Not Available')
         #logger.info(self.ipaddr+" BLAde Model "+blademodel)
+
         if blademodel:
-            if ('poweredge m' in str(blademodel).lower()):
-                systree = ctree.get('System', {})
-                systree.pop('PowerSupply',None)
-                sensdict = systree.get('Sensors',{})
+            systree = ctree.get('System', {})
+            sensdict = systree.get('Sensors', {})
+            if 'poweredge m' in str(blademodel).lower():
+                systree.pop('PowerSupply', None)
                 sensdict.pop('Sensors_Fan', None)
+                sensdict.pop('Sensors_Intrusion', None)
+            if ('poweredge fc' in str(blademodel).lower()) or ('poweredge fm' in str(blademodel).lower()):
                 sensdict.pop('Sensors_Intrusion', None)
         return ctree
 

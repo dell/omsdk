@@ -335,7 +335,7 @@ class WsManProtocolBase(ProtocolBase):
         except Exception as exp:
             logger.error(self.proto.ipaddr+" : Exception while executing redfish request: {}".format(exp))
             retval["Status"] = "Failed"
-            retval["Data"] = {"Status": "Failed", "Message": "Failed to execute resfish request"}
+            retval["Data"] = {"Status": "Failed", "Message": "Failed to execute redfish request: {}".format(exp)}
             return retval
         retval = self._parse_redfish_output(response, success_code, returns_job_id)
         return retval
