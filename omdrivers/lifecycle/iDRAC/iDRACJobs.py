@@ -147,7 +147,6 @@ class iDRACJobs(iBaseJobApi):
         jobret = {"Status": TypeHelper.resolve(JobStatusEnum.InProgress)}
         if jobid.startswith('DCIM_OSD'):
             # Poll for OSD Concrete Job
-            time.sleep( 10 )
             jobs = self._get_osd_job_details()
         else:
             jobs = self.get_job_details(jobid)
@@ -239,6 +238,7 @@ class iDRACJobs(iBaseJobApi):
         job_ret = False
         wait_till = time.time() + wait_for
         while True:
+            time.sleep( 30 )
             status = {}
             if self.entity.use_redfish:
                 status = self.get_job_status_redfish(jobid)
@@ -272,7 +272,6 @@ class iDRACJobs(iBaseJobApi):
                     break
                 else:
                     logger.debug(self.entity.ipaddr+" : "+jobid+ ": status: "+str(status))
-            time.sleep(5)
             if time.time() > wait_till:
                 ret_json['Status'] = 'Failed'
                 ret_json['Message'] = 'Job wait did not return for {0} seconds'.format(wait_for)
