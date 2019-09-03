@@ -238,6 +238,7 @@ class iDRACJobs(iBaseJobApi):
         job_ret = False
         wait_till = time.time() + wait_for
         while True:
+            time.sleep( 30 )
             status = {}
             if self.entity.use_redfish:
                 status = self.get_job_status_redfish(jobid)
@@ -271,7 +272,6 @@ class iDRACJobs(iBaseJobApi):
                     break
                 else:
                     logger.debug(self.entity.ipaddr+" : "+jobid+ ": status: "+str(status))
-            time.sleep(5)
             if time.time() > wait_till:
                 ret_json['Status'] = 'Failed'
                 ret_json['Message'] = 'Job wait did not return for {0} seconds'.format(wait_for)
