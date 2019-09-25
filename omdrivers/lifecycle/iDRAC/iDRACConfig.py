@@ -973,7 +973,8 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "share": FileOnShare,
-            "creds": UserCredentials
+            "creds": UserCredentials,
+            "expose_duration": str 
         },
         "Return": {
             "File": "file"
@@ -986,6 +987,7 @@ iDRACWsManCmds = {
             ("Username", "creds", 'username', type("user"), None),
             ("Password", "creds", 'password', type("password"), None),
             # RackHD("ExposeDiration",  "duration", None, type("0"), None),
+            ("ExposeDuration", "expose_duration", None, str, None),  # 0 - report, 1 - apply
         ]
     },
 
@@ -1000,7 +1002,8 @@ iDRACWsManCmds = {
                 {'@Name': 'SystemName', '#text': 'DCIM:ComputerSystem'}
             ]},
         "Args": {
-            "share": FileOnShare
+            "share": FileOnShare,
+            "expose_duration": str
         },
         "Return": {
             "File": "file"
@@ -1010,6 +1013,7 @@ iDRACWsManCmds = {
             ('ShareName', "share", 'remote_folder_name', type("\\test"), None),
             ('ShareType', "share", 'remote_share_type', Share.ShareType, None),
             ('ImageName', "share", 'remote_file_name', type("filename"), None),
+            ("ExposeDuration", "expose_duration", None, str, None),
             # ("Username",  "creds", 'username', type("user"), None),
             # ("Password",  "creds", 'password', type("password"), None),
             # RackHD("ExposeDiration",  "duration", None, type("0"), None),
@@ -4728,7 +4732,7 @@ class iDRACConfig(iBaseConfigApi):
         rjson['file'] = 'delete_iso_from_vflash'
         return rjson
 
-    def boot_to_network_iso(self, network_iso_image, uefi_target, job_wait=True):
+    def boot_to_network_iso(self, network_iso_image, uefi_target, expose_duration, job_wait=True):
 
         if uefi_target == "":
             try:
@@ -4738,10 +4742,10 @@ class iDRACConfig(iBaseConfigApi):
             except:
                 return {"Status": "Failed", "Message": "LC is not ready"}
             if TypeHelper.resolve(network_iso_image.remote_share_type) == TypeHelper.resolve(ShareTypeEnum.NFS):
-                rjson = self.entity._boot_to_network_iso_nfs(share=network_iso_image)
+                rjson = self.entity._boot_to_network_iso_nfs(share=network_iso_image, expose_duration=expose_duration)
             else:
                 rjson = self.entity._boot_to_network_iso(share=network_iso_image,
-                                                         creds=network_iso_image.creds)
+                                                         creds=network_iso_image.creds, expose_duration=expose_duration)
             rjson['file'] = str(network_iso_image)
             if job_wait:
                 rjson = self._job_mgr._job_wait(rjson['file'], rjson)

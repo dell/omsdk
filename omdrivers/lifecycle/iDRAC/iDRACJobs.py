@@ -238,8 +238,8 @@ class iDRACJobs(iBaseJobApi):
         job_ret = False
         wait_till = time.time() + wait_for
         while True:
-            time.sleep( 30 )
             status = {}
+            time.sleep(30)
             if self.entity.use_redfish:
                 status = self.get_job_status_redfish(jobid)
             else:
