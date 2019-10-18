@@ -239,6 +239,41 @@ ShareTypeEnum = EnumWrapper('ShareTypeEnum', {
     'HTTPS': 6
 }).enum_type
 
+IFRShareTypeEnum = EnumWrapper('IFRShareTypeEnum', {
+    'nfs': 'NFS',
+    'cifs': 'CIFS',
+    'ftp': 'FTP',
+    'http': 'HTTP',
+    'https': 'HTTPS',
+    'tftp': 'TFTP'
+}).enum_type
+
+ApplyUpdateEnum = EnumWrapper('ApplyUpdateEnum', {
+    'True': 'True',
+    'False': 'False'
+}).enum_type
+
+URLApplyUpdateEnum = EnumWrapper('URLApplyUpdateEnum', {
+    'True': 1,
+    'False': 0
+}).enum_type
+
+RebootEnum = EnumWrapper('RebootEnum', {
+    'True': 'TRUE',
+    'False': 'FALSE'
+}).enum_type
+
+URLShareTypeEnum = EnumWrapper('URLShareTypeEnum', {
+    'ftp': 1,
+    'http': 3,
+    'https': 6
+}).enum_type
+
+URLCertWarningEnum = EnumWrapper('URLCertWarningEnum', {
+    'True': 2,
+    'False': 1
+}).enum_type
+
 VideoLogsFileTypeEnum = EnumWrapper("VideoLogsFileTypeEnum", {
     'Boot_Capture': 1,
     'Crash_Capture': 2
@@ -321,6 +356,11 @@ ProxyTypeEnum = EnumWrapper('ProxyTypeEnum', {
 IgnoreCertWarningEnum = EnumWrapper('IgnoreCertWarningEnum', {
     'Off': 1,
     'On': 2
+}).enum_type
+
+IgnoreCertWarnEnum = EnumWrapper('IgnoreCertWarnEnum', {
+    'Off': 'Off',
+    'On': 'On'
 }).enum_type
 
 EndHostPowerStateEnum = EnumWrapper('EndHostPowerStateEnum', {

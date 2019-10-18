@@ -194,6 +194,7 @@ def format_enum_wsman(enval):
     return 0
 
 
+# noinspection PyInterpreter
 iDRACWsManCmds = {
     ###### LC Services
     "_lc_status": {
@@ -1265,14 +1266,8 @@ iDRACWsManCmds = {
             ("CatalogFile", "catalog", None, type("Catalog.xml"), None),
             ("ApplyUpdate", "apply", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot", None, type("TRUE"), None),
-            # ("ProxyPort", "proxy", 'port', type(100), None),
-            # ("ProxyType", "proxy", 'type', type("1"), None),
-            # ("ProxySupport", "proxy", 'support', type("3"), None), # 1-off, 2-user default proxy 3-passed in params
-            # ("ProxyUName",  "proxy_creds", 'username', type("user"), None),
-            # ("ProxyPasswd",  "proxy_creds", 'password', type("password"), None),
         ]
     },
-
     "_update_repo_nfs": {
         "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
         "Action": "InstallFromRepository",
@@ -1285,6 +1280,7 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "share": FileOnShare,
+            "creds": UserCredentials,
             "catalog": str,
             "apply": int,
             "reboot": str
@@ -1297,19 +1293,11 @@ iDRACWsManCmds = {
             ('ShareName', "share", 'remote_share_name', type("\\test"), None),
             ('ShareType', "share", 'remote_share_type', Share.ShareType, None),
             ('FileName', "share", 'remote_file_name', type("filename"), None),
-            # ("Username",  "creds", 'username', type("user"), None),
-            # ("Password",  "creds", 'password', type("password"), None),
             ("CatalogFile", "catalog", None, type("Catalog.xml"), None),
             ("ApplyUpdate", "apply", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot", None, type("TRUE"), None),
-            # ("ProxyPort", "proxy", 'port', type(100), None),
-            # ("ProxyType", "proxy", 'type', type("1"), None),
-            # ("ProxySupport", "proxy", 'support', type("3"), None), # 1-off, 2-user default proxy 3-passed in params
-            # ("ProxyUName",  "proxy_creds", 'username', type("user"), None),
-            # ("ProxyPasswd",  "proxy_creds", 'password', type("password"), None),
         ]
     },
-
     "_update_repo_url": {
         "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
         "Action": "InstallFromRepository",
@@ -1354,6 +1342,46 @@ iDRACWsManCmds = {
         ]
     },
 
+    "_update_from_repo_using_redfish": {
+        "ResourceURI": "/redfish/v1/Dell/Systems/System.Embedded.1/DellSoftwareInstallationService/Actions/DellSoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "HttpMethod": "post",
+        "SuccessCode": [202],
+        "ReturnsJobid": True,
+        "Args": {
+            "ipaddress": str,
+            "share_name": str,
+            "share_type": IFRShareTypeEnum,
+            "username": str,
+            "password": str,
+            "catalog_file": str,
+            "apply_update": ApplyUpdateEnum,
+            "reboot_needed": bool,
+            "ignore_cert_warning": IgnoreCertWarnEnum
+        },
+        "Return": { "File": "file" },
+        "Parameters": [
+            ('IPAddress', 'ipaddress', None, str, None),
+            ('ShareName', 'share_name', None, str, None),
+            ('ShareType', 'share_type', None, IFRShareTypeEnum, None),
+            ('UserName', 'username', None, str, None),
+            ('Password', 'password', None, str, None),
+            ('RebootNeeded', 'reboot_needed', None, bool, None),
+            ('CatalogFile', 'catalog_file', None, type('Catalog.xml'), None),
+            ('ApplyUpdate', 'apply_update', None, ApplyUpdateEnum, None),
+            ('IgnoreCertWarning', 'ignore_cert_warning', None, IgnoreCertWarnEnum, None)
+        ]
+    },
+
+    "_get_update_from_repo_list_using_redfish": {
+        "ResourceURI": "/redfish/v1/Dell/Systems/System.Embedded.1/DellSoftwareInstallationService/Actions/DellSoftwareInstallationService",
+        "Action": "GetRepoBasedUpdateList",
+        "HttpMethod": "post",
+        "SuccessCode": [200],
+        "ReturnsJobid": False,
+        "Args": {},
+        "Parameters": []
+    },
 
     ##############
     ##### End Update Management
@@ -2169,7 +2197,7 @@ iDRACWsManCmds = {
             ('ShareParameters/ShareType', "share", "remote_share_type_redfish", Share.ShareTypeRedfish, None),
             ('ShareParameters/FileName', "share", "remote_file_name", type("filename"), None),
             ('ShareParameters/UserName', "creds", "username", type("user"), None),
-            ('ShareParameters/Username', "creds", "username", type("user"), None),  # workaround solution(JIT-132580):
+            ('ShareParameters/Username', "creds", "username", type("user"), None), # workaround solution(JIT-132580):
             # Need to adhere with REDFish schema, 14G server changes has reflected.
             # For 12G, 13G changes will be reflected september 2019 onwards.
             ('ShareParameters/Password', "creds", "password", type("password"), None),
