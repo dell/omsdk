@@ -2033,7 +2033,7 @@
                     "baseType": "enum",
                     "default": "IPv4",
                     "description": "IP Version",
-                    "longDescription": "Specify whether IPv4 or IPv6 network addressing will be used for iSCSI initiator and targets (Applies to the Initiator only when a seperate target IP Version is implemented).  [Vendor to provide implementation-specific language].",
+                    "longDescription": "Specify whether IPv4 or IPv6 network addressing will be used for iSCSI initiator and targets (Applies to the Initiator only when a separate target IP Version is implemented).  [Vendor to provide implementation-specific language].",
                     "modDeleteAllowed": true,
                     "name": "IpVer",
                     "qualifier": "IscsiGenParams",

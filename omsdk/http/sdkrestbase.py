@@ -69,7 +69,7 @@ class RestProtocolBase(ProtocolBase):
     def identify(self):
         """
         Identifies the target product
-        Curently _communicate has hardcoded data
+        Currently _communicate has hardcoded data
         """
         # wsm = RestRequest()
         # wsm.identify()

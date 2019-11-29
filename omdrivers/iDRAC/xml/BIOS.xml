@@ -102,7 +102,7 @@ When set to User Defined, the system delays power-up by that amount. The system 
 		<DisplayName>Intel(R) AES-NI</DisplayName>
 		<GroupName>SysSecurity</GroupName>
 		<AttributeName>AesNi</AttributeName>
-		<HelpText>Indicates the status of the Intel Processor AES-NI feature. AES-NI improves the speed of applications by performing encryption and decryption using the Advenced Encryption Standard Instruction Set.</HelpText>
+		<HelpText>Indicates the status of the Intel Processor AES-NI feature. AES-NI improves the speed of applications by performing encryption and decryption using the Advanced Encryption Standard Instruction Set.</HelpText>
 		<GroupDisplayName>System Security</GroupDisplayName>
 		<AttributeType>String</AttributeType>
 		<DisplayOrder>1329</DisplayOrder>
@@ -2553,7 +2553,7 @@ NOTE: If set to Disabled (OS), the Integrated NICs may still be available for sh
 		<AttributeName>IntegratedSas</AttributeName>
 		<DisplayName>Integrated SAS Controller</DisplayName>
 		<GroupName>IntegratedDevices</GroupName>
-		<HelpText>Enables or disables the integrated SAS controller.  When set to Disabled, the device is not visisble to the operating system (OS).</HelpText>
+		<HelpText>Enables or disables the integrated SAS controller.  When set to Disabled, the device is not visible to the operating system (OS).</HelpText>
 		<GroupDisplayName>Integrated Devices</GroupDisplayName>
 		<AttributeType>Enumeration</AttributeType>
 		<DisplayOrder>901</DisplayOrder>
@@ -7417,7 +7417,7 @@ When configured as Hybrid mode, part of MCDRAM memory is mapped to system addres
 		<AttributeName>ProcExecuteDisable</AttributeName>
 		<DisplayName>Execute Disable</DisplayName>
 		<GroupName>ProcSettings</GroupName>
-		<HelpText>A security feature designed to prevent certain types of buffer overflow attacks by enforcing specific areas of memory that applications can execute code. In general, it is best pratice to leave this option set to Enabled for the security benefits, as no real performance advantage has been detected by disabling this feature in BIOS.</HelpText>
+		<HelpText>A security feature designed to prevent certain types of buffer overflow attacks by enforcing specific areas of memory that applications can execute code. In general, it is best practice to leave this option set to Enabled for the security benefits, as no real performance advantage has been detected by disabling this feature in BIOS.</HelpText>
 		<GroupDisplayName>Processor Settings</GroupDisplayName>
 		<AttributeType>Enumeration</AttributeType>
 		<DisplayOrder>340</DisplayOrder>

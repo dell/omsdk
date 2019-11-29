@@ -142,7 +142,7 @@ class FileListEntity(iConsoleDriver):
         logger.debug("Running: " + str(function))
         with self.myentitylistlock:
             if function in self.success:
-                logger.debug("another runit with same funciton in progress!!")
+                logger.debug("another runit with same function in progress!!")
                 # wait 
             self.success[function] = 0
             self.failed[function] = 0

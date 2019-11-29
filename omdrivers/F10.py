@@ -764,7 +764,7 @@ class F10Entity(iDeviceDriver):
             if 'ifIndex' in entry:
                 if entry.get("ifIndex") == component + '_ifIndex_null':
                     return False
-            # This is implimented to ignore virtual port instances
+            # This is implemented to ignore virtual port instances
             if not 'SysIfName' in entry:
                     return False
         if component in ["System"]:

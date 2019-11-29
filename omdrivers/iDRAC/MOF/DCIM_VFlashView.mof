@@ -37,7 +37,7 @@ class DCIM_VFlashView : DCIM_View {
    uint64 Capacity;
 
       [Description ( 
-          "This property specifies the avaible size on the media " ), 
+          "This property specifies the available size on the media " ),
        ModelCorrespondence { "DCIM_VFlashView.Capacity" }]
    uint64 AvailableSize;
 
