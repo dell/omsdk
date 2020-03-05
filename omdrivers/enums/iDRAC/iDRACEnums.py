@@ -420,6 +420,7 @@ ComputerSystemResetTypesEnum = EnumWrapper("ComputerSystemResetTypesEnum", {
     "GracefulShutdown": "GracefulShutdown",
     "PushPowerButton": "PushPowerButton",
     "Nmi": "Nmi",
+    "ForceRestart": "ForceRestart"
 }).enum_type
 
 ManagerTypesEnum = EnumWrapper("ManagerTypesEnum", {

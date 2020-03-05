@@ -2427,6 +2427,19 @@ iDRACWsManCmds = {
         "Parameters": [
             ('TargetSettingsURI', "target_uri", None, type(""), None)
         ]
+    },
+
+    "_get_acton_redfish": {
+        "ResourceURI": "/redfish/v1/Systems/System.Embedded.1",
+        "Action": "",
+        "HttpMethod": "get",
+        "SuccessCode": [200],
+        "ReturnsJobid": False,
+        "Args": {},
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": []
     }
 
     #############Above are Redfish specific commands, need to be moved once testing completed and protocol issue addressed###########
@@ -5118,7 +5131,13 @@ class iDRACConfig(iBaseConfigApi):
         return rjson
 
     def reboot_system(self):
-        rjson = self.entity._reboot_system_redfish(reboot_type="GracefulRestart")
+        redfish_action_json = self.entity._get_acton_redfish()
+        reset_allowable_values = self.entity._get_field_from_action(redfish_action_json, 'Data', 'body', 'Actions', '#ComputerSystem.Reset', 'ResetType@Redfish.AllowableValues')
+        if reset_allowable_values and "GracefulRestart" in reset_allowable_values:
+            reboot_type = "GracefulRestart"
+        else:
+            reboot_type = "ForceRestart"
+        rjson = self.entity._reboot_system_redfish(reboot_type=reboot_type)
         return rjson
 
     def is_change_applicable(self):

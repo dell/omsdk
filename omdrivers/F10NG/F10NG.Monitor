@@ -1,0 +1,90 @@
+{
+   "System": {
+    "Key": ["ServiceTag"],
+    "ConfigState": [],
+    "MainHealth": ["PrimaryStatus"],
+    "BasicInventory": [
+       "SysObjectID",
+       "Model",
+       "Location",
+       "Description",
+       "NetwUMACAddress",
+       "NetwUPartNo",
+       "PPID",
+       "ExpressServiceCode",
+       "Hostname"
+    ],
+    "Metrics": ["SwitchUptime"]
+  },
+  "FanTray": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "ExpressServiceCode",
+      "PiecePartID",
+      "ServiceTag",
+      "Type",
+      "FanDeviceIndex"
+    ],
+    "Key": [
+      "_SNMPIndex",
+      "Name"
+    ],
+    "Metrics": []
+  },
+  "Fan": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Index"
+    ],
+    "Key": [
+      "_SNMPIndex"
+    ]
+  },
+  "Port": {
+    "Key": [
+      "ifIndex",
+      "Description"
+    ],
+    "Health": ["Status"],
+    "Inventory": [
+      "Type",
+      "Address",
+      "SysIfName",
+      "Class"
+    ],
+    "Metrics": [
+      "ifInOctets",
+      "ifOutOctets",
+      "ifInDiscards",
+      "ifOutDiscards",
+      "ifInErrors",
+      "ifOutErrors",
+      "ifInUnknownProtos",
+      "ifSpeed"
+    ]
+  },
+
+  "PowerSupply": {
+    "ConfigState": [],
+    "Health": [
+      "OperStatus"
+    ],
+    "Inventory": [
+      "Index"
+    ],
+    "Key": [
+      "_SNMPIndex"
+    ]
+  },
+   "Subsystem" : {
+        "Key" : ["Key"],
+        "MainHealth" : [ "PrimaryStatus" ],
+        "OtherHealth" : [ ]
+    }
+}

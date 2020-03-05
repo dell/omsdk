@@ -333,7 +333,7 @@ iDRACWsManViews_FieldSpec = {
         }
     },
     iDRACCompEnum.Controller : {
-        "CacheSizeInMB" : { 'Rename' : 'CacheSize', 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'GB' },
+        "CacheSizeInMB" : { 'Rename' : 'CacheSize', 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'MB' },
         "SecurityStatus" : {
             'Lookup'  :  'True',
             'Values' : {
@@ -2271,7 +2271,7 @@ if PySnmpPresent:
             },
         },
         iDRACCompEnum.Controller : {
-            "CacheSize" : { 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'GB' },
+            "CacheSize" : { 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'MB' },
             "PrimaryStatus" : {
                 'Lookup'  :  'True',
                 'Values' : {

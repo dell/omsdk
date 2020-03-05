@@ -14,6 +14,7 @@
             "Model",
             "OSName",
             "OSVersion",
+            "RACType",
             "MachineName",
             "iDRACURL",
             "DeviceType",
@@ -58,7 +59,7 @@
         "Key" : [ "FQDD" ],
         "ConfigState" : [ ],
         "MainHealth"      : [ "PrimaryStatus" ],
-        "Inventory"   : [ 
+        "BasicInventory"   : [ 
             "BankLabel",
             "DeviceDescription",
             "ManufactureDate",
@@ -139,7 +140,7 @@
     },
     "Controller": {
         "Key" : [ "FQDD"],
-        "Inventory" : [
+        "BasicInventory" : [
             "Bus",
             "CacheSize",
             "CachecadeCapability",
@@ -359,11 +360,12 @@
         },
     "PhysicalDisk": {
         "Key" : [ "FQDD"],
-        "Inventory" : [
+        "BasicInventory" : [
             "DeviceDescription",
             "Model",
             "SerialNumber",
             "Size",
+            "UsedSize",
             "MediaType",
             "Revision",
             "BlockSize",
@@ -438,6 +440,7 @@
             "RedMinNumberNeeded",
             "RedTypeOfSet",
             "SerialNumber",
+            "TotalOutputPower",
             "powerSupplyStateCapabilitiesUnique",
             "PowerSupplySensorState",
             "DetailedState",
@@ -579,7 +582,7 @@
         },
     "VirtualDisk": {
         "Key" : [ "FQDD"],
-        "Inventory" : [
+        "BasicInventory" : [
             "RAIDTypes",
             "Size",
             "Cachecade",

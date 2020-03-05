@@ -272,7 +272,7 @@ class iDRACUpdate(Update):
         rjson['file'] = str(cache_share)
         if job_wait:
             rjson = self._job_mgr._job_wait(rjson['file'], rjson)
-        if apply_update and rjson['Status'] == 'Success' and not self.entity.use_redfish:
+        if not self.entity.use_redfish:
             rjson['job_details'] = self.entity._update_get_repolist()
         return rjson
 
@@ -297,7 +297,7 @@ class iDRACUpdate(Update):
         rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
         if job_wait:
             rjson = self._job_mgr._job_wait(rjson['file'], rjson)
-        if apply_update and rjson['Status'] == 'Success' and not self.entity.use_redfish:
+        if not self.entity.use_redfish:
             rjson['job_details'] = self.entity._update_get_repolist()
         return rjson
 

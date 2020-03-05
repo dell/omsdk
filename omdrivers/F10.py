@@ -149,7 +149,7 @@ if PyPSNMP:
        'PPIDRevision' : ObjectIdentity("1.3.6.1.4.1.6027.3.26.1.4.7.1.6"), 
        'ServiceTag' : ObjectIdentity("1.3.6.1.4.1.6027.3.26.1.4.7.1.7"), 
        'OperStatus' : ObjectIdentity("1.3.6.1.4.1.6027.3.26.1.4.7.1.4"),
-       'Speed' : ObjectIdentity("1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.4"),
+       # 'Speed' : ObjectIdentity("1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.4"),
      },
      F10CompEnum.Fan: {
        'Index': ObjectIdentity("1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.1"),
@@ -696,10 +696,11 @@ F10_more_details_spec = {
 
 def check_classifier(myListoFDict, cls=None):
     # Full OID to be expanded and added to list
-    sobj_list = ['SNMPv2-SMI::enterprises.6027.1.3.20']
+    # sobj_list = ['SNMPv2-SMI::enterprises.6027.1.3.20', 'SNMPv2-SMI::enterprises.6027.1.3.23']
+    sys_obj_str = 'SNMPv2-SMI::enterprises.6027.1.3.'
     if isinstance(myListoFDict, list):
         for sys in myListoFDict:
-            if sys.get('SysObjectID', "NA") in sobj_list:
+            if sys_obj_str in sys.get('SysObjectID', "NA"):
                 return (True, sys)
     elif isinstance(myListoFDict, dict):
         return (True, myListoFDict)

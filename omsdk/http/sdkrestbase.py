@@ -21,37 +21,33 @@
 # Authors: Vaideeswaran Ganesan
 #
 import sys
-import io
 import logging
-import traceback
 import json
-from enum import Enum
-
-import xml.etree.ElementTree as ET
-
+import hashlib
 import requests
 import requests.adapters
 import requests.exceptions
 import requests.packages.urllib3
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from requests.auth import HTTPBasicAuth
-
+from omsdk.sdkprotopref import ProtocolEnum
+from omsdk.http.sdkhttpep import AuthenticationType
 from omsdk.sdkprotobase import ProtocolBase
-from omsdk.sdkcenum import EnumWrapper, TypeHelper
-from omsdk.http.sdkrestpdu import RestRequest, RestResponse
-from omsdk.http.sdkhttpep import HttpEndPoint, HttpEndPointOptions
-from pprint import pprint
+from omsdk.http.sdkhttpep import HttpEndPointOptions
+from urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
 
-
+logger = logging.getLogger(__name__)
 class RestOptions(HttpEndPointOptions):
-    def __init__(self):
+    def __init__(self, authentication = AuthenticationType.Basic, port = 443, connection_timeout = 20,
+                 read_timeout = 30, max_retries = 1, verify_ssl = False, cacheTimeout=180 ):
         if PY2:
-            super(RestOptions, self).__init__()
+            super(RestOptions, self).__init__(ProtocolEnum.REST, authentication, port, connection_timeout, read_timeout, max_retries,
+                                              verify_ssl)
         else:
-            super().__init__()
+            super().__init__(ProtocolEnum.REST, authentication, port, connection_timeout, read_timeout, max_retries,
+                             verify_ssl)
 
 
 class RestProtocolBase(ProtocolBase):
@@ -61,7 +57,9 @@ class RestProtocolBase(ProtocolBase):
         else:
             super().__init__()
         headers = None
+        self.pOptions = pOptions
         self._logger = logging.getLogger(__name__)
+        self.token = None
 
     def reset(self, ignore=True):
         self._proto_reset()
@@ -71,18 +69,13 @@ class RestProtocolBase(ProtocolBase):
         Identifies the target product
         Curently _communicate has hardcoded data
         """
-        # wsm = RestRequest()
-        # wsm.identify()
         system = self._communicate("System", "/redfish/v1/Systems")
         if 'Dell' in str(system['Data']['System'][0]['Manufacturer']):
             return system
         else:
             return None
 
-    def enumerate(self, clsName, resource, select={}, resetTransport=False):
-        # wsm = RestRequest()
-        # print("sdkrestbase: ",clsName," ",resource," ",self.ipaddr," user ",self.username," pass ",self.password)
-        # wsm.enumerate(to = self._proto_endpoint(), ruri=resource, selectors = select)
+    def enumerate(self, clsName, resource, select={}, resetTransport=False, filter=filter):
         return self._communicate(clsName, resource)
 
     # Operation Invoke
@@ -115,51 +108,61 @@ class RestProtocolBase(ProtocolBase):
         print(json.dumps(json_object, sort_keys=True, indent=4,
                          separators=(',', ': ')))
 
-    # retVal['Status'] = Success, Failed, Invalid JSON,
-    # retval['Data'][component] = {}
-    # retval['Fault.Data']['Reason'] = Reason
-    # retval['Fault.Data']['Text'] = Message
-    # retval['Message'] = Message
-    # retval['Return'] = enum(ReturnValue).value
-    # retval['Job']['JobId'] = jobid
+    def get_token(self):
+        if self.token:
+            return self.token
+        else:
+            try:
+                url = "https://" + self.ipaddr
+                if ':' in self.ipaddr:
+                    url = "https://[" + self.ipaddr + ']:' + str(self.pOptions.port)
+                user_details = self.username + '_' + self.password
+                auth_string = hashlib.sha256(user_details.encode('utf-8')).hexdigest()
+                headers = {'datatype': 'json'}
+                login_response = requests.get(url + '/api/login/' + auth_string, headers=headers, verify=False)
+                if login_response:
+                    response = json.loads(login_response.content)
+                    if response['status'][0]['response-type'] == 'Success':
+                        self.token = response['status'][0]['response']
+            except requests.exceptions.ConnectionError as err:
+                logger.debug(err)
+            except requests.exceptions.Timeout as err:
+                logger.debug(err)
+
+        return self.token
+
     def _parse_output(self, clsName, resource):
-        url = "https://" + self.ipaddr + resource[0]
-        authttp = HTTPBasicAuth(self.username, self.password)
-        myResponse = requests.get(url, auth=authttp, verify=False)
-        # print(myResponse.status_code)
+        xcomp = []
+        url = "https://" + self.ipaddr
+        if ':' in self.ipaddr:
+            url = "https://[" + self.ipaddr + ']:' + str(self.pOptions.port)
+        sessionKey = self.get_token()
+        # Obtain the health of the system
         retval = {}
         retval['Data'] = {}
         retval['Status'] = 'Failure'
-        if (myResponse.ok):
-            retval['Status'] = 'Success'
-            jData = json.loads(myResponse.content)
-            ix = 1
-            oDataList = jData
-            interMemb = oDataList
-            while interMemb != None:
-                oDataList = oDataList[resource[ix]]
-                # print("WHILE ODATALIST is ",ix)
-                # pprint(oDataList)
-                ix = ix + 1
-                try:
-                    interMemb = oDataList[resource[ix]]
-                except IndexError:
-                    interMemb = None
+        if sessionKey:
+            try:
+                headers = {'sessionKey': sessionKey, 'datatype': 'json'}
+                api_response = requests.get(url + resource['url'], headers=headers, verify=False)
+                if api_response.ok:
+                    response = json.loads(api_response.content)
+                    if api_response.ok:
+                        retval['Status'] = 'Success'
+                        compjData = json.loads(api_response.content)
+                        if resource.get('attribute', None):
+                            xcomp += compjData[resource['attribute']]
+                        else:
+                            xcomp += [compjData]
+                    retval['Data'][clsName] = xcomp
+            except requests.exceptions.ConnectionError as err:
+                logger.debug(err)
+            except requests.exceptions.Timeout as err:
+                logger.debug(err)
 
-            # print("ODATALIST is")
-            # pprint(oDataList)
-            # if 'Members' in jData:
-            comp = []
-            for mem in oDataList:
-                # print("Member FOUND ", mem)
-                url = "https://" + self.ipaddr + mem["@odata.id"]
-                memResponse = requests.get(url, auth=authttp, verify=False)
-                if (memResponse.ok):
-                    compjData = json.loads(memResponse.content)
-                    # pprint(compjData)
-                    comp.append(compjData)
-                memResponse.close()
-            retval['Data'][clsName] = comp
         else:
-            myResponse.raise_for_status()
+            retval['Data'][clsName] = xcomp
+            logger.debug(url + resource['url'])
+            logger.debug("data not found for this url")
         return retval
+
