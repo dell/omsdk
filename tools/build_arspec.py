@@ -30,7 +30,7 @@ import threading
 
 logger = logging.getLogger(__name__)
 
-# Attribute Registry Convertor
+# Attribute Registry Converter
 #   .xml to .json file converter
 class maj:
     def __init__(self):

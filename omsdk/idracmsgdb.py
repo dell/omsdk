@@ -17435,7 +17435,7 @@ eemiregistry = {
             "ParamTypes": [
                 "String"
             ],
-            "Resolution": "Wait for three minutes, and then retry the operation. If the issue persists, remove and reinsert the server and wait for the iDRAC to finish restarting before retying the operation.",
+            "Resolution": "Wait for three minutes, and then retry the operation. If the issue persists, remove and reinsert the server and wait for the iDRAC to finish restarting before retrying the operation.",
             "Severity": "Warning"
         },
         "PWR8574": {
@@ -17445,7 +17445,7 @@ eemiregistry = {
             "ParamTypes": [
                 "String"
             ],
-            "Resolution": "Wait for three minutes, and then retry the operation. If the issue persists, remove and reinsert the server and wait for the iDRAC to finish restarting before retying the operation.",
+            "Resolution": "Wait for three minutes, and then retry the operation. If the issue persists, remove and reinsert the server and wait for the iDRAC to finish restarting before retrying the operation.",
             "Severity": "Critical"
         },
         "PWR8575": {
@@ -33809,7 +33809,7 @@ eemiregistry = {
             "Severity": "Warning"
         },
         "SYS257": {
-            "Description": "The file cannot be transferred because the verification certificate is not available. The file transfer settings are set to verify the certificate of the remore host server, but the necessary verification certificate is not uploaded.",
+            "Description": "The file cannot be transferred because the verification certificate is not available. The file transfer settings are set to verify the certificate of the remote host server, but the necessary verification certificate is not uploaded.",
             "Message": "Unable to transfer a file, %1, because the verification certificate is not available.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -34399,7 +34399,7 @@ eemiregistry = {
             "Description": "The job cannot be created because the Start Time entered is invalid.",
             "Message": "Unable to create the job because the Start Time entered is invalid.",
             "NumberOfArgs": 0,
-            "Resolution": "Enter the Start Time in the String format, and then retry the operation For example, YYYY-MM-DDTHH:MM:SS. For more information about recommened Start Time format, see the iDRAC User's Guide available on the support site.",
+            "Resolution": "Enter the Start Time in the String format, and then retry the operation For example, YYYY-MM-DDTHH:MM:SS. For more information about recommended Start Time format, see the iDRAC User's Guide available on the support site.",
             "Severity": "Warning"
         },
         "SYS437": {
@@ -35874,7 +35874,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0109": {
-            "Description": "One or more memory errors have occurred on memory slot identified in the message. The error occurred during write leveling initialization.",
+            "Description": "One or more memory errors have occurred on memory slot identified in the message. The error occurred during write levelling initialization.",
             "Message": "One or more memory errors have occurred on memory slot: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -36455,7 +36455,7 @@ eemiregistry = {
             "Severity": "Warning"
         },
         "UEFI0180": {
-            "Description": "One or more memory correctable training errors have occurred on the memory slot identified in the message. A corrected Write Leveling error was detected.",
+            "Description": "One or more memory correctable training errors have occurred on the memory slot identified in the message. A corrected Write Levelling error was detected.",
             "Message": "One or more memory correctable training errors have occurred on memory slot: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -36965,7 +36965,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0231": {
-            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Leveling Training - Configuration Read phase.",
+            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Levelling Training - Configuration Read phase.",
             "Message": "An error occurred during DDR memory channel initialization on memory slots: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -36975,7 +36975,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0232": {
-            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Leveling Training - Configuration Write phase.",
+            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Levelling Training - Configuration Write phase.",
             "Message": "An error occurred during DDR memory channel initialization on memory slots: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -36985,7 +36985,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0233": {
-            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Leveling Training - FIFO Reset phase.",
+            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Levelling Training - FIFO Reset phase.",
             "Message": "An error occurred during DDR memory channel initialization on memory slots: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -36995,7 +36995,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0234": {
-            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Leveling Training - Memory Test phase.",
+            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Levelling Training - Memory Test phase.",
             "Message": "An error occurred during DDR memory channel initialization on memory slots: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -37005,7 +37005,7 @@ eemiregistry = {
             "Severity": "Critical"
         },
         "UEFI0235": {
-            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Leveling Training - Calibration phase.",
+            "Description": "An error occurred during DDR memory initialization during the Memory Buffer Write Levelling Training - Calibration phase.",
             "Message": "An error occurred during DDR memory channel initialization on memory slots: %1.",
             "NumberOfArgs": 1,
             "ParamTypes": [

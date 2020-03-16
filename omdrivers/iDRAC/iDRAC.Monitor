@@ -340,7 +340,7 @@
             "5" : "ATM",
             "6" : "IEEE80211 Wireless",
             "7" : "Tunnel",
-            "8" : "IEEE1394 Fireware"
+            "8" : "IEEE1394 Firmware"
         }
     },
     "PCIDevice": {

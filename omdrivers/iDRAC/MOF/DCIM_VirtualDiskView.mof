@@ -113,7 +113,7 @@ class DCIM_VirtualDiskView : DCIM_View {
           "Stripe size is the size of the stripe on a physical disk that "
           "contributes to the virtual disk. The stripe size can be specified "
           " in bytes or kilobytes or megabytes. The Stripe size can have one "
-          "of the folllowing values: \"Default\", \"512B\", \"1KB\", \"2KB\" "
+          "of the following values: \"Default\", \"512B\", \"1KB\", \"2KB\" "
           "\"4KB\", \"8KB\", \"16KB\", \"32KB\", \"64KB\", \"128KB\", "
           "\"256KB\" "
           "\"512KB\", \"1MB\", \"2MB\", \"4MB\", \"8MB\", \"16MB\" "),

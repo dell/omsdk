@@ -10,7 +10,7 @@ DellEMC OpenManage SDK
 ----------------------
 
 DellEMC OpenManage Software Development Kit is a pythonic library
-for programatically managing DellEMC Servers and Chassis. Using 
+for programmatically managing DellEMC Servers and Chassis. Using
 this library a user can perform lifecycle operations on DellEMC 
 PowerEdge servers and chassis in Pythonic way. The DellEMC OpenManage
 SDK leverages DMTF's Web Services Management standard (WS-Man),

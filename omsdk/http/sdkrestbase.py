@@ -67,7 +67,7 @@ class RestProtocolBase(ProtocolBase):
     def identify(self):
         """
         Identifies the target product
-        Curently _communicate has hardcoded data
+        Currently _communicate has hardcoded data
         """
         system = self._communicate("System", "/redfish/v1/Systems")
         if 'Dell' in str(system['Data']['System'][0]['Manufacturer']):

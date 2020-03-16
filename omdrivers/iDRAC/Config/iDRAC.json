@@ -5341,13 +5341,13 @@
         },
         "Redundancy_InfoTypes": {
             "enum": [
-                "non redunant",
+                "non redundant",
                 "ac redundant",
                 "psu redundant",
                 "psu and ac redundant"
             ],
             "enumDescriptions": [
-                "non redunant",
+                "non redundant",
                 "ac redundant",
                 "psu redundant",
                 "psu and ac redundant"
@@ -5433,14 +5433,14 @@
             "enum": [
                 "Not in progress",
                 "Downloaded",
-                "Availiable to SC",
+                "Available to SC",
                 "Complete",
                 "Failed"
             ],
             "enumDescriptions": [
                 "Not in progress",
                 "Downloaded",
-                "Availiable to SC",
+                "Available to SC",
                 "Complete",
                 "Failed"
             ],
@@ -10919,7 +10919,7 @@
                 "ChassisIdentifyDuration_LCD": {
                     "baseType": "int",
                     "description": "Chassis Identify Duration",
-                    "longDescription": "-1 = force on indefinetly; 0 = 0ff; > 0 number of seconds chassis identify is on",
+                    "longDescription": "-1 = force on indefinitely; 0 = 0ff; > 0 number of seconds chassis identify is on",
                     "modDeleteAllowed": true,
                     "name": "ChassisIdentifyDuration",
                     "qualifier": "LCD",
@@ -11394,7 +11394,7 @@
                 "Config_SledInterposer": {
                     "baseType": "str",
                     "description": "Config",
-                    "longDescription": "the redfish link that will bring you to the config information.  This would be the group name fo the config information.",
+                    "longDescription": "the redfish link that will bring you to the config information.  This would be the group name of the config information.",
                     "modDeleteAllowed": true,
                     "name": "Config",
                     "qualifier": "SledInterposer",
@@ -13110,7 +13110,7 @@
                 "DynamicStepUp_ServerPwr": {
                     "baseType": "enum",
                     "description": "DynamicStepUp",
-                    "longDescription": "Indicates if step up supressed or not",
+                    "longDescription": "Indicates if step up suppressed or not",
                     "modDeleteAllowed": true,
                     "name": "DynamicStepUp",
                     "qualifier": "ServerPwr",
@@ -14463,7 +14463,7 @@
                 },
                 "GroupPublishInterval_GroupManager": {
                     "baseType": "int",
-                    "description": "Group Manager Group Existance Publish Interval",
+                    "description": "Group Manager Group Existence Publish Interval",
                     "longDescription": "[To be filled]",
                     "modDeleteAllowed": true,
                     "name": "GroupPublishInterval",
@@ -16008,7 +16008,7 @@
                 },
                 "LM-IDRAC-EXPRESS-BLADES_PMLicensing": {
                     "baseType": "enum",
-                    "description": "PM Enforced Express for Blades (deprecated, added so no one can add accidently later)",
+                    "description": "PM Enforced Express for Blades (deprecated, added so no one can add accidentally later)",
                     "longDescription": "This is for 13G group 20050",
                     "modDeleteAllowed": true,
                     "name": "LM-IDRAC-EXPRESS-BLADES",
@@ -16239,7 +16239,7 @@
                 },
                 "LM-REMOTE-FIRWARE-UPDATE_PMLicensing": {
                     "baseType": "enum",
-                    "description": "LM REMOTE FIRWARE UPDATE",
+                    "description": "LM REMOTE FIRMWARE UPDATE",
                     "longDescription": "This is for 13G group 20050",
                     "modDeleteAllowed": true,
                     "name": "LM-REMOTE-FIRWARE-UPDATE",
@@ -16393,7 +16393,7 @@
                 },
                 "LM-USC-ASSISTED-OS-DEPLOYEMENT_PMLicensing": {
                     "baseType": "enum",
-                    "description": "USC ASSISTED OS DEPLOYEMENT",
+                    "description": "USC ASSISTED OS DEPLOYMENT",
                     "longDescription": "This is for 13G group 20050",
                     "modDeleteAllowed": true,
                     "name": "LM-USC-ASSISTED-OS-DEPLOYEMENT",
@@ -16565,7 +16565,7 @@
                 },
                 "LastFWUpdate_Update": {
                     "baseType": "str",
-                    "description": "Last Firmwware Update",
+                    "description": "Last Firmware Update",
                     "longDescription": "[To be filled]",
                     "modDeleteAllowed": true,
                     "name": "LastFWUpdate",
@@ -20009,7 +20009,7 @@
                 "RackSlot_ServerTopology": {
                     "baseType": "int",
                     "description": "Rack Slot",
-                    "longDescription": "Slot in the rack where the sytem is located",
+                    "longDescription": "Slot in the rack where the system is located",
                     "modDeleteAllowed": true,
                     "name": "RackSlot",
                     "qualifier": "ServerTopology",

@@ -129,11 +129,11 @@ class WsManProtocolBase(ProtocolBase):
         return self._communicate(wsm, name)
 
     def operation(self, wsmancmds, cmdname, *args):
-        ##########################Below are redfish codes, need to be removed once prtocol issue is addressed#####################
+        ##########################Below are redfish codes, need to be removed once protocol issue is addressed#####################
         cmmd = str(cmdname)
         if cmmd.endswith("_redfish"):
             return self.redfish_operation(wsmancmds, cmdname, *args)
-        ##########################Above are redfish codes, need to be removed once prtocol issue is addressed#####################
+        ##########################Above are redfish codes, need to be removed once protocol issue is addressed#####################
         ruri = wsmancmds[cmdname]["ResourceURI"]
         act = wsmancmds[cmdname]["Action"]
         sset = {}
@@ -148,7 +148,7 @@ class WsManProtocolBase(ProtocolBase):
         wsm.add_body(ruri, act, toargs['retval'])
         return self._communicate(wsm)
 
-    ##########################Below are redfish codes, need to be moved once prtocol issue is addressed#####################
+    ##########################Below are redfish codes, need to be moved once protocol issue is addressed#####################
     def _build_attribute_config_payload(self, toargs_dict):
         if not toargs_dict:
             return None
@@ -178,7 +178,7 @@ class WsManProtocolBase(ProtocolBase):
             val = retval[key]
             if "/" in key:
                 tokens = key.split("/")
-                ''' right now implementation is only for params containing single "/", it will be extented for generic numbers of "/"'''
+                ''' right now implementation is only for params containing single "/", it will be extended for generic numbers of "/"'''
                 if not tokens[0] in payload:
                     param_key = tokens[0]
                     param_val = {}
@@ -201,7 +201,7 @@ class WsManProtocolBase(ProtocolBase):
         :param http_headers: str.
         :param http_body: body for http request
         :param http_body: dict/json.
-        :returns: returns a key-value pair as a dictionary for arguemnts
+        :returns: returns a key-value pair as a dictionary for arguments
 
         """
         method_args = {}
@@ -223,7 +223,7 @@ class WsManProtocolBase(ProtocolBase):
         :param data: dict/json.
         :param headers: http headers
         :param headers: str.
-        :returns: returns a key-value pair as a dictionary for arguemnts
+        :returns: returns a key-value pair as a dictionary for arguments
 
         """
         method_args = {}
@@ -257,7 +257,7 @@ class WsManProtocolBase(ProtocolBase):
 
     def _remove_dummyparams(self, redfish_cmdlist, redfish_cmdname, argdict):
         """Remove dummy params which are not required by the actual redfish command,
-            these dummy params are required for ceratin URI's and other supporting purposes
+            these dummy params are required for certain URI's and other supporting purposes
 
         :param redfish_cmdlist: redfish command list.
         :param redfish_cmdlist: list.
@@ -411,7 +411,7 @@ class WsManProtocolBase(ProtocolBase):
             return tokens[-1]
         return None
 
-    ##########################Above are redfish codes, need to be moved once prtocol issue is addressed#####################
+    ##########################Above are redfish codes, need to be moved once protocol issue is addressed#####################
 
     def _proto_connect(self):
         pass

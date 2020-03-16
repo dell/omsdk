@@ -701,7 +701,7 @@ class iBaseDriver(object):
                                     myDict[attrInst[attrName]] = attrInst[ckeys[2]]
                                 else:
                                     for attrInst in entityjson[comp]:
-                                        # This check is avoided to accomodate iDRAVcardView FQDD issue
+                                        # This check is avoided to accommodate iDRAVcardView FQDD issue
                                         # if(myDict[k] == attrInst[k]):
                                         myDict[attrInst[attrName]] = attrInst[ckeys[2]]
                                 # del entityjson[comp]
@@ -724,7 +724,7 @@ class iBaseDriver(object):
                                                 compInst[attrInst[attrName]] = attrInst[ckeys[2]]
                                             else:
                                                 if (compInst[k] == attrInst[k]) or (attrInst[k] in compInst[
-                                                    k]):  # to accomodate iDRACCArdView and iDRACCardString issue iDRAC.Embedded.1-1 and iDRAC.Embedded.1
+                                                    k]):  # to accommodate iDRACCArdView and iDRACCardString issue iDRAC.Embedded.1-1 and iDRAC.Embedded.1
                                                     if ckeys[
                                                         2] in attrInst:  # Added because iDRACString in one of firmware 3.11.11.11(14G) did not have attribute CurrentValue(SystemLockDown)
                                                         compInst[attrInst[attrName]] = attrInst[ckeys[2]]

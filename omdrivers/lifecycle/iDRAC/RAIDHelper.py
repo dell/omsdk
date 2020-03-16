@@ -251,7 +251,7 @@ class RAIDHelper:
 
             # Time being fix for -JIT-107987 - Ansible(1.0.3) - [RAID Configuration] VD creation is failing
             # on external storage (MD Array) configured to server
-            # Ensures that existing senarios are not broken
+            # Ensures that existing scenarios are not broken
             if len(disks) == 0:
                 if kwargs.get('ControllerFQDD') is not None:
                     filter_query = '((entry is PhysicalDisk and "' + kwargs['ControllerFQDD'] + '" in entry.FQDD._value))'
@@ -297,7 +297,7 @@ class RAIDHelper:
 
         # Time being fix for -JIT-107987 - Ansible(1.0.3) - [RAID Configuration] VD creation is failing
         # on external storage (MD Array) configured to server
-        # Ensures that existing senarios are not broken
+        # Ensures that existing scenarios are not broken
         enclosure_fqdd = ""
         if controller.FQDD != kwargs.get('ControllerFQDD') and len(disks) >= 0:
             ctrlst = sysconfig.Controller.Properties
@@ -310,7 +310,7 @@ class RAIDHelper:
 
         # Time being fix for -JIT-107987 - Ansible(1.0.3) - [RAID Configuration] VD creation is failing
         # on external storage (MD Array) configured to server
-        # Ensures that existing senarios are not broken
+        # Ensures that existing scenarios are not broken
         try:
             derived_ctrl_fqdd = controller.FQDD
         except (AttributeError, TypeError):
@@ -337,7 +337,7 @@ class RAIDHelper:
 
                 # Time being fix for -JIT-107987 - Ansible(1.0.3) - [RAID Configuration] VD creation is failing
                 # on external storage (MD Array) configured to server
-                # Ensures that existing senarios are not broken
+                # Ensures that existing scenarios are not broken
                 if enclosure_fqdd:
                     tgt_encl._attribs['FQDD'] = enclosure_fqdd
                 else:
@@ -349,7 +349,7 @@ class RAIDHelper:
 
         # Time being fix for -JIT-107987 - Ansible(1.0.3) - [RAID Configuration] VD creation is failing
         # on external storage (MD Array) configured to server
-        # Ensures that existing senarios are not broken
+        # Ensures that existing scenarios are not broken
         try:
             if n_dhs > 0:
                 if filter_query:
@@ -495,11 +495,11 @@ class RAIDHelper:
     def view_storage(self, controller=None, virtual_disk=None):
         """ view storage hierarchy as a json
 
-        :param controller: contoller id
+        :param controller: controller id
         :param controller: str
         :param virtual_disk: virtual disk id
         :param virtual_disk: str
-        :return: returns json accoring to the parameter provided
+        :return: returns json according to the parameter provided
         """
         try:
             logger.info(self.entity.ipaddr + " : getting storage tree")

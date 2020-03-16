@@ -708,7 +708,7 @@ Server Configuration Profile and Server Profiles
 .. function:: idrac.config_mgr.scp_import_async(scp_share_path)
 
     Import Server Configuration Profile to iDRAC. This API returns immediately
-    and returns the job id assocated with the import operation. Until the 
+    and returns the job id associated with the import operation. Until the
     operation is complete, iDRAC will not be accepting other jobs. Certain
     changes like RAID creation, would require the server to be rebooted
     after iDRAC successfully imported the Server Configuration Profile.
@@ -742,7 +742,7 @@ Server Configuration Profile and Server Profiles
 .. function:: idrac.config_mgr.scp_export_async(scp_share_path)
 
     Export Server Configuration Profile to share. This API returns immediately
-    and returns the job id assocated with the import operation. Until the 
+    and returns the job id associated with the import operation. Until the
     operation is complete, iDRAC will not be accepting other jobs.
 
     :param omsdk.sdkfile.FileOnShare scp_share_path: Location where the Server Configuration Profile will be exported
@@ -775,7 +775,7 @@ Server Configuration Profile and Server Profiles
 .. function:: idrac.config_mgr.sp_import_async(sp_share_path)
 
     Import Server Profile to iDRAC. This API returns immediately
-    and returns the job id assocated with the import operation. Until the 
+    and returns the job id associated with the import operation. Until the
     operation is complete, iDRAC will not be accepting other jobs. Certain
     changes like RAID creation, would require the server to be rebooted
     after iDRAC successfully imported the Server Profile.
@@ -809,7 +809,7 @@ Server Configuration Profile and Server Profiles
 .. function:: idrac.config_mgr.sp_export_async(sp_share_path)
 
     Export Server Profile to share. This API returns immediately
-    and returns the job id assocated with the import operation. Until the 
+    and returns the job id associated with the import operation. Until the
     operation is complete, iDRAC will not be accepting other jobs.
 
     :param omsdk.sdkfile.FileOnShare sp_share_path: Location where the Server Profile will be exported
@@ -965,7 +965,7 @@ Provides APIs for listing, adding, modifying and removing Users local to iDRAC.
     Returns a JSON object containing list of all local users. For more details
     about the properties and values, refer to iDRAC Attribute Registry Guide
 
-    You can create upto 16 local users.
+    You can create up to 16 local users.
 
     A sample response from the API is as follows:
 
@@ -1003,7 +1003,7 @@ Provides APIs for listing, adding, modifying and removing Users local to iDRAC.
     This function creates a idrac local user.
     :param str username: Name of the local user
     :param str password: Password for the given user
-    :param UserPrivilegeEnum: Privileges that need to be assiged to the user. User can be assigned as an Administrator, Operator, ReadOnly privileges or NoPrivilege at all.
+    :param UserPrivilegeEnum: Privileges that need to be assigned to the user. User can be assigned as an Administrator, Operator, ReadOnly privileges or NoPrivilege at all.
     :param JSON others: Provides options for other capabilities (Serial On LAN, Protocol, IPMI LAN Privilege and IPMI over Serial privileges)
 
     :return: JSON Returns a json indicating whether the user was created successfully or not.

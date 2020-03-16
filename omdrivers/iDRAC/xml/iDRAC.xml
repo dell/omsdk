@@ -1301,7 +1301,7 @@
 		<DisplayName>Rack Slot</DisplayName>
 		<GroupDisplayName>Server Topology</GroupDisplayName>
 		<GroupName>ServerTopology</GroupName>
-		<HelpText>Slot in the rack where the sytem is located</HelpText>
+		<HelpText>Slot in the rack where the system is located</HelpText>
 		<IsReadOnly>FALSE</IsReadOnly>
 		<DisplayOrder>1424</DisplayOrder>
 		<AttributeType>Integer</AttributeType>
@@ -7908,8 +7908,8 @@
 			<DisplayValueName>Downloaded</DisplayValueName>
 		 </AttributeValue> 
  		 <AttributeValue>
-			<ValueName>Availiable to SC</ValueName>
-			<DisplayValueName>Availiable to SC</DisplayValueName>
+			<ValueName>Available to SC</ValueName>
+			<DisplayValueName>Available to SC</DisplayValueName>
 		 </AttributeValue> 
  		 <AttributeValue>
 			<ValueName>Complete</ValueName>
@@ -9247,7 +9247,7 @@
 	 </Attribute>
 	 <Attribute>
 		<AttributeName>GroupPublishInterval</AttributeName>
-		<DisplayName>Group Manager Group Existance Publish Interval</DisplayName>
+		<DisplayName>Group Manager Group Existence Publish Interval</DisplayName>
 		<GroupDisplayName>Group Manager</GroupDisplayName>
 		<GroupName>GroupManager</GroupName>
 		<HelpText>[To be filled]</HelpText>
@@ -11394,7 +11394,7 @@
 	 </Attribute>
 	 <Attribute>
 		<AttributeName>LastFWUpdate</AttributeName>
-		<DisplayName>Last Firmwware Update</DisplayName>
+		<DisplayName>Last Firmware Update</DisplayName>
 		<GroupDisplayName>Firmware Update</GroupDisplayName>
 		<GroupName>Update</GroupName>
 		<HelpText>[To be filled]</HelpText>
@@ -12950,7 +12950,7 @@
 		<DisplayName>Chassis Identify Duration</DisplayName>
 		<GroupDisplayName>LCD Configuration</GroupDisplayName>
 		<GroupName>LCD</GroupName>
-		<HelpText>-1 = force on indefinetly; 0 = 0ff; &gt; 0 number of seconds chassis identify is on</HelpText>
+		<HelpText>-1 = force on indefinitely; 0 = 0ff; &gt; 0 number of seconds chassis identify is on</HelpText>
 		<IsReadOnly>FALSE</IsReadOnly>
 		<DisplayOrder>1438</DisplayOrder>
 		<AttributeType>Integer</AttributeType>
@@ -14093,8 +14093,8 @@
 		<IsSystemSpecific>FALSE</IsSystemSpecific>
 		<IsDestructive>FALSE</IsDestructive>
 		 <AttributeValue>
-			<ValueName>non redunant</ValueName>
-			<DisplayValueName>non redunant</DisplayValueName>
+			<ValueName>non redundant</ValueName>
+			<DisplayValueName>non redundant</DisplayValueName>
 		 </AttributeValue> 
  		 <AttributeValue>
 			<ValueName> ac redundant</ValueName>
@@ -15108,7 +15108,7 @@
 		<DisplayName>Config</DisplayName>
 		<GroupDisplayName>Sled Information</GroupDisplayName>
 		<GroupName>SledInterposer</GroupName>
-		<HelpText>the redfish link that will bring you to the config information.  This would be the group name fo the config information.</HelpText>
+		<HelpText>the redfish link that will bring you to the config information.  This would be the group name of the config information.</HelpText>
 		<IsReadOnly>TRUE</IsReadOnly>
 		<AttributeType>String</AttributeType>
 		<IsSecure>FALSE</IsSecure>
@@ -22626,7 +22626,7 @@
  	 </Attribute>
 	 <Attribute>
 		<AttributeName>LM-USC-ASSISTED-OS-DEPLOYEMENT</AttributeName>
-		<DisplayName>USC ASSISTED OS DEPLOYEMENT</DisplayName>
+		<DisplayName>USC ASSISTED OS DEPLOYMENT</DisplayName>
 		<GroupDisplayName>Personality Module License</GroupDisplayName>
 		<GroupName>PMLicensing</GroupName>
 		<HelpText>This is for 13G group 20050</HelpText>
@@ -23344,7 +23344,7 @@
  	 </Attribute>
 	 <Attribute>
 		<AttributeName>LM-REMOTE-FIRWARE-UPDATE</AttributeName>
-		<DisplayName>LM REMOTE FIRWARE UPDATE</DisplayName>
+		<DisplayName>LM REMOTE FIRMWARE UPDATE</DisplayName>
 		<GroupDisplayName>Personality Module License</GroupDisplayName>
 		<GroupName>PMLicensing</GroupName>
 		<HelpText>This is for 13G group 20050</HelpText>
@@ -24361,7 +24361,7 @@
  	 </Attribute>
 	 <Attribute>
 		<AttributeName>LM-IDRAC-EXPRESS-BLADES</AttributeName>
-		<DisplayName>PM Enforced Express for Blades (deprecated, added so no one can add accidently later)</DisplayName>
+		<DisplayName>PM Enforced Express for Blades (deprecated, added so no one can add accidentally later)</DisplayName>
 		<GroupDisplayName>Personality Module License</GroupDisplayName>
 		<GroupName>PMLicensing</GroupName>
 		<HelpText>This is for 13G group 20050</HelpText>
@@ -24671,8 +24671,8 @@
 		<IsSystemSpecific>FALSE</IsSystemSpecific>
 		<IsDestructive>FALSE</IsDestructive>
 		 <AttributeValue>
-			<ValueName>non redunant</ValueName>
-			<DisplayValueName>non redunant</DisplayValueName>
+			<ValueName>non redundant</ValueName>
+			<DisplayValueName>non redundant</DisplayValueName>
 		 </AttributeValue> 
  		 <AttributeValue>
 			<ValueName> ac redundant</ValueName>
@@ -26869,7 +26869,7 @@
 		<DisplayName>DynamicStepUp</DisplayName>
 		<GroupDisplayName>Server Power</GroupDisplayName>
 		<GroupName>ServerPwr</GroupName>
-		<HelpText>Indicates if step up supressed or not</HelpText>
+		<HelpText>Indicates if step up suppressed or not</HelpText>
 		<IsReadOnly>FALSE</IsReadOnly>
 		<DisplayOrder>1427</DisplayOrder>
 		<AttributeType>Enumeration</AttributeType>

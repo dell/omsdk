@@ -2496,7 +2496,7 @@ RedundancyEnabled_ThermalConfigTypes = EnumWrapper("RedundancyEnabled_ThermalCon
 
 Redundancy_InfoTypes = EnumWrapper("Redundancy_InfoTypes", {
     "ac_redundant": "ac redundant",
-    "non_redunant": "non redunant",
+    "non_redunant": "non redundant",
     "psu_and_ac_redundant": "psu and ac redundant",
     "psu_redundant": "psu redundant",
 }).enum_type
@@ -2537,7 +2537,7 @@ Role_GroupManagerTypes = EnumWrapper("Role_GroupManagerTypes", {
 }).enum_type
 
 SCFWUpdateState_SC_BMCTypes = EnumWrapper("SCFWUpdateState_SC_BMCTypes", {
-    "Availiable_to_SC": "Availiable to SC",
+    "Availiable_to_SC": "Available to SC",
     "Complete": "Complete",
     "Downloaded": "Downloaded",
     "Failed": "Failed",

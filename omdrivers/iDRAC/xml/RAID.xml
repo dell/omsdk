@@ -95,7 +95,7 @@
 	 <Attribute>
 		<AttributeName>RAIDloadBalancedMode</AttributeName>
 		<DisplayName>Load Balanced Mode</DisplayName>
-		<HelpText>This attribute reprsents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.</HelpText>
+		<HelpText>This attribute represents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.</HelpText>
 		<DisplayOrder>106</DisplayOrder>
 		<DefaultValue>Automatic</DefaultValue>
 		<AttributeType>Enumeration</AttributeType>
@@ -440,7 +440,7 @@
 	 <Attribute>
 		<AttributeName>Name</AttributeName>
 		<DisplayName>Name</DisplayName>
-		<HelpText>Diplays the name associated with a Virtual Disk.</HelpText>
+		<HelpText>Displays the name associated with a Virtual Disk.</HelpText>
 		<DisplayOrder>302</DisplayOrder>
 		<AttributeType>String</AttributeType>
 		<IsReadOnly>TRUE</IsReadOnly>
@@ -834,7 +834,7 @@
  	 </Attribute>
 	 <Attribute>
 		<AttributeName>RAIDEnclosureRequestedCfgMode</AttributeName>
-		<DisplayName>Enclousre Requested Configuration Mode</DisplayName>
+		<DisplayName>Enclosure Requested Configuration Mode</DisplayName>
 		<HelpText>This indicates enclosures requested configuration mode setting.</HelpText>
 		<DisplayOrder>203</DisplayOrder>
 		<DefaultValue>None</DefaultValue>

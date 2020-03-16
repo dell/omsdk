@@ -94,12 +94,12 @@ class RedfishProtocolBase(ProtocolBase):
         if self.pOptions.authentication == AuthenticationType.Basic:
             self.session.auth = HTTPBasicAuth(creds.username, creds.password)
         if self.pOptions.authentication == AuthenticationType.Digest:
-            print("Digest authentication not yet implimented")
+            print("Digest authentication not yet implemented")
             self.session.auth = HTTPDigestAuth(creds.username, creds.password)
         if self.pOptions.authentication == AuthenticationType.OAuth1:
-            print("OAuth1 authentication not yet implimented")
+            print("OAuth1 authentication not yet implemented")
         if self.pOptions.authentication == AuthenticationType.OAuth2:
-            print("Not yet implimented", self.pOptions.authentication)
+            print("Not yet implemented", self.pOptions.authentication)
 
     def reset(self, ignore=True):
         if self.session:
@@ -109,7 +109,7 @@ class RedfishProtocolBase(ProtocolBase):
     def identify(self):
         """
         Identifies the target product
-        Curently _communicate has hardcoded data
+        Currently _communicate has hardcoded data
         """
         return None
 

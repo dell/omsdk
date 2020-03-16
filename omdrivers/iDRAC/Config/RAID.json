@@ -239,7 +239,7 @@
                 "Name": {
                     "baseType": "str",
                     "description": "Name",
-                    "longDescription": "Diplays the name associated with a Virtual Disk.",
+                    "longDescription": "Displays the name associated with a Virtual Disk.",
                     "modDeleteAllowed": true,
                     "name": "Name",
                     "qualifier": "VirtualDisk",
@@ -321,7 +321,7 @@
                 "RAIDEnclosureRequestedCfgMode": {
                     "baseType": "enum",
                     "default": "None",
-                    "description": "Enclousre Requested Configuration Mode",
+                    "description": "Enclosure Requested Configuration Mode",
                     "longDescription": "This indicates enclosures requested configuration mode setting.",
                     "modDeleteAllowed": true,
                     "name": "RAIDEnclosureRequestedCfgMode",
@@ -557,7 +557,7 @@
                     "baseType": "enum",
                     "default": "Automatic",
                     "description": "Load Balanced Mode",
-                    "longDescription": "This attribute reprsents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.",
+                    "longDescription": "This attribute represents the ability to automatically use both controller ports connected to the same enclosure to route I/O requests.",
                     "modDeleteAllowed": true,
                     "name": "RAIDloadBalancedMode",
                     "qualifier": "Controller",

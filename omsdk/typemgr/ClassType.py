@@ -280,7 +280,7 @@ class ClassType(TypeBase):
 
     # Compare APIs:
     def __lt__(self, other):
-        # uses sorted order of attributes for comparision similar to tuples, list!
+        # uses sorted order of attributes for comparison similar to tuples, list!
         if not isinstance(other, type(self)):
             raise TypeError('unorderable types: ' + type(self).__name__ +
                             ", " + type(other).__name__)
@@ -298,7 +298,7 @@ class ClassType(TypeBase):
 
     # Compare APIs:
     def __le__(self, other):
-        # uses sorted order of attributes for comparision similar to tuples, list!
+        # uses sorted order of attributes for comparison similar to tuples, list!
         if not isinstance(other, type(self)):
             raise TypeError('unorderable types: ' + type(self).__name__ +
                             ", " + type(other).__name__)
@@ -316,7 +316,7 @@ class ClassType(TypeBase):
 
     # Compare APIs:
     def __gt__(self, other):
-        # uses sorted order of attributes for comparision similar to tuples, list!
+        # uses sorted order of attributes for comparison similar to tuples, list!
         if not isinstance(other, type(self)):
             raise TypeError('unorderable types: ' + type(self).__name__ +
                             ", " + type(other).__name__)
@@ -334,7 +334,7 @@ class ClassType(TypeBase):
 
     # Compare APIs:
     def __ge__(self, other):
-        # uses sorted order of attributes for comparision similar to tuples, list!
+        # uses sorted order of attributes for comparison similar to tuples, list!
         if not isinstance(other, type(self)):
             raise TypeError('unorderable types: ' + type(self).__name__ +
                             ", " + type(other).__name__)

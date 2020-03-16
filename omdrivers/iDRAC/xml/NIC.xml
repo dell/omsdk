@@ -2457,7 +2457,7 @@
 		<DisplayName>IP Version</DisplayName>
 		<AttributeName>IpVer</AttributeName>
 		<GroupName>IscsiGenParams</GroupName>
-		<HelpText>Specify whether IPv4 or IPv6 network addressing will be used for iSCSI initiator and targets (Applies to the Initiator only when a seperate target IP Version is implemented).  [Vendor to provide implementation-specific language].</HelpText>
+		<HelpText>Specify whether IPv4 or IPv6 network addressing will be used for iSCSI initiator and targets (Applies to the Initiator only when a separate target IP Version is implemented).  [Vendor to provide implementation-specific language].</HelpText>
 		<DisplayOrder>1109</DisplayOrder>
 		<DefaultValue>IPv4</DefaultValue>
 		<GroupDisplayName>iSCSI General Parameters</GroupDisplayName>

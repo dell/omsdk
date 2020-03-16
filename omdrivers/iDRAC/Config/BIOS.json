@@ -907,7 +907,7 @@
                 "AesNi": {
                     "baseType": "str",
                     "description": "Intel(R) AES-NI",
-                    "longDescription": "Indicates the status of the Intel Processor AES-NI feature. AES-NI improves the speed of applications by performing encryption and decryption using the Advenced Encryption Standard Instruction Set.",
+                    "longDescription": "Indicates the status of the Intel Processor AES-NI feature. AES-NI improves the speed of applications by performing encryption and decryption using the Advanced Encryption Standard Instruction Set.",
                     "modDeleteAllowed": true,
                     "name": "AesNi",
                     "qualifier": "SysSecurity",
@@ -1934,7 +1934,7 @@
                 "IntegratedSas": {
                     "baseType": "enum",
                     "description": "Integrated SAS Controller",
-                    "longDescription": "Enables or disables the integrated SAS controller.  When set to Disabled, the device is not visisble to the operating system (OS).",
+                    "longDescription": "Enables or disables the integrated SAS controller.  When set to Disabled, the device is not visible to the operating system (OS).",
                     "modDeleteAllowed": true,
                     "name": "IntegratedSas",
                     "qualifier": "IntegratedDevices",
@@ -4364,7 +4364,7 @@
                 "ProcExecuteDisable": {
                     "baseType": "enum",
                     "description": "Execute Disable",
-                    "longDescription": "A security feature designed to prevent certain types of buffer overflow attacks by enforcing specific areas of memory that applications can execute code. In general, it is best pratice to leave this option set to Enabled for the security benefits, as no real performance advantage has been detected by disabling this feature in BIOS.",
+                    "longDescription": "A security feature designed to prevent certain types of buffer overflow attacks by enforcing specific areas of memory that applications can execute code. In general, it is best practice to leave this option set to Enabled for the security benefits, as no real performance advantage has been detected by disabling this feature in BIOS.",
                     "modDeleteAllowed": true,
                     "name": "ProcExecuteDisable",
                     "qualifier": "ProcSettings",

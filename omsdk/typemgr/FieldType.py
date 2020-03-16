@@ -379,7 +379,7 @@ class FieldType(TypeBase):
             return False
         return myvalue >= othervalue
 
-    # Don't allow comparision with string ==> becomes too generic
+    # Don't allow comparison with string ==> becomes too generic
     # Compare APIs:
     def __eq__(self, other):
         if self._state is TypeState.UnInitialized:

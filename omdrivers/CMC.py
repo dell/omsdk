@@ -803,7 +803,7 @@ class CMCEntity(iDeviceDriver):
                                     slot['FormFactor'] = "Half length Double width"
                             newbladeList.append(slot)
                             tmpDupList.append(slot)
-                #To remove FM servers who dont show Model - based on MasterSlotNumber
+                #To remove FM servers who don't show Model - based on MasterSlotNumber
                 for slot in tmpDupList:
                     if slot.get('MasterSlotNumber') in fmSlotNumSet:
                         newbladeList.remove(slot)
