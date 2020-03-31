@@ -68,8 +68,8 @@
 		"blocksize",
 		"blocks",
 		"serial-number",
-		"vendor",
 		"model",
+		"vendor",
 		"revision",
 		"secondary-channel",
 		"container-index",
@@ -121,8 +121,6 @@
 		"temperature-status",
 		"pi-formatted",
 		"location",
-		"usage",
-		"description",
 		"manufacturer",
 		"fde-state",
 		"lock-key-id"],
@@ -181,7 +179,6 @@
 		"controller-id",
 		"controller-id-numeric",
 		"serial-number",
-		"hardware-version",
 		"cpld-version",
 		"mac-address",
 		"node-wwn",
@@ -210,7 +207,6 @@
 		"status",
 		"failed-over",
 		"fail-over-reason",
-		"sc-fw",
 		"vendor",
 		"model",
 		"platform-type",
@@ -223,7 +219,6 @@
 		"revision",
 		"dash-level",
 		"fru-shortname",
-		"mfg-date",
 		"mfg-location",
 		"mfg-vendor-id",
 		"locator-led",
@@ -239,6 +234,8 @@
 		"expander-ports",
 		"port",
 		"network-parameters",
+		"hardware-version",
+		"sc-fw",
 		"mfg-date"],
 		"Metrics": ["sc-cpu-speed", "cache-memory-size", "rotation", "system-memory-size"]
 	},
@@ -355,7 +352,7 @@
 	},
 
 	"IOM": {
-		"Key": ["controller-id"],
+		"Key": ["durable-id"],
 		"MainHealth": ["PrimaryStatus"],
 		"Inventory" : ["description",
 		"configuration-serialnumber"]
@@ -404,7 +401,6 @@
 		"OtherHealth": ["health"],
 		"Inventory": [
 		"enclosure-id",
-		"enclosure-wwn",
 		"name",
 		"type",
 		"location",
@@ -416,6 +412,8 @@
 		"midplane-serial-number",
 		"vendor",
 		"model",
+		"part-number",
+		"enclosure-wwn",
 		"mfg-date",
 		"mfg-location",
 		"revision",
@@ -431,7 +429,6 @@
 		"emp-b-targetid",
 		"emp-a-rev",
 		"emp-b-rev",
-		"part-number",
 		"midplane-type",
 		"pcie2-capable"
 		],
@@ -443,11 +440,11 @@
 		"Inventory": [
 		"name",
 		"blocksize",
-		"size",
 		"freespace",
 		"owner",
 		"preferred-owner",
 		"raidtype",
+		"size",
 		"storage-type",
 		"diskcount",
 		"sparecount",
@@ -495,7 +492,6 @@
         "storage-pool-name",
         "preferred-owner",
         "owner",
-        "tier-affinity",
         "total-size",
         "total-size-numeric",
         "virtual-disk-name",
@@ -503,7 +499,10 @@
         "volume-class",
         "volume-description",
         "volume-group",
+        "tier-affinity",
         "volume-name",
+        "write-policy",
+        "allocated-size",
         "wwn"],
         "Metrics": [
         "size"]
@@ -564,7 +563,14 @@
             "blocksize",
             "name",
             "object-name",
-            "volumes"
+            "volumes",
+            "over-committed",
+            "pool-sector-format",
+            "overcommit",
+            "low-threshold",
+            "high-threshold",
+            "middle-threshold",
+            "total-size"
 		],
 		"Metrics": []
 	}

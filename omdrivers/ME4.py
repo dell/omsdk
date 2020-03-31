@@ -640,6 +640,9 @@ class ME4Entity(iDeviceDriver):
         if "StorageEnclosure" == component:
             if entry.get('enclosure-id') != 0:
                 return False
+        if "IOM" == component:
+            if entry.get('enclosure-id') == 0:
+                return False
         if "Enclosure" == component:
             if entry.get('enclosure-id') == 0:
                 return False

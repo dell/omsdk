@@ -520,8 +520,8 @@
             "ProductName",
             "Protocol",
             "VendorName",
-            "VirtWWN",
-            "VirtWWPN",
+            "VirtualWWN",
+            "VirtualWWPN",
             "WWN",
             "WWPN"
         ],

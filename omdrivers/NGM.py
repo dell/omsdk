@@ -433,6 +433,7 @@ NGMRestViews_FieldSpec = {
             }
         }
     },
+
     NGMMiscEnum.Network: {
         "IomIPv4Settings": {'Create': {
             'EnableIPv4': {'_Attribute': 'EnableIPv4'},
@@ -792,7 +793,7 @@ class NGMEntity(iDeviceDriver):
     def _health_aggregator(self,finalretjson,service):
         calculated_health_numeric = 1
         calculated_health ='Healthy'
-        primaryStatusMap = {'Healthy': 1, 'Warning': 2, 'Critical': 3}
+        primaryStatusMap = {'Healthy': 1, 'Warning': 2, 'Critical': 3, 'Unknown': 4}
         if finalretjson.get(service, None):
             for entry in finalretjson[service]:
 

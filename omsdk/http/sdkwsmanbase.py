@@ -397,20 +397,6 @@ class WsManProtocolBase(ProtocolBase):
         retval['Data'] = Data
         return retval
 
-    def _get_redfish_jobid(self, headers):
-        """Search jobid in the redfish_op
-
-        :param headers: response header.
-        :param headers: dict.         .
-        :returns: returns jobid
-
-        """
-        joblocation = headers['Location']
-        tokens = joblocation.split("/")
-        if tokens and tokens.__len__() > 0:
-            return tokens[-1]
-        return None
-
     ##########################Above are redfish codes, need to be moved once prtocol issue is addressed#####################
 
     def _proto_connect(self):
