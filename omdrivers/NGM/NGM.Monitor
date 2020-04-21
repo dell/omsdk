@@ -136,9 +136,9 @@
                   "peakTemperature" ]
   },
   "TemperatureSensors" : {
-  "Key" : ["Id"],
+  "Key" : ["MemberId"],
   "MainHealth": ["PrimaryStatus"],
-  "BasicInventory": ["SensorName", "MemberId"],
+  "BasicInventory": ["SensorName","Id"],
   "Metrics" : [ "LowerThresholdCritical",
                 "LowerThresholdNoncritical",
                 "UpperThresholdCritical",

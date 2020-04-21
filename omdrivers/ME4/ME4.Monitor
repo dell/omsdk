@@ -61,7 +61,6 @@
 		"enclosure-id",
 		"drawer-id",
 		"slot",
-		"location",
 		"url",
 		"port",
 		"scsi-id",

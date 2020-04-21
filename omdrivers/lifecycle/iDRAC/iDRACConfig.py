@@ -1313,8 +1313,6 @@ iDRACWsManCmds = {
             "ipaddress": str,
             "share_type": int,
             "share_name": str,
-            # "username": str,
-            # "password": str,
             "catalog_file": str,
             "apply_update": int,
             "reboot_needed": str,
@@ -1328,20 +1326,44 @@ iDRACWsManCmds = {
             ('ShareName', "share_name", None, type("/test"), None),
             ('ShareType', "share_type", None, type(0), None),
             ('FileName', "catalog_file", None, type("filename"), None),
-            # ("Username",  "username", None, type("user"), None),
-            # ("Password",  "password", None, type("password"), None),
             ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
             ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
             ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
-            # ("ProxyPort", "proxy", 'port', type(100), None),
-            # ("ProxyType", "proxy", 'type', type("1"), None),
-            # ("ProxySupport", "proxy", 'support', type("3"), None), # 1-off, 2-user default proxy 3-passed in params
-            # ("ProxyUName",  "proxy_creds", 'username', type("user"), None),
-            # ("ProxyPasswd",  "proxy_creds", 'password', type("password"), None),
         ]
     },
-
+    "_update_dell_repo_url": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+        ]
+    },
     "_update_from_repo_using_redfish": {
         "ResourceURI": "/redfish/v1/Dell/Systems/System.Embedded.1/DellSoftwareInstallationService/Actions/DellSoftwareInstallationService",
         "Action": "InstallFromRepository",

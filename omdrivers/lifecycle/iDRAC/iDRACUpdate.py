@@ -276,6 +276,23 @@ class iDRACUpdate(Update):
             rjson['job_details'] = self.entity._update_get_repolist()
         return rjson
 
+    def update_from_dell_repo_url(self, ipaddress=None, share_name=None, share_type=None,
+                                  catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
+                                  ignore_cert_warning=True, job_wait=True):
+        rjson = self.entity._update_dell_repo_url(ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                                                  catalog_file=catalog_file,
+                                                  apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                                                  reboot_needed=RebootEnum[str(reboot_needed)].value,
+                                                  ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value)
+
+        file_format = "{0}://{1}/{2}/{3}" if share_name else "{0}://{1}{2}/{3}"
+        rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
+        if job_wait:
+            rjson = self._job_mgr._job_wait(rjson['file'], rjson)
+        if not self.entity.use_redfish:
+            rjson['job_details'] = self.entity._update_get_repolist()
+        return rjson
+
     def update_from_repo_url(self, ipaddress=None, share_type=None, share_name=None, share_user=None,
                              share_pwd=None, catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
                              ignore_cert_warning=True, job_wait=True):
