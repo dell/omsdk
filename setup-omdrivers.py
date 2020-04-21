@@ -70,11 +70,14 @@ setup(
         'omdrivers',
         'omdrivers.lifecycle.F10',
         'omdrivers.F10',
+        'omdrivers.F10NG',
         'omdrivers.NSeries',
         'omdrivers.Printer',
         'omdrivers.Compellent',
         'omdrivers.EqualLogic',
-        'omdrivers.MDArray'
+        'omdrivers.MDArray',
+        'omdrivers.NGM',
+        'omdrivers.ME4'
     ],
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
@@ -85,7 +88,9 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=[],
+    install_requires=[
+        'omsdk>=0'
+    ],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -101,11 +106,14 @@ setup(
     package_data={
         'omdrivers': [
                 'F10/*.Monitor',
+                'F10NG/*.Monitor',
                 'NSeries/*.Monitor',
                 'Printer/*.Monitor',
                 'Compellent/*.Monitor',
                 'EqualLogic/*.Monitor',
-                'MDArray/*.Monitor'
+                'MDArray/*.Monitor',
+                'NGM/*.Monitor',
+                'ME4/*.Monitor'
         ],
     },
 

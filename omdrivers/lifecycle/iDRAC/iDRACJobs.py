@@ -239,6 +239,7 @@ class iDRACJobs(iBaseJobApi):
         wait_till = time.time() + wait_for
         while True:
             status = {}
+            time.sleep(30)
             if self.entity.use_redfish:
                 status = self.get_job_status_redfish(jobid)
             else:
@@ -271,7 +272,6 @@ class iDRACJobs(iBaseJobApi):
                     break
                 else:
                     logger.debug(self.entity.ipaddr+" : "+jobid+ ": status: "+str(status))
-            time.sleep(5)
             if time.time() > wait_till:
                 ret_json['Status'] = 'Failed'
                 ret_json['Message'] = 'Job wait did not return for {0} seconds'.format(wait_for)
@@ -336,7 +336,7 @@ class iDRACJobs(iBaseJobApi):
             return jobdetail
 
         jobdetail_data = jobdetail['Data']['Jobs']
-        if jobdetail_data['PercentComplete'] < 100:
+        if (jobdetail_data['PercentComplete'] < 100) or (100 < jobdetail_data['PercentComplete']):
             jobstaten = JobStatusEnum.InProgress
         elif jobdetail_data['JobState'] == 'Completed':
             jobstaten = self.get_job_status_by_msgid(jobdetail_data['MessageId'])

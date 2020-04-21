@@ -22,7 +22,7 @@
 #
 from omsdk.sdkdevice import iDeviceDiscovery, iDeviceRegistry, iDeviceDriver
 from omsdk.sdkcenum import EnumWrapper
-from omsdk.sdkproto import PSNMP
+from omsdk.sdkproto import PSNMP, ProtocolEnum
 import sys
 import logging
 
@@ -345,6 +345,25 @@ NSeriesComponentTree = {
 
 NSeriesClassifier = [ NSeriesCompEnum.System ]
 
+
+def check_classifier(myListoFDict, cls=None):
+   sys_obj_str = 'SNMPv2-SMI::enterprises.674.10895.30'
+   if isinstance(myListoFDict, list):
+       for sys in myListoFDict:
+           if sys_obj_str in sys.get('SysObjectID', "NA"):
+               return (True, sys)
+   elif isinstance(myListoFDict, dict):
+       return (True, myListoFDict)
+   return (False, myListoFDict)
+
+
+classify_cond = {
+    NSeriesCompEnum.System :
+    {
+        ProtocolEnum.SNMP : check_classifier
+    }
+}
+
 NSeriesSubsystemHealthSpec = {
     NSeriesCompEnum.System : { "Component" : NSeriesCompEnum.System, "Field" : 'PrimaryStatus' },
 }
@@ -368,6 +387,7 @@ class NSeries(iDeviceDiscovery):
             self.protofactory.add(PSNMP(
                 views = NSeriesPSNMPViews,
                 classifier = NSeriesPSNMPClassifier,
+                classifier_cond=classify_cond,
                 view_fieldspec = NSeriesSNMPViews_FieldSpec))
         self.protofactory.addCTree(NSeriesComponentTree)
         self.protofactory.addClassifier(NSeriesClassifier)

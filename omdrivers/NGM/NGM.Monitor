@@ -1,0 +1,226 @@
+{
+  "System" : {
+    "Key" : ["Id"],
+    "MainHealth" : ["PrimaryStatus"],
+    "BasicInventory" : [ "Name",
+                        "ServiceTag",
+                        "Model",
+                        "IPAddress",
+                        "IPv4Address"],
+    "Inventory" :   ["AssetTag",
+                    "PhysicalLocationChassisName",
+                    "URLString",
+                    "PowerState",
+                    "DomainRoleTypeValue",
+                    "PublicAddress",
+                    "GroupId",
+                    "GroupName",
+                    "ExpressServiceCode",
+                    "Location",
+                    "MgmtControllerFirmwareVersion",
+                    "DeviceId",
+                    "MacAddress",
+                    "IPv6Address",
+                    "IPv4URL",
+                    "IPv6URL"],
+    "Metrics" : []
+  },
+  "ComputeDevice" : {
+    "Key" : ["Id"]
+  },
+  "Subsystem" : {
+    "Key" : ["SubSystem"],
+    "MainHealth" : ["PrimaryStatus"]
+  },
+  "PowerSupply" : {
+    "Key" : ["MemberId"],
+    "ConfigState" : ["EnableState"],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "DeviceId",
+                    "Name",
+                    "PowerSupplyType",
+                    "InputVoltage",
+                    "PowerStatus",
+                    "Slot",
+                    "PartNumber"
+    ],
+    "Metrics" : ["TotalOutputPower"]
+  },
+  "Fan" : {
+    "Key" : ["MemberId"],
+    "ConfigState" : [],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [  "Id",
+                    "DeviceId",
+                    "ElementName",
+                    "FirmwareVersion",
+                    "HardwareVersion",
+                    "SpeedUnits",
+                    "Pwm",
+                    "PwmUnits",
+                    "PowerState"
+    ],
+    "Metrics" : ["RPM"]
+  },
+  "BladeSlot" : {
+    "Key" : ["Name"],
+    "ConfigState" : [],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "Id",
+                    "Number",
+                    "DeviceType",
+                    "VlanId",
+                    "IsPrimarySlot",
+                    "Occupied",
+                    "SlotDeviceId",
+                    "SlotDeviceName",
+                    "PowerState",
+                    "Model",
+                    "Type",
+                    "VlanCapable",
+                    "DeviceId"
+    ]
+  },
+  "CMC" : {
+    "Key" : ["Name"],
+    "ConfigState" : ["State"],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "MgmtControllerFirmwareVersion",
+                    "SlotNumber",
+                    "Id"
+                    ]
+  },
+   "IOModule" : {
+    "Key" : ["Id"],
+    "ConfigState" : [ "PowerState"],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "DeviceType",
+                    "Occupied",
+                    "Name",
+                    "Model",
+                    "SlotName",
+                    "Slot",
+                    "ServiceTag",
+                    "IPAddresses",
+                    "MacAddress",
+                    "LinkTechnologies",
+                    "IPv4Address",
+                    "IPv6Address"]
+  },
+  "IOMDevice": {
+    "Key" : ["Id"]
+  },
+  "Network" : {
+    "Key" : ["@odata.id"],
+    "Inventory" : [ "EnableIPv4",
+                    "EnableDHCP",
+                    "UseDHCPv6",
+                    "EnableIPv6"]
+  },
+  "PowerConsumption" : {
+    "Key" : ["@odata.id"],
+    "Metrics" : [ "minimumPower",
+                  "peakPower",
+                  "systemEnergyConsumption",
+                  "power",
+                  "instantaneousHeadroom",
+                  "peakHeadroom"]
+  },
+  "TemperatureMetrics" : {
+    "Key" : ["@odata.id"],
+    "Metrics" : [ "minTemperatureUnit",
+                  "peakTemperatureUnit",
+                  "minTemperature",
+                  "instantaneousTemperatureUnit",
+                  "instantaneousTemperature",
+                  "peakTemperature" ]
+  },
+  "TemperatureSensors" : {
+  "Key" : ["MemberId"],
+  "MainHealth": ["PrimaryStatus"],
+  "BasicInventory": ["SensorName","Id"],
+  "Metrics" : [ "LowerThresholdCritical",
+                "LowerThresholdNoncritical",
+                "UpperThresholdCritical",
+                "UpperThresholdNoncritical",
+                "Reading"
+                ]
+  },
+  "PowerUsageByDevice" : {
+    "Key" : ["DeviceId"],
+    "Metrics" : [ "DeviceId",
+                  "Chassistype",
+                  "Chassissubtype",
+                  "Priority",
+                  "DeviceName",
+                  "SlotNumber",
+                  "PowerConsumption",
+                  "PeakPower",
+                  "MinPower" ]
+  },
+  "Devices" : {
+    "Key" : ["Id"],
+    "BasicInventory" : ["ServiceTag",
+                        "Model",
+                        "ExpressServiceCode",
+                        "Location",
+                        "PhysicalLocationChassisName"]
+  },
+  "Slots_Summary": {
+    "Key" : [ "InstanceID"],
+     "BasicInventory" : [
+        "Type",
+        "Occupied",
+        "IsPrimarySlot",
+        "Number"]
+  },
+  "StorageModule" : {
+    "Key" : ["SlotDeviceName"],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "DeviceId",
+                    "SlotName",
+                    "MasterSlotNumber",
+                    "DeviceType",
+                    "VlanId",
+                    "IsPrimarySlot",
+                    "SledBlockPowerOn",
+                    "Occupied",
+                    "ServiceTag",
+                    "SlotDeviceId",
+                    "Model",
+                    "PowerState",
+                    "DnsName",
+                    "Type",
+                    "VlanCapable",
+                    "Id",
+                    "FormFactor",
+                    "ExtensionSlot"]
+  },
+  "ComputeModule": {
+    "Key" : ["Id"],
+    "MainHealth" : ["PrimaryStatus"],
+    "Inventory" : [ "DeviceId",
+            "SlotName",
+            "SlotNumber",
+            "DeviceType",
+            "VlanId",
+            "IsPrimarySlot",
+            "SledBlockPowerOn",
+            "Occupied",
+            "ServiceTag",
+            "SlotDeviceId",
+            "DeviceName",
+            "PowerState",
+            "Model",
+            "Type",
+            "VlanCapable",
+            "AssetTag",
+            "MasterSlotNumber",
+            "FormFactor",
+            "ExtensionSlot",
+            "ChassisServiceTag",
+            "IPAddress",
+            "URL",
+            "DnsName"]
+  }
+}

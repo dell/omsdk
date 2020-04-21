@@ -258,7 +258,7 @@ iDRACWsManViews = {
     # iDRACMiscEnum.SystemString : "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_SystemString",
     iDRACMiscEnum.SystemString : ["http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_SystemString", "select FQDD,InstanceID,AttributeName,CurrentValue from DCIM_SystemString WHERE AttributeName = 'OSName' or AttributeName = 'OSVersion'"],
     # iDRACMiscEnum.NICString : "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_NICString",
-    iDRACMiscEnum.NICString: ["http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_NICString", "select FQDD,InstanceID,AttributeName,CurrentValue from DCIM_NICString WHERE AttributeName = 'VirtWWN' or AttributeName = 'VirtWWPN' or AttributeName = 'WWN' or AttributeName = 'WWPN'"],
+    iDRACMiscEnum.NICString: ["http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_NICString", "select FQDD,InstanceID,AttributeName,CurrentValue from DCIM_NICString WHERE AttributeName = 'VirtWWN' or AttributeName = 'VirtWWPN' or AttributeName = 'WWN' or AttributeName = 'WWPN' or AttributeName = 'VirtMacAddr'"],
     iDRACMiscEnum.NICEnumeration : "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_NICEnumeration",
     # iDRACMiscEnum.iDRACString : "http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_iDRACCardString",
     iDRACMiscEnum.iDRACString : ["http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/root/dcim/DCIM_iDRACCardString", "select FQDD,InstanceID,AttributeName,CurrentValue from DCIM_iDRACCardString WHERE InstanceID = 'iDRAC.Embedded.1#IPv4.1#Address' or  InstanceID = 'iDRAC.Embedded.1#Info.1#Product' or  InstanceID = 'iDRAC.Embedded.1#CurrentNIC.1#MACAddress' or  InstanceID = 'iDRAC.Embedded.1#CurrentIPv6.1#Address1' or  InstanceID = 'iDRAC.Embedded.1#GroupManager.1#GroupName' or  InstanceID = 'iDRAC.Embedded.1#NIC.1#SwitchConnection' or  InstanceID = 'iDRAC.Embedded.1#NIC.1#SwitchPortConnection' or AttributeName = 'Destination'"],
@@ -333,7 +333,7 @@ iDRACWsManViews_FieldSpec = {
         }
     },
     iDRACCompEnum.Controller : {
-        "CacheSizeInMB" : { 'Rename' : 'CacheSize', 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'GB' },
+        "CacheSizeInMB" : { 'Rename' : 'CacheSize', 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'MB' },
         "SecurityStatus" : {
             'Lookup'  :  'True',
             'Values' : {
@@ -2271,7 +2271,7 @@ if PySnmpPresent:
             },
         },
         iDRACCompEnum.Controller : {
-            "CacheSize" : { 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'GB' },
+            "CacheSize" : { 'Type' : 'Bytes', 'InUnits' : 'MB', 'OutUnits' : 'MB' },
             "PrimaryStatus" : {
                 'Lookup'  :  'True',
                 'Values' : {

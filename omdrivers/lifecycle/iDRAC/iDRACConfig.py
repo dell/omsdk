@@ -194,6 +194,7 @@ def format_enum_wsman(enval):
     return 0
 
 
+# noinspection PyInterpreter
 iDRACWsManCmds = {
     ###### LC Services
     "_lc_status": {
@@ -973,7 +974,8 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "share": FileOnShare,
-            "creds": UserCredentials
+            "creds": UserCredentials,
+            "expose_duration": str 
         },
         "Return": {
             "File": "file"
@@ -986,6 +988,7 @@ iDRACWsManCmds = {
             ("Username", "creds", 'username', type("user"), None),
             ("Password", "creds", 'password', type("password"), None),
             # RackHD("ExposeDiration",  "duration", None, type("0"), None),
+            ("ExposeDuration", "expose_duration", None, str, None),  # 0 - report, 1 - apply
         ]
     },
 
@@ -1000,7 +1003,8 @@ iDRACWsManCmds = {
                 {'@Name': 'SystemName', '#text': 'DCIM:ComputerSystem'}
             ]},
         "Args": {
-            "share": FileOnShare
+            "share": FileOnShare,
+            "expose_duration": str
         },
         "Return": {
             "File": "file"
@@ -1010,6 +1014,7 @@ iDRACWsManCmds = {
             ('ShareName', "share", 'remote_folder_name', type("\\test"), None),
             ('ShareType', "share", 'remote_share_type', Share.ShareType, None),
             ('ImageName', "share", 'remote_file_name', type("filename"), None),
+            ("ExposeDuration", "expose_duration", None, str, None),
             # ("Username",  "creds", 'username', type("user"), None),
             # ("Password",  "creds", 'password', type("password"), None),
             # RackHD("ExposeDiration",  "duration", None, type("0"), None),
@@ -1261,14 +1266,8 @@ iDRACWsManCmds = {
             ("CatalogFile", "catalog", None, type("Catalog.xml"), None),
             ("ApplyUpdate", "apply", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot", None, type("TRUE"), None),
-            # ("ProxyPort", "proxy", 'port', type(100), None),
-            # ("ProxyType", "proxy", 'type', type("1"), None),
-            # ("ProxySupport", "proxy", 'support', type("3"), None), # 1-off, 2-user default proxy 3-passed in params
-            # ("ProxyUName",  "proxy_creds", 'username', type("user"), None),
-            # ("ProxyPasswd",  "proxy_creds", 'password', type("password"), None),
         ]
     },
-
     "_update_repo_nfs": {
         "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
         "Action": "InstallFromRepository",
@@ -1281,6 +1280,7 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "share": FileOnShare,
+            "creds": UserCredentials,
             "catalog": str,
             "apply": int,
             "reboot": str
@@ -1293,18 +1293,118 @@ iDRACWsManCmds = {
             ('ShareName', "share", 'remote_share_name', type("\\test"), None),
             ('ShareType', "share", 'remote_share_type', Share.ShareType, None),
             ('FileName', "share", 'remote_file_name', type("filename"), None),
-            # ("Username",  "creds", 'username', type("user"), None),
-            # ("Password",  "creds", 'password', type("password"), None),
             ("CatalogFile", "catalog", None, type("Catalog.xml"), None),
             ("ApplyUpdate", "apply", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot", None, type("TRUE"), None),
-            # ("ProxyPort", "proxy", 'port', type(100), None),
-            # ("ProxyType", "proxy", 'type', type("1"), None),
-            # ("ProxySupport", "proxy", 'support', type("3"), None), # 1-off, 2-user default proxy 3-passed in params
-            # ("ProxyUName",  "proxy_creds", 'username', type("user"), None),
-            # ("ProxyPasswd",  "proxy_creds", 'password', type("password"), None),
         ]
     },
+    "_update_repo_url": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "share_name": str,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareName', "share_name", None, type("/test"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+        ]
+    },
+    "_update_dell_repo_url": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+        ]
+    },
+    "_update_from_repo_using_redfish": {
+        "ResourceURI": "/redfish/v1/Dell/Systems/System.Embedded.1/DellSoftwareInstallationService/Actions/DellSoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "HttpMethod": "post",
+        "SuccessCode": [202],
+        "ReturnsJobid": True,
+        "Args": {
+            "ipaddress": str,
+            "share_name": str,
+            "share_type": IFRShareTypeEnum,
+            "username": str,
+            "password": str,
+            "catalog_file": str,
+            "apply_update": ApplyUpdateEnum,
+            "reboot_needed": bool,
+            "ignore_cert_warning": IgnoreCertWarnEnum
+        },
+        "Return": { "File": "file" },
+        "Parameters": [
+            ('IPAddress', 'ipaddress', None, str, None),
+            ('ShareName', 'share_name', None, str, None),
+            ('ShareType', 'share_type', None, IFRShareTypeEnum, None),
+            ('UserName', 'username', None, str, None),
+            ('Password', 'password', None, str, None),
+            ('RebootNeeded', 'reboot_needed', None, bool, None),
+            ('CatalogFile', 'catalog_file', None, type('Catalog.xml'), None),
+            ('ApplyUpdate', 'apply_update', None, ApplyUpdateEnum, None),
+            ('IgnoreCertWarning', 'ignore_cert_warning', None, IgnoreCertWarnEnum, None)
+        ]
+    },
+
+    "_get_update_from_repo_list_using_redfish": {
+        "ResourceURI": "/redfish/v1/Dell/Systems/System.Embedded.1/DellSoftwareInstallationService/Actions/DellSoftwareInstallationService",
+        "Action": "GetRepoBasedUpdateList",
+        "HttpMethod": "post",
+        "SuccessCode": [200],
+        "ReturnsJobid": False,
+        "Args": {},
+        "Parameters": []
+    },
+
     ##############
     ##### End Update Management
     ##############
@@ -2349,6 +2449,19 @@ iDRACWsManCmds = {
         "Parameters": [
             ('TargetSettingsURI', "target_uri", None, type(""), None)
         ]
+    },
+
+    "_get_acton_redfish": {
+        "ResourceURI": "/redfish/v1/Systems/System.Embedded.1",
+        "Action": "",
+        "HttpMethod": "get",
+        "SuccessCode": [200],
+        "ReturnsJobid": False,
+        "Args": {},
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": []
     }
 
     #############Above are Redfish specific commands, need to be moved once testing completed and protocol issue addressed###########
@@ -4682,7 +4795,7 @@ class iDRACConfig(iBaseConfigApi):
         rjson['file'] = 'delete_iso_from_vflash'
         return rjson
 
-    def boot_to_network_iso(self, network_iso_image, uefi_target, job_wait=True):
+    def boot_to_network_iso(self, network_iso_image, uefi_target, expose_duration, job_wait=True):
 
         if uefi_target == "":
             try:
@@ -4692,10 +4805,10 @@ class iDRACConfig(iBaseConfigApi):
             except:
                 return {"Status": "Failed", "Message": "LC is not ready"}
             if TypeHelper.resolve(network_iso_image.remote_share_type) == TypeHelper.resolve(ShareTypeEnum.NFS):
-                rjson = self.entity._boot_to_network_iso_nfs(share=network_iso_image)
+                rjson = self.entity._boot_to_network_iso_nfs(share=network_iso_image, expose_duration=expose_duration)
             else:
                 rjson = self.entity._boot_to_network_iso(share=network_iso_image,
-                                                         creds=network_iso_image.creds)
+                                                         creds=network_iso_image.creds, expose_duration=expose_duration)
             rjson['file'] = str(network_iso_image)
             if job_wait:
                 rjson = self._job_mgr._job_wait(rjson['file'], rjson)
@@ -5040,7 +5153,13 @@ class iDRACConfig(iBaseConfigApi):
         return rjson
 
     def reboot_system(self):
-        rjson = self.entity._reboot_system_redfish(reboot_type="GracefulRestart")
+        redfish_action_json = self.entity._get_acton_redfish()
+        reset_allowable_values = self.entity._get_field_from_action(redfish_action_json, 'Data', 'body', 'Actions', '#ComputerSystem.Reset', 'ResetType@Redfish.AllowableValues')
+        if reset_allowable_values and "GracefulRestart" in reset_allowable_values:
+            reboot_type = "GracefulRestart"
+        else:
+            reboot_type = "ForceRestart"
+        rjson = self.entity._reboot_system_redfish(reboot_type=reboot_type)
         return rjson
 
     def is_change_applicable(self):

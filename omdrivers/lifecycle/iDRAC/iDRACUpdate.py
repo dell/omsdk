@@ -239,11 +239,6 @@ class iDRACUpdate(Update):
                 sort_keys=True, indent=4, separators=(',', ': ')))
 
     def update_from_repo(self, catalog_path, apply_update=True, reboot_needed=False, job_wait=True):
-        appUpdateLookup = {True: 1, False: 0}
-        rebootLookup = {True: "TRUE", False: "FALSE"}
-        appUpdate = appUpdateLookup[apply_update]
-        rebootNeeded = rebootLookup[reboot_needed]
-
         if isinstance(catalog_path, str):
             # Catalog name
             updmgr = UpdateManager.get_instance()
@@ -252,30 +247,75 @@ class iDRACUpdate(Update):
         else:
             # DRM Repo
             cache_share = catalog_path
-        catalog_dir = FileOnShare(remote=cache_share.remote_folder_path,
-                                  isFolder=True, creds=cache_share.creds)
+        catalog_dir = FileOnShare(remote=cache_share.remote_folder_path, isFolder=True, creds=cache_share.creds)
         catalog_file = cache_share.remote_file_name
-
         if self.entity.use_redfish:
             if isinstance(catalog_path, FileOnShare) and catalog_path.mount_point is None:
-                logger.error("Share path or mount point does not exist")
                 raise ValueError("Share path or mount point does not exist")
-            return self.update_from_repo_usingscp_redfish(catalog_dir, catalog_file,
-                                                          mount_point=catalog_path.mount_point.full_path,
-                                                          reboot_needed=reboot_needed, job_wait=job_wait)
-
+            rjson = self.entity._update_from_repo_using_redfish(ipaddress=catalog_dir.remote_ipaddr,
+                                                                share_name=catalog_dir.remote.share_name,
+                                                                share_type=IFRShareTypeEnum[catalog_dir.remote_share_type.name.lower()],
+                                                                username=catalog_dir.creds.username,
+                                                                password=catalog_dir.creds.password,
+                                                                reboot_needed=reboot_needed,
+                                                                catalog_file=catalog_file,
+                                                                apply_update=ApplyUpdateEnum[str(apply_update)],
+                                                                ignore_cert_warning=IgnoreCertWarnEnum['On'])
         if TypeHelper.resolve(catalog_dir.remote_share_type) == TypeHelper.resolve(ShareTypeEnum.NFS):
-            rjson = self.entity._update_repo_nfs(share=catalog_dir,
-                                                 catalog=catalog_file,
-                                                 apply=appUpdate, reboot=rebootNeeded)
+            rjson = self.entity._update_repo_nfs(share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
+                                                 apply=URLApplyUpdateEnum[str(apply_update)].value,
+                                                 reboot=RebootEnum[str(reboot_needed)].value)
         else:
-            rjson = self.entity._update_repo(share=catalog_dir,
-                                             creds=catalog_dir.creds, catalog=catalog_file,
-                                             apply=appUpdate, reboot=rebootNeeded)
-
+            rjson = self.entity._update_repo(share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
+                                             apply=URLApplyUpdateEnum[str(apply_update)].value,
+                                             reboot=RebootEnum[str(reboot_needed)].value)
         rjson['file'] = str(cache_share)
         if job_wait:
             rjson = self._job_mgr._job_wait(rjson['file'], rjson)
+        if not self.entity.use_redfish:
+            rjson['job_details'] = self.entity._update_get_repolist()
+        return rjson
+
+    def update_from_dell_repo_url(self, ipaddress=None, share_name=None, share_type=None,
+                                  catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
+                                  ignore_cert_warning=True, job_wait=True):
+        rjson = self.entity._update_dell_repo_url(ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                                                  catalog_file=catalog_file,
+                                                  apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                                                  reboot_needed=RebootEnum[str(reboot_needed)].value,
+                                                  ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value)
+
+        file_format = "{0}://{1}/{2}/{3}" if share_name else "{0}://{1}{2}/{3}"
+        rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
+        if job_wait:
+            rjson = self._job_mgr._job_wait(rjson['file'], rjson)
+        if not self.entity.use_redfish:
+            rjson['job_details'] = self.entity._update_get_repolist()
+        return rjson
+
+    def update_from_repo_url(self, ipaddress=None, share_type=None, share_name=None, share_user=None,
+                             share_pwd=None, catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
+                             ignore_cert_warning=True, job_wait=True):
+        if self.entity.use_redfish:
+            warning = IgnoreCertWarnEnum["On"] if ignore_cert_warning else IgnoreCertWarnEnum["Off"]
+            rjson = self.entity._update_from_repo_using_redfish(ipaddress=ipaddress, share_name=share_name,
+                                                                share_type=IFRShareTypeEnum[share_type],
+                                                                username=share_user, password=share_pwd,
+                                                                reboot_needed=reboot_needed, catalog_file=catalog_file,
+                                                                apply_update=ApplyUpdateEnum[str(apply_update)],
+                                                                ignore_cert_warning=warning.value)
+        else:
+            rjson = self.entity._update_repo_url(ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                                                 share_name=share_name, catalog_file=catalog_file,
+                                                 apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                                                 reboot_needed=RebootEnum[str(reboot_needed)].value,
+                                                 ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value)
+        file_format = "{0}://{1}/{2}/{3}" if share_name else "{0}://{1}{2}/{3}"
+        rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
+        if job_wait:
+            rjson = self._job_mgr._job_wait(rjson['file'], rjson)
+        if not self.entity.use_redfish:
+            rjson['job_details'] = self.entity._update_get_repolist()
         return rjson
 
     ##below methods to update firmware using redfish will be reimplemented using Type Manager system
@@ -302,7 +342,7 @@ class iDRACUpdate(Update):
         :param catalog_file: str.
         :param mount_point: local share on which remote(catalog_dir) folder has been mounted
         :param mount_point: str.
-        :returns: returns status of firmare update through scp
+        :returns: returns status of firmware update through scp
 
         """
         (scp_path, scp_file) = self._get_scp_path(catalog_dir)
@@ -312,13 +352,17 @@ class iDRACUpdate(Update):
         if 'Status' not in rjson or rjson['Status'] != 'Success':
             return {'Status': 'Failed', 'Message': 'Export of scp failed for firmware update'}
         scpattrval = {'RepositoryUpdate': catalog_file}
-        localfile = mount_point + os.path.sep + scp_file
+        localfile = mount_point.share_path + os.path.sep + scp_file
         self.edit_xml_file(localfile, scpattrval)
         if reboot_needed:
             shutdown = ShutdownTypeEnum.Graceful
         else:
             shutdown = ShutdownTypeEnum.NoReboot
         rjson = self.entity.config_mgr.scp_import(share_path=myshare, shutdown_type=shutdown, job_wait=job_wait)
+        if job_wait:
+            rjson['file'] = localfile
+            rjson = self._job_mgr._job_wait(rjson['file'], rjson)
+        rjson['job_details'] = self.entity._update_get_repolist()
         return rjson
 
     def edit_xml_file(self, file_location, attr_val_dict):

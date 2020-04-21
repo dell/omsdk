@@ -81,7 +81,6 @@ setup(
         'omsdk.omlogs',
         'omsdk.omlogs.config',
         'omsdk.services',
-        'omsdk.services.config',
         'omdrivers',
         'omdrivers.lifecycle',
         'omdrivers.lifecycle.iDRAC',

@@ -69,36 +69,36 @@ class iBaseRegistry(object):
     def find_merge_components(self, comps, comp_union_spec, merge_join_spec, misc_join_spec, more_details_spec):
         tempList = []
         for i in comps:
-            str = TypeHelper.resolve(i)
+            str_type = TypeHelper.resolve(i)
             replacedFlag = False
             if comp_union_spec:
-                mystr = str
-                if '_' in str:
-                    tempmystr = str.split('_')
+                mystr = str_type
+                if '_' in str_type:
+                    tempmystr = str_type.split('_')
                     mystr = tempmystr[0]
-                    if str in comp_union_spec:
-                        mystr = str
+                    if str_type in comp_union_spec:
+                        mystr = str_type
                     xComp = comp_union_spec[mystr]
                     myList = xComp['_components_enum']
                     tempList = tempList + myList
                     replacedFlag = False
             if merge_join_spec:
-                if str in merge_join_spec:
-                    xComp = merge_join_spec[str]
+                if str_type in merge_join_spec:
+                    xComp = merge_join_spec[str_type]
                     myList = xComp['_components_enum']
                     tempList = tempList + myList
                     replacedFlag = True
             if misc_join_spec:
-                if str in misc_join_spec:
-                    xComp = misc_join_spec[str]
+                if str_type in misc_join_spec:
+                    xComp = misc_join_spec[str_type]
                     myList = xComp['_components_enum']
                     tempList = tempList + myList
                     # Not replacing just addition of the new profiles
                     replacedFlag = False
             if more_details_spec:
-                if str in more_details_spec:
-                # for str in more_details_spec:
-                    myList = more_details_spec[str]['_components_enum']
+                #if str in more_details_spec:
+                for str_type in more_details_spec:
+                    myList = more_details_spec[str_type]['_components_enum']
                     tempList = tempList + myList
                     replacedFlag = False
             if not replacedFlag:
@@ -370,7 +370,7 @@ class iBaseDriver(object):
 
     # Must be overridden by base class
     def _isin(self, parentClsName, parent, childClsName, child):
-        not_implemented
+        pass
 
     def _build_tree(self, mTree, device_json, ctree, parent=None, parentClsName=None):
 
@@ -623,7 +623,7 @@ class iBaseDriver(object):
                         classifier = value['_pivot']
                         classifieDict = {}
                         for i in entityjson[target_comp]:
-                            keyBuilt = target_comp + '_' + i[classifier]
+                            keyBuilt = target_comp + '_' + str(i[classifier])
                             if keyBuilt not in classifieDict:
                                 classifieDict[keyBuilt] = []
                             classifieDict[keyBuilt].append(i)

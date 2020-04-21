@@ -212,7 +212,7 @@ class WsManProtocolBase(ProtocolBase):
             method_args['body'] = http_body
         return method_args
 
-    def _pack_rest_method_args(self, auth, verify=False, data=None, headers=None):
+    def _pack_rest_method_args(self, auth, verify=False, data={}, headers=None):
         """Pack the arguments required for the rest methods (post/get/put/patch ...) as a key value pair in a dictionary
 
         :param auth: authentication object.
@@ -231,8 +231,10 @@ class WsManProtocolBase(ProtocolBase):
         method_args['verify'] = verify
         if headers:
             method_args['headers'] = headers
-        if data:
+        if data is not None:
             method_args['data'] = json.dumps(data)
+        else:
+            method_args['data'] = '{}'
         return method_args
 
     def _get_base_url(self, ipaddr, resouce_path, port=443):
@@ -394,20 +396,6 @@ class WsManProtocolBase(ProtocolBase):
                 retval['Return'] = 'JobCreated'
         retval['Data'] = Data
         return retval
-
-    def _get_redfish_jobid(self, headers):
-        """Search jobid in the redfish_op
-
-        :param headers: response header.
-        :param headers: dict.         .
-        :returns: returns jobid
-
-        """
-        joblocation = headers['Location']
-        tokens = joblocation.split("/")
-        if tokens and tokens.__len__() > 0:
-            return tokens[-1]
-        return None
 
     ##########################Above are redfish codes, need to be moved once prtocol issue is addressed#####################
 

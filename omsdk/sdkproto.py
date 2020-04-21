@@ -425,7 +425,7 @@ class ProtocolWrapper(object):
             retval = self.proto.enumerate(clsName, wsprof, self.selectors, False, filter)
             if Simulator.is_recording():
                 Simulator.record_proto(self.ipaddr, self.enumid, clsName, retval)
-        if not 'Data' in retval or retval['Data'] is None:
+        if not 'Data' in retval or retval['Data'] is None or len(retval['Data']) <= 0:
             return retval
         if index in self.classifier_cond:
             chk_func = self.classifier_cond[index].get(self.enumid, None)
@@ -627,7 +627,7 @@ class PSNMP(ProtocolWrapper):
 
 
 class PREST(ProtocolWrapper):
-    def __init__(self, views, cmds):
+    def __init__(self, views, cmds, view_fieldspec={}, urlbase=None, classifier_cond=None):
         if PY2:
             super(PREST, self).__init__(ProtocolEnum.REST)
         else:
@@ -636,17 +636,26 @@ class PREST(ProtocolWrapper):
         self.views = views
         self.cmds = cmds
         self.supported_creds = [CredentialsEnum.User]
+        self.view_fieldspec = view_fieldspec
+        self.classifier_cond = classifier_cond
+        self.urlbase = urlbase
 
     def my_connect(self, ipaddr, creds, pOptions):
-
         if pOptions is None:
             pOptions = RestOptions()
-
-        return False
+        if self.urlbase:
+            pOptions.urlbase = self.urlbase
+        self.proto = RestProtocol(ipaddr, creds, pOptions)
+        if self.proto is None:
+            return False
+        return True
 
     def clone(self):
-        return PREST(self.views, self.cmds)
+        return PREST(self.views, self.cmds, self.view_fieldspec, self.urlbase, self.classifier_cond)
 
+    def disconnect(self):
+        if self.proto:
+            self.proto.reset(True)
 
 class PREDFISH(ProtocolWrapper):
     def __init__(self, views, cmds={}, view_fieldspec={}, urlbase = None, classifier_cond = {}):

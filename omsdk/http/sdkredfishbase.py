@@ -178,13 +178,17 @@ class RedfishProtocolBase(ProtocolBase):
                 if ':' in self.ipaddr:
                     url = "https://[" + self.ipaddr + ']:' + str(self.pOptions.port) + resource['url']
                 try:
+                    
+                    self.session.headers['datatype'] = 'json'
                     memResponse = self.session.get(url, timeout=(
                     self.pOptions.connection_timeout, self.pOptions.read_timeout))
                     if (memResponse.ok):
                         # retval['Status'] = 'Success'
                         compjData = json.loads(memResponse.content)
+
                         if resource.get('attribute', None):
-                            xcomp = xcomp + compjData[resource['attribute']]
+                            if compjData.get(resource['attribute'], None):
+                                xcomp = xcomp + compjData[resource['attribute']]
                         else:
                             xcomp = xcomp + [compjData]
                         if 'filter' in resource:
@@ -196,9 +200,9 @@ class RedfishProtocolBase(ProtocolBase):
                             memResponse.url, memResponse.status_code, memResponse.reason))
                     memResponse.close()
                 except requests.exceptions.ConnectionError as err:
-                    logging.debug(err)
+                    logger.debug(err)
                 except requests.exceptions.Timeout as err:
-                    logging.debug(err)
+                    logger.debug(err)
                 if xcomp:
                     retval['Status'] = 'Success'
             else:
@@ -233,9 +237,9 @@ class RedfishProtocolBase(ProtocolBase):
                                     memResponse.url, memResponse.status_code, memResponse.reason))
                             memResponse.close()
                         except requests.exceptions.ConnectionError as err:
-                            logging.debug(err)
+                            logger.debug(err)
                         except requests.exceptions.Timeout as err:
-                            logging.debug(err)
+                            logger.debug(err)
                 if xcomp:
                     retval['Status'] = 'Success'
         elif isinstance(resource, list):
@@ -272,9 +276,9 @@ class RedfishProtocolBase(ProtocolBase):
                                 logger.debug("GET Request Failed - URL : {0}  Status Code : {1}  Reason : {2}".format(memResponse.url, memResponse.status_code, memResponse.reason))
                             memResponse.close()
                         except requests.exceptions.ConnectionError as err:
-                            logging.debug(err)
+                            logger.debug(err)
                         except requests.exceptions.Timeout as err:
-                            logging.debug(err)
+                            logger.debug(err)
                 intrmOdataList = []
                 for xc in xcomp:##Members flow
                     if ix < rlen:
@@ -302,3 +306,4 @@ class RedfishProtocolBase(ProtocolBase):
         cdict = self.data_cache.setdefault(self.ipaddr, {})
         cdict[clsName] = xcomp
         return retval
+

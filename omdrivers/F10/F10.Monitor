@@ -226,13 +226,13 @@
       "OperStatus"
     ],
     "Inventory": [
-      "Type",
       "FQDD",
       "ExpressServiceCode",
       "ServiceTag",
       "PiecePartID",
       "PPIDRevision",
       "PowerDeviceType",
+	  "Type",
       "PowerDeviceIndex"
     ],
     "Key": [
