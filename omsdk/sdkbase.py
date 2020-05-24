@@ -649,12 +649,18 @@ class iBaseDriver(object):
                                 temp[slot[keylist[3]]] = slot
                             else:
                                 for slot in entityjson[keylist[2]]:
-                                    temp[slot[keylist[3]]] = slot
+                                    chk_key = slot[keylist[3]]
+                                    if chk_key:
+                                        if isinstance(chk_key, list):
+                                            for ix in chk_key:
+                                                temp[ix] = slot
+                                        else:
+                                            temp[chk_key] = slot
                             if del_misc:
                                 del entityjson[keylist[2]]
                             if temp:
                                 tempList.append(temp)
-                    logger.debug(tempList)
+                    # logger.debug(tempList)
                     if isinstance(entityjson[target_comp], dict):
                         fan = entityjson[target_comp]
                         for tmp in tempList:
