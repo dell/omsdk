@@ -166,6 +166,7 @@ iDRACComponentTree = {
     ],
     "Storage" : [
         iDRACCompEnum.Controller,
+        iDRACCompEnum.PCIeSSDExtender
     ],
     "Sensors" : [
         iDRACCompEnum.Sensors_Amperage,
@@ -193,10 +194,11 @@ iDRACComponentTree = {
         iDRACCompEnum.EnclosurePSU,
         iDRACCompEnum.PhysicalDisk,
         iDRACCompEnum.EnclosureSensor,
-        iDRACCompEnum.PCIeSSDExtender
+        # iDRACCompEnum.PCIeSSDExtender
     ],
     iDRACCompEnum.PCIeSSDExtender : [
-        iDRACCompEnum.PCIeSSDBackPlane
+        # iDRACCompEnum.PCIeSSDBackPlane,
+        iDRACCompEnum.PCIeSSDDisk
     ],
     iDRACCompEnum.PCIeSSDBackPlane : [
         iDRACCompEnum.PCIeSSDDisk
