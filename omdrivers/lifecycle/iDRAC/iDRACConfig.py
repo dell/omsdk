@@ -3418,7 +3418,7 @@ class iDRACConfig(iBaseConfigApi):
         return self._sysconfig.iDRAC.SNMP
 
     def configure_snmp(self, snmp_enable=None, community_name=None, snmp_protocol=None, alert_port=None,
-                       discovery_port=None, trap_format=None):
+                       discovery_port=None, trap_format=None, ipmi_community=None):
         """
             Configure SNMP Settings
 
@@ -3476,6 +3476,8 @@ class iDRACConfig(iBaseConfigApi):
             self.SNMPConfiguration.DiscoveryPort_SNMP.set_value(discovery_port)
         if trap_format is not None:
             self.SNMPConfiguration.TrapFormat_SNMP.set_value(trap_format)
+        if ipmi_community is not None:
+            self.SystemConfiguration.iDRAC.IPMILan.CommunityName_IPMILan.set_value(ipmi_community)
 
             # return self.apply_changes(reboot=False)
 
