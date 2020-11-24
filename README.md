@@ -12,7 +12,7 @@ All Dell EMC PowerEdge 12th and above Generation of PowerEdge Servers, and Chass
 
 # Prerequisites
 Dell EMC OpenManage Python SDK is supported for python 2.7 and above.
-
+  
   * Install the prerequisites using the requirements file on python 2.x as:
 
     ``` pip install -r requirements-python2x.txt ```
@@ -20,17 +20,17 @@ Dell EMC OpenManage Python SDK is supported for python 2.7 and above.
   * Install the prerequisites using the requirements file on python 3.x as:
 
     ``` pip3 install -r requirements-python3x.txt ```
-
+    
 # Installation
-  * This devel branch contains the build version 1.2.445
+  * This master branch contains the build version 1.2.451
   * Install the latest development version from github:
 
 	```
-	git clone --single-branch --branch devel https://github.com/dell/omsdk.git
+	git clone --single-branch --branch master https://github.com/dell/omsdk.git
 	cd omsdk
-	sh build.sh 1.2 445
+	sh build.sh 1.2 451
 	cd dist
-	pip install omsdk-1.2.445-py2.py3-none-any.whl
+	pip install omsdk-1.2.451-py2.py3-none-any.whl
 	```
 	* If omsdk build creation fails due to `python` command error, configure
 	 `python` to launch either `python2` or `python3`. Accordingly configure the `pip` command.
@@ -40,7 +40,7 @@ Dell EMC OpenManage Python SDK is supported for python 2.7 and above.
 	
 		* Downgrade pip version to lower than 10.0 and then install omsdk
 		* Force install omsdk using:
-		  ```pip install --ignore-installed omsdk-1.2.445-py2.py3-none-any.whl```
+		  ```pip install --ignore-installed omsdk-1.2.451-py2.py3-none-any.whl```
 		  
 # Uninstallation
   * Uninstall this module as follows:
@@ -58,7 +58,7 @@ Licensed under the Apache Software License, version 2.0 (the "License"); you may
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
 # Support
-  * This devel branch corresponds to the release actively under development.
+  * Dell EMC OpenManage Python SDK is supported by OpenManage developers team.
   * If you want to report any issue, then please report it by creating a new issue [here](https://github.com/dell/omsdk/issues)
   * If you have any requirements that is not currently addressed, then please let us know by creating a new issue [here](https://github.com/dell/omsdk/issues)
   * If you want to provide any feedback to the development team, then you can do so by sending an email to OpenManageSDK@Dell.com

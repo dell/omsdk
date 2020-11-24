@@ -21,6 +21,9 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 with open('/tmp/_version.txt', 'r') as v:
     ver = v.read()
 
+# conditional dependency:include enum34 if python 2 is in use
+debug_l1_en = False
+
 setup(
     name='omsdk',
     # Versions should comply with PEP440.  For a discussion on single-sourcing
@@ -58,7 +61,7 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-		'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
     ],
 
@@ -101,13 +104,12 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'enum34>=1.1.6',
-        'python_version<3.4',
-        'requests>=2.12.3',
-        'PyYAML>=3.12',
-        'future>=0.16.0',
-        'pysnmp_mibs>=0',
-        'ipaddress>=0'
+        "enum34; python_version<'3.4'",
+        "requests>=2.12.3",
+        "PyYAML>=3.12",
+        "future>=0.16.0",
+        "pysnmp_mibs>=0",
+        "ipaddress>=0"
     ],
 
     # List additional groups of dependencies here (e.g. development
