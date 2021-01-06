@@ -238,7 +238,10 @@ class WsManProtocolBase(ProtocolBase):
         return method_args
 
     def _get_base_url(self, ipaddr, resouce_path, port=443):
-        baseurl = "https://" + ipaddr + ':' + str(port) + resouce_path
+        if ":" in ipaddr:
+            baseurl = "https://[" + ipaddr + ']:' + str(port) + resouce_path
+        else:
+            baseurl = "https://" + ipaddr + ':' + str(port) + resouce_path
         return baseurl
 
     def _get_redfish_jobid(self, headers):

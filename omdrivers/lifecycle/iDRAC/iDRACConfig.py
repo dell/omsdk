@@ -3305,9 +3305,9 @@ class iDRACConfig(iBaseConfigApi):
             # Enable System Lockdown
             msg = idrac.config_mgr.enable_system_lockdown()
         """
-        if not self.entity.ServerGeneration.startswith(TypeHelper.resolve(ServerGenerationEnum.Generation_14)):
+        if self.entity.ServerGeneration.startswith(("11", "12", "13")):
             return {'Status': 'Failure',
-                    'Message': 'Cannot perform Lockdown operation. Lockdown is supported only on 14th Generation of PowerEdge Servers.'}
+                    'Message': 'Unable to perform the Lockdown operation. The Lockdown operation is supported only on the 14th Generation and later PowerEdge servers.'}
         if self.entity.use_redfish:
             rjson = self.entity._configure_system_lockdown_redfish(lockdown_mode=SystemLockdown_LockdownTypes.Enabled)
             return rjson
@@ -3330,9 +3330,9 @@ class iDRACConfig(iBaseConfigApi):
             msg = idrac.config_mgr.disable_system_lockdown()
         """
 
-        if not self.entity.ServerGeneration.startswith(TypeHelper.resolve(ServerGenerationEnum.Generation_14)):
+        if self.entity.ServerGeneration.startswith(("11", "12", "13")):
             return {'Status': 'Failure',
-                    'Message': 'Cannot perform Lockdown operation. Lockdown is supported only on 14th Generation of PowerEdge Servers.'}
+                    'Message': 'Unable to perform the Lockdown operation. The Lockdown operation is supported only on the 14th Generation and later PowerEdge servers.'}
         if self.entity.use_redfish:
             rjson = self.entity._configure_system_lockdown_redfish(lockdown_mode=SystemLockdown_LockdownTypes.Disabled)
             return rjson
