@@ -44,6 +44,7 @@ JobStatusEnum = EnumWrapper("iDRACJSE", {
     'InProgress': 'InProgress',
     'Failed': 'Failed',
     'Invalid': 'Invalid',
+    'Scheduled': 'Scheduled',
 }).enum_type
 
 ReturnValue = EnumWrapper("RV", {

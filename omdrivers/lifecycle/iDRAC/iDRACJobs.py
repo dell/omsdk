@@ -171,7 +171,7 @@ class iDRACJobs(iBaseJobApi):
             elif jobstatus.endswith('In Progress'):
                 jobstaten = JobStatusEnum.InProgress
             elif jobstatus.endswith('Scheduled'):
-                jobstaten = JobStatusEnum.InProgress
+                jobstaten = JobStatusEnum.Scheduled
             elif jobstatus.endswith('Running'):
                 jobstaten = JobStatusEnum.InProgress
             elif jobstatus.endswith('Invalid'):
@@ -264,9 +264,22 @@ class iDRACJobs(iBaseJobApi):
                     job_ret = True
                     ret_json = status
                     break
-                elif status['Status'] != TypeHelper.resolve(JobStatusEnum.InProgress):
+                elif status['Status'] == TypeHelper.resolve(JobStatusEnum.Failed):
+                    # eqaul to InProgress - Pending / InProgress / Scheduled / Running / Invalid
+                    # equal to Failed - Failed / Errors
                     if show_progress:
                         logger.debug(self.entity.ipaddr+" : "+jobid+ ":Message:" + status['Message'])
+                    job_ret = False
+                    ret_json = status
+                    break
+                elif status['Status'] == "Found Fault":
+                    # as per sdkwsmanbase.py there are two status Found Fault / Found Client (SDK) Side Fault
+                    # when iDRAC goes reboot - Found Client (SDK) Side Fault - but this requires continue in loop
+                    # when iDRAC created temp job id - found Fault - but this doesn't requires continue in loop
+                    job_ret = False
+                    ret_json = status
+                    break
+                elif status['Status'] == "Scheduled":
                     job_ret = False
                     ret_json = status
                     break
