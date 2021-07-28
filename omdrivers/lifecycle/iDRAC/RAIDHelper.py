@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 #
-# Copyright © 2018 Dell Inc. or its subsidiaries. All rights reserved.
+# Copyright © 2021 Dell Inc. or its subsidiaries. All rights reserved.
 # Dell, EMC, and other trademarks are trademarks of Dell Inc. or its subsidiaries.
 # Other trademarks may be trademarks of their respective owners.
 #
@@ -70,6 +70,9 @@ class Storage:
                 if field in comp:
                     try:
                         comp[field] = int(float(comp[field]))
+                    except ValueError:
+                        if comp[field] in ["Not Available", "NA"]:
+                            comp[field] = 0
                     except Exception as ex:
                         print(str(ex))
             entry = array.flexible_new(index=count, **comp)

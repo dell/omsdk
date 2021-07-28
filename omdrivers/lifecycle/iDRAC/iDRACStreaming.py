@@ -169,14 +169,15 @@ class iDRACStreaming():
         :rtype: json
 
         """
-        if not self._config_mgr.entity.ServerGeneration.startswith(
-                TypeHelper.resolve(ServerGenerationEnum.Generation_14)):
-            logger.error("Cannot perform import operation. Importing Data from Local Share is supported only on "
-                         "14th Generation of PowerEdge Servers.")
+        gen_str = self._config_mgr.entity.ServerGeneration.lower().split('g')
+        gen_int = int(gen_str[0])
+        if gen_int < 14:
+            gen_error = "Cannot perform export operation. Exporting data to a local share is supported only on " \
+                        "iDRAC9-based PowerEdge Servers and later."
+            logger.error(gen_error)
             return {
                 "Status": "Failure",
-                "Message": "Cannot perform export operation. Exporting Data to Local Share is supported only on "
-                           "14th Generation of PowerEdge Servers."
+                "Message": gen_error
             }
 
         # Maximum allowed value for chunk size(512KB)
@@ -321,8 +322,8 @@ class iDRACStreaming():
                 else:
                     with open(export_file, 'w+') as f:
                         f.write(export_file_data.decode("utf-8"))
-
-                export_response = {"Status": "Success", "Message": "File exported successfully!!"}
+                export_data_to_local_share_resp["file"] = export_file
+                export_response = export_data_to_local_share_resp
             except IOError as e:
                 logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
                 export_response = {"Status": "Failure", "Message": "Unable to export file. " + e.strerror}
@@ -336,14 +337,15 @@ class iDRACStreaming():
     # TODO: config xml should be passed as file/string
     def import_data(self, import_file_type=FileTypeEnum.SystemConfigXML, import_file=None,
                     **kwargs):
-        if not self._config_mgr.entity.ServerGeneration.startswith(
-                TypeHelper.resolve(ServerGenerationEnum.Generation_14)):
-            logger.error("Cannot perform import operation. Importing Data from Local Share is supported only on "
-                         "14th Generation of PowerEdge Servers.")
+        gen_str = self._config_mgr.entity.ServerGeneration.lower().split('g')
+        gen_int = int(gen_str[0])
+        if gen_int < 14:
+            gen_error = "Cannot perform import operation. Importing data from a local share is supported only on " \
+                        "iDRAC9-based PowerEdge Servers and later."
+            logger.error(gen_error)
             return {
                 "Status": "Failure",
-                "Message": "Cannot perform import operation. Importing Data from Local Share is supported only on "
-                           "14th Generation of PowerEdge Servers."
+                "Message": gen_error
             }
 
         if import_file is None or not os.path.exists(import_file):
