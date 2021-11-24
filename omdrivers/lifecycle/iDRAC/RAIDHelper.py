@@ -207,17 +207,23 @@ class RAIDHelper:
             if raid_value.get('pd_required') or raid_value.get('span_length') is not None:
                 pd_slots = raid_value.get('pd_required')
                 span_length = raid_value.get('span_length')
-                if operator.ne(raid.get('span_depth'), raid_value.get('span_depth')):
+                message, status = "Invalid physical disk slots or span length or span depth details.", "Failed"
+                if raid_value['raid_level'] in ["RAID 0", "RAID 1", "RAID 5", "RAID 6"] and \
+                        operator.ne(raid.get('span_depth'), raid_value.get('span_depth')):
+                    return {'Status': 'Failed', 'Message': 'Invalid span depth.'}
+                if raid_value['raid_level'] not in ["RAID 0", "RAID 1", "RAID 5", "RAID 6"] and \
+                        operator.lt(raid_value.get('span_depth'), raid.get('span_depth')):
                     return {'Status': 'Failed', 'Message': 'Invalid span depth.'}
                 if raid.get('checks')(pd_slots, len(raid.get('pd_slots'))):
                     status = "Success"
                     message = "span length validation is successful."
-                elif raid.get('checks')(span_length, raid.get('span_length')):
+                else:
+                    status, message = status, message
+                if raid.get('checks')(span_length, raid.get('span_length')):
                     status = "Success"
                     message = "physical disk slots validation is successful."
                 else:
-                    status = "Failed"
-                    message = "Invalid physical disk slots or span length or span depth details."
+                    status, message = status, message
         logger.info("Interface raid_std_validation exit")
         return {"Status": status, "Message": message}
 
