@@ -2737,7 +2737,7 @@ class RemoteHosts(ClassType):
         self.SMTPPort_RemoteHosts = IntField(None, parent=self)
         # readonly attribute populated by iDRAC
         self.SMTPSASL_RemoteHosts = IntField(None, parent=self, modifyAllowed=False, deleteAllowed=False)
-        self.SMTPServerIPAddress_RemoteHosts = IPAddressField(None, parent=self)
+        self.SMTPServerIPAddress_RemoteHosts = StringField("", parent=self)
         # readonly attribute populated by iDRAC
         self.SMTPStartTLS_RemoteHosts = IntField(None, parent=self, modifyAllowed=False, deleteAllowed=False)
         self.SMTPUserName_RemoteHosts = StringField("", parent=self)
