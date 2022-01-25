@@ -20,15 +20,6 @@
 #
 # Authors: Vaideeswaran Ganesan
 #
-import sys
-import io
-import logging
-import traceback
-import json
-from enum import Enum
-
-import xml.etree.ElementTree as ET
-
 import requests
 import requests.adapters
 import requests.exceptions
@@ -50,14 +41,16 @@ AuthenticationType = EnumWrapper('AT', AuthenticationTypeMap).enum_type
 
 
 class HttpEndPointOptions(object):
-    def __init__(self, enid, authentication, port, connection_timeout, read_timeout, max_retries, verify_ssl):
+    def __init__(self, enid, authentication, port, connection_timeout, read_timeout, max_retries,
+                 verify_ssl, cert):
         self.enid = enid
         self.connection_timeout = connection_timeout # establish a connection
         self.read_timeout = read_timeout # how long to wait for response from client
-        self.max_retries = max_retries 
-        self.verify_ssl = verify_ssl 
-        self.authentication = authentication 
-        self.port = port 
+        self.max_retries = max_retries
+        self.verify_ssl = verify_ssl
+        self.cert = cert
+        self.authentication = authentication
+        self.port = port
 		#self.skip_ca_check = True
         #self.skip_cn_check = True
 
@@ -96,15 +89,17 @@ class HttpEndPoint(object):
         if self.session:
             return True
         self._logger.debug("Attempting a connection to device")
-        requests.packages.urllib3.disable_warnings(InsecurePlatformWarning)
-        requests.packages.urllib3.disable_warnings(SNIMissingWarning)
-        if not self.pOptions.verify_ssl:
-            requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+        # requests.packages.urllib3.disable_warnings(InsecurePlatformWarning)
+        # requests.packages.urllib3.disable_warnings(SNIMissingWarning)
+        # if not self.pOptions.verify_ssl:
+        #     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
         self.adapter = requests.adapters.HTTPAdapter(
                 pool_connections = 1,
                 max_retries = self.pOptions.max_retries)
         self.session = requests.Session()
+        self.session.verify = self.pOptions.verify_ssl
+        self.session.cert = self.pOptions.cert
         self.session.auth = None
         if self.pOptions.authentication == AuthenticationType.Basic:
             self.session.auth = requests.auth.HTTPBasicAuth(self.creds.username,
@@ -134,9 +129,14 @@ class HttpEndPoint(object):
             # Submit the http request
             self._logger.debug("Begin submitting POST request")
             try:
-                response = self.session.send(prepared_request, verify=self.pOptions.verify_ssl,
+                response = self.session.send(prepared_request,
+                                             verify=self.pOptions.verify_ssl, cert=self.pOptions.cert,
                     timeout=(self.pOptions.connection_timeout, self.pOptions.read_timeout))
-            except requests.exceptions.ConnectionError:
+            except requests.exceptions.SSLError as sslerr:
+                error_message = "SSL connection error"
+                self._logger.debug(error_message)
+                raise HttpEndPointProtocolException(error_message)
+            except requests.exceptions.ConnectionError as cxerr:
                 error_message = "HTTP connection error"
                 self._logger.debug(error_message)
                 raise HttpEndPointProtocolException(error_message)

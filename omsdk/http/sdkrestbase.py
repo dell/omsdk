@@ -41,13 +41,13 @@ PY3 = sys.version_info[0] == 3
 logger = logging.getLogger(__name__)
 class RestOptions(HttpEndPointOptions):
     def __init__(self, authentication = AuthenticationType.Basic, port = 443, connection_timeout = 20,
-                 read_timeout = 30, max_retries = 1, verify_ssl = False, cacheTimeout=180 ):
+                 read_timeout = 30, max_retries = 1, verify_ssl = False, cert=None, cacheTimeout=180 ):
         if PY2:
             super(RestOptions, self).__init__(ProtocolEnum.REST, authentication, port, connection_timeout, read_timeout, max_retries,
-                                              verify_ssl)
+                                              verify_ssl, cert)
         else:
             super().__init__(ProtocolEnum.REST, authentication, port, connection_timeout, read_timeout, max_retries,
-                             verify_ssl)
+                             verify_ssl, cert)
 
 
 class RestProtocolBase(ProtocolBase):
@@ -119,7 +119,8 @@ class RestProtocolBase(ProtocolBase):
                 user_details = self.username + '_' + self.password
                 auth_string = hashlib.sha256(user_details.encode('utf-8')).hexdigest()
                 headers = {'datatype': 'json'}
-                login_response = requests.get(url + '/api/login/' + auth_string, headers=headers, verify=False)
+                login_response = requests.get(url + '/api/login/' + auth_string, headers=headers,
+                                              verify=self.pOptions.verify_ssl, cert=self.pOptions.cert)
                 if login_response:
                     response = json.loads(login_response.content)
                     if response['status'][0]['response-type'] == 'Success':
@@ -144,7 +145,8 @@ class RestProtocolBase(ProtocolBase):
         if sessionKey:
             try:
                 headers = {'sessionKey': sessionKey, 'datatype': 'json'}
-                api_response = requests.get(url + resource['url'], headers=headers, verify=False)
+                api_response = requests.get(url + resource['url'], headers=headers,
+                                            verify=self.pOptions.verify_ssl, cert=self.pOptions.cert)
                 if api_response.ok:
                     response = json.loads(api_response.content)
                     if api_response.ok:

@@ -151,8 +151,8 @@ class sdkinfra:
             result = socket.getaddrinfo(host, None)
             lastuple = result[-1]
             ipaddress = lastuple[-1][0]
-            if ipaddress:
-                ipaddr = ipaddress
+            # if ipaddress:
+            #     ipaddr = ipaddress
         except socket.gaierror as err:
             logger.error("{}: {}: {}".format(host, err, "cannot resolve hostname!"))
         if not mod in self.disc_modules:

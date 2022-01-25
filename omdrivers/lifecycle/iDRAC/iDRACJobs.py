@@ -349,7 +349,8 @@ class iDRACJobs(iBaseJobApi):
             return jobdetail
 
         jobdetail_data = jobdetail['Data']['Jobs']
-        if (jobdetail_data['PercentComplete'] < 100) or (100 < jobdetail_data['PercentComplete']):
+        if jobdetail_data.get('PercentComplete') is not None and (
+                (jobdetail_data.get('PercentComplete') < 100) or (100 < jobdetail_data.get('PercentComplete'))):
             jobstaten = JobStatusEnum.InProgress
         elif jobdetail_data['JobState'] == 'Completed':
             jobstaten = self.get_job_status_by_msgid(jobdetail_data['MessageId'])
@@ -357,7 +358,6 @@ class iDRACJobs(iBaseJobApi):
             jobstaten = JobStatusEnum.Failed
         else:
             jobstaten = JobStatusEnum.Invalid
-
         jobdetail_data['Status'] = TypeHelper.resolve(jobstaten)
         return jobdetail_data
 

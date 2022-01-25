@@ -66,7 +66,7 @@ class WsManOptions(HttpEndPointOptions):
 
     def __init__(
             self, authentication=AuthenticationType.Basic, port=443, connection_timeout=20,
-            read_timeout=30, max_retries=1, verify_ssl=False
+            read_timeout=30, max_retries=1, verify_ssl=False, cert = None
     ):
         """
         :param authentication: HTTP Authentication type 'Basic', 'Digest'
@@ -85,12 +85,12 @@ class WsManOptions(HttpEndPointOptions):
         if PY2:
             super(WsManOptions, self).__init__(
                 ProtocolEnum.WSMAN, authentication, port, connection_timeout,
-                read_timeout, max_retries, verify_ssl
+                read_timeout, max_retries, verify_ssl, cert
             )
         else:
             super().__init__(
                 ProtocolEnum.WSMAN, authentication, port, connection_timeout,
-                read_timeout, max_retries, verify_ssl
+                read_timeout, max_retries, verify_ssl, cert
             )
         self.enid = ProtocolEnum.WSMAN
 

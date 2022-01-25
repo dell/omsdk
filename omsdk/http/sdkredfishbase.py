@@ -47,7 +47,7 @@ class RedfishOptions(HttpEndPointOptions):
     """
     def __init__(
                  self, urlbase='redfish/v1', authentication = AuthenticationType.Basic, port = 443, connection_timeout = 20,
-                 read_timeout = 30, max_retries = 1, verify_ssl = False, cacheTimeout=180 
+                 read_timeout = 30, max_retries = 1, verify_ssl = False, cert=None, cacheTimeout=180 
                 ):
         """
                 :param authentication: HTTP Authentication type 'Basic', 'Digest'
@@ -65,12 +65,12 @@ class RedfishOptions(HttpEndPointOptions):
         if PY2:
             super(RedfishOptions, self).__init__(
                  ProtocolEnum.REDFISH, authentication, port, connection_timeout,
-                 read_timeout, max_retries, verify_ssl
+                 read_timeout, max_retries, verify_ssl, cert
                 )
         else:
             super().__init__(
                  ProtocolEnum.REDFISH, authentication, port, connection_timeout,
-                 read_timeout, max_retries, verify_ssl
+                 read_timeout, max_retries, verify_ssl, cert
                 )
         self.enid = ProtocolEnum.REDFISH
         self.urlbase = urlbase
@@ -89,6 +89,7 @@ class RedfishProtocolBase(ProtocolBase):
         self.session = requests.session()
         self.pOptions = pOptions
         self.session.verify = self.pOptions.verify_ssl
+        self.session.cert = self.pOptions.cert
         if not self.pOptions.verify_ssl: 
             requests.packages.urllib3.disable_warnings()
         if self.pOptions.authentication == AuthenticationType.Basic:
