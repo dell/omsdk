@@ -2936,6 +2936,7 @@ if PySnmpPresent:
                 }
             },
             "SysMemPrimaryStatus" : {
+                'CopyTo' : 'MemoryRollupStatus',
                 'Lookup'  :  'True',
                 'Values' : {
                     "1" : "Unknown",
@@ -3349,7 +3350,7 @@ if PySnmpPresent:
 # Agnostic of protocols
 iDRACSubsystemHealthSpec = {
     iDRACCompEnum.System : { "Component" : iDRACCompEnum.System, "Field": 'PrimaryStatus' },
-    iDRACCompEnum.Memory : { "Component" : iDRACCompEnum.System, "Field" : 'SysMemPrimaryStatus' },
+    iDRACCompEnum.Memory : { "Component" : iDRACCompEnum.System, "Field" : 'MemoryRollupStatus' },
     iDRACCompEnum.CPU : { "Component" : iDRACCompEnum.System, "Field": 'CPURollupStatus' },
     'Sensors_Fan' : { "Component" : iDRACCompEnum.System, "Field": 'FanRollupStatus' },
     # iDRACCompEnum.iDRAC : { "Component" : iDRACCompEnum.System, "Field": 'RollupStatus' },
