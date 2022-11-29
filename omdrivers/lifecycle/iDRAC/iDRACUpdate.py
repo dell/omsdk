@@ -262,13 +262,13 @@ class iDRACUpdate(Update):
                                                                 apply_update=ApplyUpdateEnum[str(apply_update)],
                                                                 ignore_cert_warning=IgnoreCertWarnEnum['On'])
         if TypeHelper.resolve(catalog_dir.remote_share_type) == TypeHelper.resolve(ShareTypeEnum.NFS):
-            rjson = self.entity._update_repo_nfs(share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
-                                                 apply=URLApplyUpdateEnum[str(apply_update)].value,
-                                                 reboot=RebootEnum[str(reboot_needed)].value)
+            rjson = self.entity._update_repo_nfs(
+                share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
+                apply=URLApplyUpdateEnum[str(apply_update)].value, reboot=RebootEnum[str(reboot_needed)].value)
         else:
-            rjson = self.entity._update_repo(share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
-                                             apply=URLApplyUpdateEnum[str(apply_update)].value,
-                                             reboot=RebootEnum[str(reboot_needed)].value)
+            rjson = self.entity._update_repo(
+                share=catalog_dir, creds=catalog_dir.creds, catalog=catalog_file,
+                apply=URLApplyUpdateEnum[str(apply_update)].value, reboot=RebootEnum[str(reboot_needed)].value)
         rjson['file'] = str(cache_share)
         if job_wait:
             rjson = self._job_mgr._job_wait(rjson['file'], rjson)
@@ -278,12 +278,31 @@ class iDRACUpdate(Update):
 
     def update_from_dell_repo_url(self, ipaddress=None, share_name=None, share_type=None,
                                   catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
-                                  ignore_cert_warning=True, job_wait=True):
-        rjson = self.entity._update_dell_repo_url(ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
-                                                  catalog_file=catalog_file,
-                                                  apply_update=URLApplyUpdateEnum[str(apply_update)].value,
-                                                  reboot_needed=RebootEnum[str(reboot_needed)].value,
-                                                  ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value)
+                                  ignore_cert_warning=True, job_wait=True, proxy_support="Off", proxy_type="HTTP",
+                                  proxy_server=None, proxy_port=80, proxy_uname=None, proxy_passwd=None):
+        if proxy_support == "Use_Custom_Settings":
+            kwargs = {"proxy_support": ProxySupportEnum[str(proxy_support)].value, "proxy_port": proxy_port,
+                      "proxy_type": ProxyTypeEnum[str(proxy_type)].value, "proxy_server": proxy_server}
+            if proxy_uname is not None and proxy_passwd is not None:
+                kwargs.update({"proxy_uname": proxy_uname, "proxy_passwd": proxy_passwd})
+                rjson = self.entity._update_dell_repo_url_proxy_creds(
+                    ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value, catalog_file=catalog_file,
+                    apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                    reboot_needed=RebootEnum[str(reboot_needed)].value,
+                    ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value, **kwargs)
+            else:
+                rjson = self.entity._update_dell_repo_url_proxy(
+                    ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value, catalog_file=catalog_file,
+                    apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                    reboot_needed=RebootEnum[str(reboot_needed)].value,
+                    ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value, **kwargs)
+        else:
+            rjson = self.entity._update_dell_repo_url(
+                ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value, catalog_file=catalog_file,
+                apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                reboot_needed=RebootEnum[str(reboot_needed)].value,
+                ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value,
+                proxy_support=ProxySupportEnum[str(proxy_support)].value)
 
         file_format = "{0}://{1}/{2}/{3}" if share_name else "{0}://{1}{2}/{3}"
         rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
@@ -295,7 +314,8 @@ class iDRACUpdate(Update):
 
     def update_from_repo_url(self, ipaddress=None, share_type=None, share_name=None, share_user=None,
                              share_pwd=None, catalog_file="Catalog.xml", apply_update=True, reboot_needed=False,
-                             ignore_cert_warning=True, job_wait=True):
+                             ignore_cert_warning=True, job_wait=True, proxy_support="Off", proxy_type="HTTP",
+                             proxy_server=None, proxy_port=80, proxy_uname=None, proxy_passwd=None):
         if self.entity.use_redfish:
             warning = IgnoreCertWarnEnum["On"] if ignore_cert_warning else IgnoreCertWarnEnum["Off"]
             rjson = self.entity._update_from_repo_using_redfish(ipaddress=ipaddress, share_name=share_name,
@@ -305,11 +325,33 @@ class iDRACUpdate(Update):
                                                                 apply_update=ApplyUpdateEnum[str(apply_update)],
                                                                 ignore_cert_warning=warning.value)
         else:
-            rjson = self.entity._update_repo_url(ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
-                                                 share_name=share_name, catalog_file=catalog_file,
-                                                 apply_update=URLApplyUpdateEnum[str(apply_update)].value,
-                                                 reboot_needed=RebootEnum[str(reboot_needed)].value,
-                                                 ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value)
+            if proxy_support == "Use_Custom_Settings":
+                kwargs = {"proxy_support": ProxySupportEnum[str(proxy_support)].value,
+                          "proxy_type": ProxyTypeEnum[str(proxy_type)].value, "proxy_server": proxy_server,
+                          "proxy_port": proxy_port, "proxy_uname": proxy_uname, "proxy_passwd": proxy_passwd}
+                if proxy_uname is not None and proxy_passwd is not None:
+                    kwargs.update({"proxy_uname": proxy_uname, "proxy_passwd": proxy_passwd})
+                    rjson = self.entity._update_repo_url_proxy_creds(
+                        ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                        share_name=share_name, catalog_file=catalog_file,
+                        apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                        reboot_needed=RebootEnum[str(reboot_needed)].value,
+                        ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value, **kwargs)
+                else:
+                    rjson = self.entity._update_repo_url_proxy(
+                        ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                        share_name=share_name, catalog_file=catalog_file,
+                        apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                        reboot_needed=RebootEnum[str(reboot_needed)].value,
+                        ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value, **kwargs)
+            else:
+                rjson = self.entity._update_repo_url(
+                    ipaddress=ipaddress, share_type=URLShareTypeEnum[share_type].value,
+                    share_name=share_name, catalog_file=catalog_file,
+                    apply_update=URLApplyUpdateEnum[str(apply_update)].value,
+                    reboot_needed=RebootEnum[str(reboot_needed)].value,
+                    ignore_cert_warning=URLCertWarningEnum[str(ignore_cert_warning)].value,
+                    proxy_support=ProxySupportEnum[str(proxy_support)].value)
         file_format = "{0}://{1}/{2}/{3}" if share_name else "{0}://{1}{2}/{3}"
         rjson['file'] = file_format.format(share_type, ipaddress, share_name, catalog_file)
         if job_wait:
