@@ -1251,7 +1251,7 @@ iDRACWsManCmds = {
             "creds": UserCredentials,
             "catalog": str,
             "apply": int,
-            "reboot": str
+            "reboot": str,
         },
         "Return": {
             "File": "file"
@@ -1283,7 +1283,7 @@ iDRACWsManCmds = {
             "creds": UserCredentials,
             "catalog": str,
             "apply": int,
-            "reboot": str
+            "reboot": str,
         },
         "Return": {
             "File": "file"
@@ -1316,7 +1316,8 @@ iDRACWsManCmds = {
             "catalog_file": str,
             "apply_update": int,
             "reboot_needed": str,
-            "ignore_cert_warning": int
+            "ignore_cert_warning": int,
+            "proxy_support": int,
         },
         "Return": {
             "File": "file"
@@ -1330,6 +1331,95 @@ iDRACWsManCmds = {
             ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
             ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+        ]
+    },
+    "_update_repo_url_proxy": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "share_name": str,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int,
+            "proxy_support": int,
+            "proxy_type": int,
+            "proxy_server": str,
+            "proxy_port": int,
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareName', "share_name", None, type("/test"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+            ("ProxyType", "proxy_type", None, type(0), None),
+            ("ProxyServer", "proxy_server", None, type("10.20.40.50"), None),
+            ("ProxyPort", "proxy_port", None, type(1), None)
+        ]
+    },
+    "_update_repo_url_proxy_creds": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "share_name": str,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int,
+            "proxy_support": int,
+            "proxy_type": int,
+            "proxy_server": str,
+            "proxy_port": int,
+            "proxy_uname": str,
+            "proxy_passwd": str,
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareName', "share_name", None, type("/test"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+            ("ProxyType", "proxy_type", None, type(0), None),
+            ("ProxyServer", "proxy_server", None, type("10.20.40.50"), None),
+            ("ProxyPort", "proxy_port", None, type(1), None),
+            ("ProxyUname", "proxy_uname", None, type(""), None),
+            ("ProxyPasswd", "proxy_passwd", None, type(""), None),
         ]
     },
     "_update_dell_repo_url": {
@@ -1349,7 +1439,8 @@ iDRACWsManCmds = {
             "catalog_file": str,
             "apply_update": int,
             "reboot_needed": str,
-            "ignore_cert_warning": int
+            "ignore_cert_warning": int,
+            "proxy_support": int,
         },
         "Return": {
             "File": "file"
@@ -1362,6 +1453,91 @@ iDRACWsManCmds = {
             ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
             ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
             ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+        ]
+    },
+    "_update_dell_repo_url_proxy": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int,
+            "proxy_support": int,
+            "proxy_type": int,
+            "proxy_server": str,
+            "proxy_port": int,
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+            ("ProxyType", "proxy_type", None, type(0), None),
+            ("ProxyServer", "proxy_server", None, type("10.20.40.50"), None),
+            ("ProxyPort", "proxy_port", None, type(1), None)
+        ]
+    },
+    "_update_dell_repo_url_proxy_creds": {
+        "ResourceURI": "http://schemas.dell.com/wbem/wscim/1/cim-schema/2/DCIM_SoftwareInstallationService",
+        "Action": "InstallFromRepository",
+        "SelectorSet": {
+            "w:Selector": [
+                {'@Name': 'CreationClassName', '#text': 'DCIM_SoftwareInstallationService'},
+                {'@Name': 'SystemCreationClassName', '#text': 'DCIM_ComputerSystem'},
+                {'@Name': 'Name', '#text': 'SoftwareUpdate'},
+                {'@Name': 'SystemName', '#text': 'IDRAC:ID'}
+            ]
+        },
+        "Args": {
+            "ipaddress": str,
+            "share_type": int,
+            "catalog_file": str,
+            "apply_update": int,
+            "reboot_needed": str,
+            "ignore_cert_warning": int,
+            "proxy_support": int,
+            "proxy_type": int,
+            "proxy_server": str,
+            "proxy_port": int,
+            "proxy_uname": str,
+            "proxy_passwd": str,
+        },
+        "Return": {
+            "File": "file"
+        },
+        "Parameters": [
+            ('IPAddress', "ipaddress", None, type("10.20.40.50"), None),
+            ('ShareType', "share_type", None, type(0), None),
+            ('FileName', "catalog_file", None, type("filename"), None),
+            ("CatalogFile", "catalog_file", None, type("Catalog.xml"), None),
+            ("ApplyUpdate", "apply_update", None, type(0), None),  # 0 - report, 1 - apply
+            ("RebootNeeded", "reboot_needed", None, type("TRUE"), None),
+            ("IgnoreCertWarning", "ignore_cert_warning", None, type(1), None),
+            ("ProxySupport", "proxy_support", None, type(0), None),
+            ("ProxyType", "proxy_type", None, type(0), None),
+            ("ProxyServer", "proxy_server", None, type("10.20.40.50"), None),
+            ("ProxyPort", "proxy_port", None, type(1), None),
+            ("ProxyUname", "proxy_uname", None, type(""), None),
+            ("ProxyPasswd", "proxy_passwd", None, type(""), None),
         ]
     },
     "_update_from_repo_using_redfish": {
@@ -1391,7 +1567,7 @@ iDRACWsManCmds = {
             ('RebootNeeded', 'reboot_needed', None, bool, None),
             ('CatalogFile', 'catalog_file', None, type('Catalog.xml'), None),
             ('ApplyUpdate', 'apply_update', None, ApplyUpdateEnum, None),
-            ('IgnoreCertWarning', 'ignore_cert_warning', None, IgnoreCertWarnEnum, None)
+            ('IgnoreCertWarning', 'ignore_cert_warning', None, IgnoreCertWarnEnum, None),
         ]
     },
 
