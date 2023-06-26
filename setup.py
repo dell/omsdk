@@ -19,7 +19,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 # Update the package version here
-omsdk_ver = '1.2.490'
+omsdk_ver = '1.2.509'
 
 # conditional dependency:include enum34 if python 2 is in use
 debug_l1_en = False
