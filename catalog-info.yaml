@@ -1,0 +1,31 @@
+# nonk8s
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-omsdk
+  description: "Dell OpenManage Python SDK"
+  tags:
+    - ansible
+    - devops
+    - automation
+    - storage
+    - server
+    - dell
+    - infrastructure-as-code
+    - openmanage
+    - idrac
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: dell/omsdk
+  links:
+    - url: 'https://pypi.org/project/omsdk/'
+      title: 'PyPI'
+      icon: 'web'
+    - url: 'https://github.com/dell/omsdk/issues'
+      title: 'Contact Technical Support'
+      icon: 'help'
+spec:
+  type: service
+  lifecycle: production
+  owner: user:default/sachin.apagundi
+  visibility: all
