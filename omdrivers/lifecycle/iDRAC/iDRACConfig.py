@@ -44,7 +44,6 @@ from omdrivers.enums.iDRAC.RAID import *
 from omsdk.simulator.devicesim import Simulator
 from omdrivers.lifecycle.iDRAC.SCPParsers import XMLParser
 from omdrivers.lifecycle.iDRAC.RAIDHelper import RAIDHelper
-from past.builtins import long
 import sys
 import logging
 import tempfile
@@ -2130,24 +2129,24 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "file_type": FileTypeEnum,
-            "in_session_id": long,
+            "in_session_id": int,
             "chunk_size": type(1),
-            "file_size": long,
+            "file_size": int,
             "txfr_descriptor": TxfrDescriptorEnum,
             "payload": type(""),
             "crc": type(""),
             "payload_encoding": PayLoadEncodingEnum
         },
         "Return": {
-            "SessionID": long
+            "SessionID": int
         },
         "Parameters": [
             ("ChunkSize", "chunk_size", None, int, None),
             ("FileType", "file_type", None, FileTypeEnum, None),
             # ("ImportFileName", "filename", None, ResetForceEnum, None),
-            ("InSessionID", "in_session_id", None, long, None),
+            ("InSessionID", "in_session_id", None, int, None),
             ("CRC", "crc", None, str, None),
-            ("FileSize", "file_size", None, long, None),
+            ("FileSize", "file_size", None, int, None),
             ("TxfrDescriptor", "txfr_descriptor", None, TxfrDescriptorEnum, None),
             ("PayLoad", "payload", None, str, None),
             ("PayLoadEncoding", "payload_encoding", None, PayLoadEncodingEnum, None)
@@ -2165,27 +2164,27 @@ iDRACWsManCmds = {
             ]},
         "Args": {
             "file_type": FileTypeEnum,
-            "in_session_id": long,
+            "in_session_id": int,
             "in_chunk_size": type(1),
-            "file_offset": long,
-            "tx_data_size": long,
+            "file_offset": int,
+            "tx_data_size": int,
             "payload_encoding": PayLoadEncodingEnum
         },
         "Return": {
-            "file_size": long,
+            "file_size": int,
             "txfr_descriptor": TxfrDescriptorEnum,
             "payload": type(""),
             "crc": type(""),
             "chunk_size": type(1),
             "session_id": type(""),
-            "ret_file_offset": long,
-            "ret_tx_data_size": long
+            "ret_file_offset": int,
+            "ret_tx_data_size": int
         },
         "Parameters": [
-            ("FileOffset", "file_offset", None, long, None),
-            ("TxDataSize", "tx_data_size", None, long, None),
+            ("FileOffset", "file_offset", None, int, None),
+            ("TxDataSize", "tx_data_size", None, int, None),
             ("FileType", "file_type", None, FileTypeEnum, None),
-            ("InSessionID", "in_session_id", None, long, None),
+            ("InSessionID", "in_session_id", None, int, None),
             ("InChunkSize", "in_chunk_size", None, int, None),
             ("PayLoadEncoding", "payload_encoding", None, PayLoadEncodingEnum, None),
         ]

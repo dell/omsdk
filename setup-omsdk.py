@@ -107,7 +107,6 @@ setup(
         "enum34; python_version<'3.4'",
         "requests>=2.12.3",
         "PyYAML>=3.12",
-        "future>=0.16.0",
         "pysnmp_mibs>=0",
         "ipaddress>=0"
     ],

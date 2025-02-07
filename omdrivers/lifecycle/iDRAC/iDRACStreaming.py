@@ -30,7 +30,6 @@ import gzip
 from omsdk.sdkprint import Prettifyer
 from omsdk.sdkcenum import EnumWrapper
 from omdrivers.enums.iDRAC.iDRACEnums import *
-from past.builtins import long
 
 logger = logging.getLogger(__name__)
 
@@ -234,9 +233,9 @@ class iDRACStreaming():
         # Export the first chunk of data
         logger.debug("Exporting the first Chunk...")
 
-        session_id = long(0)
-        file_offset = long(0)
-        tx_data_size = long(0)
+        session_id = int(0)
+        file_offset = int(0)
+        tx_data_size = int(0)
 
         export_data_resp = self._config_mgr.export_data(
             file_type=file_type,
@@ -258,9 +257,9 @@ class iDRACStreaming():
 
         crc = export_data_output["CRC"]
         payload = export_data_output["PayLoad"]
-        ret_file_offset = long(export_data_output["RetFileOffset"])
-        ret_tx_Data_size = long(export_data_output["RetTxDataSize"])
-        session_id = long(export_data_output["SessionID"])
+        ret_file_offset = int(export_data_output["RetFileOffset"])
+        ret_tx_Data_size = int(export_data_output["RetTxDataSize"])
+        session_id = int(export_data_output["SessionID"])
         txfr_descriptor = export_data_output["TxfrDescriptor"]
 
         payloads_list = list()
@@ -290,9 +289,9 @@ class iDRACStreaming():
 
             # chunk_size = export_data_output["ChunkSize"]
             payload = export_data_output["PayLoad"]
-            ret_file_offset = long(export_data_output["RetFileOffset"])
-            ret_tx_Data_size = long(export_data_output["RetTxDataSize"])
-            session_id = long(export_data_output["SessionID"])
+            ret_file_offset = int(export_data_output["RetFileOffset"])
+            ret_tx_Data_size = int(export_data_output["RetTxDataSize"])
+            session_id = int(export_data_output["SessionID"])
             txfr_descriptor = export_data_output["TxfrDescriptor"]
 
             payloads_list.append(payload)
@@ -366,7 +365,7 @@ class iDRACStreaming():
 
             import_data = import_file_content.encode("utf-8")
 
-            file_size = long(len(import_data))
+            file_size = int(len(import_data))
 
             clear_transfer_session_resp = self._config_mgr.clear_transfer_session(
                 file_operation=FileOperationEnum.Import,
@@ -403,7 +402,7 @@ class iDRACStreaming():
             logger.debug(payload_chunks)
 
             number_of_chunks = len(payload_chunks)
-            session_id = long(0)
+            session_id = int(0)
 
             # Import the Base64 Encoded Config XML data chunk-by-chunk
             for count in range(1, number_of_chunks + 1):
@@ -439,7 +438,7 @@ class iDRACStreaming():
                                        import_chunk_resp["Message"]
                         }
 
-                    session_id = long(import_chunk_resp["Data"]["ImportData_OUTPUT"]["SessionID"])
+                    session_id = int(import_chunk_resp["Data"]["ImportData_OUTPUT"]["SessionID"])
 
                 # Import the last chunk
                 elif count == number_of_chunks:
