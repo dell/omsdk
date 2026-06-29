@@ -324,7 +324,7 @@ class WsManProtocolBase(ProtocolBase):
 
         url = self._get_base_url(ipaddr=self.proto.ipaddr, resouce_path=rpath, port=self.proto.pOptions.port)
         auth = HTTPBasicAuth(self.proto.creds.username, self.proto.creds.password)
-        cert_verify = False
+        cert_verify = self.proto.pOptions.verify_ssl
         headers = {'content-type': 'application/json'}
         kwargs = self._pack_rest_method_args(auth=auth, verify=cert_verify, data=redfish_payload, headers=headers)
         retval = {}
