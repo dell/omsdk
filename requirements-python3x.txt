@@ -4,4 +4,5 @@ PyYAML>=3.12
 future>=0.16.0
 pysnmp_mibs>=0
 pywinrm
+cryptography>=45.0.7
 urllib3
