@@ -149,6 +149,9 @@ SCPTargetEnum = EnumWrapper("SCPTargetEnum", {
     'BIOS': 'BIOS',
     'NIC': 'NIC',
     'RAID': 'RAID',
+    'EVENTFILTERS': 'EVENTFILTERS',
+    'SUPPORTASSIST': 'SUPPORTASSIST',
+    'LIFECYCLECONTROLLER': 'LIFECYCLECONTROLLER',
 }).enum_type
 
 RAIDLevelsEnum = EnumWrapper("RLE", {
